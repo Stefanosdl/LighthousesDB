@@ -7,6 +7,9 @@ const flash = require("connect-flash");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const mongoSanitize = require("express-mongo-sanitize");
+const catchAsync = require('./utils/catchAsync');
+const LedLight = require("./models/ledlighthouses");
+const AutoLight = require("./models/autolighthouses");
 
 const autoLighthouseRoutes = require("./routes/autolighthouses");
 const ledLighthouseRoutes = require("./routes/ledlighthouses");
@@ -79,6 +82,38 @@ app.use("/ledLighthouses", ledLighthouseRoutes);
 app.get("/", (req, res) => {
 	res.render("index");
 });
+
+app.get("/search", catchAsync(async (req, res, next) => {
+	try {
+        const query = req.query.q;
+        if (query){
+            const searchedLed = await LedLight.find({aef: query}).populate("technicians").exec();
+            if(searchedLed == undefined || searchedLed.length == 0) {
+                const searchedAuto = await AutoLight.find({aef: query}).populate("technicians").exec();
+                if(searchedAuto == undefined || searchedAuto.length == 0) {
+                    req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
+                    res.redirect('/');
+                }
+                else{
+                    res.render("searchAuto", { searchedAuto });
+                }
+            }
+            else {
+                res.render("searchLed", { searchedLed });
+            }
+        }
+        else {
+            res.render("index");
+        }
+
+    }
+    catch (e) {
+        console.log( e.message)
+        req.flash("error", e.message);
+        res.redirect('/');
+    }
+}));
+
 
 app.listen(3000, () => {
     console.log("Listening in port 3000");

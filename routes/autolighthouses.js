@@ -10,14 +10,27 @@ router.get("/registerAuto", (req, res) => {
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
-		const autoLighthouse = new AutoLight({aef: req.body.aef, lighthouse: req.body.lighthouse, features: req.body.features, location: req.body.location, lighter: req.body.lighter, solarGenerator: req.body.solarGenerator, head: req.body.head, accumulator: req.body.accumulator, chargeRegulator: req.body.chargeRegulator, lamp: req.body.lamp, generatorSocket: req.body.generatorSocket, torchSocket: req.body.torchSocket, photocell: req.body.photocell, accessory: req.body.accessory, placementDate: req.body.placementDate});
+		const autoLighthouse = new AutoLight({aef: req.body.aef, lighthouse: req.body.lighthouse, features: req.body.features, location: req.body.location, lighter: req.body.lighter, solarGenerator: req.body.solarGenerator, head: req.body.head, lamp: req.body.lamp, generatorSocket: req.body.generatorSocket, torchSocket: req.body.torchSocket, photocell: req.body.photocell, accessory: req.body.accessory});
+		autoLighthouse.lighterDate.push(req.body.lighterDate);
+		autoLighthouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
+		autoLighthouse.accumulator.push(req.body.accumulator);
+		autoLighthouse.headDate.push(req.body.headDate);
+		autoLighthouse.lampDate.push(req.body.lampDate);
+		autoLighthouse.generatorSocketDate.push(req.body.generatorSocketDate);
+		autoLighthouse.lampDate.push(req.body.lampDate);
+		autoLighthouse.accumulatorDate.push(req.body.accumulatorDate);
+		autoLighthouse.photocellDate.push(req.body.photocellDate);
+		autoLighthouse.accessoryDate.push(req.body.accessoryDate);
+		autoLighthouse.torchSocketDate.push(req.body.torchSocketDate);
+		
         await autoLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
 	}
 	catch(e) {
+		console.log(e.message)
 		req.flash("error", e.message);
-		res.redirect('/ledLighthouses/registerAuto');
+		res.redirect('/ledLighthouses/registerLed');
 	}
 }));
 

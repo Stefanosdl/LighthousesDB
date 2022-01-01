@@ -7,11 +7,27 @@ const LedLightSchema = new Schema({
     features: String,
     location: String,
     solarGenerator: String,
+    solarGeneratorDate: {
+        type: Array,
+        default: [Date]
+    },
     head: String,
-    accumulator: String,
+    headDate: {
+        type: Array,
+        default: [Date]
+    },
+    accumulator: [String],
+    accumulatorDate: {
+        type: Array,
+        default: [Date]
+    },
     chargeRegulator: String,
+    chargeRegulatorDate: {
+        type: Array,
+        default: [Date]
+    },
     socket: String,
-    placementDate: {
+    socketDate: {
         type: Array,
         default: [Date]
     },

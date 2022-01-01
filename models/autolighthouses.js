@@ -7,15 +7,47 @@ const AutoLightSchema = new Schema({
     features: String,
     location: String,
     lighter: String,
+    lighterDate: {
+        type: Array,
+        default: [Date]
+    },
     solarGenerator: String,
+    solarGeneratorDate: {
+        type: Array,
+        default: [Date]
+    },
     head: String,
+    headDate: {
+        type: Array,
+        default: [Date]
+    },
     lamp: String,
-    accumulator: String,
+    lampDate: {
+        type: Array,
+        default: [Date]
+    },
+    accumulator: [String],
+    accumulatorDate: {
+        type: Array,
+        default: [Date]
+    },
     generatorSocket: String,
+    generatorSocketDate: {
+        type: Array,
+        default: [Date]
+    },
     torchSocket: String,
+    torchSocketDate: {
+        type: Array,
+        default: [Date]
+    },
     photocell: String,
+    photocellDate: {
+        type: Array,
+        default: [Date]
+    },
     accessory: String,
-    placementDate: {
+    accessoryDate: {
         type: Array,
         default: [Date]
     },
