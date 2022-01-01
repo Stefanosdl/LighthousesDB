@@ -18,7 +18,7 @@ const LedLightSchema = new Schema({
     },
     technicians: [{
 	    	type: Schema.Types.ObjectId,
-	    	ref: "Disposal"
+	    	ref: "Technician"
     }]
 });
 
