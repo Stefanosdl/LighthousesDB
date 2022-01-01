@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const LedLightSchema = new Schema({
     aef: String,
     lighthouse: String,
-    name: String,
     features: String,
     location: String,
     solarGenerator: String,

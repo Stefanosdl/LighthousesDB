@@ -1,0 +1,54 @@
+<% include ./partials/header %>
+<div class="container">
+	<div class="row">
+		<h2 align="center">Νέος LED Φάρος</h2>
+		<form action="/ledLighthouses/registerLed" method="POST" class="row g-3">
+			<div class="col-md-6">
+				<label for="aef" class="form-label">ΑΕΦ</label>
+				<input type="text" class="form-control" name="aef" id="aef">
+			</div>
+			<div class="col-md-6">
+				<label for="lighthouse" class="form-label">ΦΑΡΟΣ</label>
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse">
+			</div>
+			<div class="col-md-6">
+				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΑ</label>
+				<input type="text" class="form-control" name="features" id="features">
+			</div>
+			<div class="col-md-6">
+				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
+				<input type="text" class="form-control" name="location" id="location">
+			</div>
+			<div class="col-md-6">
+				<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
+				<input type="text" class="form-control" name="solarGenerator" id="solarGenerator">
+			</div>
+			<div class="col-md-6">
+				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
+				<input type="text" class="form-control" name="accumulator" id="accumulator">
+			</div>
+			<div class="col-md-6">
+				<label for="head" class="form-label">ΚΕΦΑΛΗ</label>
+				<input type="text" class="form-control" name="head" id="head">
+			</div>
+			<div class="col-md-6">
+				<label for="chargeRegulator" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΗΣ</label>
+				<input type="text" class="form-control" name="chargeRegulator" id="chargeRegulator">
+			</div>
+			<div class="col-md-6">
+				<label for="socket" class="form-label">ΥΠΟΔΟΧΗ</label>
+				<input type="text" class="form-control" name="socket" id="socket">
+			</div>
+            <div class="col-md-6">
+				<label for="placementDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="placementDate" id="placementDate">
+			</div>
+			<div class="text-center">
+				<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+				<button class="btn btn-outline-primary">Εγγραφή</button>
+			</div>
+		</form>
+	</div>
+</div>
+<br>
+<% include ./partials/footer %>

@@ -73,8 +73,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/autoLighthouse", autoLighthouseRoutes);
-app.use("/ledLighthouse", ledLighthouseRoutes);
+app.use("/autoLighthouses", autoLighthouseRoutes);
+app.use("/ledLighthouses", ledLighthouseRoutes);
 
 app.get("/", (req, res) => {
 	res.render("index");
