@@ -8,11 +8,12 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const mongoSanitize = require("express-mongo-sanitize");
 
-const sailorRoutes = require("./routes/sailors");
+const autoLighthouseRoutes = require("./routes/autolighthouses");
+const ledLighthouseRoutes = require("./routes/ledlighthouses");
 
 const MongoDBStore = require("connect-mongo")(session);
 
-dbUrl = "mongodb://127.0.0.1:27017/Navy";
+dbUrl = "mongodb://127.0.0.1:27017/Lighthouses";
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -72,7 +73,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/lighthouse", sailorRoutes);
+app.use("/autoLighthouse", autoLighthouseRoutes);
+app.use("/ledLighthouse", ledLighthouseRoutes);
 
 app.get("/", (req, res) => {
 	res.render("index");
