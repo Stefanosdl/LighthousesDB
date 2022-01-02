@@ -120,6 +120,30 @@
 						<% } %>
 					<% } %>
 				</tr>
+				<tr>
+					<th scope="row">ΦΩΤΟΚΥΤΤΑΡΟ</th>
+					<td class="text-center"><%= led.photocell %></td>
+					<% for (var i = 0; i < led.photocellDate.length; i++) { %>
+						<% if(led.photocellDate[i] != undefined) { %>
+							<td class="text-center"><%= led.photocellDate[i]%></td>
+						<% } else { %>
+							<td> </td>
+						<% } %>
+					<% } %>
+				</tr>
+				<tr>
+					<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
+					<% if(led.accessory != undefined){%>
+						<td class="text-center"><%= led.accessory %></td>
+					<% } %>
+					<% for (var i = 0; i < led.accessoryDate.length; i++) { %>
+						<% if(led.accessoryDate[i] != undefined) { %>
+							<td class="text-center"><%= led.accessoryDate[i]%></td>
+						<% } else { %>
+							<td> </td>
+						<% } %>
+					<% } %>
+				</tr>
 			</tbody>
 		</table>
 		<div class="text-center">
