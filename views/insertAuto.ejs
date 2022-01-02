@@ -1,0 +1,94 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <h2 align="center">Εισαγωγή Στοιχείων</h2>
+    <form action="/autoLighthouses/insertAuto/<%= autoLightHouse._id %>?_method=PUT" method="POST">
+        <div class="row">
+			<div class="col-md-6">
+				<label for="lighter" class="form-label">ΕΚΛΑΜΠΤΗΡΑΣ</label>
+				<input type="text" class="form-control" name="lighter" id="lighter">
+			</div>
+            <div class="col-md-6">
+				<label for="lighterDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="lighterDate" id="lighterDate">
+			</div>
+			<div class="col-md-6">
+				<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
+				<input type="text" class="form-control" name="solarGenerator" id="solarGenerator">
+			</div>
+            <div class="col-md-6">
+				<label for="solarGeneratorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate">
+			</div>
+			<div class="col-md-6">
+				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
+				<input type="text" class="form-control" name="lamp" id="lamp">
+			</div>
+            <div class="col-md-6">
+				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="lampDate" id="lampDate">
+			</div>
+			<div class="col-md-6">
+				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
+				<input type="text" class="form-control" name="accumulator" id="accumulator">
+			</div>
+            <div class="col-md-6">
+				<label for="accumulatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="accumulatorDate" id="accumulatorDate">
+			</div>
+			<div class="col-md-6">
+				<label for="head" class="form-label">ΚΕΦΑΛΗ</label>
+				<input type="text" class="form-control" name="head" id="head">
+			</div>
+            <div class="col-md-6">
+				<label for="headDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="headDate" id="headDate">
+			</div>
+			<div class="col-md-6">
+				<label for="generatorSocket" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΗΣ</label>
+				<input type="text" class="form-control" name="generatorSocket" id="generatorSocket">
+			</div>
+            <div class="col-md-6">
+				<label for="generatorSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="generatorSocketDate" id="generatorSocketDate">
+			</div>
+			<div class="col-md-6">
+				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
+				<input type="text" class="form-control" name="torchSocket" id="torchSocket">
+			</div>
+            <div class="col-md-6">
+				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate">
+			</div>
+			<div class="col-md-6">
+				<label for="photocell" class="form-label">ΦΩΤΟΚΥΤΤΑΡΟ</label>
+				<input type="text" class="form-control" name="photocell" id="photocell">
+			</div>
+            <div class="col-md-6">
+				<label for="photocellDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="photocellDate" id="photocellDate">
+			</div>
+			<div class="col-md-6">
+				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
+				<input type="text" class="form-control" name="accessory" id="accessory">
+			</div>
+            <div class="col-md-6">
+				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate">
+			</div>
+        </div>
+        
+        <br>
+        
+		<div class="text-center">
+			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+				<a href="/" class="btn btn-outline-primary float-left">Αρχική Σελίδα</a>
+                <button class="btn btn-outline-primary float-right" type="submit">Εισαγωγή στοιχείων</button>
+			</div>
+		</div>
+    </form>
+</div>
+<br>
+
+<% include ./partials/footer %>

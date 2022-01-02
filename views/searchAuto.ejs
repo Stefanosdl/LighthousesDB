@@ -26,10 +26,10 @@
 			<tbody>
 				<tr>
 					<th scope="row">ΕΚΛΑΜΠΤΗΡΑΣ</th>
-					<td><%= led.lighter %></td>
+					<td class="text-center"><%= led.lighter %></td>
 					<% for (var i = 0; i < led.lighterDate.length; i++) { %>
 						<% if(led.lighterDate[i] != undefined) { %>
-							<td><%= led.lighterDate[i]%></td>
+							<td class="text-center"><%= led.lighterDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -37,10 +37,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
-					<td><%= led.solarGenerator %></td>
+					<td class="text-center"><%= led.solarGenerator %></td>
 					<% for (var i = 0; i < led.solarGeneratorDate.length; i++) { %>
 						<% if(led.solarGeneratorDate[i] != undefined) { %>
-							<td><%= led.solarGeneratorDate[i]%></td>
+							<td class="text-center"><%= led.solarGeneratorDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -48,10 +48,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΚΕΦΑΛΗ</th>
-					<td><%= led.head %></td>
+					<td class="text-center"><%= led.head %></td>
 					<% for (var i = 0; i < led.headDate.length; i++) { %>
 						<% if(led.headDate[i] != undefined) { %>
-							<td><%= led.headDate[i]%></td>
+							<td class="text-center"><%= led.headDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -59,34 +59,51 @@
 				</tr>
 				<tr>
 					<th scope="row">ΛΥΧΝΙΑ</th>
-					<td><%= led.lamp %></td>
+					<td class="text-center"><%= led.lamp %></td>
 					<% for (var i = 0; i < led.lampDate.length; i++) { %>
 						<% if(led.lampDate[i] != undefined) { %>
-							<td><%= led.lampDate[i]%></td>
+							<td class="text-center"><%= led.lampDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
 					<% } %>
 				</tr>
-				<% for (var i = 0; i < led.accumulator.length; i++) { %>
 				<tr>
 					<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
-					<td><%= led.accumulator[i] %></td>
-					<% for (var i = 0; i < led.accumulatorDate.length; i++) { %>
-						<% if(led.accumulatorDate[i] != undefined) { %>
-							<td><%= led.accumulatorDate[i]%></td>
+					<% for (var k = 0; k < led.accumulator.length; k++) { %>
+						<% if(k == 0) { %>
+							<td class="text-center">
+									<%= led.accumulator[k] %>
+							</td>
+							
+							<% if(led.accumulatorDate[k] != undefined) { %>
+								<td class="text-center"><%= led.accumulatorDate[k]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
 						<% } else { %>
-							<td> </td>
+							<tr>
+								<td class="text-center">
+									
+								</td>
+								<td class="text-center">
+									<%= led.accumulator[k] %>
+								</td>
+								<% if(led.accumulatorDate[k] != undefined) { %>
+									<td class="text-center"><%= led.accumulatorDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							</tr>
 						<% } %>
 					<% } %>
 				</tr>
-				<% } %>
 				<tr>
 					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΗΣ</th>
-					<td><%= led.generatorSocket %></td>
+					<td class="text-center"><%= led.generatorSocket %></td>
 					<% for (var i = 0; i < led.generatorSocketDate.length; i++) { %>
 						<% if(led.generatorSocketDate[i] != undefined) { %>
-							<td><%= led.generatorSocketDate[i]%></td>
+							<td class="text-center"><%= led.generatorSocketDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -94,10 +111,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</th>
-					<td><%= led.torchSocket %></td>
+					<td class="text-center"><%= led.torchSocket %></td>
 					<% for (var i = 0; i < led.torchSocketDate.length; i++) { %>
 						<% if(led.torchSocketDate[i] != undefined) { %>
-							<td><%= led.torchSocketDate[i]%></td>
+							<td class="text-center"><%= led.torchSocketDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -105,9 +122,14 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="mb-3 mx-auto" style="max-width: 540px;">
-			<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
-			<a href="#" class="btn btn-outline-primary float-right">Επεξεργασία</a>
+		<div class="text-center">
+			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+				<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+				<a href="#" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+				<a href="/autoLighthouses/insertAuto/<%= led._id %>" class="btn btn-outline-primary">Εισαγωγή Στοιχείων</a>
+				<a href="#" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+			  </div>
 		</div>
 	</div>
 <% } %>

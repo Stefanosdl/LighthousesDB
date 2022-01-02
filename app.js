@@ -108,7 +108,6 @@ app.get("/search", catchAsync(async (req, res, next) => {
 
     }
     catch (e) {
-        console.log( e.message)
         req.flash("error", e.message);
         res.redirect('/');
     }
