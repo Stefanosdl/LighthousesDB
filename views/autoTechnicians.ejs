@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+<div class="container">
+	<h2 align="center">Στοιχεία Τεχνικών</h2>
+	<% for (var i=0; i < autoLightHouse.technicians.length; i++) { %>
+	<div class="card mb-3 mx-auto" style="max-width: 540px;">
+		<div class="row g-0">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><strong>ΤΕΧΝΙΚΟΣ: <%= autoLightHouse.technicians[i].technician %></strong></li>
+				<li class="list-group-item"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= autoLightHouse.technicians[i].date.toISOString().split('T')[0] %></strong></li>
+				<li class="list-group-item"><strong>ΠΕΡΙΓΡΑΦΗ ΒΛΑΒΗΣ: <%= autoLightHouse.technicians[i].description %></strong></li>
+			</ul>
+		</div>
+	</div>
+	<% } %>
+	<div class="text-center">
+		<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+			<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+			<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+			<a href="/autoLighthouses/technicians/new/<%= autoLightHouse._id %>" class="btn btn-outline-primary float-right">Εισαγωγή</a>
+		  </div>
+	</div>
+</div>
+
+<% include ./partials/footer %>

@@ -1,0 +1,46 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <h2 align="center">Επεξεργασία LED Φάρου</h2>
+    <form action="/ledLighthouses/updateLed:<%= ledLightHouse._id %>?_method=PUT" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>ΑΕΦ</strong></span>
+                    <input type="text" class="form-control" name="arr[aef]" aria-describedby="basic-addon1" value="<%= ledLightHouse.aef %>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>ΦΑΡΟΣ</strong></span>
+                    <input type="text" class="form-control" name="arr[lighthouse]" aria-describedby="basic-addon1" value="<%= ledLightHouse.lighthouse %>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>ΧΑΡΑΚΤΗΡΙΣΤΙΚΑ</strong></span>
+                    <input type="text" class="form-control" name="arr[features]" aria-describedby="basic-addon1" value="<%= ledLightHouse.features %>">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><strong>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</strong></span>
+                        <input type="text" class="form-control" name="arr[solarGenerator]" aria-describedby="basic-addon1" value="<%= ledLightHouse.solarGenerator %>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><strong>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</strong></span>
+                        <input type="date" class="form-control" name="arr[solarGeneratorDate]" aria-describedby="basic-addon1" value="<%= ledLightHouse.solarGeneratorDate %>">
+                    </div>
+                </div>
+            
+        </div>
+        <a href="/" class="btn btn-outline-primary float-left">Αρχική Σελίδα</a>
+        <button class="btn btn-outline-primary float-right" type="submit">Ενημέρωση στοιχείων</button>
+    </form>
+</div>
+<br>
+
+<% include ./partials/footer %>

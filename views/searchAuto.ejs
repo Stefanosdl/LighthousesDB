@@ -2,7 +2,7 @@
 
 <% for (let led of searchedAuto){%>
 	<div class="container">
-		<h2 align="center">Στοιχεία LED</h2>
+		<h2 align="center">Στοιχεία Αυτόματου Φάρου</h2>
 		<table class="table">
 			<thead class="table-light">
 				<tr class="d-flex">
@@ -126,9 +126,8 @@
 			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
 				<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
-				<a href="#" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
 				<a href="/autoLighthouses/insertAuto/<%= led._id %>" class="btn btn-outline-primary">Εισαγωγή Στοιχείων</a>
-				<a href="#" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				<a href="/autoLighthouses/technicians/<%= led._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
 			  </div>
 		</div>
 	</div>

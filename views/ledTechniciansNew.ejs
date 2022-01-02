@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+
+<div class="container">
+	<div class="row">
+		<h2 align="center">Εισαγωγή Τεχνικού</h2>
+		<form action="/ledLighthouses/technicians/new/<%= ledLightHouse._id %>" method="POST" class="row g-3">
+			<div class="col-md-6">
+				<label for="technician" class="form-label">ΤΕΧΝΙΚΟΣ</label>
+				<input type="text" class="form-control" name="arr[technician]" id="technician" required>
+			</div>
+			<div class="col-md-6">
+				<label for="date" class="form-label">ΗΜΕΡΟΜΗΝΙΑ</label>
+				<input type="date" class="form-control" name="arr[date]" id="date" required>
+			</div>
+			<div class="col-md-12">
+				<label for="description" class="form-label">ΠΕΡΙΓΡΑΦΗ</label>
+                <textarea class="form-control" name="arr[description]" cols="30" rows="10"aria-describedby="basic-addon1" required></textarea>
+            </div>
+			<div class="text-center">
+				<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+				<button class="btn btn-outline-primary">Δημιουργία</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<% include ./partials/footer %>

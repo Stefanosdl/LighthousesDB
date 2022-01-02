@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
-const AutoLight = require("../models/autolighthouses");
-const LedLight = require("../models/ledlighthouses");
+const Sailor = require("../models/sailors");
+const Disposal = require("../models/disposal");
+const datediff = require("../utils/calculateDate");
 
-dbUrl = "mongodb://127.0.0.1:27017/Lighthouses";
+dbUrl = "mongodb://127.0.0.1:27017/Navy";
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -18,8 +19,9 @@ db.once("open", () => {
 
 const seedDB = async () => {
     //create sailor
-    await AutoLight.deleteMany({});
-    await LedLight.deleteMany({});
+    await Sailor.findByIdAndRemove("61bdbffdc1cc45aeb4d29e72")
+    // await Disposal.deleteMany({});
+    // await Sailor.deleteMany({});
 
     // var sailor = new Sailor({
     //     grade: "Ναύτης",

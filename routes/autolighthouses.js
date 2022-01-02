@@ -32,6 +32,33 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 	}
 }));
 
+router.get("/technicians/:id", catchAsync(async (req, res) => {
+    const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
+	
+	res.render("autoTechnicians", { autoLightHouse });
+}));
+
+router.get("/technicians/new/:id", catchAsync(async (req, res) => {
+    const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
+
+	res.render("autoTechniciansnew", { autoLightHouse });
+}));
+
+router.post("/technicians/new/:id", catchAsync(async (req, res) => {
+	try {
+		const newTechnician = new Technician({...req.body.arr});
+		const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
+		await autoLightHouse.technicians.push(newTechnician);
+		await autoLightHouse.save();
+		await newTechnician.save();
+		res.redirect(`/autoLighthouses/technicians/${req.params.id}`);
+	}
+	catch(e) {
+		req.flash("error", e.message);
+		res.redirect(`/autoLighthouses/technicians/new/${req.params.id}`);		
+	}
+}));
+
 router.get("/insertAuto/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id);
 

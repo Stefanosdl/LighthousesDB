@@ -28,6 +28,39 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
 	}
 }));
 
+router.get("/updateLed/:id", catchAsync(async (req, res) => {
+    const ledLightHouse = await LedLight.findById(req.params.id);
+
+	res.render("updateLed", { ledLightHouse });
+}));
+
+router.get("/technicians/:id", catchAsync(async (req, res) => {
+    const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
+	
+	res.render("ledTechnicians", { ledLightHouse });
+}));
+
+router.get("/technicians/new/:id", catchAsync(async (req, res) => {
+    const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
+
+	res.render("ledTechniciansnew", { ledLightHouse });
+}));
+
+router.post("/technicians/new/:id", catchAsync(async (req, res) => {
+	try {
+		const newTechnician = new Technician({...req.body.arr});
+		const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
+		await ledLightHouse.technicians.push(newTechnician);
+		await ledLightHouse.save();
+		await newTechnician.save();
+		res.redirect(`/ledLighthouses/technicians/${req.params.id}`);
+	}
+	catch(e) {
+		req.flash("error", e.message);
+		res.redirect(`/ledLighthouses/technicians/new/${req.params.id}`);		
+	}
+}));
+
 router.get("/insertLed/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id);
 

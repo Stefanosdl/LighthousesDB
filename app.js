@@ -87,9 +87,9 @@ app.get("/search", catchAsync(async (req, res, next) => {
 	try {
         const query = req.query.q;
         if (query){
-            const searchedLed = await LedLight.find({aef: query}).populate("technicians").exec();
+            const searchedLed = await LedLight.find({aef: query});
             if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({aef: query}).populate("technicians").exec();
+                const searchedAuto = await AutoLight.find({aef: query});
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
                     req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                     res.redirect('/');
