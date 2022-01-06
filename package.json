@@ -1,31 +1,37 @@
 {
-  "name": "officersdb",
+  "name": "lighthousesdb",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
+    "package-win": "electron-packager . LighthousesDB --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"LighthousesDB\"",
+    "start": "electron-packager main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Stefanosdl/OfficersDB.git"
+    "url": "git+https://github.com/Stefanosdl/LighthousesDB.git"
   },
   "author": "Dianellos Stefanos",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Stefanosdl/OfficersDB/issues"
+    "url": "https://github.com/Stefanosdl/LighthousesDB/issues"
   },
-  "homepage": "https://github.com/Stefanosdl/OfficersDB#readme",
+  "homepage": "https://github.com/Stefanosdl/LighthousesDB#readme",
   "dependencies": {
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "ejs": "^3.1.6",
     "ejs-mate": "^3.0.0",
+    "electron-packager": "^15.4.0",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.1.0",
     "express-session": "^1.17.2",
     "method-override": "^3.0.0",
     "mongoose": "^6.0.12",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "electron": "^16.0.6"
   }
 }
