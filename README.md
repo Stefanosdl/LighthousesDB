@@ -1,2 +1,2 @@
 # LighthousesDB
-To run the app we this command "npm run package-win"
+To run the app we use this command "npm run package-win"
