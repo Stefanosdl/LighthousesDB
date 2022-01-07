@@ -87,9 +87,9 @@ app.get("/search", catchAsync(async (req, res, next) => {
 	try {
         const query = req.query.q;
         if (query){
-            const searchedLed = await LedLight.find({aef: query});
+            const searchedLed = await LedLight.find({aef: query}).populate("technicians");
             if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({aef: query});
+                const searchedAuto = await AutoLight.find({aef: query}).populate("technicians");
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
                     req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                     res.redirect('/');
@@ -113,6 +113,11 @@ app.get("/search", catchAsync(async (req, res, next) => {
     }
 }));
 
+app.get("/suggestedWorks", catchAsync(async (req, res, next) => {
+    const autoSuggests = await AutoLight.find({}).populate("technicians");
+    const ledSuggests = await LedLight.find({}).populate("technicians");
+	res.render("suggests", { autoSuggests, ledSuggests });
+}));
 
 app.listen(3000, () => {
     console.log("Listening in port 3000");

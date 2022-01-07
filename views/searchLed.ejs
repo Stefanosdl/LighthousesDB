@@ -3,6 +3,13 @@
 <% for (let led of searchedLed){%>
 	<div class="container">
 		<h2 align="center">Στοιχεία LED Φάρου</h2>
+		<% for (var i=0; i < led.technicians.length; i++) { %>
+			<% if (led.technicians[i].suggests !== undefined){%>
+				<div class="spinner-grow text-danger" role="status">
+					<span class="visually hidden"></span>
+				</div>
+			<% } %>
+		<% } %>
 		<table class="table">
 			<thead class="table-light">
 				<tr class="d-flex">
@@ -88,7 +95,7 @@
 					<% } %>
 				</tr>
 				<tr>
-					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΗΣ</th>
+					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
 					<td class="text-center"><%= led.chargeRegulator %></td>
 					<% for (var i = 0; i < led.chargeRegulatorDate.length; i++) { %>
 						<% if(led.chargeRegulatorDate[i] != undefined) { %>

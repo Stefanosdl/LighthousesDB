@@ -1,0 +1,46 @@
+<% include ./partials/header %>
+<div class="container">
+	<div class="row">
+		<h2 align="center">Προτεινόμενες Εργασίες</h2>
+		<% for (var i=0; i < autoSuggests.length; i++) { %>
+			<% for (var j=0; j < autoSuggests[i].technicians.length; j++) { %>
+				<% if (autoSuggests[i].technicians[j].suggests != undefined && autoSuggests[i].technicians[j].suggests != "" ) { %>
+					<div class="card mb-3 mx-auto" style="max-width: 540px;">
+						<div class="row g-0">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><strong>ΑΕΦ: <%= autoSuggests[i].aef %></strong></li>
+								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= autoSuggests[i].technicians[j].suggests %></strong></li>
+							</ul>
+						</div>
+					</div>
+				<% } %>
+			<% } %>
+		<% } %>
+		<% for (var i=0; i < ledSuggests.length; i++) { %>
+			<% for (var j=0; j < ledSuggests[i].technicians.length; j++) { %>
+				<% if (ledSuggests[i].technicians[j].suggests !== undefined && ledSuggests[i].technicians[j].suggests != "" ) { %>
+					<div class="card mb-3 mx-auto" style="max-width: 540px;">
+						<div class="row g-0">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><strong>ΑΕΦ: <%= ledSuggests[i].aef %></strong></li>
+								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= ledSuggests[i].technicians[j].suggests %></strong></li>
+							</ul>
+						</div>
+					</div>
+				<% } %>
+			<% } %>
+		<% } %>
+	</div>
+</div>
+
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col text-center">
+			<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+		</div>
+	</div>
+</div
+
+<% include ./partials/footer %>

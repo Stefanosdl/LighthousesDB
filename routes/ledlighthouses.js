@@ -43,7 +43,7 @@ router.get("/technicians/:id", catchAsync(async (req, res) => {
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
 
-	res.render("ledTechniciansnew", { ledLightHouse });
+	res.render("ledTechniciansNew", { ledLightHouse });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
@@ -120,5 +120,15 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
     res.redirect('/');
 }));
 
+router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
+    const ledSuggests = await LedLight.findById(req.params.id).populate({
+		path: "technicians",
+		match: { technician: { $eq: req.body.technician }, date: {$eq: req.body.date}, description: {$eq: req.body.description}, suggests: {$eq: req.body.suggests}},
+	}).exec();
+	ledSuggests.technicians[0].suggests = "";
+	ledSuggests.technicians[0].save();
+	await ledSuggests.save();
+	res.redirect('/');
+}));
 
 module.exports = router;

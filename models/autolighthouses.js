@@ -46,7 +46,7 @@ const AutoLightSchema = new Schema({
         type: Array,
         default: [Date]
     },
-    accessory: String,
+    accessory: [String],
     accessoryDate: {
         type: Array,
         default: [Date]

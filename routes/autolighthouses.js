@@ -10,7 +10,7 @@ router.get("/registerAuto", (req, res) => {
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
-		const autoLighthouse = new AutoLight({aef: req.body.aef, lighthouse: req.body.lighthouse, features: req.body.features, location: req.body.location, lighter: req.body.lighter, solarGenerator: req.body.solarGenerator, head: req.body.head, lamp: req.body.lamp, generatorSocket: req.body.generatorSocket, torchSocket: req.body.torchSocket, photocell: req.body.photocell, accessory: req.body.accessory});
+		const autoLighthouse = new AutoLight({aef: req.body.aef, lighthouse: req.body.lighthouse, features: req.body.features, location: req.body.location, lighter: req.body.lighter, solarGenerator: req.body.solarGenerator, head: req.body.head, lamp: req.body.lamp, generatorSocket: req.body.generatorSocket, torchSocket: req.body.torchSocket, photocell: req.body.photocell});
 		autoLighthouse.lighterDate.push(req.body.lighterDate);
 		autoLighthouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
 		autoLighthouse.accumulator.push(req.body.accumulator);
@@ -19,6 +19,7 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 		autoLighthouse.generatorSocketDate.push(req.body.generatorSocketDate);
 		autoLighthouse.accumulatorDate.push(req.body.accumulatorDate);
 		autoLighthouse.photocellDate.push(req.body.photocellDate);
+		autoLighthouse.accessory.push(req.body.accessory);
 		autoLighthouse.accessoryDate.push(req.body.accessoryDate);
 		autoLighthouse.torchSocketDate.push(req.body.torchSocketDate);
 		
@@ -41,7 +42,7 @@ router.get("/technicians/:id", catchAsync(async (req, res) => {
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
 
-	res.render("autoTechniciansnew", { autoLightHouse });
+	res.render("autoTechniciansNew", { autoLightHouse });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
@@ -104,6 +105,9 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.photocellDate != undefined && req.body.photocellDate != null && req.body.photocellDate != ""){
 			autoLightHouse.photocellDate.push(req.body.photocellDate);
 		}
+		if(req.body.accessory != undefined && req.body.accessory != null && req.body.accessory != ""){
+			autoLightHouse.accessory.push(req.body.accessory);
+		}
 		if(req.body.accessoryDate != undefined && req.body.accessoryDate != null && req.body.accessoryDate != ""){
 			autoLightHouse.accessoryDate.push(req.body.accessoryDate);
 		}
@@ -128,9 +132,6 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.photocell != undefined && req.body.photocell != null && req.body.photocell != ""){
 			autoLightHouse.photocell = req.body.photocell;
 		}
-		if(req.body.accessory != undefined && req.body.accessory != null && req.body.accessory != ""){
-			autoLightHouse.accessory = req.body.accessory;
-		}
 		await autoLightHouse.save();
 	}
 	catch(e) {
@@ -142,5 +143,15 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
     res.redirect('/');
 }));
 
+router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
+    const autoSuggests = await AutoLight.findById(req.params.id).populate({
+		path: "technicians",
+		match: { technician: { $eq: req.body.technician }, date: {$eq: req.body.date}, description: {$eq: req.body.description}, suggests: {$eq: req.body.suggests}},
+	}).exec();
+	autoSuggests.technicians[0].suggests = "";
+	autoSuggests.technicians[0].save();
+	await autoSuggests.save();
+	res.redirect('/');
+}));
 
 module.exports = router;

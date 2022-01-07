@@ -2,17 +2,25 @@
 
 <div class="container">
 	<h2 align="center">Στοιχεία Τεχνικών</h2>
-	<% for (var i=0; i < autoLightHouse.technicians.length; i++) { %>
-	<div class="card mb-3 mx-auto" style="max-width: 540px;">
-		<div class="row g-0">
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><strong>ΤΕΧΝΙΚΟΣ: <%= autoLightHouse.technicians[i].technician %></strong></li>
-				<li class="list-group-item"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= autoLightHouse.technicians[i].date.toISOString().split('T')[0] %></strong></li>
-				<li class="list-group-item"><strong>ΠΕΡΙΓΡΑΦΗ ΒΛΑΒΗΣ: <%= autoLightHouse.technicians[i].description %></strong></li>
-			</ul>
-		</div>
-	</div>
-	<% } %>
+		<% for (var i=0; i < autoLightHouse.technicians.length; i++) { %>
+			<form action="/autoLighthouses/deleteSuggest/<%= autoLightHouse._id %>?_method=PUT" method="POST" class="row g-3">
+				<div class="card mb-3 mx-auto" style="max-width: 540px;">
+					<div class="row g-0">
+						<ul class="list-group list-group-flush">
+							<input type="hidden" name="technician" value="<%= autoLightHouse.technicians[i].technician %>">
+							<input type="hidden" name="date" value="<%= autoLightHouse.technicians[i].date.toISOString().split('T')[0] %>">
+							<input type="hidden" name="description" value="<%= autoLightHouse.technicians[i].description %>">
+							<input type="hidden" name="suggests" value="<%= autoLightHouse.technicians[i].suggests %>">
+							<li class="list-group-item"><strong>ΤΕΧΝΙΚΟΣ: <%= autoLightHouse.technicians[i].technician %></strong></li>
+							<li class="list-group-item"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= autoLightHouse.technicians[i].date.toISOString().split('T')[0] %></strong></li>
+							<li class="list-group-item"><strong>ΠΕΡΙΓΡΑΦΗ ΒΛΑΒΗΣ: <%= autoLightHouse.technicians[i].description %></strong></li>
+							<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= autoLightHouse.technicians[i].suggests %></strong></li>
+							<button class="btn btn-danger">Διαγραφή Προτεινόμενης Εργασίας</button>
+						</ul>
+					</div>
+				</div>
+			</form>
+		<% } %>
 	<div class="text-center">
 		<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 			<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">

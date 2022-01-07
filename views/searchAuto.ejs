@@ -3,6 +3,13 @@
 <% for (let led of searchedAuto){%>
 	<div class="container">
 		<h2 align="center">Στοιχεία Αυτόματου Φάρου</h2>
+		<% for (var i=0; i < led.technicians.length; i++) { %>
+			<% if (led.technicians[i].suggests !== undefined){%>
+				<div class="spinner-grow text-danger" role="status">
+					<span class="visually hidden"></span>
+				</div>
+			<% } %>
+		<% } %>
 		<table class="table">
 			<thead class="table-light">
 				<tr class="d-flex">
@@ -99,7 +106,7 @@
 					<% } %>
 				</tr>
 				<tr>
-					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΗΣ</th>
+					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
 					<td class="text-center"><%= led.generatorSocket %></td>
 					<% for (var i = 0; i < led.generatorSocketDate.length; i++) { %>
 						<% if(led.generatorSocketDate[i] != undefined) { %>
@@ -131,19 +138,35 @@
 						<% } %>
 					<% } %>
 				</tr>
-				<tr>
-					<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
-					<% if(led.accessory != undefined){%>
-						<td class="text-center"><%= led.accessory %></td>
-					<% } %>
-					<% for (var i = 0; i < led.accessoryDate.length; i++) { %>
-						<% if(led.accessoryDate[i] != undefined) { %>
-							<td class="text-center"><%= led.accessoryDate[i]%></td>
+				<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
+				<% for (var k = 0; k < led.accessory.length; k++) { %>
+					<% if(k == 0) { %>
+						<td class="text-center">
+								<%= led.accessory[k] %>
+						</td>
+						
+						<% if(led.accessory[k] != undefined) { %>
+							<td class="text-center"><%= led.accessory[k]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
+					<% } else { %>
+						<tr>
+							<td class="text-center">
+								
+							</td>
+							<td class="text-center">
+								<%= led.accessory[k] %>
+							</td>
+							<% if(led.accessory[k] != undefined) { %>
+								<td class="text-center"><%= led.accessory[k]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
+						</tr>
 					<% } %>
-				</tr>
+				<% } %>
+			</tr>
 			</tbody>
 		</table>
 		<div class="text-center">
