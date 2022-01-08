@@ -10,6 +10,8 @@ const mongoSanitize = require("express-mongo-sanitize");
 const catchAsync = require('./utils/catchAsync');
 const LedLight = require("./models/ledlighthouses");
 const AutoLight = require("./models/autolighthouses");
+const maxDates = require("./utils/calculateMaxDates");
+
 
 const autoLighthouseRoutes = require("./routes/autolighthouses");
 const ledLighthouseRoutes = require("./routes/ledlighthouses");
@@ -86,20 +88,29 @@ app.get("/", (req, res) => {
 app.get("/search", catchAsync(async (req, res, next) => {
 	try {
         const query = req.query.q;
+        var maxCountLed = 0;
+        var maxCountAuto = 0;
         if (query){
             const searchedLed = await LedLight.find({aef: query}).populate("technicians");
+            if (searchedLed != undefined && searchedLed.length != 0) {
+                maxCountLed = maxDates.getMostDatesLed(searchedLed[0]);
+            }
             if(searchedLed == undefined || searchedLed.length == 0) {
                 const searchedAuto = await AutoLight.find({aef: query}).populate("technicians");
+                if (searchedAuto != undefined && searchedAuto.length != 0) {
+                    maxCountAuto = maxDates.getMostDatesAuto(searchedAuto[0]);
+                }
+                
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
                     req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                     res.redirect('/');
                 }
                 else{
-                    res.render("searchAuto", { searchedAuto });
+                    res.render("searchAuto", { searchedAuto , maxCountAuto});
                 }
             }
             else {
-                res.render("searchLed", { searchedLed });
+                res.render("searchLed", { searchedLed , maxCountLed});
             }
         }
         else {

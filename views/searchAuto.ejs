@@ -37,10 +37,10 @@
 			<tbody>
 				<tr>
 					<th scope="row">ΕΚΛΑΜΠΤΗΡΑΣ</th>
-					<td class="text-center"><%= led.lighter %></td>
+					<td><%= led.lighter %></td>
 					<% for (var i = 0; i < led.lighterDate.length; i++) { %>
 						<% if(led.lighterDate[i] != undefined) { %>
-							<td class="text-center"><%= led.lighterDate[i]%></td>
+							<td><%= led.lighterDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -48,10 +48,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
-					<td class="text-center"><%= led.solarGenerator %></td>
+					<td><%= led.solarGenerator %></td>
 					<% for (var i = 0; i < led.solarGeneratorDate.length; i++) { %>
 						<% if(led.solarGeneratorDate[i] != undefined) { %>
-							<td class="text-center"><%= led.solarGeneratorDate[i]%></td>
+							<td><%= led.solarGeneratorDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -59,10 +59,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΚΕΦΑΛΗ</th>
-					<td class="text-center"><%= led.head %></td>
+					<td><%= led.head %></td>
 					<% for (var i = 0; i < led.headDate.length; i++) { %>
 						<% if(led.headDate[i] != undefined) { %>
-							<td class="text-center"><%= led.headDate[i]%></td>
+							<td><%= led.headDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -70,10 +70,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΛΥΧΝΙΑ</th>
-					<td class="text-center"><%= led.lamp %></td>
+					<td><%= led.lamp %></td>
 					<% for (var i = 0; i < led.lampDate.length; i++) { %>
 						<% if(led.lampDate[i] != undefined) { %>
-							<td class="text-center"><%= led.lampDate[i]%></td>
+							<td><%= led.lampDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -83,24 +83,24 @@
 					<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
 					<% for (var k = 0; k < led.accumulator.length; k++) { %>
 						<% if(k == 0) { %>
-							<td class="text-center">
+							<td>
 								<%= led.accumulator[k] %>
 							</td>
 							<% if(led.accumulatorDate[k] != undefined) { %>
-								<td class="text-center"><%= led.accumulatorDate[k]%></td>
+								<td><%= led.accumulatorDate[k]%></td>
 							<% } else { %>
 								<td> </td>
 							<% } %>
 						<% } else { %>
 							<tr>
-								<td class="text-center">
+								<td>
 									
 								</td>
-								<td class="text-center">
+								<td>
 									<%= led.accumulator[k] %>
 								</td>
 								<% if(led.accumulatorDate[k] != undefined) { %>
-									<td class="text-center"><%= led.accumulatorDate[k]%></td>
+									<td><%= led.accumulatorDate[k]%></td>
 								<% } else { %>
 									<td> </td>
 								<% } %>
@@ -110,10 +110,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
-					<td class="text-center"><%= led.generatorSocket %></td>
+					<td><%= led.generatorSocket %></td>
 					<% for (var i = 0; i < led.generatorSocketDate.length; i++) { %>
 						<% if(led.generatorSocketDate[i] != undefined) { %>
-							<td class="text-center"><%= led.generatorSocketDate[i]%></td>
+							<td><%= led.generatorSocketDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -121,10 +121,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</th>
-					<td class="text-center"><%= led.torchSocket %></td>
+					<td><%= led.torchSocket %></td>
 					<% for (var i = 0; i < led.torchSocketDate.length; i++) { %>
 						<% if(led.torchSocketDate[i] != undefined) { %>
-							<td class="text-center"><%= led.torchSocketDate[i]%></td>
+							<td><%= led.torchSocketDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -132,10 +132,10 @@
 				</tr>
 				<tr>
 					<th scope="row">ΦΩΤΟΚΥΤΤΑΡΟ</th>
-					<td class="text-center"><%= led.photocell %></td>
+					<td><%= led.photocell %></td>
 					<% for (var i = 0; i < led.photocellDate.length; i++) { %>
 						<% if(led.photocellDate[i] != undefined) { %>
-							<td class="text-center"><%= led.photocellDate[i]%></td>
+							<td><%= led.photocellDate[i]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
@@ -144,25 +144,25 @@
 				<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
 				<% for (var k = 0; k < led.accessory.length; k++) { %>
 					<% if(k == 0) { %>
-						<td class="text-center">
+						<td>
 								<%= led.accessory[k] %>
 						</td>
 						
 						<% if(led.accessory[k] != undefined) { %>
-							<td class="text-center"><%= led.accessory[k]%></td>
+							<td><%= led.accessory[k]%></td>
 						<% } else { %>
 							<td> </td>
 						<% } %>
 					<% } else { %>
 						<tr>
-							<td class="text-center">
+							<td>
 								
 							</td>
-							<td class="text-center">
+							<td>
 								<%= led.accessory[k] %>
 							</td>
 							<% if(led.accessory[k] != undefined) { %>
-								<td class="text-center"><%= led.accessory[k]%></td>
+								<td><%= led.accessory[k]%></td>
 							<% } else { %>
 								<td> </td>
 							<% } %>
