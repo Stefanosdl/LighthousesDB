@@ -154,4 +154,39 @@ router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
 	res.redirect('/');
 }));
 
+router.get("/sum", catchAsync(async (req, res, next) => {
+	const solarString = "12V";
+	const socketString = "220V";
+	const autoLightHouses = await AutoLight.find({});
+	var lamps = new Array();
+	var solarGenerators = new Array();
+	var accumulators = new Array();
+	var generatorSockets = new Array();
+	var sockets = new Array();
+	for (const item of autoLightHouses) {
+		lamps = lamps.concat(item.head);
+		solarGenerators = solarGenerators.concat(item.solarGenerator);
+		accumulators = accumulators.concat(item.accumulator);
+		if (item.generatorSocket.includes(solarString)) {
+			generatorSockets = generatorSockets.concat(item.generatorSocket);
+		}
+		else if (item.generatorSocket.includes(socketString)) {
+			sockets = sockets.concat(item.generatorSocket);
+		}
+	}
+
+	var lampsCount = {};
+	lamps.forEach(function(i) { lampsCount[i] = (lampsCount[i]||0) + 1;});
+	var solarGeneratorsCount = {};
+	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
+	var accumulatorsCount = {};
+	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
+	var generatorSocketsCount = {};
+	generatorSockets.forEach(function(i) { generatorSocketsCount[i] = (generatorSocketsCount[i]||0) + 1;});
+	var socketsCount = {};
+	sockets.forEach(function(i) { socketsCount[i] = (socketsCount[i]||0) + 1;});
+
+    res.render("autoSum", {lampsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount});
+}));
+
 module.exports = router;

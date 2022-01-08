@@ -148,7 +148,6 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
 	var accumulatorsCount = {};
 	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
-
     res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount});
 }));
 
