@@ -23,11 +23,15 @@
 			  <tr>
 				<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
 				<th scope="col">ΤΥΠΟΣ</th>
-				<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
-				<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
-				<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
-				<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
-				<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+				<% if (led.accumulator.length > led.accessory.length) { %>
+					<% for (var i=0; i < led.accumulator.length; i++) { %>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+					<% } %>
+				<% } else { %>
+					<% for (var i=0; i < led.accessory.length; i++) { %>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+					<% } %>
+				<% } %>
 			  </tr>
 			</thead>
 			<tbody>
