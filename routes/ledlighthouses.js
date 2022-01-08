@@ -131,4 +131,25 @@ router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
 	res.redirect('/');
 }));
 
+router.get("/sum", catchAsync(async (req, res, next) => {
+	const ledLightHouses = await LedLight.find({});
+	var heads = new Array();
+	var solarGenerators = new Array();
+	var accumulators = new Array();
+	for (const item of ledLightHouses) {
+		heads = heads.concat(item.head);
+		solarGenerators = solarGenerators.concat(item.solarGenerator);
+		accumulators = accumulators.concat(item.accumulator);
+	}
+
+	var headsCount = {};
+	heads.forEach(function(i) { headsCount[i] = (headsCount[i]||0) + 1;});
+	var solarGeneratorsCount = {};
+	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
+	var accumulatorsCount = {};
+	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
+
+    res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount});
+}));
+
 module.exports = router;

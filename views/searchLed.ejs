@@ -4,7 +4,7 @@
 	<div class="container">
 		<h2 align="center">Στοιχεία LED Φάρου</h2>
 		<% for (var i=0; i < led.technicians.length; i++) { %>
-			<% if (led.technicians[i].suggests !== undefined){%>
+			<% if (led.technicians[i].suggests !== undefined && led.technicians[i].suggests !== ""){%>
 				<div class="spinner-grow text-danger" role="status">
 					<span class="visually hidden"></span>
 				</div>

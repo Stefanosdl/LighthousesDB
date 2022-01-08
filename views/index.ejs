@@ -20,11 +20,23 @@
 <div class="container">
     <div class="row">
       <div class="col text-center">
+		<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+			Δημιουργία
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+				<li><a class="dropdown-item" href="/autoLighthouses/registerAuto">Αυτόματου</a></li>
+				<li><a class="dropdown-item" href="/ledLighthouses/registerLed">LED</a></li>
+			</ul>
+		<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+			Σύνολο εξαρτημάτων
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+				<li><a class="dropdown-item" href="/autoLighthouses/sum">Αυτόματων</a></li>
+				<li><a class="dropdown-item" href="/ledLighthouses/sum">LED</a></li>
+			</ul>
         <a href="/suggestedWorks" class="btn btn-primary">Προτεινόμενες Εργασίες</a>
-        <a href="/autoLighthouses/registerAuto" class="btn btn-primary">Δημιουργία Αυτόματου</a>
-        <a href="/ledLighthouses/registerLed" class="btn btn-primary">Δημιουργία LED</a>
       </div>
     </div>
-</div
+</div>
 
 <% include ./partials/footer %>
