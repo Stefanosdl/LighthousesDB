@@ -10,7 +10,7 @@ router.get("/registerLed", (req, res) => {
 
 router.post("/registerLed", catchAsync(async (req, res, next) => {
     try {
-		const ledLighthouse = new LedLight({aef: req.body.aef, lighthouse: req.body.lighthouse, features: req.body.features, location: req.body.location, solarGenerator: req.body.solarGenerator, head: req.body.head, chargeRegulator: req.body.chargeRegulator, socket: req.body.socket});
+		const ledLighthouse = new LedLight({aef: req.body.aef, lighthouse: req.body.lighthouse, colour: req.body.colour, sections: req.body.sections, features: req.body.features, location: req.body.location, solarGenerator: req.body.solarGenerator, head: req.body.head, chargeRegulator: req.body.chargeRegulator, socket: req.body.socket});
 		ledLighthouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
 		ledLighthouse.accumulator.push(req.body.accumulator);
 		ledLighthouse.headDate.push(req.body.headDate);
@@ -136,19 +136,28 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var heads = new Array();
 	var solarGenerators = new Array();
 	var accumulators = new Array();
+	var colours = new Array();
+	var sections = new Array();
+	console.log(ledLightHouses)
 	for (const item of ledLightHouses) {
+		colours = colours.concat(item.colour);
+		sections = sections.concat(item.sections);
 		heads = heads.concat(item.head);
 		solarGenerators = solarGenerators.concat(item.solarGenerator);
 		accumulators = accumulators.concat(item.accumulator);
 	}
-
+	
 	var headsCount = {};
 	heads.forEach(function(i) { headsCount[i] = (headsCount[i]||0) + 1;});
+	var coloursCount = {};
+	colours.forEach(function(i) { coloursCount[i] = (coloursCount[i]||0) + 1;});
+	var sectionsCount = {};
+	sections.forEach(function(i) { sectionsCount[i] = (sectionsCount[i]||0) + 1;});
 	var solarGeneratorsCount = {};
 	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
 	var accumulatorsCount = {};
 	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
-    res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount});
+    res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount, coloursCount, sectionsCount});
 }));
 
 module.exports = router;

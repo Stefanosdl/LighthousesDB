@@ -6,6 +6,8 @@ const AutoLightSchema = new Schema({
     lighthouse: String,
     features: String,
     location: String,
+    colour: String,
+    sections: String,
     lighter: String,
     lighterDate: {
         type: Array,
