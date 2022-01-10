@@ -137,11 +137,8 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var solarGenerators = new Array();
 	var accumulators = new Array();
 	var colours = new Array();
-	var sections = new Array();
-	console.log(ledLightHouses)
 	for (const item of ledLightHouses) {
 		colours = colours.concat(item.colour);
-		sections = sections.concat(item.sections);
 		heads = heads.concat(item.head);
 		solarGenerators = solarGenerators.concat(item.solarGenerator);
 		accumulators = accumulators.concat(item.accumulator);
@@ -151,13 +148,11 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	heads.forEach(function(i) { headsCount[i] = (headsCount[i]||0) + 1;});
 	var coloursCount = {};
 	colours.forEach(function(i) { coloursCount[i] = (coloursCount[i]||0) + 1;});
-	var sectionsCount = {};
-	sections.forEach(function(i) { sectionsCount[i] = (sectionsCount[i]||0) + 1;});
 	var solarGeneratorsCount = {};
 	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
 	var accumulatorsCount = {};
 	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
-    res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount, coloursCount, sectionsCount});
+    res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount, coloursCount});
 }));
 
 module.exports = router;

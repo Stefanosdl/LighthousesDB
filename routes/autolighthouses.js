@@ -164,11 +164,9 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var generatorSockets = new Array();
 	var sockets = new Array();
 	var colours = new Array();
-	var sections = new Array();
 	for (const item of autoLightHouses) {
 		lamps = lamps.concat(item.head);
 		colours = colours.concat(item.colour);
-		sections = sections.concat(item.sections);
 		solarGenerators = solarGenerators.concat(item.solarGenerator);
 		accumulators = accumulators.concat(item.accumulator);
 		if (item.generatorSocket.includes(solarString)) {
@@ -181,8 +179,6 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	
 	var coloursCount = {};
 	colours.forEach(function(i) { coloursCount[i] = (coloursCount[i]||0) + 1;});
-	var sectionsCount = {};
-	sections.forEach(function(i) { sectionsCount[i] = (sectionsCount[i]||0) + 1;});
 	var lampsCount = {};
 	lamps.forEach(function(i) { lampsCount[i] = (lampsCount[i]||0) + 1;});
 	var solarGeneratorsCount = {};
@@ -194,7 +190,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var socketsCount = {};
 	sockets.forEach(function(i) { socketsCount[i] = (socketsCount[i]||0) + 1;});
 
-    res.render("autoSum", {lampsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount, sectionsCount});
+    res.render("autoSum", {lampsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount});
 }));
 
 module.exports = router;
