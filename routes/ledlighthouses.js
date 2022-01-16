@@ -57,7 +57,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 	}
 	catch(e) {
 		req.flash("error", e.message);
-		res.redirect(`/ledLighthouses/technicians/new/${req.params.id}`);		
+		res.redirect(`/ledLighthouses/technicians/new/${req.params.id}`);	
 	}
 }));
 
@@ -79,17 +79,32 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		}
 		const ledLightHouse = await LedLight.findById(id);
 
+		var accum = new Array();
+		for (const item of req.body.accumulator) {
+			if(item != '' && item != undefined && item != null)
+				accum.push(item);
+		}
+		var accumDate = new Array();
+		for (const item of req.body.accumulatorDate) {
+			if(item != '' && item != undefined && item != null)
+			accumDate.push(item);
+		}
+
+		if(accum.length != 0)
+		ledLightHouse.accumulator.splice(0, ledLightHouse.accumulator.length, ...accum);
+		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
+			ledLightHouse.accumulator.push(req.body.accumulatorNew);
+		}
+		if(accumDate.length != 0)
+		ledLightHouse.accumulatorDate.splice(0, ledLightHouse.accumulatorDate.length, ...accumDate);
+		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
+			ledLightHouse.accumulator.push(req.body.accumulatorDateNew);
+		}
 		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != ""){
 			ledLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
 		}
-		if(req.body.accumulator != undefined && req.body.accumulator != null && req.body.accumulator != ""){
-			ledLightHouse.accumulator.push(req.body.accumulator);
-		}
 		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != ""){
 			ledLightHouse.headDate.push(req.body.headDate);
-		}
-		if(req.body.accumulatorDate != undefined && req.body.accumulatorDate != null && req.body.accumulatorDate != ""){
-			ledLightHouse.accumulatorDate.push(req.body.accumulatorDate);
 		}
 		if(req.body.chargeRegulatorDate != undefined && req.body.chargeRegulatorDate != null && req.body.chargeRegulatorDate != ""){
 			ledLightHouse.chargeRegulatorDate.push(req.body.solarGeneratorDate);
@@ -117,7 +132,7 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 	}
 	
     req.flash("success", "Επιτυχής ενημέρωση!");
-    res.redirect('/');
+	res.redirect(`/ledLighthouses/technicians/new/${req.params.id}`);
 }));
 
 router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
@@ -138,9 +153,10 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var accumulators = new Array();
 	var colours = new Array();
 	for (const item of ledLightHouses) {
-		colours = colours.concat(item.colour);
-		heads = heads.concat(item.head);
-		solarGenerators = solarGenerators.concat(item.solarGenerator);
+		colours = colours.concat(item.colour.toUpperCase());
+		heads = heads.concat(item.head.toUpperCase());
+		solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
+		accumulators = item.accumulator.map(str => str.toUpperCase());
 		accumulators = accumulators.concat(item.accumulator);
 	}
 	

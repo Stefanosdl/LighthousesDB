@@ -78,6 +78,27 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		const autoLightHouse = await AutoLight.findById(id);
 
+		var accum = new Array();
+		for (const item of req.body.accumulator) {
+			if(item != '' && item != undefined && item != null)
+				accum.push(item);
+		}
+		var accumDate = new Array();
+		for (const item of req.body.accumulatorDate) {
+			if(item != '' && item != undefined && item != null)
+			accumDate.push(item);
+		}
+
+		if(accum.length != 0)
+		autoLightHouse.accumulator.splice(0, autoLightHouse.accumulator.length, ...accum);
+		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
+			autoLightHouse.accumulator.push(req.body.accumulatorNew);
+		}
+		if(accumDate.length != 0)
+		autoLightHouse.accumulatorDate.splice(0, autoLightHouse.accumulatorDate.length, ...accumDate);
+		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
+			autoLightHouse.accumulator.push(req.body.accumulatorDateNew);
+		}
 		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != ""){
 			autoLightHouse.lighterDate.push(req.body.lighterDate);
 		}
@@ -87,14 +108,8 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.lampDate != undefined && req.body.lampDate != null && req.body.lampDate != ""){
 			autoLightHouse.lampDate.push(req.body.lampDate);
 		}
-		if(req.body.accumulator != undefined && req.body.accumulator != null && req.body.accumulator != ""){
-			autoLightHouse.accumulator.push(req.body.accumulator);
-		}
 		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != ""){
 			autoLightHouse.headDate.push(req.body.headDate);
-		}
-		if(req.body.accumulatorDate != undefined && req.body.accumulatorDate != null && req.body.accumulatorDate != ""){
-			autoLightHouse.accumulatorDate.push(req.body.accumulatorDate);
 		}
 		if(req.body.generatorSocketDate != undefined && req.body.generatorSocketDate != null && req.body.generatorSocketDate != ""){
 			autoLightHouse.generatorSocketDate.push(req.body.generatorSocketDate);
@@ -140,7 +155,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 	}
 	
     req.flash("success", "Επιτυχής ενημέρωση!");
-    res.redirect('/');
+	res.redirect(`/autoLighthouses/technicians/new/${req.params.id}`);		
 }));
 
 router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
@@ -165,15 +180,16 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var sockets = new Array();
 	var colours = new Array();
 	for (const item of autoLightHouses) {
-		lamps = lamps.concat(item.head);
-		colours = colours.concat(item.colour);
-		solarGenerators = solarGenerators.concat(item.solarGenerator);
+		lamps = lamps.concat(item.head.toUpperCase());
+		colours = colours.concat(item.colour.toUpperCase());
+		solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
+		accumulators = item.accumulator.map(str => str.toUpperCase());
 		accumulators = accumulators.concat(item.accumulator);
 		if (item.generatorSocket.includes(solarString)) {
-			generatorSockets = generatorSockets.concat(item.generatorSocket);
+			generatorSockets = generatorSockets.concat(item.generatorSocket.toUpperCase());
 		}
 		else if (item.generatorSocket.includes(socketString)) {
-			sockets = sockets.concat(item.generatorSocket);
+			sockets = sockets.concat(item.generatorSocket.toUpperCase());
 		}
 	}
 	

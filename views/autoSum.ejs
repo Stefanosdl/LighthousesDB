@@ -41,26 +41,28 @@
                 <th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
                 <% var first_iteration = true; %>
                 <% for (const [key, value] of Object.entries(solarGeneratorsCount)) { %>
-                    <% if(first_iteration == true) { %>
-                        <td>
-                            <%= key %>
-                        </td>
-                        <td>
-                            <%= value %>
-                        </td>
-                        <% first_iteration = false; %>
-                    <% } else if (key != "") { %>
-                        <tr>
-                            <td>
-                                
-                            </td>
+                    <% if(key != "") { %>
+                        <% if(first_iteration == true) { %>
                             <td>
                                 <%= key %>
                             </td>
                             <td>
                                 <%= value %>
                             </td>
-                        </tr>
+                            <% first_iteration = false; %>
+                        <% } else if (key != "") { %>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <%= key %>
+                                </td>
+                                <td>
+                                    <%= value %>
+                                </td>
+                            </tr>
+                        <% } %>
                     <% } %>
                 <% } %>
             </tr>
@@ -68,26 +70,28 @@
                 <th scope="row">ΛΥΧΝΙΑ</th>
                 <% var first_iteration = true; %>
                 <% for (const [key, value] of Object.entries(lampsCount)) { %>
-                    <% if(first_iteration == true) { %>
-                        <td>
-                            <%= key %>
-                        </td>
-                        <td>
-                            <%= value %>
-                        </td>
-                        <% first_iteration = false; %>
-                    <% } else if (key != "") { %>
-                        <tr>
-                            <td>
-                                
-                            </td>
+                    <% if(key != "") { %>
+                        <% if(first_iteration == true) { %>
                             <td>
                                 <%= key %>
                             </td>
                             <td>
                                 <%= value %>
                             </td>
-                        </tr>
+                            <% first_iteration = false; %>
+                        <% } else if (key != "") { %>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <%= key %>
+                                </td>
+                                <td>
+                                    <%= value %>
+                                </td>
+                            </tr>
+                        <% } %>
                     <% } %>
                 <% } %>
             </tr>
@@ -95,26 +99,28 @@
                 <th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
                 <% var first_iteration = true; %>
                 <% for (const [key, value] of Object.entries(accumulatorsCount)) { %>
-                    <% if(first_iteration == true) { %>
-                        <td>
-                            <%= key %>
-                        </td>
-                        <td>
-                            <%= value %>
-                        </td>
-                        <% first_iteration = false; %>
-                    <% } else if (key != "") { %>
-                        <tr>
-                            <td>
-                                
-                            </td>
+                    <% if(key != "") { %>
+                        <% if(first_iteration == true) { %>
                             <td>
                                 <%= key %>
                             </td>
                             <td>
                                 <%= value %>
                             </td>
-                        </tr>
+                            <% first_iteration = false; %>
+                        <% } else if (key != "") { %>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <%= key %>
+                                </td>
+                                <td>
+                                    <%= value %>
+                                </td>
+                            </tr>
+                        <% } %>
                     <% } %>
                 <% } %>
             </tr>
@@ -122,26 +128,28 @@
                 <th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ</th>
                 <% var first_iteration = true; %>
                 <% for (const [key, value] of Object.entries(generatorSocketsCount)) { %>
-                    <% if(first_iteration == true) { %>
-                        <td>
-                            <%= key %>
-                        </td>
-                        <td>
-                            <%= value %>
-                        </td>
-                        <% first_iteration = false; %>
-                    <% } else if (key != "") { %>
-                        <tr>
-                            <td>
-                                
-                            </td>
+                    <% if(key != "") { %>
+                        <% if(first_iteration == true) { %>
                             <td>
                                 <%= key %>
                             </td>
                             <td>
                                 <%= value %>
                             </td>
-                        </tr>
+                            <% first_iteration = false; %>
+                        <% } else if (key != "") { %>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <%= key %>
+                                </td>
+                                <td>
+                                    <%= value %>
+                                </td>
+                            </tr>
+                        <% } %>
                     <% } %>
                 <% } %>
             </tr>
@@ -149,26 +157,28 @@
                 <th scope="row">ΦΟΡΤΙΣΤΗΣ</th>
                 <% var first_iteration = true; %>
                 <% for (const [key, value] of Object.entries(socketsCount)) { %>
-                    <% if(first_iteration == true) { %>
-                        <td>
-                            <%= key %>
-                        </td>
-                        <td>
-                            <%= value %>
-                        </td>
-                        <% first_iteration = false; %>
-                    <% } else if (key != "") { %>
-                        <tr>
-                            <td>
-                                
-                            </td>
+                    <% if(key != "") { %>
+                        <% if(first_iteration == true) { %>
                             <td>
                                 <%= key %>
                             </td>
                             <td>
                                 <%= value %>
                             </td>
-                        </tr>
+                            <% first_iteration = false; %>
+                        <% } else if (key != "") { %>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <%= key %>
+                                </td>
+                                <td>
+                                    <%= value %>
+                                </td>
+                            </tr>
+                        <% } %>
                     <% } %>
                 <% } %>
             </tr>
