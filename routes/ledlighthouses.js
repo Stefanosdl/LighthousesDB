@@ -53,7 +53,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 		await ledLightHouse.technicians.push(newTechnician);
 		await ledLightHouse.save();
 		await newTechnician.save();
-		res.redirect(`/ledLighthouses/technicians/${req.params.id}`);
+		res.redirect(`/ledLighthouses/insertLed/${req.params.id}`);
 	}
 	catch(e) {
 		req.flash("error", e.message);
@@ -132,7 +132,7 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 	}
 	
     req.flash("success", "Επιτυχής ενημέρωση!");
-	res.redirect(`/ledLighthouses/technicians/new/${req.params.id}`);
+	res.redirect(`/ledLighthouses/technicians/${req.params.id}`);
 }));
 
 router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
