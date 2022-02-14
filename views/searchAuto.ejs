@@ -76,12 +76,30 @@
 				</tr>
 				<tr>
 					<th scope="row">ΛΥΧΝΙΑ</th>
-					<td><%= led.lamp %></td>
-					<% for (var i = 0; i < led.lampDate.length; i++) { %>
-						<% if(led.lampDate[i] != undefined) { %>
-							<td><%= led.lampDate[i]%></td>
+					<% for (var k = 0; k < led.lamp.length; k++) { %>
+						<% if(k == 0) { %>
+							<td>
+								<%= led.lamp[k] %>
+							</td>
+							<% if(led.lampDate[k] != undefined) { %>
+								<td><%= led.lampDate[k]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
 						<% } else { %>
-							<td> </td>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= led.lamp[k] %>
+								</td>
+								<% if(led.lampDate[k] != undefined) { %>
+									<td><%= led.lampDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							</tr>
 						<% } %>
 					<% } %>
 				</tr>

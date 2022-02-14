@@ -10,19 +10,7 @@ router.get("/registerAuto", (req, res) => {
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
-		const autoLighthouse = new AutoLight({aef: req.body.aef, lighthouse: req.body.lighthouse, features: req.body.features, colour: req.body.colour, sections: req.body.sections, location: req.body.location, lighter: req.body.lighter, solarGenerator: req.body.solarGenerator, head: req.body.head, lamp: req.body.lamp, generatorSocket: req.body.generatorSocket, torchSocket: req.body.torchSocket, photocell: req.body.photocell});
-		autoLighthouse.lighterDate.push(req.body.lighterDate);
-		autoLighthouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
-		autoLighthouse.accumulator.push(req.body.accumulator);
-		autoLighthouse.headDate.push(req.body.headDate);
-		autoLighthouse.lampDate.push(req.body.lampDate);
-		autoLighthouse.generatorSocketDate.push(req.body.generatorSocketDate);
-		autoLighthouse.accumulatorDate.push(req.body.accumulatorDate);
-		autoLighthouse.photocellDate.push(req.body.photocellDate);
-		autoLighthouse.accessory.push(req.body.accessory);
-		autoLighthouse.accessoryDate.push(req.body.accessoryDate);
-		autoLighthouse.torchSocketDate.push(req.body.torchSocketDate);
-		
+		const autoLighthouse = new AutoLight({ ...req.body });
         await autoLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -97,7 +85,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(accumDate.length != 0)
 		autoLightHouse.accumulatorDate.splice(0, autoLightHouse.accumulatorDate.length, ...accumDate);
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
-			autoLightHouse.accumulator.push(req.body.accumulatorDateNew);
+			autoLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
 		}
 		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != ""){
 			autoLightHouse.lighterDate.push(req.body.lighterDate);
@@ -180,6 +168,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var sockets = new Array();
 	var colours = new Array();
 	for (const item of autoLightHouses) {
+		lamps = item.lamp.map(str => str.toUpperCase());
 		lamps = lamps.concat(item.head.toUpperCase());
 		colours = colours.concat(item.colour.toUpperCase());
 		solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());

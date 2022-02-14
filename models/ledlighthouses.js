@@ -6,6 +6,7 @@ const LedLightSchema = new Schema({
     lighthouse: String,
     features: String,
     location: String,
+    position: String,
     colour: String,
     sections: String,
     solarGenerator: String,

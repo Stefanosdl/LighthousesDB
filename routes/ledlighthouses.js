@@ -10,14 +10,7 @@ router.get("/registerLed", (req, res) => {
 
 router.post("/registerLed", catchAsync(async (req, res, next) => {
     try {
-		const ledLighthouse = new LedLight({aef: req.body.aef, lighthouse: req.body.lighthouse, colour: req.body.colour, sections: req.body.sections, features: req.body.features, location: req.body.location, solarGenerator: req.body.solarGenerator, head: req.body.head, chargeRegulator: req.body.chargeRegulator, socket: req.body.socket});
-		ledLighthouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
-		ledLighthouse.accumulator.push(req.body.accumulator);
-		ledLighthouse.headDate.push(req.body.headDate);
-		ledLighthouse.accumulatorDate.push(req.body.accumulatorDate);
-		ledLighthouse.chargeRegulatorDate.push(req.body.chargeRegulatorDate);
-		ledLighthouse.socketDate.push(req.body.socketDate);
-
+		const ledLighthouse = new LedLight({ ...req.body });
         await ledLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -98,7 +91,7 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		if(accumDate.length != 0)
 		ledLightHouse.accumulatorDate.splice(0, ledLightHouse.accumulatorDate.length, ...accumDate);
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
-			ledLightHouse.accumulator.push(req.body.accumulatorDateNew);
+			ledLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
 		}
 		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != ""){
 			ledLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDate);

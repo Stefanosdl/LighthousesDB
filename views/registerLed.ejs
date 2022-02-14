@@ -8,20 +8,24 @@
 				<input type="text" class="form-control" name="aef" id="aef">
 			</div>
 			<div class="col-md-6">
-				<label for="lighthouse" class="form-label">ΦΑΡΟΣ</label>
+				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
 				<input type="text" class="form-control" name="lighthouse" id="lighthouse">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
 				<input type="text" class="form-control" name="colour" id="colour">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
 				<input type="text" class="form-control" name="sections" id="sections">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
 				<input type="text" class="form-control" name="features" id="features">
+			</div>
+			<div class="col-md-6">
+				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="text" class="form-control" name="position" id="position">
 			</div>
 			<div class="col-md-6">
 				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
@@ -35,12 +39,13 @@
 				<label for="solarGeneratorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
 				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate">
 			</div>
-			<div class="col-md-6">
-				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
+			<div class="col-md-6" id="fieldList">
+				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
 				<input type="text" class="form-control" name="accumulator" id="accumulator">
+				<button class="btn btn-primary" id="addMore">Προσθήκη Συσσωρευτή</button>
 			</div>
-            <div class="col-md-6">
-				<label for="accumulatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+			<div class="col-md-6">
+				<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
 				<input type="date" class="form-control" name="accumulatorDate" id="accumulatorDate">
 			</div>
 			<div class="col-md-6">
@@ -75,4 +80,20 @@
 	</div>
 </div>
 <br>
+<script>
+	$(function() {
+		$("#addMore").click(function(e) {
+			e.preventDefault();
+			$("#fieldList").append("<br>");
+			$("#fieldList").append("<div class='col-md-6'");
+			$("#fieldList").append("<label for='accumulator' class='form-label'>ΣΥΣΣΩΡΕΥΤΗΣ</label>");
+			$("#fieldList").append("<input type='text' class='form-control' name='accumulator' id='accumulator'>");
+			$("#fieldList").append("</div>");
+			$("#fieldList").append("<div class='col-md-6'>");
+			$("#fieldList").append("<label for='accumulatorDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
+			$("#fieldList").append("<input type='date' class='form-control' name='accumulatorDate' id='accumulatorDate'>");
+			$("#fieldList").append("</div>");
+		});
+	});
+</script>
 <% include ./partials/footer %>

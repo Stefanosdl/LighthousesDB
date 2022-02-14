@@ -13,7 +13,7 @@
 							<input type="hidden" name="suggests" value="<%= ledLightHouse.technicians[i].suggests %>">
 							<li class="list-group-item"><strong>ΤΕΧΝΙΚΟΣ: <%= ledLightHouse.technicians[i].technician %></strong></li>
 							<li class="list-group-item" name="date"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= ledLightHouse.technicians[i].date.toISOString().split('T')[0] %></strong></li>
-							<li class="list-group-item"><strong>ΠΕΡΙΓΡΑΦΗ ΒΛΑΒΗΣ: <%= ledLightHouse.technicians[i].description %></strong></li>
+							<li class="list-group-item"><strong>ΕΚΤΕΛΕΣΘΕΙΣΕΣ ΕΡΓΑΣΙΕΣ: <%= ledLightHouse.technicians[i].description %></strong></li>
 							<li class="list-group-item" name="suggests"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= ledLightHouse.technicians[i].suggests %></strong></li>
 							<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
 						</ul>
