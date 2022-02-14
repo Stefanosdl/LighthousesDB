@@ -10,6 +10,11 @@ const AutoLightSchema = new Schema({
     colour: String,
     sections: String,
     lighter: String,
+    alternator: String,
+    alternatorDate: {
+        type: Array,
+        default: [Date]
+    },
     lighterDate: {
         type: Array,
         default: [Date]

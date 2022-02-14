@@ -44,11 +44,21 @@
 				<tr>
 					<th scope="row">ΕΚΛΑΜΠΤΗΡΑΣ</th>
 					<td><%= led.lighter %></td>
-					<% for (var i = 0; i < led.lighterDate.length; i++) { %>
-						<% if(led.lighterDate[i] != undefined) { %>
-							<td><%= led.lighterDate[i]%></td>
-						<% } else { %>
-							<td> </td>
+					<% if (led.lighterDate.length > 4) { %>
+						<% for (var i = led.lighterDate.length - 4; i < led.lighterDate.length; i++) { %>
+							<% if(led.lighterDate[i] != undefined) { %>
+								<td><%= led.lighterDate[i]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
+						<% } %>
+					<% } else { %>
+						<% for (var k = 0; k < led.lighterDate.length; k++) { %>
+							<% if(led.lighterDate[k] != undefined) { %>
+								<td><%= led.lighterDate[k]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
 						<% } %>
 					<% } %>
 				</tr>
@@ -64,6 +74,18 @@
 					<% } %>
 				</tr>
 				<tr>
+					<tr>
+						<th scope="row">ΕΝΑΛΛΑΚΤΗΣ</th>
+						<td><%= led.alternator %></td>
+						<% for (var i = 0; i < led.alternatorDate.length; i++) { %>
+							<% if(led.alternatorDate[i] != undefined) { %>
+								<td><%= led.alternatorDate[i]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
 					<th scope="row">ΚΕΦΑΛΗ</th>
 					<td><%= led.head %></td>
 					<% for (var i = 0; i < led.headDate.length; i++) { %>

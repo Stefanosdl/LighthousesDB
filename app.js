@@ -106,7 +106,6 @@ app.get("/search", catchAsync(async (req, res, next) => {
                     res.redirect('/');
                 }
                 else{
-                    console.log(searchedAuto)
                     res.render("searchAuto", { searchedAuto , maxCountAuto});
                 }
             }

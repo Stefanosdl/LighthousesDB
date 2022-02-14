@@ -52,5 +52,22 @@ function getMostDatesAuto(currentLight) {
     return longest;
 }
 
+function getEarliestDate(array) {
+    // consider the first element of array as latest
+    var latest = array[0];
+    var index = 0;
+
+    for(var i=0;i<array.length;i++){
+
+        // if the date coming from array position is ahead then set latest to this array element
+        if (array[i] < latest){
+            latest = array[i];
+            index = i;
+        }
+    }
+    return index;
+}
+
+module.exports.getEarliestDate = getEarliestDate;
 module.exports.getMostDatesLed = getMostDatesLed;
 module.exports.getMostDatesAuto = getMostDatesAuto;

@@ -71,19 +71,12 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 			if(item != '' && item != undefined && item != null)
 				accum.push(item);
 		}
-		var accumDate = new Array();
-		for (const item of req.body.accumulatorDate) {
-			if(item != '' && item != undefined && item != null)
-			accumDate.push(item);
-		}
 
 		if(accum.length != 0)
 		autoLightHouse.accumulator.splice(0, autoLightHouse.accumulator.length, ...accum);
 		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
 			autoLightHouse.accumulator.push(req.body.accumulatorNew);
 		}
-		if(accumDate.length != 0)
-		autoLightHouse.accumulatorDate.splice(0, autoLightHouse.accumulatorDate.length, ...accumDate);
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
 			autoLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
 		}
@@ -113,6 +106,12 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		if(req.body.accessoryDate != undefined && req.body.accessoryDate != null && req.body.accessoryDate != ""){
 			autoLightHouse.accessoryDate.push(req.body.accessoryDate);
+		}
+		if(req.body.alternator != undefined && req.body.alternator != null && req.body.alternator != ""){
+			autoLightHouse.alternator.push(req.body.alternator);
+		}
+		if(req.body.alternatorDate != undefined && req.body.alternatorDate != null && req.body.alternatorDate != ""){
+			autoLightHouse.alternatorDate.push(req.body.alternatorDate);
 		}
 		if(req.body.lighter != undefined && req.body.lighter != null && req.body.lighter != ""){
 			autoLightHouse.lighter = req.body.lighter;
