@@ -154,9 +154,9 @@
 					<% for (var k = 0; k < auto.accumulator.length; k++) { %>
 						<% if(k == 0) { %>
 							<td>
-								<%= auto.accumulator[k] %>
+									<%= auto.accumulator[k] %>
 							</td>
-							<% if(auto.accumulatorDateGroups != undefined { %>
+							<% if(auto.accumulatorDateGroups != undefined) { %>
 								<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
 									<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
 										<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
@@ -173,7 +173,7 @@
 											<td> </td>
 										<% } %>
 									<% } %>
-								<% } %>							
+								<% } %>
 							<% } %>
 						<% } else { %>
 							<tr>
@@ -183,7 +183,7 @@
 								<td>
 									<%= auto.accumulator[k] %>
 								</td>
-								<% if(auto.accumulatorDateGroups != undefined { %>
+								<% if(auto.accumulatorDateGroups != undefined) { %>
 									<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
 										<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
 											<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>

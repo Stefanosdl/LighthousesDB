@@ -10,7 +10,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="solarGeneratorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate">
+				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate" value="<%= ledLightHouse.solarGeneratorDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
@@ -27,7 +27,7 @@
 				</div>
 				<div class="col-md-6">
 					<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= ledLightHouse.accumulatorDateGroups.get(i.toString())[ledLightHouse.accumulatorDateGroups.get(i.toString()).length-1] %>">
 				</div>
 			<% } %>
 			<div class="col-md-6">
@@ -36,7 +36,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="headDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="headDate" id="headDate">
+				<input type="date" class="form-control" name="headDate" id="headDate" value="<%= ledLightHouse.headDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="chargeRegulator" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
@@ -44,7 +44,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="chargeRegulatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="chargeRegulatorDate" id="chargeRegulatorDate">
+				<input type="date" class="form-control" name="chargeRegulatorDate" id="chargeRegulatorDate" value="<%= ledLightHouse.chargeRegulatorDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="socket" class="form-label">ΥΠΟΔΟΧΗ</label>
@@ -52,7 +52,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="socketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="socketDate" id="socketDate">
+				<input type="date" class="form-control" name="socketDate" id="socketDate" value="<%= ledLightHouse.socketDate.pop() %>">
 			</div>
         </div>
         

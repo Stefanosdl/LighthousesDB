@@ -10,7 +10,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="lighterDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="lighterDate" id="lighterDate">
+				<input type="date" class="form-control" name="lighterDate" id="lighterDate" value="<%= autoLightHouse.lighterDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
@@ -18,7 +18,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="solarGeneratorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate">
+				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate" value="<%= autoLightHouse.solarGeneratorDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="alternator" class="form-label">ΕΝΑΛΛΑΚΤΗΣ</label>
@@ -26,7 +26,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="alternatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="alternatorDate" id="alternatorDate">
+				<input type="date" class="form-control" name="alternatorDate" id="alternatorDate" value="<%= autoLightHouse.alternatorDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
@@ -34,7 +34,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="lampDate" id="lampDate">
+				<input type="date" class="form-control" name="lampDate" id="lampDate" value="<%= autoLightHouse.lampDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
@@ -51,7 +51,7 @@
 				</div>
 				<div class="col-md-6">
 					<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= autoLightHouse.accumulatorDateGroups.get(i.toString())[autoLightHouse.accumulatorDateGroups.get(i.toString()).length-1] %>">
 				</div>
 			<% } %>
 			<div class="col-md-6">
@@ -60,7 +60,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="headDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="headDate" id="headDate">
+				<input type="date" class="form-control" name="headDate" id="headDate" value="<%= autoLightHouse.headDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="generatorSocket" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
@@ -68,7 +68,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="generatorSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="generatorSocketDate" id="generatorSocketDate">
+				<input type="date" class="form-control" name="generatorSocketDate" id="generatorSocketDate" value="<%= autoLightHouse.generatorSocketDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
@@ -76,7 +76,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate">
+				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate" value="<%= autoLightHouse.torchSocketDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="photocell" class="form-label">ΦΩΤΟΚΥΤΤΑΡΟ</label>
@@ -84,7 +84,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="photocellDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="photocellDate" id="photocellDate">
+				<input type="date" class="form-control" name="photocellDate" id="photocellDate" value="<%= autoLightHouse.photocellDate.pop() %>">
 			</div>
 			<div class="col-md-6">
 				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
@@ -92,7 +92,7 @@
 			</div>
             <div class="col-md-6">
 				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate">
+				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate" value="<%= autoLightHouse.accessoryDate.pop() %>">
 			</div>
         </div>
         

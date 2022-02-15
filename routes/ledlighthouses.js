@@ -17,7 +17,7 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
 				ledLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
 			}
 		}
-		
+		console.log(ledLighthouse)
         await ledLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -63,7 +63,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 
 router.get("/insertLed/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id);
-
+	console.log(ledLightHouse)
 	res.render("insertLed", { ledLightHouse });
 }));
 
