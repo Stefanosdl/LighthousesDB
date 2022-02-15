@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { findById } = require("../models/autolighthouses");
 const AutoLight = require("../models/autolighthouses");
 const LedLight = require("../models/ledlighthouses");
 const Technician = require("../models/technician");
@@ -19,9 +20,25 @@ db.once("open", () => {
 
 const seedDB = async () => {
     //delete collections
-    await Technician.deleteMany({});
-    await LedLight.deleteMany({});
-    await AutoLight.deleteMany({});
+    // await Technician.deleteMany({});
+    // await LedLight.deleteMany({});
+    // await AutoLight.deleteMany({});
+    const auto = await AutoLight.findById("61e3bc104500476fb046db92");
+
+    var myMap = new Map();
+
+    myMap.set("1",["A"]);
+    myMap.set("1",["B", ...myMap.get('1')]);
+
+    // auto.groups = new Map();
+    console.log(myMap)
+    // auto.groups.set("1", [])
+    // auto.groups.get("1").push("2")
+    // auto.groups.get("1").push("2")
+    // auto.groups.set("2", [])
+    // auto.groups.get("2").push("2")
+    // auto.groups.get("2").push("2")
+    // console.log(auto.groups)
 }
 
 seedDB().then(() => {

@@ -10,7 +10,14 @@ router.get("/registerAuto", (req, res) => {
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
-		const autoLighthouse = new AutoLight({ ...req.body });
+		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}});
+		for(var i = 0; i < req.body.accumulator.length; i++) {
+			if(req.body.accumulatorDate[i] != undefined){
+				autoLighthouse.accumulatorDateGroups.set(i.toString(), []);
+				autoLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
+			}
+		}
+		
         await autoLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -79,6 +86,14 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
 			autoLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
 		}
+		for (var i = 0; i < req.body.accumulator.length; i++) {
+			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
+				if(autoLightHouse.accumulatorDateGroups.get(i.toString()) === undefined) {
+					autoLightHouse.accumulatorDateGroups.set(i.toString(), []);
+				}
+				autoLightHouse.accumulatorDateGroups.set(i.toString(), [req.body.accumulatorDate[i].toString(), ...autoLightHouse.accumulatorDateGroups.get(i.toString())]);
+			}
+		}
 		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != ""){
 			autoLightHouse.lighterDate.push(req.body.lighterDate);
 		}
@@ -135,6 +150,9 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		
 		await autoLightHouse.save();
+		for (const [key, value] of autoLightHouse.accumulatorDateGroups.entries()) {
+			console.log(key, value);
+		}
 	}
 	catch(e) {
 		req.flash("error", e.message);

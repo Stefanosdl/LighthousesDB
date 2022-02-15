@@ -59,6 +59,9 @@ const AutoLightSchema = new Schema({
         type: Array,
         default: [Date]
     },
+    accumulatorDateGroups: {
+        type: Map
+    },
     technicians: [{
 	    	type: Schema.Types.ObjectId,
 	    	ref: "Technician"
