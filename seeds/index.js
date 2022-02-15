@@ -23,15 +23,15 @@ const seedDB = async () => {
     // await Technician.deleteMany({});
     // await LedLight.deleteMany({});
     // await AutoLight.deleteMany({});
-    const auto = await AutoLight.findById("61e3bc104500476fb046db92");
+    // const auto = await AutoLight.findById("61e3bc104500476fb046db92");
 
-    var myMap = new Map();
+    // var myMap = new Map();
 
-    myMap.set("1",["A"]);
-    myMap.set("1",["B", ...myMap.get('1')]);
+    // myMap.set("1",["A"]);
+    // myMap.set("1",["B", ...myMap.get('1')]);
 
     // auto.groups = new Map();
-    console.log(myMap)
+    // console.log(myMap)
     // auto.groups.set("1", [])
     // auto.groups.get("1").push("2")
     // auto.groups.get("1").push("2")

@@ -30,12 +30,22 @@
 			</div>
 			<div class="col-md-6">
 				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
-				<input type="text" class="form-control" name="lamp" id="lamp" value="<%= autoLightHouse.lamp %>">
+				<input type="text" class="form-control" name="lampNew" id="lampNew">
 			</div>
-            <div class="col-md-6">
+			<div class="col-md-6">
 				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="lampDate" id="lampDate" value="<%= autoLightHouse.lampDate.pop() %>">
+				<input type="date" class="form-control" name="lampDateNew" id="lampDateNew">
 			</div>
+			<% for (var i=0; i < autoLightHouse.lamp.length; i++) { %>
+				<div class="col-md-6">
+					<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
+					<input type="text" class="form-control" name="lamp" id="lamp" value="<%= autoLightHouse.lamp[i] %>">
+				</div>
+				<div class="col-md-6">
+					<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+					<input type="date" class="form-control" name="lampDate[]" id="lampDate" value="<%= autoLightHouse.lampDateGroups.get(i.toString())[autoLightHouse.lampDateGroups.get(i.toString()).length-1] %>">
+				</div>
+			<% } %>
 			<div class="col-md-6">
 				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
 				<input type="text" class="form-control" name="accumulatorNew" id="accumulatorNew">

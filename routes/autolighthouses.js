@@ -10,11 +10,17 @@ router.get("/registerAuto", (req, res) => {
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
-		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}});
+		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}, lampDateGroups : {}});
 		for(var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined){
 				autoLighthouse.accumulatorDateGroups.set(i.toString(), []);
 				autoLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
+			}
+		}
+		for(var i = 0; i < req.body.lamp.length; i++) {
+			if(req.body.lampDate[i] != undefined){
+				autoLighthouse.lampDateGroups.set(i.toString(), []);
+				autoLighthouse.lampDateGroups.get(i.toString()).push(req.body.lampDate[i]);
 			}
 		}
 		
@@ -78,6 +84,11 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 			if(item != '' && item != undefined && item != null)
 				accum.push(item);
 		}
+		var lam = new Array();
+		for (const item of req.body.lamp) {
+			if(item != '' && item != undefined && item != null)
+				lam.push(item);
+		}
 
 		if(accum.length != 0)
 		autoLightHouse.accumulator.splice(0, autoLightHouse.accumulator.length, ...accum);
@@ -89,43 +100,72 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		for (var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
-				if(autoLightHouse.accumulatorDateGroups.get(i.toString()) === undefined) {
-					autoLightHouse.accumulatorDateGroups.set(i.toString(), []);
+				var flag = true;
+				for(var temp = 0; i < req.body.accumulatorDate.length; i++) {
+					if(!autoLightHouse.accumulatorDate.includes(req.body.accumulatorDate[i])) {
+						flag = false;
+					}
 				}
-				autoLightHouse.accumulatorDateGroups.set(i.toString(), [req.body.accumulatorDate[i].toString(), ...autoLightHouse.accumulatorDateGroups.get(i.toString())]);
+				if(!flag) {
+					if(autoLightHouse.accumulatorDateGroups.get(i.toString()) === undefined) {
+						autoLightHouse.accumulatorDateGroups.set(i.toString(), []);
+					}
+					autoLightHouse.accumulatorDateGroups.set(i.toString(), [req.body.accumulatorDate[i].toString(), ...autoLightHouse.accumulatorDateGroups.get(i.toString())]);
+				}
 			}
 		}
-		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != ""){
+		if(lam.length != 0)
+		autoLightHouse.lamp.splice(0, autoLightHouse.lamp.length, ...lam);
+		if(req.body.lampNew != undefined && req.body.lampNew != null && req.body.lampNew != ""){
+			autoLightHouse.lamp.push(req.body.lampNew);
+		}
+		if(req.body.lampDateNew != undefined && req.body.lampDateNew != null && req.body.lampDateNew != ""){
+			autoLightHouse.lampDate.push(req.body.lampDateNew);
+		}
+		for (var i = 0; i < req.body.lamp.length; i++) {
+			if(req.body.lampDate[i] != undefined && req.body.lampDate[i] != null && req.body.lampDate[i] != "" && !autoLightHouse.lampDate.includes(req.body.lampDate)){
+				var flag = true;
+				for(var temp = 0; i < req.body.lampDate.length; i++) {
+					if(!autoLightHouse.lampDate.includes(req.body.lampDate[i])) {
+						flag = false;
+					}
+				}
+				if(!flag) {
+					if(autoLightHouse.lampDateGroups.get(i.toString()) === undefined) {
+						autoLightHouse.lampDateGroups.set(i.toString(), []);
+					}
+					autoLightHouse.lampDateGroups.set(i.toString(), [req.body.lampDate[i].toString(), ...autoLightHouse.lampDateGroups.get(i.toString())]);
+				}
+			}
+		}
+		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != "" && !autoLightHouse.lighterDate.includes(req.body.lighterDate)){
 			autoLightHouse.lighterDate.push(req.body.lighterDate);
 		}
-		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != ""){
+		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != "" && !autoLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate)){
 			autoLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
 		}
-		if(req.body.lampDate != undefined && req.body.lampDate != null && req.body.lampDate != ""){
-			autoLightHouse.lampDate.push(req.body.lampDate);
-		}
-		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != ""){
+		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != "" && !autoLightHouse.headDate.includes(req.body.headDate)){
 			autoLightHouse.headDate.push(req.body.headDate);
 		}
-		if(req.body.generatorSocketDate != undefined && req.body.generatorSocketDate != null && req.body.generatorSocketDate != ""){
+		if(req.body.generatorSocketDate != undefined && req.body.generatorSocketDate != null && req.body.generatorSocketDate != "" && !autoLightHouse.generatorSocketDate.includes(req.body.generatorSocketDate)){
 			autoLightHouse.generatorSocketDate.push(req.body.generatorSocketDate);
 		}
-		if(req.body.torchSocketDate != undefined && req.body.torchSocketDate != null && req.body.torchSocketDate != ""){
+		if(req.body.torchSocketDate != undefined && req.body.torchSocketDate != null && req.body.torchSocketDate != "" && !autoLightHouse.torchSocketDate.includes(req.body.torchSocketDate)){
 			autoLightHouse.torchSocketDate.push(req.body.torchSocketDate);
 		}
-		if(req.body.photocellDate != undefined && req.body.photocellDate != null && req.body.photocellDate != ""){
+		if(req.body.photocellDate != undefined && req.body.photocellDate != null && req.body.photocellDate != "" && !autoLightHouse.photocellDate.includes(req.body.photocellDate)){
 			autoLightHouse.photocellDate.push(req.body.photocellDate);
 		}
 		if(req.body.accessory != undefined && req.body.accessory != null && req.body.accessory != ""){
 			autoLightHouse.accessory.push(req.body.accessory);
 		}
-		if(req.body.accessoryDate != undefined && req.body.accessoryDate != null && req.body.accessoryDate != ""){
+		if(req.body.accessoryDate != undefined && req.body.accessoryDate != null && req.body.accessoryDate != "" && !autoLightHouse.accessoryDate.includes(req.body.accessoryDate)){
 			autoLightHouse.accessoryDate.push(req.body.accessoryDate);
 		}
 		if(req.body.alternator != undefined && req.body.alternator != null && req.body.alternator != ""){
 			autoLightHouse.alternator = req.body.alternator;
 		}
-		if(req.body.alternatorDate != undefined && req.body.alternatorDate != null && req.body.alternatorDate != ""){
+		if(req.body.alternatorDate != undefined && req.body.alternatorDate != null && req.body.alternatorDate != "" && !autoLightHouse.alternatorDate.includes(req.body.alternatorDate)){
 			autoLightHouse.alternatorDate.push(req.body.alternatorDate);
 		}
 		if(req.body.lighter != undefined && req.body.lighter != null && req.body.lighter != ""){
@@ -133,9 +173,6 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		if(req.body.solarGenerator != undefined && req.body.solarGenerator != null && req.body.solarGenerator != ""){
 			autoLightHouse.solarGenerator = req.body.solarGenerator;
-		}
-		if(req.body.lamp != undefined && req.body.lamp != null && req.body.lamp != ""){
-			autoLightHouse.lamp = req.body.lamp;
 		}
 		if(req.body.head != undefined && req.body.head != null && req.body.head != ""){
 			autoLightHouse.head = req.body.head;
