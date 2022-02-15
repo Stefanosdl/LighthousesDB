@@ -65,7 +65,6 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 			id = req.params.id;
 		}
 		const autoLightHouse = await AutoLight.findById(id);
-
 		var accum = new Array();
 		for (const item of req.body.accumulator) {
 			if(item != '' && item != undefined && item != null)
@@ -108,7 +107,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 			autoLightHouse.accessoryDate.push(req.body.accessoryDate);
 		}
 		if(req.body.alternator != undefined && req.body.alternator != null && req.body.alternator != ""){
-			autoLightHouse.alternator.push(req.body.alternator);
+			autoLightHouse.alternator = req.body.alternator;
 		}
 		if(req.body.alternatorDate != undefined && req.body.alternatorDate != null && req.body.alternatorDate != ""){
 			autoLightHouse.alternatorDate.push(req.body.alternatorDate);
@@ -134,6 +133,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.photocell != undefined && req.body.photocell != null && req.body.photocell != ""){
 			autoLightHouse.photocell = req.body.photocell;
 		}
+		
 		await autoLightHouse.save();
 	}
 	catch(e) {
