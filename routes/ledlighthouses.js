@@ -10,7 +10,14 @@ router.get("/registerLed", (req, res) => {
 
 router.post("/registerLed", catchAsync(async (req, res, next) => {
     try {
-		const ledLighthouse = new LedLight({ ...req.body });
+		const ledLighthouse = new LedLight({ ...req.body , accumulatorDateGroups : {}});
+		for(var i = 0; i < req.body.accumulator.length; i++) {
+			if(req.body.accumulatorDate[i] != undefined){
+				ledLighthouse.accumulatorDateGroups.set(i.toString(), []);
+				ledLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
+			}
+		}
+		
         await ledLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -77,21 +84,22 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 			if(item != '' && item != undefined && item != null)
 				accum.push(item);
 		}
-		var accumDate = new Array();
-		for (const item of req.body.accumulatorDate) {
-			if(item != '' && item != undefined && item != null)
-			accumDate.push(item);
-		}
 
 		if(accum.length != 0)
 		ledLightHouse.accumulator.splice(0, ledLightHouse.accumulator.length, ...accum);
 		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
 			ledLightHouse.accumulator.push(req.body.accumulatorNew);
-		}
-		if(accumDate.length != 0)
-		ledLightHouse.accumulatorDate.splice(0, ledLightHouse.accumulatorDate.length, ...accumDate);
+		}	
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
 			ledLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
+		}
+		for (var i = 0; i < req.body.accumulator.length; i++) {
+			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
+				if(ledLightHouse.accumulatorDateGroups.get(i.toString()) === undefined) {
+					ledLightHouse.accumulatorDateGroups.set(i.toString(), []);
+				}
+				ledLightHouse.accumulatorDateGroups.set(i.toString(), [req.body.accumulatorDate[i].toString(), ...autoLightHouse.accumulatorDateGroups.get(i.toString())]);
+			}
 		}
 		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != ""){
 			ledLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDate);

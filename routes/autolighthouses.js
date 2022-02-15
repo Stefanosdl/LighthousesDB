@@ -72,6 +72,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 			id = req.params.id;
 		}
 		const autoLightHouse = await AutoLight.findById(id);
+
 		var accum = new Array();
 		for (const item of req.body.accumulator) {
 			if(item != '' && item != undefined && item != null)
@@ -150,9 +151,6 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		
 		await autoLightHouse.save();
-		for (const [key, value] of autoLightHouse.accumulatorDateGroups.entries()) {
-			console.log(key, value);
-		}
 	}
 	catch(e) {
 		req.flash("error", e.message);

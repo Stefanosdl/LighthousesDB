@@ -63,11 +63,24 @@
 							<td>
 									<%= led.accumulator[k] %>
 							</td>
-							
-							<% if(led.accumulatorDate[k] != undefined) { %>
-								<td><%= led.accumulatorDate[k]%></td>
-							<% } else { %>
-								<td> </td>
+							<% if(led.accumulatorDateGroups != undefined) { %>
+								<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+									<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+										<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+											<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
+										<% } else { %>
+											<td> </td>
+										<% } %>
+									<% } %>
+								<% } else { %>
+									<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+										<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+											<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
+										<% } else { %>
+											<td> </td>
+										<% } %>
+									<% } %>
+								<% } %>
 							<% } %>
 						<% } else { %>
 							<tr>
@@ -77,10 +90,24 @@
 								<td>
 									<%= led.accumulator[k] %>
 								</td>
-								<% if(led.accumulatorDate[k] != undefined) { %>
-									<td><%= led.accumulatorDate[k]%></td>
-								<% } else { %>
-									<td> </td>
+								<% if(led.accumulatorDateGroups != undefined) { %>
+									<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+										<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+											<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+												<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } else { %>
+										<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+											<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+												<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } %>
 								<% } %>
 							</tr>
 						<% } %>

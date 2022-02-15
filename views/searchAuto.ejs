@@ -156,31 +156,7 @@
 							<td>
 								<%= auto.accumulator[k] %>
 							</td>
-							<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
-								<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
-									<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
-										<td><%= auto.accumulatorDateGroups.get(k.toString())[i]%></td>
-									<% } else { %>
-										<td> </td>
-									<% } %>
-								<% } %>
-							<% } else { %>
-								<% for (var j = 0; j < auto.accumulatorDateGroups.get(k.toString()).length; j++) { %>
-									<% if(auto.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
-										<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
-									<% } else { %>
-										<td> </td>
-									<% } %>
-								<% } %>
-							<% } %>
-						<% } else { %>
-							<tr>
-								<td>
-									
-								</td>
-								<td>
-									<%= auto.accumulator[k] %>
-								</td>
+							<% if(auto.accumulatorDateGroups != undefined { %>
 								<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
 									<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
 										<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
@@ -195,6 +171,34 @@
 											<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
 										<% } else { %>
 											<td> </td>
+										<% } %>
+									<% } %>
+								<% } %>							
+							<% } %>
+						<% } else { %>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= auto.accumulator[k] %>
+								</td>
+								<% if(auto.accumulatorDateGroups != undefined { %>
+									<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+										<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+											<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+												<td><%= auto.accumulatorDateGroups.get(k.toString())[i]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } else { %>
+										<% for (var j = 0; j < auto.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+											<% if(auto.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+												<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
 										<% } %>
 									<% } %>
 								<% } %>
