@@ -105,7 +105,7 @@ app.get("/search", catchAsync(async (req, res, next) => {
                     req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                     res.redirect('/');
                 }
-                else{
+                else {
                     res.render("searchAuto", { searchedAuto , maxCountAuto});
                 }
             }
