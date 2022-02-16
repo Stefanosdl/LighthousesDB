@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const LedLightSchema = new Schema({
-    aef: String,
+    aef: {
+        type: String,
+        unique: true
+    },
     lighthouse: String,
     features: String,
     location: String,

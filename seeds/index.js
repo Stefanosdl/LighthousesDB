@@ -25,6 +25,11 @@ const seedDB = async () => {
     // await AutoLight.deleteMany({});
     // const auto = await AutoLight.findById("61e3bc104500476fb046db92");
 
+    var array1 = ["1", "2134231432"]
+    var array2 = ["aqsdrewfr", "sdfef", "1"]
+
+    array1.splice(0, array1.length, ...array2);
+    console.log(array1)
     // var myMap = new Map();
 
     // myMap.set("1",["A"]);

@@ -1,12 +1,13 @@
 <% include ./partials/header %>
 
-<% for (let auto of searchedAuto){%>
-	<div class="container">
-		<h2 align="center">Στοιχεία Αυτόματου Φάρου</h2>
-		<div class="d-grid col-4 mx-auto">
-			<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
-		</div>
-		<br>
+<div class="container">
+	<h2 align="center">Στοιχεία Αυτόματου Φάρου</h2>
+	<div class="d-grid col-4 mx-auto">
+		<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+	</div>
+<br>
+	
+	<% for (let auto of searchedAuto) {%>
 		<% for (var i=0; i < auto.technicians.length; i++) { %>
 			<% if (auto.technicians[i].suggests !== undefined  && auto.technicians[i].suggests !== ""){%>
 				<div class="spinner-grow text-danger" role="status">
@@ -155,20 +156,22 @@
 									<%= auto.lamp[k] %>
 								</td>
 								<% if(auto.lampDateGroups != undefined) { %>
-									<% if(auto.lampDateGroups.get(k.toString()).length > 4) { %>
-										<% for (var i = auto.lampDateGroups.get(k.toString()).length - 4; i < auto.lampDateGroups.get(k.toString()).length; i++) { %>
-											<% if(auto.lampDateGroups.get(k.toString())[i] != undefined) { %>
-												<td><%= auto.lampDateGroups.get(k.toString())[i]%></td>
-											<% } else { %>
-												<td> </td>
+									<% if(auto.lampDateGroups.get(k.toString()) != undefined) { %>
+										<% if(auto.lampDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = auto.lampDateGroups.get(k.toString()).length - 4; i < auto.lampDateGroups.get(k.toString()).length; i++) { %>
+												<% if(auto.lampDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= auto.lampDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
-										<% } %>
-									<% } else { %>
-										<% for (var j = 0; j < auto.lampDateGroups.get(k.toString()).length; j++) { %>
-											<% if(auto.lampDateGroups.get(k.toString())[j] != undefined) { %>
-												<td><%= auto.lampDateGroups.get(k.toString())[j]%></td>
-											<% } else { %>
-												<td> </td>
+										<% } else { %>
+											<% for (var j = 0; j < auto.lampDateGroups.get(k.toString()).length; j++) { %>
+												<% if(auto.lampDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= auto.lampDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
 										<% } %>
 									<% } %>
@@ -185,33 +188,7 @@
 								<%= auto.accumulator[k] %>
 							</td>
 							<% if(auto.accumulatorDateGroups != undefined) { %>
-								<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
-									<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
-										<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
-											<td><%= auto.accumulatorDateGroups.get(k.toString())[i]%></td>
-										<% } else { %>
-											<td> </td>
-										<% } %>
-									<% } %>
-								<% } else { %>
-									<% for (var j = 0; j < auto.accumulatorDateGroups.get(k.toString()).length; j++) { %>
-										<% if(auto.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
-											<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
-										<% } else { %>
-											<td> </td>
-										<% } %>
-									<% } %>
-								<% } %>
-							<% } %>
-						<% } else { %>
-							<tr>
-								<td>
-									
-								</td>
-								<td>
-									<%= auto.accumulator[k] %>
-								</td>
-								<% if(auto.accumulatorDateGroups != undefined) { %>
+								<% if(auto.accumulatorDateGroups.get(k.toString()) != undefined) { %>
 									<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
 										<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
 											<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
@@ -226,6 +203,36 @@
 												<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
 											<% } else { %>
 												<td> </td>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= auto.accumulator[k] %>
+								</td>
+								<% if(auto.accumulatorDateGroups != undefined) { %>
+									<% if(auto.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= auto.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < auto.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(auto.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
 										<% } %>
 									<% } %>

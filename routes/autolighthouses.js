@@ -18,7 +18,7 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 			}
 		}
 		for(var i = 0; i < req.body.lamp.length; i++) {
-			if(req.body.lampDate[i] != undefined){
+			if(req.body.lampDate[i] != undefined) {
 				autoLighthouse.lampDateGroups.set(i.toString(), []);
 				autoLighthouse.lampDateGroups.get(i.toString()).push(req.body.lampDate[i]);
 			}
@@ -79,19 +79,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		const autoLightHouse = await AutoLight.findById(id);
 
-		var accum = new Array();
-		for (const item of req.body.accumulator) {
-			if(item != '' && item != undefined && item != null)
-				accum.push(item);
-		}
-		var lam = new Array();
-		for (const item of req.body.lamp) {
-			if(item != '' && item != undefined && item != null)
-				lam.push(item);
-		}
-
-		if(accum.length != 0)
-		autoLightHouse.accumulator.splice(0, autoLightHouse.accumulator.length, ...accum);
+		autoLightHouse.accumulator.splice(0, autoLightHouse.accumulator.length, ...req.body.accumulator);
 		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
 			autoLightHouse.accumulator.push(req.body.accumulatorNew);
 		}
@@ -114,8 +102,8 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 				}
 			}
 		}
-		if(lam.length != 0)
-		autoLightHouse.lamp.splice(0, autoLightHouse.lamp.length, ...lam);
+		
+		autoLightHouse.lamp.splice(0, autoLightHouse.lamp.length, ...req.body.lamp);
 		if(req.body.lampNew != undefined && req.body.lampNew != null && req.body.lampNew != ""){
 			autoLightHouse.lamp.push(req.body.lampNew);
 		}
@@ -213,6 +201,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	const solarString = "12V";
 	const socketString = "220V";
 	const autoLightHouses = await AutoLight.find({});
+	var heads = new Array();
 	var lamps = new Array();
 	var solarGenerators = new Array();
 	var accumulators = new Array();
@@ -221,7 +210,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var colours = new Array();
 	for (const item of autoLightHouses) {
 		lamps = item.lamp.map(str => str.toUpperCase());
-		lamps = lamps.concat(item.head.toUpperCase());
+		lamps = lamps.concat(item.lamp);
 		colours = colours.concat(item.colour.toUpperCase());
 		solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
 		accumulators = item.accumulator.map(str => str.toUpperCase());

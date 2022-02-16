@@ -77,14 +77,7 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		}
 		const ledLightHouse = await LedLight.findById(id);
 
-		var accum = new Array();
-		for (const item of req.body.accumulator) {
-			if(item != '' && item != undefined && item != null)
-				accum.push(item);
-		}
-
-		if(accum.length != 0)
-		ledLightHouse.accumulator.splice(0, ledLightHouse.accumulator.length, ...accum);
+		ledLightHouse.accumulator.splice(0, ledLightHouse.accumulator.length, ...req.body.accumulator);
 		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
 			ledLightHouse.accumulator.push(req.body.accumulatorNew);
 		}	

@@ -39,7 +39,7 @@
 			<% for (var i=0; i < autoLightHouse.lamp.length; i++) { %>
 				<div class="col-md-6">
 					<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
-					<input type="text" class="form-control" name="lamp" id="lamp" value="<%= autoLightHouse.lamp[i] %>">
+					<input type="text" class="form-control" name="lamp[]" id="lamp" value="<%= autoLightHouse.lamp[i] %>">
 				</div>
 				<div class="col-md-6">
 					<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
@@ -57,7 +57,7 @@
 			<% for (var i=0; i < autoLightHouse.accumulator.length; i++) { %>
 				<div class="col-md-6">
 					<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-					<input type="text" class="form-control" name="accumulator" id="accumulator" value="<%= autoLightHouse.accumulator[i] %>">
+					<input type="text" class="form-control" name="accumulator[]" id="accumulator" value="<%= autoLightHouse.accumulator[i] %>">
 				</div>
 				<div class="col-md-6">
 					<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
