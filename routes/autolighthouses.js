@@ -208,13 +208,23 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var generatorSockets = new Array();
 	var sockets = new Array();
 	var colours = new Array();
+
 	for (const item of autoLightHouses) {
-		lamps = item.lamp.map(str => str.toUpperCase());
-		lamps = lamps.concat(item.lamp);
-		colours = colours.concat(item.colour.toUpperCase());
-		solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
-		accumulators = item.accumulator.map(str => str.toUpperCase());
-		accumulators = accumulators.concat(item.accumulator);
+		if(item.head != "") {
+			heads = heads.concat(item.head.toUpperCase());
+		}
+		if(item.lamp != "") {
+			lamps = lamps.concat(item.lamp);
+		}
+		if(item.accumulator != "") {
+			accumulators = accumulators.concat(item.accumulator);
+		}
+		if(item.colour != "") {
+			colours = colours.concat(item.colour.toUpperCase());
+		}
+		if(item.solarGenerator != "") {
+			solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
+		}
 		if (item.generatorSocket.includes(solarString)) {
 			generatorSockets = generatorSockets.concat(item.generatorSocket.toUpperCase());
 		}
@@ -227,6 +237,8 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	colours.forEach(function(i) { coloursCount[i] = (coloursCount[i]||0) + 1;});
 	var lampsCount = {};
 	lamps.forEach(function(i) { lampsCount[i] = (lampsCount[i]||0) + 1;});
+	var headsCount = {};
+	heads.forEach(function(i) { headsCount[i] = (headsCount[i]||0) + 1;});
 	var solarGeneratorsCount = {};
 	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
 	var accumulatorsCount = {};
@@ -236,7 +248,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var socketsCount = {};
 	sockets.forEach(function(i) { socketsCount[i] = (socketsCount[i]||0) + 1;});
 
-    res.render("autoSum", {lampsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount});
+    res.render("autoSum", {lampsCount, headsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount});
 }));
 
 module.exports = router;

@@ -152,12 +152,20 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var solarGenerators = new Array();
 	var accumulators = new Array();
 	var colours = new Array();
+
 	for (const item of ledLightHouses) {
-		colours = colours.concat(item.colour.toUpperCase());
-		heads = heads.concat(item.head.toUpperCase());
-		solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
-		accumulators = item.accumulator.map(str => str.toUpperCase());
-		accumulators = accumulators.concat(item.accumulator);
+		if(item.head != "") {
+			heads = heads.concat(item.head.toUpperCase());
+		}
+		if(item.accumulator != "") {
+			accumulators = accumulators.concat(item.accumulator);
+		}
+		if(item.colour != "") {
+			colours = colours.concat(item.colour.toUpperCase());
+		}
+		if(item.solarGenerator != "") {
+			solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
+		}
 	}
 	
 	var headsCount = {};
