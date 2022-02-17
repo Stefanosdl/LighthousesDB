@@ -6,7 +6,7 @@
 		<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
 	</div>
 <br>
-	
+
 	<% for (let auto of searchedAuto) {%>
 		<% for (var i=0; i < auto.technicians.length; i++) { %>
 			<% if (auto.technicians[i].suggests !== undefined  && auto.technicians[i].suggests !== ""){%>
@@ -338,7 +338,7 @@
 		<div class="text-center">
 			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-				<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
 				<a href="/autoLighthouses/insertAuto/<%= auto._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
 				<a href="/autoLighthouses/technicians/<%= auto._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
 			  </div>
