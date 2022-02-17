@@ -3,6 +3,7 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const AutoLight = require("../models/autolighthouses");
 const Technician = require("../models/technician");
+const middleware = require("../utils/middleware");
 
 router.get("/registerAuto", (req, res) => {
 	res.render("registerAuto");
@@ -186,7 +187,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 	res.redirect(`/autoLighthouses/technicians/${req.params.id}`);		
 }));
 
-router.put("/deleteSuggest/:id", catchAsync(async (req, res, next) => {
+router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, res, next) => {
     const autoSuggests = await AutoLight.findById(req.params.id).populate({
 		path: "technicians",
 		match: { technician: { $eq: req.body.technician }, date: {$eq: req.body.date}, description: {$eq: req.body.description}, suggests: {$eq: req.body.suggests}},
