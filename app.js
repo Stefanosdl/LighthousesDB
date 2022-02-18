@@ -15,6 +15,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 
+const indexRoutes = require("./routes/index");
 const autoLighthouseRoutes = require("./routes/autolighthouses");
 const ledLighthouseRoutes = require("./routes/ledlighthouses");
 
@@ -65,7 +66,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: true,
+        secure: false,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -88,58 +89,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/", indexRoutes);
 app.use("/autoLighthouses", autoLighthouseRoutes);
 app.use("/ledLighthouses", ledLighthouseRoutes);
-
-app.get("/", (req, res) => {
-	res.render("index");
-});
-
-app.get("/search", catchAsync(async (req, res, next) => {
-	try {
-        const query = req.query.q;
-        var maxCountLed = 0;
-        var maxCountAuto = 0;
-        if (query){
-            const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query} ]}).populate("technicians");
-            if (searchedLed != undefined && searchedLed.length != 0) {
-                maxCountLed = maxDates.getMostDatesLed(searchedLed[0]);
-            }
-            if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query} ]}).populate("technicians");
-                if (searchedAuto != undefined && searchedAuto.length != 0) {
-                    maxCountAuto = maxDates.getMostDatesAuto(searchedAuto[0]);
-                }
-                
-                if(searchedAuto == undefined || searchedAuto.length == 0) {
-                    req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
-                    res.redirect('/');
-                }
-                else {
-                    res.render("searchAuto", { searchedAuto , maxCountAuto});
-                }
-            }
-            else {
-                res.render("searchLed", { searchedLed , maxCountLed});
-            }
-        }
-        else {
-            res.render("index");
-        }
-
-    }
-    catch (e) {
-        console.log(e.message);
-        req.flash("error", e.message);
-        res.redirect('/');
-    }
-}));
-
-app.get("/suggestedWorks", catchAsync(async (req, res, next) => {
-    const autoSuggests = await AutoLight.find({}).populate("technicians");
-    const ledSuggests = await LedLight.find({}).populate("technicians");
-	res.render("suggests", { autoSuggests, ledSuggests });
-}));
 
 app.listen(3000, () => {
     console.log("Listening in port 3000");

@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+
+<div class="container">
+	<div class="row justify-content-center mt-5">
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card shadow">
+				<div class="card-title text-center border-bottom">
+					<h2 class="p-3">Εγγραφή</h2>
+				</div>
+				<div class="card-body">
+					<form action="/register" method="POST">
+						<div class="mb-4">
+							<label for="username" class="form-label">Username</label>
+						<input type="text" class="form-control" name="username" id="username" />
+						</div>
+						<div class="mb-4">
+							<label for="password" class="form-label">Password</label>
+							<input type="password" class="form-control" name="password" id="password" />
+						</div>
+						<div class="text-center">
+							<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+							<button class="btn btn-outline-primary">Εγγραφή</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<% include ./partials/footer %>
