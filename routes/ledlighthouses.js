@@ -139,9 +139,6 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		if(req.body.socketDate != undefined && req.body.socketDate != null && req.body.socketDate != "" && !ledLightHouse.socketDate.includes(req.body.socketDate)){
 			ledLightHouse.socketDate.push(req.body.socketDate);
 		}
-		if(req.body.solarGenerator != undefined && req.body.solarGenerator != null && req.body.solarGenerator != ""){
-			ledLightHouse.solarGenerator = req.body.solarGenerator;
-		}
 		if(req.body.head != undefined && req.body.head != null && req.body.head != ""){
 			ledLightHouse.head = req.body.head;
 		}
