@@ -12,7 +12,7 @@ const LedLightSchema = new Schema({
     position: String,
     colour: String,
     sections: String,
-    solarGenerator: String,
+    solarGenerator: [String],
     solarGeneratorDate: {
         type: Array,
         default: [Date]
@@ -38,6 +38,9 @@ const LedLightSchema = new Schema({
         default: [Date]
     },
     accumulatorDateGroups: {
+        type: Map
+    },
+    solarGeneratorDateGroups: {
         type: Map
     },
     technicians: [{

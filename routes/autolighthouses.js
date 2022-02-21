@@ -11,7 +11,7 @@ router.get("/registerAuto", (req, res) => {
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
-		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}, lampDateGroups : {}});
+		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}, lampDateGroups : {}, solarGeneratorDateGroups : {}});
 		for(var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != ""){
 				autoLighthouse.accumulatorDateGroups.set(i.toString(), []);
@@ -22,6 +22,12 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 			if(req.body.lampDate[i] != undefined && req.body.lampDate[i] != "") {
 				autoLighthouse.lampDateGroups.set(i.toString(), []);
 				autoLighthouse.lampDateGroups.get(i.toString()).push(req.body.lampDate[i]);
+			}
+		}
+		for(var i = 0; i < req.body.solarGenerator.length; i++) {
+			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != "") {
+				autoLighthouse.solarGeneratorDateGroups.set(i.toString(), []);
+				autoLighthouse.solarGeneratorDateGroups.get(i.toString()).push(req.body.solarGeneratorDate[i]);
 			}
 		}
 		
@@ -90,8 +96,8 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		for (var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
 				var flag = true;
-				for(var temp = 0; i < req.body.accumulatorDate.length; i++) {
-					if(!autoLightHouse.accumulatorDate.includes(req.body.accumulatorDate[i])) {
+				for(var temp = 0; temp < req.body.accumulatorDate.length; temp++) {
+					if(!autoLightHouse.accumulatorDate.includes(req.body.accumulatorDate[temp])) {
 						flag = false;
 					}
 				}
@@ -114,8 +120,8 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		for (var i = 0; i < req.body.lamp.length; i++) {
 			if(req.body.lampDate[i] != undefined && req.body.lampDate[i] != null && req.body.lampDate[i] != "" && !autoLightHouse.lampDate.includes(req.body.lampDate)){
 				var flag = true;
-				for(var temp = 0; i < req.body.lampDate.length; i++) {
-					if(!autoLightHouse.lampDate.includes(req.body.lampDate[i])) {
+				for(var temp = 0; temp < req.body.lampDate.length; temp++) {
+					if(!autoLightHouse.lampDate.includes(req.body.lampDate[temp])) {
 						flag = false;
 					}
 				}
@@ -127,11 +133,32 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 				}
 			}
 		}
+
+		autoLightHouse.solarGenerator.splice(0, autoLightHouse.solarGenerator.length, ...req.body.solarGenerator);
+		if(req.body.solarGeneratorNew != undefined && req.body.solarGeneratorNew != null && req.body.solarGeneratorNew != ""){
+			autoLightHouse.solarGenerator.push(req.body.solarGeneratorNew);
+		}
+		if(req.body.solarGeneratorDateNew != undefined && req.body.solarGeneratorDateNew != null && req.body.solarGeneratorDateNew != ""){
+			autoLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDateNew);
+		}
+		for (var i = 0; i < req.body.solarGenerator.length; i++) {
+			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != null && req.body.solarGeneratorDate[i] != "" && !autoLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate)){
+				var flag = true;
+				for(var temp = 0; temp < req.body.solarGeneratorDate.length; temp++) {
+					if(!autoLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate[temp])) {
+						flag = false;
+					}
+				}
+				if(!flag) {
+					if(autoLightHouse.solarGeneratorDateGroups.get(i.toString()) === undefined) {
+						autoLightHouse.solarGeneratorDateGroups.set(i.toString(), []);
+					}
+					autoLightHouse.solarGeneratorDateGroups.set(i.toString(), [req.body.solarGeneratorDate[i].toString(), ...autoLightHouse.solarGeneratorDateGroups.get(i.toString())]);
+				}
+			}
+		}
 		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != "" && !autoLightHouse.lighterDate.includes(req.body.lighterDate)){
 			autoLightHouse.lighterDate.push(req.body.lighterDate);
-		}
-		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != "" && !autoLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate)){
-			autoLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
 		}
 		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != "" && !autoLightHouse.headDate.includes(req.body.headDate)){
 			autoLightHouse.headDate.push(req.body.headDate);
@@ -159,9 +186,6 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		if(req.body.lighter != undefined && req.body.lighter != null && req.body.lighter != ""){
 			autoLightHouse.lighter = req.body.lighter;
-		}
-		if(req.body.solarGenerator != undefined && req.body.solarGenerator != null && req.body.solarGenerator != ""){
-			autoLightHouse.solarGenerator = req.body.solarGenerator;
 		}
 		if(req.body.head != undefined && req.body.head != null && req.body.head != ""){
 			autoLightHouse.head = req.body.head;
@@ -224,7 +248,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 			colours = colours.concat(item.colour.toUpperCase());
 		}
 		if(item.solarGenerator != "") {
-			solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
+			solarGenerators = solarGenerators.concat(item.solarGenerator);
 		}
 		if (item.generatorSocket.includes(solarString)) {
 			generatorSockets = generatorSockets.concat(item.generatorSocket.toUpperCase());

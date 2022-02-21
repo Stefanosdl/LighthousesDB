@@ -11,11 +11,15 @@ router.get("/registerLed", (req, res) => {
 
 router.post("/registerLed", catchAsync(async (req, res, next) => {
     try {
-		const ledLighthouse = new LedLight({ ...req.body , accumulatorDateGroups : {}});
+		const ledLighthouse = new LedLight({ ...req.body , accumulatorDateGroups : {}, solarGeneratorDateGroups : {}});
 		for(var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != ""){
 				ledLighthouse.accumulatorDateGroups.set(i.toString(), []);
 				ledLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
+			}
+			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != ""){
+				ledLighthouse.solarGeneratorDateGroups.set(i.toString(), []);
+				ledLighthouse.solarGeneratorDateGroups.get(i.toString()).push(req.body.solarGeneratorDate[i]);
 			}
 		}
         await ledLighthouse.save();
@@ -89,8 +93,8 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		for (var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
 				var flag = true;
-				for(var temp = 0; i < req.body.accumulatorDate.length; i++) {
-					if(!ledLightHouse.accumulatorDate.includes(req.body.accumulatorDate[i])) {
+				for(var temp = 0; temp < req.body.accumulatorDate.length; temp++) {
+					if(!ledLightHouse.accumulatorDate.includes(req.body.accumulatorDate[temp])) {
 						flag = false;
 					}
 				}
@@ -102,8 +106,29 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 				}
 			}
 		}
-		if(req.body.solarGeneratorDate != undefined && req.body.solarGeneratorDate != null && req.body.solarGeneratorDate != "" && !ledLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate)){
-			ledLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDate);
+
+		ledLightHouse.solarGenerator.splice(0, ledLightHouse.solarGenerator.length, ...req.body.solarGenerator);
+		if(req.body.solarGeneratorNew != undefined && req.body.solarGeneratorNew != null && req.body.solarGeneratorNew != ""){
+			ledLightHouse.solarGenerator.push(req.body.solarGeneratorNew);
+		}	
+		if(req.body.solarGeneratorDateNew != undefined && req.body.solarGeneratorDateNew != null && req.body.solarGeneratorDateNew != ""){
+			ledLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDateNew);
+		}
+		for (var i = 0; i < req.body.solarGenerator.length; i++) {
+			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != null && req.body.solarGeneratorDate[i] != ""){
+				var flag = true;
+				for(var temp = 0; temp < req.body.solarGeneratorDate.length; temp++) {
+					if(!ledLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate[temp])) {
+						flag = false;
+					}
+				}
+				if(!flag) {
+					if(ledLightHouse.solarGeneratorDateGroups.get(i.toString()) === undefined) {
+						ledLightHouse.solarGeneratorDateGroups.set(i.toString(), []);
+					}
+					ledLightHouse.solarGeneratorDateGroups.set(i.toString(), [req.body.solarGeneratorDate[i].toString(), ...ledLightHouse.accumulatorDateGroups.get(i.toString())]);
+				}
+			}
 		}
 		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != "" && !ledLightHouse.headDate.includes(req.body.headDate)){
 			ledLightHouse.headDate.push(req.body.headDate);
@@ -166,7 +191,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 			colours = colours.concat(item.colour.toUpperCase());
 		}
 		if(item.solarGenerator != "") {
-			solarGenerators = solarGenerators.concat(item.solarGenerator.toUpperCase());
+			solarGenerators = solarGenerators.concat(item.solarGenerator);
 		}
 	}
 	

@@ -22,7 +22,7 @@ const AutoLightSchema = new Schema({
         type: Array,
         default: [Date]
     },
-    solarGenerator: String,
+    solarGenerator: [String],
     solarGeneratorDate: {
         type: Array,
         default: [Date]
@@ -66,6 +66,9 @@ const AutoLightSchema = new Schema({
         type: Map
     },
     lampDateGroups: {
+        type: Map
+    },
+    solarGeneratorDateGroups: {
         type: Map
     },
     technicians: [{

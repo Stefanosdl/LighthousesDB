@@ -13,13 +13,30 @@
 				<input type="date" class="form-control" name="lighterDate" id="lighterDate" value="<%= autoLightHouse.lighterDate.pop() %>">
 			</div>
 			<div class="col-md-6">
-				<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-				<input type="text" class="form-control" name="solarGenerator" id="solarGenerator" value="<%= autoLightHouse.solarGenerator %>">
+				<label for="solarGeneratorNew" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
+				<input type="text" class="form-control" name="solarGeneratorNew" id="solarGeneratorNew">
 			</div>
             <div class="col-md-6">
-				<label for="solarGeneratorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate" value="<%= autoLightHouse.solarGeneratorDate.pop() %>">
+				<label for="solarGeneratorDateNew" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="solarGeneratorDateNew" id="solarGeneratorDateNew">
 			</div>
+			<% for (var i=0; i < autoLightHouse.solarGenerator.length; i++) { %>
+				<div class="col-md-6">
+					<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
+					<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator" value="<%= autoLightHouse.solarGenerator[i] %>">
+				</div>
+				<% if(autoLightHouse.solarGeneratorDateGroups.get(i.toString()) != undefined) { %>
+					<div class="col-md-6">
+						<label for="solarGeneratorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+						<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate" value="<%= autoLightHouse.solarGeneratorDateGroups.get(i.toString())[autoLightHouse.solarGeneratorDateGroups.get(i.toString()).length-1] %>">
+					</div>
+				<% } else { %>
+					<div class="col-md-6">
+						<label for="solarGeneratorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+						<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate">
+					</div>
+				<% } %>
+			<% } %>
 			<div class="col-md-6">
 				<label for="alternator" class="form-label">ΕΝΑΛΛΑΚΤΗΣ</label>
 				<input type="text" class="form-control" name="alternator" id="alternator" value="<%= autoLightHouse.alternator %>">

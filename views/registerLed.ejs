@@ -31,13 +31,14 @@
 				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
 				<input type="text" class="form-control" name="location" id="location">
 			</div>
-			<div class="col-md-6">
-				<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-				<input type="text" class="form-control" name="solarGenerator" id="solarGenerator">
+			<div class="col-md-6" id="fieldListSolar">
+				<label for="solarGenerator[]" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
+				<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator">
+				<button class="btn btn-primary" id="addMoreSolar">Προσθήκη Ηλιακής Γεννήτριας</button>
 			</div>
             <div class="col-md-6">
-				<label for="solarGeneratorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="solarGeneratorDate" id="solarGeneratorDate">
+				<label for="solarGeneratorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate">
 			</div>
 			<div class="col-md-6" id="fieldList">
 				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
@@ -97,4 +98,21 @@
 		});
 	});
 </script>
+<script>
+	$(function() {
+		$("#addMoreSolar").click(function(e) {
+			e.preventDefault();
+			$("#fieldListSolar").append("<br>");
+			$("#fieldListSolar").append("<div class='col-md-6'");
+			$("#fieldListSolar").append("<label for='SolarGenerator' class='form-label'>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>");
+			$("#fieldListSolar").append("<input type='text' class='form-control' name='SolarGenerator' id='SolarGenerator'>");
+			$("#fieldListSolar").append("</div>");
+			$("#fieldListSolar").append("<div class='col-md-6'>");
+			$("#fieldListSolar").append("<label for='SolarGeneratorDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
+			$("#fieldListSolar").append("<input type='date' class='form-control' name='SolarGeneratorDate' id='SolarGeneratorDate'>");
+			$("#fieldListSolar").append("</div>");
+		});
+	});
+</script>
+
 <% include ./partials/footer %>
