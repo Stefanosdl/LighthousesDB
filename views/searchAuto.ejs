@@ -129,20 +129,22 @@
 								<%= auto.lamp[k] %>
 							</td>
 							<% if(auto.lampDateGroups != undefined) { %>
-								<% if(auto.lampDateGroups.get(k.toString()).length > 4) { %>
-									<% for (var i = auto.lampDateGroups.get(k.toString()).length - 4; i < auto.lampDateGroups.get(k.toString()).length; i++) { %>
-										<% if(auto.lampDateGroups.get(k.toString())[i] != undefined) { %>
-											<td><%= auto.lampDateGroups.get(k.toString())[i]%></td>
-										<% } else { %>
-											<td> </td>
+								<% if(auto.lampDateGroups.get(k.toString()) != undefined) { %>
+									<% if(auto.lampDateGroups.get(k.toString()).length > 4) { %>
+										<% for (var i = auto.lampDateGroups.get(k.toString()).length - 4; i < auto.lampDateGroups.get(k.toString()).length; i++) { %>
+											<% if(auto.lampDateGroups.get(k.toString())[i] != undefined) { %>
+												<td><%= auto.lampDateGroups.get(k.toString())[i]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
 										<% } %>
-									<% } %>
-								<% } else { %>
-									<% for (var j = 0; j < auto.lampDateGroups.get(k.toString()).length; j++) { %>
-										<% if(auto.lampDateGroups.get(k.toString())[j] != undefined) { %>
-											<td><%= auto.lampDateGroups.get(k.toString())[j]%></td>
-										<% } else { %>
-											<td> </td>
+									<% } else { %>
+										<% for (var j = 0; j < auto.lampDateGroups.get(k.toString()).length; j++) { %>
+											<% if(auto.lampDateGroups.get(k.toString())[j] != undefined) { %>
+												<td><%= auto.lampDateGroups.get(k.toString())[j]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
 										<% } %>
 									<% } %>
 								<% } %>

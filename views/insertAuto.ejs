@@ -41,10 +41,17 @@
 					<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
 					<input type="text" class="form-control" name="lamp[]" id="lamp" value="<%= autoLightHouse.lamp[i] %>">
 				</div>
-				<div class="col-md-6">
-					<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-					<input type="date" class="form-control" name="lampDate[]" id="lampDate" value="<%= autoLightHouse.lampDateGroups.get(i.toString())[autoLightHouse.lampDateGroups.get(i.toString()).length-1] %>">
-				</div>
+				<% if(autoLightHouse.lampDateGroups.get(i.toString()) != undefined) { %>
+					<div class="col-md-6">
+						<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+						<input type="date" class="form-control" name="lampDate[]" id="lampDate" value="<%= autoLightHouse.lampDateGroups.get(i.toString())[autoLightHouse.lampDateGroups.get(i.toString()).length-1] %>">
+					</div>
+				<% } else { %>
+					<div class="col-md-6">
+						<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+						<input type="date" class="form-control" name="lampDate[]" id="lampDate">
+					</div>
+				<% } %>
 			<% } %>
 			<div class="col-md-6">
 				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>

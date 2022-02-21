@@ -19,7 +19,7 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 			}
 		}
 		for(var i = 0; i < req.body.lamp.length; i++) {
-			if(req.body.lampDate[i] != undefined) {
+			if(req.body.lampDate[i] != undefined && req.body.lampDate[i] != "") {
 				autoLighthouse.lampDateGroups.set(i.toString(), []);
 				autoLighthouse.lampDateGroups.get(i.toString()).push(req.body.lampDate[i]);
 			}
