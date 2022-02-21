@@ -138,22 +138,60 @@
 				</tr>
 				<tr>
 					<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
-					<td><%= led.solarGenerator %></td>
-					<% if (led.solarGeneratorDate.length > 4) { %>
-						<% for (var i = led.solarGeneratorDate.length - 4; i < led.solarGeneratorDate.length; i++) { %>
-							<% if(led.solarGeneratorDate[i] != undefined) { %>
-								<td><%= led.solarGeneratorDate[i]%></td>
-							<% } else { %>
-								<td> </td>
+					<% for (var k = 0; k < led.solarGenerator.length; k++) { %>
+						<% if(k == 0) { %>
+							<td>
+									<%= led.solarGenerator[k] %>
+							</td>
+							<% if(led.solarGeneratorDateGroups != undefined) { %>
+								<% if(led.solarGeneratorDateGroups.get(k.toString()) != undefined) { %>
+									<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+										<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+											<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+												<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } else { %>
+										<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+											<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+												<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
 							<% } %>
-						<% } %>
-					<% } else { %>
-						<% for (var k = 0; k < led.solarGeneratorDate.length; k++) { %>
-							<% if(led.solarGeneratorDate[k] != undefined) { %>
-								<td><%= led.solarGeneratorDate[k]%></td>
-							<% } else { %>
-								<td> </td>
-							<% } %>
+						<% } else { %>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= led.solarGenerator[k] %>
+								</td>
+								<% if(led.solarGeneratorDateGroups != undefined) { %>
+									<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+										<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+											<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+												<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } else { %>
+										<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+											<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+												<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+											<% } else { %>
+												<td> </td>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							</tr>
 						<% } %>
 					<% } %>
 				</tr>
