@@ -13,7 +13,7 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
 		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}, lampDateGroups : {}});
 		for(var i = 0; i < req.body.accumulator.length; i++) {
-			if(req.body.accumulatorDate[i] != undefined){
+			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != ""){
 				autoLighthouse.accumulatorDateGroups.set(i.toString(), []);
 				autoLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
 			}

@@ -13,7 +13,7 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
     try {
 		const ledLighthouse = new LedLight({ ...req.body , accumulatorDateGroups : {}});
 		for(var i = 0; i < req.body.accumulator.length; i++) {
-			if(req.body.accumulatorDate[i] != undefined){
+			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != ""){
 				ledLighthouse.accumulatorDateGroups.set(i.toString(), []);
 				ledLighthouse.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
 			}

@@ -3,7 +3,9 @@ const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
 const passport = require("passport")
 const User = require("../models/user");
-const middleware = require("../utils/middleware");
+const LedLight = require("../models/ledlighthouses");
+const AutoLight = require("../models/autolighthouses");
+const maxDates = require("../utils/calculateMaxDates");
 
 router.get("/", (req, res) => {
 	res.render("index");
@@ -76,7 +78,6 @@ router.get("/search", catchAsync(async (req, res, next) => {
 
     }
     catch (e) {
-        console.log(e.message);
         req.flash("error", e.message);
         res.redirect('/');
     }

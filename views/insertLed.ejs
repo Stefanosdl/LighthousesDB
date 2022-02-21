@@ -21,14 +21,17 @@
 				<input type="date" class="form-control" name="accumulatorDateNew" id="accumulatorDateNew">
 			</div>
 			<% for (var i=0; i < ledLightHouse.accumulator.length; i++) { %>
-				<div class="col-md-6">
-					<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-					<input type="text" class="form-control" name="accumulator[]" id="accumulator" value="<%= ledLightHouse.accumulator[i] %>">
-				</div>
-				<div class="col-md-6">
-					<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= ledLightHouse.accumulatorDateGroups.get(i.toString())[ledLightHouse.accumulatorDateGroups.get(i.toString()).length-1] %>">
-				</div>
+				<% if(ledLightHouse.accumulatorDateGroups.get(i.toString()) != undefined) { %>
+					<div class="col-md-6">
+						<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+						<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= ledLightHouse.accumulatorDateGroups.get(i.toString())[ledLightHouse.accumulatorDateGroups.get(i.toString()).length-1] %>">
+					</div>
+				<% } else { %>
+					<div class="col-md-6">
+						<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+						<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+					</div>
+				<% } %>
 			<% } %>
 			<div class="col-md-6">
 				<label for="head" class="form-label">ΚΕΦΑΛΗ</label>
