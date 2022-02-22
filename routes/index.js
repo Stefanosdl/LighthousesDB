@@ -5,7 +5,6 @@ const passport = require("passport")
 const User = require("../models/user");
 const LedLight = require("../models/ledlighthouses");
 const AutoLight = require("../models/autolighthouses");
-const maxDates = require("../utils/calculateMaxDates");
 
 router.get("/", (req, res) => {
 	res.render("index");

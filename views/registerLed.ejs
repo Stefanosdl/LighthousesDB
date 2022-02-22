@@ -81,6 +81,7 @@
 	</div>
 </div>
 <br>
+
 <script>
 	$(function() {
 		$("#addMore").click(function(e) {
@@ -97,18 +98,19 @@
 		});
 	});
 </script>
+
 <script>
 	$(function() {
 		$("#addMoreSolar").click(function(e) {
 			e.preventDefault();
 			$("#fieldListSolar").append("<br>");
 			$("#fieldListSolar").append("<div class='col-md-6'");
-			$("#fieldListSolar").append("<label for='SolarGenerator' class='form-label'>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>");
-			$("#fieldListSolar").append("<input type='text' class='form-control' name='SolarGenerator' id='SolarGenerator'>");
+			$("#fieldListSolar").append("<label for='solarGenerator' class='form-label'>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>");
+			$("#fieldListSolar").append("<input type='text' class='form-control' name='solarGenerator' id='solarGenerator'>");
 			$("#fieldListSolar").append("</div>");
 			$("#fieldListSolar").append("<div class='col-md-6'>");
-			$("#fieldListSolar").append("<label for='SolarGeneratorDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
-			$("#fieldListSolar").append("<input type='date' class='form-control' name='SolarGeneratorDate' id='SolarGeneratorDate'>");
+			$("#fieldListSolar").append("<label for='solarGeneratorDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
+			$("#fieldListSolar").append("<input type='date' class='form-control' name='solarGeneratorDate' id='solarGeneratorDate'>");
 			$("#fieldListSolar").append("</div>");
 		});
 	});

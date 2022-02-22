@@ -57,10 +57,10 @@ function getEarliestDate(array) {
     var latest = array[0];
     var index = 0;
 
-    for(var i=0;i<array.length;i++){
+    for(var i=0; i < array.length; i++) {
 
         // if the date coming from array position is ahead then set latest to this array element
-        if (array[i] < latest){
+        if (array[i] < latest) {
             latest = array[i];
             index = i;
         }

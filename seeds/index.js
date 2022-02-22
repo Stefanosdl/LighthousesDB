@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { findById } = require("../models/autolighthouses");
 const AutoLight = require("../models/autolighthouses");
 const LedLight = require("../models/ledlighthouses");
 const Technician = require("../models/technician");
@@ -48,4 +47,4 @@ const seedDB = async () => {
 
 seedDB().then(() => {
     mongoose.connection.close();
-})
+});
