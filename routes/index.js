@@ -51,25 +51,18 @@ router.get("/search", catchAsync(async (req, res, next) => {
         var maxCountAuto = 0;
         if (query){
             const searchedLed = await LedLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");
-            if (searchedLed != undefined && searchedLed.length != 0) {
-                maxCountLed = maxDates.getMostDatesLed(searchedLed[0]);
-            }
             if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");
-                if (searchedAuto != undefined && searchedAuto.length != 0) {
-                    maxCountAuto = maxDates.getMostDatesAuto(searchedAuto[0]);
-                }
-                
+                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");                
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
                     req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                     res.redirect('/');
                 }
                 else {
-                    res.render("searchAuto", { searchedAuto , maxCountAuto});
+                    res.render("searchAuto", { searchedAuto});
                 }
             }
             else {
-                res.render("searchLed", { searchedLed , maxCountLed});
+                res.render("searchLed", { searchedLed});
             }
         }
         else {
