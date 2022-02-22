@@ -50,12 +50,12 @@ router.get("/search", catchAsync(async (req, res, next) => {
         var maxCountLed = 0;
         var maxCountAuto = 0;
         if (query){
-            const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query} ]}).populate("technicians");
+            const searchedLed = await LedLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");
             if (searchedLed != undefined && searchedLed.length != 0) {
                 maxCountLed = maxDates.getMostDatesLed(searchedLed[0]);
             }
             if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query} ]}).populate("technicians");
+                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");
                 if (searchedAuto != undefined && searchedAuto.length != 0) {
                     maxCountAuto = maxDates.getMostDatesAuto(searchedAuto[0]);
                 }
@@ -73,7 +73,9 @@ router.get("/search", catchAsync(async (req, res, next) => {
             }
         }
         else {
-            res.render("index");
+            const searchedLed = await LedLight.find().populate("technicians");
+            const searchedAuto = await AutoLight.find().populate("technicians");
+            res.render("search", {searchedAuto, searchedLed});
         }
 
     }

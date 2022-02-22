@@ -1,12 +1,12 @@
 <% include ./partials/header %>
 
-<div class="container">
-	<h2 align="center">Στοιχεία LED Φάρου</h2>
-	<div class="d-grid col-4 mx-auto">
-		<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
-	</div>
-<br>
-	<% for (let led of searchedLed) {%>
+<% for (let led of searchedLed) {%>
+	<div class="container">
+		<h2 align="center">Στοιχεία LED Φάρου</h2>
+		<div class="d-grid col-4 mx-auto">
+			<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+		</div>
+	<br>
 		<% for (var i=0; i < led.technicians.length; i++) { %>
 			<% if (led.technicians[i].suggests !== undefined && led.technicians[i].suggests !== ""){%>
 				<div class="spinner-grow text-danger" role="status">
@@ -227,6 +227,7 @@
 			  </div>
 		</div>
 	</div>
+<br>
 <% } %>
 
 <% include ./partials/footer %>

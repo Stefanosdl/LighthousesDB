@@ -41,6 +41,12 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 	}
 }));
 
+router.post("/search/:id", catchAsync(async (req, res) => {
+	const searchedAuto = await AutoLight.find({_id: req.params.id}).populate("technicians");
+	
+	res.render("searchAuto", { searchedAuto});
+}));
+
 router.get("/technicians/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
 	
