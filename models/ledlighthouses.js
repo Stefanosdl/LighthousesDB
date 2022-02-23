@@ -12,6 +12,7 @@ const LedLightSchema = new Schema({
     position: String,
     colour: String,
     sections: String,
+    dateModified: String,
     solarGenerator: [String],
     solarGeneratorDate: {
         type: Array,

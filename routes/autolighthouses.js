@@ -4,6 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const AutoLight = require("../models/autolighthouses");
 const Technician = require("../models/technician");
 const middleware = require("../utils/middleware");
+const moment = require("moment");
 
 router.get("/registerAuto", (req, res) => {
 	res.render("registerAuto");
@@ -30,7 +31,10 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 				autoLighthouse.solarGeneratorDateGroups.get(i.toString()).push(req.body.solarGeneratorDate[i]);
 			}
 		}
-		
+
+		moment.locale('el');
+		autoLighthouse.dateModified = moment().format('LL');
+
         await autoLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -205,6 +209,9 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.photocell != undefined && req.body.photocell != null && req.body.photocell != ""){
 			autoLightHouse.photocell = req.body.photocell;
 		}
+		
+		moment.locale('el');
+		autoLighthouse.dateModified = moment().format('LL');
 		
 		await autoLightHouse.save();
 	}

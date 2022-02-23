@@ -46,12 +46,10 @@ router.get("/logout", (req,res) =>{
 router.get("/search", catchAsync(async (req, res, next) => {
 	try {
         const query = req.query.q;
-        var maxCountLed = 0;
-        var maxCountAuto = 0;
         if (query){
-            const searchedLed = await LedLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");
+            const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {location: query} ]}).populate("technicians");                
+                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");                
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
                     req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                     res.redirect('/');
@@ -65,8 +63,8 @@ router.get("/search", catchAsync(async (req, res, next) => {
             }
         }
         else {
-            const searchedLed = await LedLight.find().populate("technicians");
-            const searchedAuto = await AutoLight.find().populate("technicians");
+            const searchedLed = await LedLight.find({}).populate("technicians");
+            const searchedAuto = await AutoLight.find({}).populate("technicians");
             res.render("search", {searchedAuto, searchedLed});
         }
 

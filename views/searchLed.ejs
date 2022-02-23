@@ -1,7 +1,9 @@
 <% include ./partials/header %>
 
-<% for (let led of searchedLed) {%>
+<% for (let led of searchedLed) { %>
+	
 	<div class="container">
+		<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= led.dateModified %></strong></p>
 		<h2 align="center">Στοιχεία Πυρσού LED</h2>
 		<div class="d-grid col-4 mx-auto">
 			<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>

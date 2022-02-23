@@ -4,6 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const LedLight = require("../models/ledlighthouses");
 const Technician = require("../models/technician");
 const middleware = require("../utils/middleware");
+const moment = require("moment");
 
 router.get("/registerLed", (req, res) => {
 	res.render("registerLed");
@@ -22,6 +23,9 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
 				ledLighthouse.solarGeneratorDateGroups.get(i.toString()).push(req.body.solarGeneratorDate[i]);
 			}
 		}
+		moment.locale('el');
+		ledLightHouse.dateModified = moment().format('LL');
+
         await ledLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -148,6 +152,9 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		if(req.body.socket != undefined && req.body.socket != null && req.body.socket != ""){
 			ledLightHouse.socket = req.body.socket;
 		}
+		moment.locale('el');
+		ledLightHouse.dateModified = moment().format('LL');
+
 		await ledLightHouse.save();
 	}
 	catch(e) {
