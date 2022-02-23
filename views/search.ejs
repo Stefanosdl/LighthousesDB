@@ -18,7 +18,46 @@
         </div>
     </div>
 <% } %>
+
 <br>
+
+<% for (var i=0; i < searchedLed.length; i++) { %>
+    <div class="container">
+        <div class="row">
+            <form action="/ledLighthouses/search/<%= searchedLed[i]._id %>" method="POST" class="row g-3">
+                <div class="card mb-3 mx-auto" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLed[i].aef %></strong></li>
+                            <li class="list-group-item"><strong>ΟΝΟΜΑΣΙΑ: <%= searchedLed[i].lighthouse %></strong></li>
+                            <button class="btn btn-primary" type="submit">Στοιχεία Φάρου/Πυρσού</button>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<% } %>
+
+<br>
+
+<% for (var i=0; i < searchedConstant.length; i++) { %>
+    <div class="container">
+        <div class="row">
+            <form action="/constantLighthouses/search/<%= searchedConstant[i]._id %>" method="POST" class="row g-3">
+                <div class="card mb-3 mx-auto" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedConstant[i].aef %></strong></li>
+                            <li class="list-group-item"><strong>ΟΝΟΜΑΣΙΑ: <%= searchedConstant[i].lighthouse %></strong></li>
+                            <button class="btn btn-primary" type="submit">Στοιχεία Φάρου/Πυρσού</button>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<% } %>
 
 <div class="container">
 	<div class="row">

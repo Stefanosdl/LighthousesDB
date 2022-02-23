@@ -5,6 +5,7 @@ const passport = require("passport")
 const User = require("../models/user");
 const LedLight = require("../models/ledlighthouses");
 const AutoLight = require("../models/autolighthouses");
+const ConstantLight = require("../models/constantlighthouses");
 
 router.get("/", (req, res) => {
 	res.render("index");
@@ -49,10 +50,16 @@ router.get("/search", catchAsync(async (req, res, next) => {
         if (query){
             const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");                
+                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
-                    req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
-                    res.redirect('/');
+                    const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
+                    if(searchedConstant == undefined || searchedConstant.length == 0) { 
+                        req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
+                        res.redirect('/');
+                    }
+                    else {
+                        res.render("searchConstant", { searchedConstant});
+                    }
                 }
                 else {
                     res.render("searchAuto", { searchedAuto});
@@ -65,7 +72,8 @@ router.get("/search", catchAsync(async (req, res, next) => {
         else {
             const searchedLed = await LedLight.find({}).populate("technicians");
             const searchedAuto = await AutoLight.find({}).populate("technicians");
-            res.render("search", {searchedAuto, searchedLed});
+            const searchedConstant = await ConstantLight.find({}).populate("technicians");
+            res.render("search", {searchedAuto, searchedLed, searchedConstant});
         }
 
     }

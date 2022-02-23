@@ -1,0 +1,63 @@
+<% include ./partials/header %>
+<div class="container">
+	<div class="row">
+		<h2 align="center">Νέος Σταθερός Πυρσός</h2>
+		<form action="/constantLighthouses/registerConstant" method="POST" class="row g-3">
+			<div class="col-md-6">
+				<label for="aef" class="form-label">ΑΕΦ</label>
+				<input type="text" class="form-control" name="aef" id="aef">
+			</div>
+			<div class="col-md-6">
+				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse">
+			</div>
+			<div class="col-md-6">
+				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
+				<input type="text" class="form-control" name="colour" id="colour">
+			</div>
+			<div class="col-md-6">
+				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
+				<input type="text" class="form-control" name="sections" id="sections">
+			</div>
+			<div class="col-md-6">
+				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="text" class="form-control" name="position" id="position">
+			</div>
+			<div class="col-md-6">
+				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
+				<input type="text" class="form-control" name="location" id="location">
+			</div>
+			<div class="col-md-6">
+				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
+				<input type="text" class="form-control" name="lamp" id="lamp">
+			</div>
+            <div class="col-md-6">
+				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="lampDate" id="lampDate">
+			</div>
+			<div class="col-md-6">
+				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
+				<input type="text" class="form-control" name="torchSocket" id="torchSocket">
+			</div>
+            <div class="col-md-6">
+				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate">
+			</div>
+			<div class="col-md-6">
+				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
+				<input type="text" class="form-control" name="accessory" id="accessory">
+			</div>
+            <div class="col-md-6">
+				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate">
+			</div>
+			<div class="text-center">
+				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+				<button class="btn btn-outline-primary">Εγγραφή</button>
+			</div>
+		</form>
+	</div>
+</div>
+<br>
+
+<% include ./partials/footer %>
