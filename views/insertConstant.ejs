@@ -1,0 +1,47 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <h2 align="center">Εισαγωγή Στοιχείων</h2>
+    <form action="/constantLighthouses/insertConstant/<%= constantLightHouse._id %>?_method=PUT" method="POST">
+        <div class="row">
+			<div class="col-md-6">
+				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
+				<input type="text" class="form-control" name="lamp" id="lamp">
+			</div>
+			<div class="col-md-6">
+				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="lampDate" id="lampDate">
+			</div>
+			<div class="col-md-6">
+				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
+				<input type="text" class="form-control" name="torchSocket" id="torchSocket" value="<%= constantLightHouse.torchSocket %>">
+			</div>
+            <div class="col-md-6">
+				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate" value="<%= constantLightHouse.torchSocketDate.pop() %>">
+			</div>
+			<div class="col-md-6">
+				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
+				<input type="text" class="form-control" name="accessory" id="accessory">
+			</div>
+            <div class="col-md-6">
+				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate" value="<%= constantLightHouse.accessoryDate.pop() %>">
+			</div>
+        </div>
+        
+        <br>
+        
+		<div class="text-center">
+			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+				<a href="/" class="btn btn-outline-primary float-left">Αρχική Σελίδα</a>
+                <button class="btn btn-outline-primary float-right" type="submit">Εισαγωγή στοιχείων</button>
+			</div>
+		</div>
+    </form>
+</div>
+<br>
+
+<% include ./partials/footer %>
