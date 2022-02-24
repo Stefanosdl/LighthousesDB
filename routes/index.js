@@ -6,6 +6,7 @@ const User = require("../models/user");
 const LedLight = require("../models/ledlighthouses");
 const AutoLight = require("../models/autolighthouses");
 const ConstantLight = require("../models/constantlighthouses");
+const LightBeacon = require("../models/lightbeacons");
 
 router.get("/", (req, res) => {
 	res.render("index");
@@ -53,9 +54,15 @@ router.get("/search", catchAsync(async (req, res, next) => {
                 const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
                 if(searchedAuto == undefined || searchedAuto.length == 0) {
                     const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
-                    if(searchedConstant == undefined || searchedConstant.length == 0) { 
-                        req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
-                        res.redirect('/');
+                    if(searchedConstant == undefined || searchedConstant.length == 0) {
+                        const searchedLight = await LightBeacon.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
+                        if(searchedLight == undefined || searchedLight.length == 0) {
+                            req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
+                            res.redirect('/');
+                        }
+                        else {
+                            res.render("searchLight", { searchedLight});
+                        }
                     }
                     else {
                         res.render("searchConstant", { searchedConstant});

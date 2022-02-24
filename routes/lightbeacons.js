@@ -53,4 +53,10 @@ router.post("/registerLight", catchAsync(async (req, res, next) => {
 	}
 }));
 
+router.post("/search/:id", catchAsync(async (req, res) => {
+	const searchedLight = await LightBeacon.find({_id: req.params.id}).populate("technicians");
+	
+	res.render("searchLight", { searchedLight});
+}));
+
 module.exports = router;
