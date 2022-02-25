@@ -41,18 +41,14 @@
 					<td><%= constant.lamp %></td>
 					<% if (constant.lampDate.length > 4) { %>
 						<% for (var i = constant.lampDate.length - 4; i < constant.lampDate.length; i++) { %>
-							<% if(constant.lampDate[i] != undefined) { %>
+							<% if(constant.lampDate[i] != undefined && constant.lampDate[i] != "") { %>
 								<td><%= constant.lampDate[i]%></td>
-							<% } else { %>
-								<td> </td>
 							<% } %>
 						<% } %>
 					<% } else { %>
 						<% for (var k = 0; k < constant.lampDate.length; k++) { %>
-							<% if(constant.lampDate[k] != undefined) { %>
+							<% if(constant.lampDate[k] != undefined && constant.lampDate[k] != "") { %>
 								<td><%= constant.lampDate[k]%></td>
-							<% } else { %>
-								<td> </td>
 							<% } %>
 						<% } %>
 					<% } %>
@@ -62,18 +58,14 @@
 					<td><%= constant.torchSocket %></td>
 					<% if (constant.torchSocketDate.length > 4) { %>
 						<% for (var i = constant.torchSocketDate.length - 4; i < constant.torchSocketDate.length; i++) { %>
-							<% if(constant.torchSocketDate[i] != undefined) { %>
+							<% if(constant.torchSocketDate[i] != undefined && constant.torchSocketDate[k] != "") { %>
 								<td><%= constant.torchSocketDate[i]%></td>
-							<% } else { %>
-								<td> </td>
 							<% } %>
 						<% } %>
 					<% } else { %>
 						<% for (var k = 0; k < constant.torchSocketDate.length; k++) { %>
-							<% if(constant.torchSocketDate[k] != undefined) { %>
+							<% if(constant.torchSocketDate[k] != undefined && constant.torchSocketDate[k] != "") { %>
 								<td><%= constant.torchSocketDate[k]%></td>
-							<% } else { %>
-								<td> </td>
 							<% } %>
 						<% } %>
 					<% } %>

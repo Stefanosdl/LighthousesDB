@@ -21,19 +21,19 @@ const lightBeaconSchema = new Schema({
             type: { type: String },
             counter: { type: Number }
     },
-    lightingMachineDate: {Date},
+    lightingMachineDate: Date,
     reflector: {
             manufacturer: { type: String },
             type: { type: String },
             counter: { type: Number }
     },
-    reflectorDate: {Date},
+    reflectorDate: Date,
     signs: {
             manufacturer: { type: String },
             type: { type: String },
             counter: { type: Number }
     },
-    signsDate: {Date},
+    signsDate: Date,
     type: String,
     usedChain: String,
     immersionDepth: String,

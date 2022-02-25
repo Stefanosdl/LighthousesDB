@@ -59,4 +59,37 @@ router.post("/search/:id", catchAsync(async (req, res) => {
 	res.render("searchLight", { searchedLight});
 }));
 
+router.get("/technicians/:id", catchAsync(async (req, res) => {
+    const lightBeacon = await LightBeacon.findById(req.params.id).populate("technicians").exec();
+	
+	res.render("lightTechnicians", { lightBeacon });
+}));
+
+router.get("/technicians/new/:id", catchAsync(async (req, res) => {
+    const lightBeacon = await LightBeacon.findById(req.params.id).populate("technicians").exec();
+
+	res.render("lightTechniciansNew", { lightBeacon });
+}));
+
+router.post("/technicians/new/:id", catchAsync(async (req, res) => {
+	try {
+		const newTechnician = new Technician({...req.body.arr});
+		const lightBeacon = await LightBeacon.findById(req.params.id).populate("technicians").exec();
+		await lightBeacon.technicians.push(newTechnician);
+		await lightBeacon.save();
+		await newTechnician.save();
+		res.redirect(`/lightBeacons/insertLight/${req.params.id}`);
+	}
+	catch(e) {
+		req.flash("error", e.message);
+		res.redirect(`/lightBeacons/technicians/new/${req.params.id}`);		
+	}
+}));
+
+router.get("/insertLight/:id", catchAsync(async (req, res) => {
+    const lightBeacon = await LightBeacon.findById(req.params.id);
+
+	res.render("insertLight", { lightBeacon });
+}));
+
 module.exports = router;

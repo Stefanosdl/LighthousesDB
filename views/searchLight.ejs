@@ -47,21 +47,21 @@
 					<td><%= light.lightingMachine.manufacturer %></td>
 					<td><%= light.lightingMachine.type %></td>
 					<td><%= light.lightingMachine.counter %></td>
-					<td><%= light.lightingMachineDate %></td>
+					<td><%= light.lightingMachineDate.toISOString().split('T')[0] %></td>
 				</tr>
 				<tr>
 					<th scope="row">ΑΝΑΚΛΑΣΤΗΡΑΣ</th>
 					<td><%= light.reflector.manufacturer %></td>
 					<td><%= light.reflector.type %></td>
 					<td><%= light.reflector.counter %></td>
-					<td><%= light.reflectorDate %></td>
+					<td><%= light.reflectorDate.toISOString().split('T')[0] %></td>
 				</tr>
 				<tr>
 					<th scope="row">ΕΠΙΣΗΜΑΤΑ</th>
 					<td><%= light.signs.manufacturer %></td>
 					<td><%= light.signs.type %></td>
 					<td><%= light.signs.counter %></td>
-					<td><%= light.signsDate %></td>
+					<td><%= light.signsDate.toISOString().split('T')[0] %></td>
 				</tr>
 			</tbody>
 		</table>

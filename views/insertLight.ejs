@@ -1,0 +1,141 @@
+
+<% include ./partials/header %>
+<div class="container">
+	<div class="row">
+		<h2 align="center">Εισαγωγή Στοιχείων</h2>
+		<form action="/lightBeacons/insertLight/<%= lightBeacon._id %>?_method=PUT" method="POST" class="row g-3">
+			<div class="input-group">
+				<span class="input-group-text">ΣΤΙΓΜΑ</span>
+				<input type="text" class="form-control" name="stigmax" id="stigmax" value="<%= lightBeacon.stigma.x %>" placeholder="Χ:">
+				<input type="text" class="form-control" name="stigmay" id="stigmay" value="<%= lightBeacon.stigma.y %>" placeholder="Ψ:">
+			</div>
+			<div class="col-md-3">
+				<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΥΡΓΟΥ</strong></label>
+			</div>
+			<div class="col-md-3">
+				<label class="form-label"><strong>ΚΑΤΑΣΚΕΥΑΣΤΗΣ</strong></label>
+			</div>
+			<div class="col-md-2">
+				<label class="form-label"><strong>ΤΥΠΟΣ</strong></label>
+			</div>
+			<div class="col-md-2">
+				<label class="form-label"><strong>ΤΕΜ</strong></label>
+			</div>
+			<div class="col-md-2">
+				<label class="form-label"><strong>ΗΜΕΡΟΜΗΝΙΑ</strong></label>
+			</div>
+
+			<div class="col-md-3">
+				<span class="input-group-text" id="basic-addon3">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</span>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" name="lightingMachineMan" id="lightingMachineMan" value="<%= lightBeacon.lightingMachine.manufacturer %>">
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control" name="lightingMachineType" id="lightingMachineType" value="<%= lightBeacon.lightingMachine.type %>">
+			</div>
+			<div class="col-md-2">
+				<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" value="<%= lightBeacon.lightingMachine.counter %>">
+			</div>
+			<div class="col-md-2">
+				<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate" value="<%= lightBeacon.lightingMachineDate.toISOString().split('T')[0] %>">
+			</div>
+			<div class="col-md-3">
+				<span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" name="reflectorMan" id="reflectorMan" value="<%= lightBeacon.reflector.manufacturer %>">
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control" name="reflectorType" id="reflectorType" value="<%= lightBeacon.reflector.type %>">
+			</div>
+			<div class="col-md-2">
+				<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" value="<%= lightBeacon.reflector.counter %>">
+			</div>
+			<div class="col-md-2">
+				<input type="date" class="form-control" name="reflectorDate" id="reflectorDate" value="<%= lightBeacon.reflectorDate.toISOString().split('T')[0] %>">
+			</div>
+			<div class="col-md-3">
+				<span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" name="signsMan" id="signsMan" value="<%= lightBeacon.signs.manufacturer %>">
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control" name="signsType" id="signsType" value="<%= lightBeacon.signs.type %>">
+			</div>
+			<div class="col-md-2">
+				<input type="number" class="form-control" name="signsCounter" id="signsCounter" value="<%= lightBeacon.signs.counter %>">
+			</div>
+			<div class="col-md-2">
+				<input type="date" class="form-control" name="signsDate" id="signsDate" value="<%= lightBeacon.signsDate.toISOString().split('T')[0] %>">
+			</div>
+			<div class="col-md-3">
+				<img src="/foto_FR.jpg" class="rounded float-start">
+			</div>
+			<div class="col-md-9">
+				<label for="type" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
+				<input type="text" class="form-control" name="type" id="type" value="<%= lightBeacon.type %>">
+				<label for="usedChain" class="form-label">ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</label>
+				<input type="text" class="form-control" name="usedChain" id="usedChain" value="<%= lightBeacon.usedChain %>">
+				<label for="immersionDepth" class="form-label">ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</label>
+				<input type="text" class="form-control" name="immersionDepth" id="immersionDepth" value="<%= lightBeacon.immersionDepth %>">
+				<div class="row">
+					<div class="col-8 col-sm-4">
+						<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</strong></label>
+					</div>
+					<div class="col-8 col-sm-4">
+						<label class="form-label"><strong>ΤΥΠΟΣ</strong></label>
+					</div>
+					<div class="col-8 col-sm-4">
+						<label class="form-label"><strong>ΤΕΜ</strong></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-8 col-sm-4">
+						<span class="input-group-text" id="basic-addon3">ΣΤΑΤΕΡΙ (Άλυσος)</span>
+						<span class="input-group-text" id="basic-addon3">ΑΛΥΣΟΣ</span>
+						<span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ (Άλυσος)</span>
+						<span class="input-group-text" id="basic-addon3">ΣΤΡΕΠΤΗΡΑΣ</span>
+						<span class="input-group-text" id="basic-addon3">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</span>
+						<span class="input-group-text" id="basic-addon3">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ (Ωμέγα)</span>
+						<span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ</span>
+					</div>
+					<div class="col-8 col-sm-4">
+						<input type="text" class="form-control" name="stateriType" id="stateriType" value="<%= lightBeacon.stateri.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="alysosType" id="alysosType" value="<%= lightBeacon.alysos.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="agkyrioChainType" id="agkyrioChainType" value="<%= lightBeacon.agkyrioChain.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="streptyrasType" id="streptyrasType" value="<%= lightBeacon.streptyras.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="navyKeyType" id="navyKeyType" value="<%= lightBeacon.navyKey.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="navyKeyVType" id="navyKeyVType" value="<%= lightBeacon.navyKeyV.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="agkyrioType" id="agkyrioType" value="<%= lightBeacon.agkyrio.type %>" placeholder="Κιλά">
+					</div>
+					<div class="col-8 col-sm-4">
+						<input type="number" class="form-control" name="stateriCounter" id="stateriCounter" value="<%= lightBeacon.stateri.counter %>" placeholder="X2">
+						<input type="number" class="form-control" name="alysosCounter" id="alysosCounter" value="<%= lightBeacon.alysos.counter %>" placeholder="M">
+						<input type="number" class="form-control" name="agkyrioChainCounter" id="agkyrioChainCounter" value="<%= lightBeacon.agkyrioChain.counter %>" placeholder="X2">
+						<input type="number" class="form-control" name="streptyrasCounter" value="<%= lightBeacon.streptyras.counter %>" id="streptyrasCounter">
+						<input type="number" class="form-control" name="navyKeyCounter" value="<%= lightBeacon.navyKey.counter %>" id="navyKeyCounter">
+						<input type="number" class="form-control" name="navyKeyVCounter" value="<%= lightBeacon.navyKeyV.counter %>" id="navyKeyVCounter">
+						<input type="number" class="form-control" name="agkyrioCounter" value="<%= lightBeacon.agkyrio.counter %>" id="agkyrioCounter">
+					</div>
+				</div>
+			</div>
+			
+			<br>
+
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/" class="btn btn-outline-primary float-left">Αρχική Σελίδα</a>
+					<button class="btn btn-outline-primary float-right" type="submit">Εισαγωγή στοιχείων</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<br>
+
+<% include ./partials/footer %>
+	

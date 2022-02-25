@@ -1,0 +1,36 @@
+<% include ./partials/header %>
+
+<div class="container">
+	<h2 align="center">Στοιχεία Τεχνικών</h2>
+		<% for (var i=0; i < lightBeacon.technicians.length; i++) { %>
+			<form action="/lightBeacons/deleteSuggest/<%= lightBeacon._id %>?_method=PUT" method="POST" class="row g-3">
+				<div class="card mb-3 mx-auto" style="max-width: 540px;">
+					<div class="row g-0">
+						<ul class="list-group list-group-flush">
+							<input type="hidden" name="technician" value="<%= lightBeacon.technicians[i].technician %>">
+							<input type="hidden" name="date" value="<%= lightBeacon.technicians[i].date.toISOString().split('T')[0] %>">
+							<input type="hidden" name="description" value="<%= lightBeacon.technicians[i].description %>">
+							<input type="hidden" name="suggests" value="<%= lightBeacon.technicians[i].suggests %>">
+							<li class="list-group-item"><strong>ΤΕΧΝΙΚΟΣ: <%= lightBeacon.technicians[i].technician %></strong></li>
+							<li class="list-group-item" name="date"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= lightBeacon.technicians[i].date.toISOString().split('T')[0] %></strong></li>
+							<li class="list-group-item"><strong>ΕΚΤΕΛΕΣΘΕΙΣΕΣ ΕΡΓΑΣΙΕΣ: <%= lightBeacon.technicians[i].description %></strong></li>
+							<li class="list-group-item" name="suggests"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= lightBeacon.technicians[i].suggests %></strong></li>
+							<% if(currentUser) { %>
+								<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
+							<% } %>
+						</ul>
+					</div>
+				</div>
+			</form>
+		<% } %>
+	<div class="text-center">
+		<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+			<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+			<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+			<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+			<a href="/lightBeacons/technicians/new/<%= lightBeacon._id %>" class="btn btn-outline-primary float-right">Εισαγωγή</a>
+		</div>
+	</div>
+</div>
+
+<% include ./partials/footer %>
