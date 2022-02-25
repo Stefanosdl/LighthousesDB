@@ -15,7 +15,7 @@
 							<li class="list-group-item" name="date"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= constantLightHouse.technicians[i].date.toISOString().split('T')[0] %></strong></li>
 							<li class="list-group-item"><strong>ΕΚΤΕΛΕΣΘΕΙΣΕΣ ΕΡΓΑΣΙΕΣ: <%= constantLightHouse.technicians[i].description %></strong></li>
 							<li class="list-group-item" name="suggests"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= constantLightHouse.technicians[i].suggests %></strong></li>
-							<% if(currentUser) { %>
+							<% if(currentUser && constantLightHouse.technicians[i].suggests != "") { %>
 								<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
 							<% } %>
 						</ul>

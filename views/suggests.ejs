@@ -30,6 +30,34 @@
 				<% } %>
 			<% } %>
 		<% } %>
+		<% for (var i=0; i < constantSuggests.length; i++) { %>
+			<% for (var j=0; j < constantSuggests[i].technicians.length; j++) { %>
+				<% if (constantSuggests[i].technicians[j].suggests !== undefined && constantSuggests[i].technicians[j].suggests != "" ) { %>
+					<div class="card mb-3 mx-auto" style="max-width: 540px;">
+						<div class="row g-0">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><strong>ΑΕΦ: <%= constantSuggests[i].aef %></strong></li>
+								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= constantSuggests[i].technicians[j].suggests %></strong></li>
+							</ul>
+						</div>
+					</div>
+				<% } %>
+			<% } %>
+		<% } %>
+		<% for (var i=0; i < lightSuggests.length; i++) { %>
+			<% for (var j=0; j < lightSuggests[i].technicians.length; j++) { %>
+				<% if (lightSuggests[i].technicians[j].suggests !== undefined && lightSuggests[i].technicians[j].suggests != "" ) { %>
+					<div class="card mb-3 mx-auto" style="max-width: 540px;">
+						<div class="row g-0">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><strong>ΑΕΦ: <%= lightSuggests[i].aef %></strong></li>
+								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= lightSuggests[i].technicians[j].suggests %></strong></li>
+							</ul>
+						</div>
+					</div>
+				<% } %>
+			<% } %>
+		<% } %>
 	</div>
 </div>
 

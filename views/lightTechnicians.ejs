@@ -15,7 +15,7 @@
 							<li class="list-group-item" name="date"><strong>ΗΜΕΡΟΜΗΝΊΑ: <%= lightBeacon.technicians[i].date.toISOString().split('T')[0] %></strong></li>
 							<li class="list-group-item"><strong>ΕΚΤΕΛΕΣΘΕΙΣΕΣ ΕΡΓΑΣΙΕΣ: <%= lightBeacon.technicians[i].description %></strong></li>
 							<li class="list-group-item" name="suggests"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= lightBeacon.technicians[i].suggests %></strong></li>
-							<% if(currentUser) { %>
+							<% if(currentUser && lightBeacon.technicians[i].suggests != "") { %>
 								<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
 							<% } %>
 						</ul>

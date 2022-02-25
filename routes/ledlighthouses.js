@@ -24,7 +24,7 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
 			}
 		}
 		moment.locale('el');
-		ledLightHouse.dateModified = moment().format('LL');
+		ledLighthouse.dateModified = moment().format('LL');
 
         await ledLighthouse.save();
 		req.flash("success", "Επιτυχής εγγραφή");

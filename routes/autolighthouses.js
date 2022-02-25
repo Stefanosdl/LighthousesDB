@@ -211,7 +211,7 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		
 		moment.locale('el');
-		autoLighthouse.dateModified = moment().format('LL');
+		autoLightHouse.dateModified = moment().format('LL');
 		
 		await autoLightHouse.save();
 	}
@@ -231,7 +231,9 @@ router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, r
 	}).exec();
 	autoSuggests.technicians[0].suggests = "";
 	autoSuggests.technicians[0].save();
+	
 	await autoSuggests.save();
+
 	res.redirect('/');
 }));
 

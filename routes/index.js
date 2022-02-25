@@ -93,7 +93,9 @@ router.get("/search", catchAsync(async (req, res, next) => {
 router.get("/suggestedWorks", catchAsync(async (req, res, next) => {
     const autoSuggests = await AutoLight.find({}).populate("technicians");
     const ledSuggests = await LedLight.find({}).populate("technicians");
-	res.render("suggests", { autoSuggests, ledSuggests });
+    const constantSuggests = await ConstantLight.find({}).populate("technicians");
+    const lightSuggests = await LightBeacon.find({}).populate("technicians");
+	res.render("suggests", { autoSuggests, ledSuggests, constantSuggests, lightSuggests });
 }));
 
 

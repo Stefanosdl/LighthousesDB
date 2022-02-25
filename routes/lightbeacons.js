@@ -144,4 +144,17 @@ router.put("/insertLight/:id", catchAsync(async (req, res) => {
 	res.redirect(`/lightBeacons/technicians/${req.params.id}`);		
 }));
 
+router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, res, next) => {
+    const lightSuggests = await LightBeacon.findById(req.params.id).populate({
+		path: "technicians",
+		match: { technician: { $eq: req.body.technician }, date: {$eq: req.body.date}, description: {$eq: req.body.description}, suggests: {$eq: req.body.suggests}},
+	}).exec();
+	lightSuggests.technicians[0].suggests = "";
+	lightSuggests.technicians[0].save();
+	
+	await lightSuggests.save();
+
+	res.redirect('/');
+}));
+
 module.exports = router;
