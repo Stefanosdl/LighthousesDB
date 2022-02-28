@@ -38,7 +38,11 @@
 				<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" value="<%= lightBeacon.lightingMachine.counter %>">
 			</div>
 			<div class="col-md-2">
-				<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate" value="<%= lightBeacon.lightingMachineDate.toISOString().split('T')[0] %>">
+				<% if(lightBeacon.lightingMachineDate != undefined) { %>
+					<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate" value="<%= lightBeacon.lightingMachineDate.toISOString().split('T')[0] %>">
+				<% } else { %>
+					<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate">
+				<% } %>	
 			</div>
 			<div class="col-md-3">
 				<span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
@@ -53,7 +57,11 @@
 				<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" value="<%= lightBeacon.reflector.counter %>">
 			</div>
 			<div class="col-md-2">
-				<input type="date" class="form-control" name="reflectorDate" id="reflectorDate" value="<%= lightBeacon.reflectorDate.toISOString().split('T')[0] %>">
+				<% if(lightBeacon.reflectorDate != undefined) { %>
+					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate" value="<%= lightBeacon.reflectorDate.toISOString().split('T')[0] %>">
+				<% } else { %>
+					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate">
+				<% } %>	
 			</div>
 			<div class="col-md-3">
 				<span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
@@ -68,7 +76,11 @@
 				<input type="number" class="form-control" name="signsCounter" id="signsCounter" value="<%= lightBeacon.signs.counter %>">
 			</div>
 			<div class="col-md-2">
-				<input type="date" class="form-control" name="signsDate" id="signsDate" value="<%= lightBeacon.signsDate.toISOString().split('T')[0] %>">
+				<% if(lightBeacon.signsDate != undefined) { %>
+					<input type="date" class="form-control" name="signsDate" id="signsDate" value="<%= lightBeacon.signsDate.toISOString().split('T')[0] %>">
+				<% } else { %>
+					<input type="date" class="form-control" name="signsDate" id="signsDate">
+				<% } %>
 			</div>
 			<div class="col-md-3">
 				<img src="/foto_FR.jpg" class="rounded float-start">
@@ -77,9 +89,39 @@
 				<label for="type" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
 				<input type="text" class="form-control" name="type" id="type" value="<%= lightBeacon.type %>">
 				<label for="usedChain" class="form-label">ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</label>
-				<input type="text" class="form-control" name="usedChain" id="usedChain" value="<%= lightBeacon.usedChain %>">
+				<input type="number" class="form-control" name="usedChain" id="usedChain" value="<%= lightBeacon.usedChain %>">
 				<label for="immersionDepth" class="form-label">ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</label>
-				<input type="text" class="form-control" name="immersionDepth" id="immersionDepth" value="<%= lightBeacon.immersionDepth %>">
+				<input type="number" class="form-control" name="immersionDepth" id="immersionDepth" value="<%= lightBeacon.immersionDepth %>">
+				<br>
+				<div class="row">
+					<div class="col-8 col-sm-4">
+						<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</strong></label>
+					</div>
+					<div class="col-8 col-sm-4">
+						<label class="form-label"><strong>ΤΥΠΟΣ</strong></label>
+					</div>
+					<div class="col-8 col-sm-4">
+						<label class="form-label"><strong>ΜΕΤΡΑ</strong></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-8 col-sm-4">
+						<span class="input-group-text" id="basic-addon3">ΣΤΑΤΕΡΙ (Άλυσος)</span>
+						<span class="input-group-text" id="basic-addon3">ΑΛΥΣΟΣ</span>
+						<span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ (Άλυσος)</span>
+					</div>
+					<div class="col-8 col-sm-4">
+						<input type="text" class="form-control" name="stateriType" id="stateriType" value="<%= lightBeacon.stateri.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="alysosType" id="alysosType" value="<%= lightBeacon.alysos.type %>" placeholder="Ίντσες">
+						<input type="text" class="form-control" name="agkyrioChainType" id="agkyrioChainType" value="<%= lightBeacon.agkyrioChain.type %>" placeholder="Ίντσες">
+					</div>
+					<div class="col-8 col-sm-4">
+						<input type="number" class="form-control" name="stateriCounter" id="stateriCounter" value="<%= lightBeacon.stateri.counter %>" placeholder="X2">
+						<input type="number" class="form-control" name="alysosCounter" id="alysosCounter" value="<%= lightBeacon.alysos.counter %>" placeholder="M">
+						<input type="number" class="form-control" name="agkyrioChainCounter" id="agkyrioChainCounter" value="<%= lightBeacon.agkyrioChain.counter %>" placeholder="X2">
+					</div>
+				</div>
+				<br>
 				<div class="row">
 					<div class="col-8 col-sm-4">
 						<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</strong></label>
@@ -93,30 +135,18 @@
 				</div>
 				<div class="row">
 					<div class="col-8 col-sm-4">
-						<span class="input-group-text" id="basic-addon3">ΣΤΑΤΕΡΙ (Άλυσος)</span>
-						<span class="input-group-text" id="basic-addon3">ΑΛΥΣΟΣ</span>
-						<span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ (Άλυσος)</span>
 						<span class="input-group-text" id="basic-addon3">ΣΤΡΕΠΤΗΡΑΣ</span>
 						<span class="input-group-text" id="basic-addon3">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</span>
-						<span class="input-group-text" id="basic-addon3">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ (Ωμέγα)</span>
 						<span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ</span>
 					</div>
 					<div class="col-8 col-sm-4">
-						<input type="text" class="form-control" name="stateriType" id="stateriType" value="<%= lightBeacon.stateri.type %>" placeholder="Ίντσες">
-						<input type="text" class="form-control" name="alysosType" id="alysosType" value="<%= lightBeacon.alysos.type %>" placeholder="Ίντσες">
-						<input type="text" class="form-control" name="agkyrioChainType" id="agkyrioChainType" value="<%= lightBeacon.agkyrioChain.type %>" placeholder="Ίντσες">
 						<input type="text" class="form-control" name="streptyrasType" id="streptyrasType" value="<%= lightBeacon.streptyras.type %>" placeholder="Ίντσες">
 						<input type="text" class="form-control" name="navyKeyType" id="navyKeyType" value="<%= lightBeacon.navyKey.type %>" placeholder="Ίντσες">
-						<input type="text" class="form-control" name="navyKeyVType" id="navyKeyVType" value="<%= lightBeacon.navyKeyV.type %>" placeholder="Ίντσες">
 						<input type="text" class="form-control" name="agkyrioType" id="agkyrioType" value="<%= lightBeacon.agkyrio.type %>" placeholder="Κιλά">
 					</div>
 					<div class="col-8 col-sm-4">
-						<input type="number" class="form-control" name="stateriCounter" id="stateriCounter" value="<%= lightBeacon.stateri.counter %>" placeholder="X2">
-						<input type="number" class="form-control" name="alysosCounter" id="alysosCounter" value="<%= lightBeacon.alysos.counter %>" placeholder="M">
-						<input type="number" class="form-control" name="agkyrioChainCounter" id="agkyrioChainCounter" value="<%= lightBeacon.agkyrioChain.counter %>" placeholder="X2">
 						<input type="number" class="form-control" name="streptyrasCounter" value="<%= lightBeacon.streptyras.counter %>" id="streptyrasCounter">
 						<input type="number" class="form-control" name="navyKeyCounter" value="<%= lightBeacon.navyKey.counter %>" id="navyKeyCounter">
-						<input type="number" class="form-control" name="navyKeyVCounter" value="<%= lightBeacon.navyKeyV.counter %>" id="navyKeyVCounter">
 						<input type="number" class="form-control" name="agkyrioCounter" value="<%= lightBeacon.agkyrio.counter %>" id="agkyrioCounter">
 					</div>
 				</div>

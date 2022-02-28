@@ -35,8 +35,8 @@ const lightBeaconSchema = new Schema({
     },
     signsDate: Date,
     type: String,
-    usedChain: String,
-    immersionDepth: String,
+    usedChain: Number,
+    immersionDepth: Number,
     stateri: {
             type: { type: String },
             counter: { type: Number }
@@ -54,10 +54,6 @@ const lightBeaconSchema = new Schema({
             counter: { type: Number }
     },
     navyKey: {
-            type: { type: String },
-            counter: { type: Number }
-    },
-    navyKeyV: {
             type: { type: String },
             counter: { type: Number }
     },

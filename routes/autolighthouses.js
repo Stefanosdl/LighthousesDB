@@ -250,19 +250,19 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var colours = new Array();
 
 	for (const item of autoLightHouses) {
-		if(item.head != "") {
+		if(item.head != "" && item.head != undefined) {
 			heads = heads.concat(item.head.toUpperCase());
 		}
-		if(item.lamp != "") {
+		if(item.lamp != "" && item.lamp != undefined) {
 			lamps = lamps.concat(item.lamp);
 		}
-		if(item.accumulator != "") {
+		if(item.accumulator != "" && item.accumulator != undefined) {
 			accumulators = accumulators.concat(item.accumulator);
 		}
-		if(item.colour != "") {
+		if(item.colour != "" && item.colour != undefined) {
 			colours = colours.concat(item.colour.toUpperCase());
 		}
-		if(item.solarGenerator != "") {
+		if(item.solarGenerator != "" && item.solarGenerator != undefined) {
 			solarGenerators = solarGenerators.concat(item.solarGenerator);
 		}
 		if (item.generatorSocket.includes(solarString)) {

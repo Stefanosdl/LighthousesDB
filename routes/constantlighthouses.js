@@ -128,10 +128,10 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var colours = new Array();
 
 	for (const item of constantLightHouses) {
-		if(item.lamp != "") {
+		if(item.lamp != "" && item.lamp != undefined) {
 			lamps = lamps.concat(item.lamp);
 		}
-		if(item.colour != "") {
+		if(item.colour != "" && item.colour != undefined) {
 			colours = colours.concat(item.colour.toUpperCase());
 		}
 	}

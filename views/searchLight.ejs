@@ -47,21 +47,27 @@
 					<td><%= light.lightingMachine.manufacturer %></td>
 					<td><%= light.lightingMachine.type %></td>
 					<td><%= light.lightingMachine.counter %></td>
-					<td><%= light.lightingMachineDate.toISOString().split('T')[0] %></td>
+					<% if(light.lightingMachineDate != undefined) { %>
+						<td><%= light.lightingMachineDate.toISOString().split('T')[0] %></td>
+					<% } %>
 				</tr>
 				<tr>
 					<th scope="row">ΑΝΑΚΛΑΣΤΗΡΑΣ</th>
 					<td><%= light.reflector.manufacturer %></td>
 					<td><%= light.reflector.type %></td>
 					<td><%= light.reflector.counter %></td>
-					<td><%= light.reflectorDate.toISOString().split('T')[0] %></td>
+					<% if(light.reflectorDate != undefined) { %>
+						<td><%= light.reflectorDate.toISOString().split('T')[0] %></td>
+					<% } %>
 				</tr>
 				<tr>
 					<th scope="row">ΕΠΙΣΗΜΑΤΑ</th>
 					<td><%= light.signs.manufacturer %></td>
 					<td><%= light.signs.type %></td>
 					<td><%= light.signs.counter %></td>
-					<td><%= light.signsDate.toISOString().split('T')[0] %></td>
+					<% if(light.reflectorDate != undefined) { %>
+						<td><%= light.signsDate.toISOString().split('T')[0] %></td>
+					<% } %>
 				</tr>
 			</tbody>
 		</table>
@@ -70,7 +76,7 @@
                 <tr>
                     <th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
                     <th scope="col">ΤΥΠΟΣ</th>
-                    <th scope="col">ΤΕΜ</th>
+                    <th scope="col">ΜΕΤΡΑ</th>
                 </tr>
 			</thead>
 			<tbody>
@@ -88,7 +94,31 @@
 					<th scope="row">ΑΓΚΥΡΙΟ (Άλυσος)</th>
 					<td><%= light.agkyrioChain.type %></td>
 					<td><%= light.agkyrioChain.counter %></td>
+                <div class="col-md-6">
+                    <label for="type" class="form-label"><strong>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</strong></label>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.type %>" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="usedChain" class="form-label"><strong>ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</strong></label>
+                    <input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.usedChain %>" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="immersionDepth" class="form-label"><strong>ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</strong></label>
+                    <input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.immersionDepth %>" disabled>
+                </div>
 				</tr>
+                <br>
+			</tbody>
+		</table>
+		<table class="table">
+			<thead class="table-dark">
+                <tr>
+                    <th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
+                    <th scope="col">ΤΥΠΟΣ</th>
+                    <th scope="col">ΤΕΜ</th>
+                </tr>
+			</thead>
+			<tbody>
 				<tr>
 					<th scope="row">ΣΤΡΕΠΤΗΡΑΣ</th>
 					<td><%= light.streptyras.type %></td>
@@ -100,27 +130,10 @@
 					<td><%= light.navyKey.counter %></td>
 				</tr>
 				<tr>
-					<th scope="row">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ (Ωμέγα)</th>
-					<td><%= light.navyKeyV.type %></td>
-					<td><%= light.navyKeyV.counter %></td>
-				</tr>
-				<tr>
 					<th scope="row">ΑΓΚΥΡΙΟ</th>
 					<td><%= light.agkyrio.type %></td>
 					<td><%= light.agkyrio.counter %></td>
 				</tr>
-                <div class="col-md-6">
-                    <label for="type" class="form-label"><strong>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</strong></label>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.type %>" disabled>
-                </div>
-                <div class="col-md-6">
-                    <label for="usedChain" class="form-label"><strong>ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</strong></label>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.usedChain %>" disabled>
-                </div>
-                <div class="col-md-6">
-                    <label for="immersionDepth" class="form-label"><strong>ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</strong></label>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.immersionDepth %>" disabled>
-                </div>
                 <br>
 			</tbody>
 		</table>
