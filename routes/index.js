@@ -56,12 +56,14 @@ router.get("/search", catchAsync(async (req, res, next) => {
                     const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
                     if(searchedConstant == undefined || searchedConstant.length == 0) {
                         const searchedLight = await LightBeacon.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
+                        var today = new Date();
+                        var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
                         if(searchedLight == undefined || searchedLight.length == 0) {
                             req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                             res.redirect('/');
                         }
                         else {
-                            res.render("searchLight", { searchedLight});
+                            res.render("searchLight", { searchedLight, days});
                         }
                     }
                     else {
@@ -80,7 +82,8 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const searchedLed = await LedLight.find({}).populate("technicians");
             const searchedAuto = await AutoLight.find({}).populate("technicians");
             const searchedConstant = await ConstantLight.find({}).populate("technicians");
-            res.render("search", {searchedAuto, searchedLed, searchedConstant});
+            const searchedLight = await LightBeacon.find({}).populate("technicians");
+            res.render("search", {searchedAuto, searchedLed, searchedConstant, searchedLight});
         }
 
     }
@@ -97,6 +100,5 @@ router.get("/suggestedWorks", catchAsync(async (req, res, next) => {
     const lightSuggests = await LightBeacon.find({}).populate("technicians");
 	res.render("suggests", { autoSuggests, ledSuggests, constantSuggests, lightSuggests });
 }));
-
 
 module.exports = router;

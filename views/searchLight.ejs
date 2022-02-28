@@ -3,150 +3,175 @@
 <% for (let light of searchedLight) { %>
 	
 	<div class="container">
-		<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= light.dateModified %></strong></p>
-		<h2 align="center">Στοιχεία Φωτοσημαντήρα</h2>
-		<div class="d-grid col-4 mx-auto">
-			<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
-		</div>
-	<br>
-		<% for (var i=0; i < light.technicians.length; i++) { %>
-			<% if (light.technicians[i].suggests !== undefined  && light.technicians[i].suggests !== ""){%>
-				<div class="spinner-grow text-danger" role="status">
-					<span class="visually hidden"></span>
-				</div>
-			<% } %>
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= light.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Φωτοσημαντήρα</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+		<% if (days >= 365) { %>
+			<div class="spinner-grow text-primary float-end" role="status">
+				<span class="visually hidden" data-toggle="tooltip" data-placement="top" title="Προσοχή, 5 έτη από την ημέρα ποντίσεως. Προτείνεται ανασύνταξη.">a</span>
+			</div>
 		<% } %>
-		<table class="table">
-			<thead class="table-light">
-				<tr class="d-flex">
-				  <th scope="col"><%= light.aef %></th>
-				  <th scope="col"><%= light.lighthouse %></th>
-				  <th scope="col"><%= light.colour %></th>
-				  <th scope="col"><%= light.features %></th>
-				  <th scope="col"><%= light.location %></th>
-				</tr>
-			</thead>
-			<thead class="table-light">
-				<tr class="d-flex">
-				  <th scope="col">ΣΤΙΓΜΑ Χ: <%= light.stigma.x %></th>
-				  <th scope="col">Ψ: <%= light.stigma.y %></th>
-				</tr>
-			</thead>
-			<thead class="table-dark">
-                <tr>
-                    <th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
-                    <th scope="col">ΚΑΤΑΣΚΕΥΑΣΤΗΣ</th>
-                    <th scope="col">ΤΥΠΟΣ</th>
-                    <th scope="col">ΤΕΜ</th>
-                    <th scope="col">ΗΜΕΡΟΜΗΝΙΑ</th>
-                </tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</th>
-					<td><%= light.lightingMachine.manufacturer %></td>
-					<td><%= light.lightingMachine.type %></td>
-					<td><%= light.lightingMachine.counter %></td>
-					<% if(light.lightingMachineDate != undefined) { %>
-						<td><%= light.lightingMachineDate.toISOString().split('T')[0] %></td>
+			<% for (var i=0; i < light.technicians.length; i++) { %>
+				<% if (light.technicians[i].suggests !== undefined  && light.technicians[i].suggests !== ""){%>
+					<div class="spinner-grow text-danger" role="status">
+						<span class="visually hidden" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">a</span>
+					</div>
+					<% break; %>
+				<% } %>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= light.aef %></th>
+					<th scope="col"><%= light.lighthouse %></th>
+					<th scope="col"><%= light.colour %></th>
+					<th scope="col"><%= light.features %></th>
+					<th scope="col"><%= light.location %></th>
+					</tr>
+				</thead>
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col">ΣΤΙΓΜΑ Χ: <%= light.stigma.x %></th>
+					<th scope="col">Ψ: <%= light.stigma.y %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+						<th scope="col">ΚΑΤΑΣΚΕΥΑΣΤΗΣ</th>
+						<th scope="col">ΤΥΠΟΣ</th>
+						<th scope="col">ΤΕΜ</th>
+						<th scope="col">ΗΜΕΡΟΜΗΝΙΑ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</th>
+						<td><%= light.lightingMachine.manufacturer %></td>
+						<td><%= light.lightingMachine.type %></td>
+						<td><%= light.lightingMachine.counter %></td>
+						<% if(light.lightingMachineDate != undefined) { %>
+							<td><%= light.lightingMachineDate.toISOString().split('T')[0] %></td>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΑΝΑΚΛΑΣΤΗΡΑΣ</th>
+						<td><%= light.reflector.manufacturer %></td>
+						<td><%= light.reflector.type %></td>
+						<td><%= light.reflector.counter %></td>
+						<% if(light.reflectorDate != undefined) { %>
+							<td><%= light.reflectorDate.toISOString().split('T')[0] %></td>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΕΠΙΣΗΜΑΤΑ</th>
+						<td><%= light.signs.manufacturer %></td>
+						<td><%= light.signs.type %></td>
+						<td><%= light.signs.counter %></td>
+						<% if(light.reflectorDate != undefined) { %>
+							<td><%= light.signsDate.toISOString().split('T')[0] %></td>
+						<% } %>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
+						<th scope="col">ΤΥΠΟΣ</th>
+						<th scope="col">ΜΕΤΡΑ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΣΤΑΤΕΡΙ (Άλυσος)</th>
+						<td><%= light.stateri.type %></td>
+						<td><%= light.stateri.counter %></td>
+					</tr>
+					<tr>
+						<th scope="row">ΑΛΥΣΟΣ</th>
+						<td><%= light.alysos.type %></td>
+						<td><%= light.alysos.counter %></td>
+					</tr>
+					<tr>
+						<th scope="row">ΑΓΚΥΡΙΟ (Άλυσος)</th>
+						<td><%= light.agkyrioChain.type %></td>
+						<td><%= light.agkyrioChain.counter %></td>
+					</tr>
+					<br>
+				</tbody>
+			</table>
+
+			
+			<div class="col-md-3">
+				<img src="/foto_FR.jpg" class="rounded float-start">
+			</div>
+			<div class="col-md-9">
+				<label for="type" class="form-label"><strong>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</strong></label>
+				<input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.type %>" disabled>
+				<label for="usedChain" class="form-label"><strong>ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</strong></label>
+				<input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.usedChain %>" disabled>
+				<label for="immersionDepth" class="form-label"><strong>ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</strong></label>
+				<input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.immersionDepth %>" disabled>
+				<label for="immersionDepthDate" class="form-label">ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</label>
+				<div class="col-md-4">
+					<% if(light.immersionDepthDate != undefined) { %>
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" value="<%= light.immersionDepthDate.toISOString().split('T')[0] %>">
+					<% } else { %>
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate">
 					<% } %>
-				</tr>
-				<tr>
-					<th scope="row">ΑΝΑΚΛΑΣΤΗΡΑΣ</th>
-					<td><%= light.reflector.manufacturer %></td>
-					<td><%= light.reflector.type %></td>
-					<td><%= light.reflector.counter %></td>
-					<% if(light.reflectorDate != undefined) { %>
-						<td><%= light.reflectorDate.toISOString().split('T')[0] %></td>
-					<% } %>
-				</tr>
-				<tr>
-					<th scope="row">ΕΠΙΣΗΜΑΤΑ</th>
-					<td><%= light.signs.manufacturer %></td>
-					<td><%= light.signs.type %></td>
-					<td><%= light.signs.counter %></td>
-					<% if(light.reflectorDate != undefined) { %>
-						<td><%= light.signsDate.toISOString().split('T')[0] %></td>
-					<% } %>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table">
-			<thead class="table-dark">
-                <tr>
-                    <th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
-                    <th scope="col">ΤΥΠΟΣ</th>
-                    <th scope="col">ΜΕΤΡΑ</th>
-                </tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">ΣΤΑΤΕΡΙ (Άλυσος)</th>
-					<td><%= light.stateri.type %></td>
-					<td><%= light.stateri.counter %></td>
-				</tr>
-				<tr>
-					<th scope="row">ΑΛΥΣΟΣ</th>
-					<td><%= light.alysos.type %></td>
-					<td><%= light.alysos.counter %></td>
-				</tr>
-				<tr>
-					<th scope="row">ΑΓΚΥΡΙΟ (Άλυσος)</th>
-					<td><%= light.agkyrioChain.type %></td>
-					<td><%= light.agkyrioChain.counter %></td>
-                <div class="col-md-6">
-                    <label for="type" class="form-label"><strong>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</strong></label>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.type %>" disabled>
-                </div>
-                <div class="col-md-6">
-                    <label for="usedChain" class="form-label"><strong>ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</strong></label>
-                    <input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.usedChain %>" disabled>
-                </div>
-                <div class="col-md-6">
-                    <label for="immersionDepth" class="form-label"><strong>ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</strong></label>
-                    <input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.immersionDepth %>" disabled>
-                </div>
-				</tr>
-                <br>
-			</tbody>
-		</table>
-		<table class="table">
-			<thead class="table-dark">
-                <tr>
-                    <th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
-                    <th scope="col">ΤΥΠΟΣ</th>
-                    <th scope="col">ΤΕΜ</th>
-                </tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">ΣΤΡΕΠΤΗΡΑΣ</th>
-					<td><%= light.streptyras.type %></td>
-					<td><%= light.streptyras.counter %></td>
-				</tr>
-				<tr>
-					<th scope="row">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</th>
-					<td><%= light.navyKey.type %></td>
-					<td><%= light.navyKey.counter %></td>
-				</tr>
-				<tr>
-					<th scope="row">ΑΓΚΥΡΙΟ</th>
-					<td><%= light.agkyrio.type %></td>
-					<td><%= light.agkyrio.counter %></td>
-				</tr>
-                <br>
-			</tbody>
-		</table>
-		<div class="text-center">
-			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
-				<a href="/lightBeacons/insertLight/<%= light._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
-				<a href="/lightBeacons/technicians/<%= light._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
-			  </div>
+				</div>
+				
+				<table class="table">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
+							<th scope="col">ΤΥΠΟΣ</th>
+							<th scope="col">ΤΕΜ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">ΣΤΡΕΠΤΗΡΑΣ</th>
+							<td><%= light.streptyras.type %></td>
+							<td><%= light.streptyras.counter %></td>
+						</tr>
+						<tr>
+							<th scope="row">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</th>
+							<td><%= light.navyKey.type %></td>
+							<td><%= light.navyKey.counter %></td>
+						</tr>
+						<tr>
+							<th scope="row">ΑΓΚΥΡΙΟ</th>
+							<td><%= light.agkyrio.type %></td>
+							<td><%= light.agkyrio.counter %></td>
+						</tr>
+						<br>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/lightBeacons/insertLight/<%= light._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/lightBeacons/technicians/<%= light._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
 		</div>
 	</div>
 <br>
 <% } %>
+
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
 
 <% include ./partials/footer %>

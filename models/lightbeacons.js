@@ -37,6 +37,7 @@ const lightBeaconSchema = new Schema({
     type: String,
     usedChain: Number,
     immersionDepth: Number,
+    immersionDepthDate: Date,
     stateri: {
             type: { type: String },
             counter: { type: Number }

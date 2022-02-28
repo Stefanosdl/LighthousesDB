@@ -3,111 +3,113 @@
 <% for (let constant of searchedConstant) { %>
 	
 	<div class="container">
-		<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= constant.dateModified %></strong></p>
-		<h2 align="center">Στοιχεία Σταθερού Πυρσού</h2>
-		<div class="d-grid col-4 mx-auto">
-			<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
-		</div>
-	<br>
-		<% for (var i=0; i < constant.technicians.length; i++) { %>
-			<% if (constant.technicians[i].suggests !== undefined  && constant.technicians[i].suggests !== ""){%>
-				<div class="spinner-grow text-danger" role="status">
-					<span class="visually hidden"></span>
-				</div>
-			<% } %>
-		<% } %>
-		<table class="table">
-			<thead class="table-light">
-				<tr class="d-flex">
-				  <th scope="col"><%= constant.aef %></th>
-				  <th scope="col"><%= constant.lighthouse %></th>
-				  <th scope="col"><%= constant.colour %></th>
-				  <th scope="col"><%= constant.sections %></th>
-				  <th scope="col"><%= constant.location %></th>
-				</tr>
-			</thead>
-			<thead class="table-dark">
-			  <tr>
-				<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
-				<th scope="col">ΤΥΠΟΣ</th>
-				<% for (var i=0; i < 4; i++) { %>
-					<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= constant.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Σταθερού Πυρσού</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+			<% for (var i=0; i < constant.technicians.length; i++) { %>
+				<% if (constant.technicians[i].suggests !== undefined  && constant.technicians[i].suggests !== ""){%>
+					<div class="spinner-grow text-danger" role="status">
+						<span class="visually hidden"></span>
+					</div>
 				<% } %>
-			  </tr>
-			</thead>
-			<tbody>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= constant.aef %></th>
+					<th scope="col"><%= constant.lighthouse %></th>
+					<th scope="col"><%= constant.colour %></th>
+					<th scope="col"><%= constant.sections %></th>
+					<th scope="col"><%= constant.location %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
 				<tr>
-					<th scope="row">ΛΥΧΝΙΑ</th>
-					<td><%= constant.lamp %></td>
-					<% if (constant.lampDate.length > 4) { %>
-						<% for (var i = constant.lampDate.length - 4; i < constant.lampDate.length; i++) { %>
-							<% if(constant.lampDate[i] != undefined && constant.lampDate[i] != "") { %>
-								<td><%= constant.lampDate[i]%></td>
-							<% } %>
-						<% } %>
-					<% } else { %>
-						<% for (var k = 0; k < constant.lampDate.length; k++) { %>
-							<% if(constant.lampDate[k] != undefined && constant.lampDate[k] != "") { %>
-								<td><%= constant.lampDate[k]%></td>
-							<% } %>
-						<% } %>
+					<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+					<th scope="col">ΤΥΠΟΣ</th>
+					<% for (var i=0; i < 4; i++) { %>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
 					<% } %>
 				</tr>
-				<tr>
-					<th scope="row">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</th>
-					<td><%= constant.torchSocket %></td>
-					<% if (constant.torchSocketDate.length > 4) { %>
-						<% for (var i = constant.torchSocketDate.length - 4; i < constant.torchSocketDate.length; i++) { %>
-							<% if(constant.torchSocketDate[i] != undefined && constant.torchSocketDate[k] != "") { %>
-								<td><%= constant.torchSocketDate[i]%></td>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΛΥΧΝΙΑ</th>
+						<td><%= constant.lamp %></td>
+						<% if (constant.lampDate.length > 4) { %>
+							<% for (var i = constant.lampDate.length - 4; i < constant.lampDate.length; i++) { %>
+								<% if(constant.lampDate[i] != undefined && constant.lampDate[i] != "") { %>
+									<td><%= constant.lampDate[i]%></td>
+								<% } %>
 							<% } %>
-						<% } %>
-					<% } else { %>
-						<% for (var k = 0; k < constant.torchSocketDate.length; k++) { %>
-							<% if(constant.torchSocketDate[k] != undefined && constant.torchSocketDate[k] != "") { %>
-								<td><%= constant.torchSocketDate[k]%></td>
-							<% } %>
-						<% } %>
-					<% } %>
-				</tr>
-				<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
-				<% for (var k = 0; k < constant.accessory.length; k++) { %>
-					<% if(k == 0) { %>
-						<td>
-							<%= constant.accessory[k] %>
-						</td>
-						
-						<% if(constant.accessory[k] != undefined) { %>
-							<td><%= constant.accessory[k]%></td>
 						<% } else { %>
-							<td> </td>
+							<% for (var k = 0; k < constant.lampDate.length; k++) { %>
+								<% if(constant.lampDate[k] != undefined && constant.lampDate[k] != "") { %>
+									<td><%= constant.lampDate[k]%></td>
+								<% } %>
+							<% } %>
 						<% } %>
-					<% } else { %>
-						<tr>
-							<td>
-								
-							</td>
+					</tr>
+					<tr>
+						<th scope="row">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</th>
+						<td><%= constant.torchSocket %></td>
+						<% if (constant.torchSocketDate.length > 4) { %>
+							<% for (var i = constant.torchSocketDate.length - 4; i < constant.torchSocketDate.length; i++) { %>
+								<% if(constant.torchSocketDate[i] != undefined && constant.torchSocketDate[k] != "") { %>
+									<td><%= constant.torchSocketDate[i]%></td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < constant.torchSocketDate.length; k++) { %>
+								<% if(constant.torchSocketDate[k] != undefined && constant.torchSocketDate[k] != "") { %>
+									<td><%= constant.torchSocketDate[k]%></td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
+					<% for (var k = 0; k < constant.accessory.length; k++) { %>
+						<% if(k == 0) { %>
 							<td>
 								<%= constant.accessory[k] %>
 							</td>
+							
 							<% if(constant.accessory[k] != undefined) { %>
 								<td><%= constant.accessory[k]%></td>
 							<% } else { %>
 								<td> </td>
 							<% } %>
-						</tr>
+						<% } else { %>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= constant.accessory[k] %>
+								</td>
+								<% if(constant.accessory[k] != undefined) { %>
+									<td><%= constant.accessory[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							</tr>
+						<% } %>
 					<% } %>
-				<% } %>
-			</tr>
-			</tbody>
-		</table>
-		<div class="text-center">
-			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
-				<a href="/constantLighthouses/insertConstant/<%= constant._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
-				<a href="/constantLighthouses/technicians/<%= constant._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
-			  </div>
+				</tr>
+				</tbody>
+			</table>
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/constantLighthouses/insertConstant/<%= constant._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/constantLighthouses/technicians/<%= constant._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
 		</div>
 	</div>
 <br>

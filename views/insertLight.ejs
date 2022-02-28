@@ -61,7 +61,7 @@
 					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate" value="<%= lightBeacon.reflectorDate.toISOString().split('T')[0] %>">
 				<% } else { %>
 					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate">
-				<% } %>	
+				<% } %>
 			</div>
 			<div class="col-md-3">
 				<span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
@@ -92,6 +92,14 @@
 				<input type="number" class="form-control" name="usedChain" id="usedChain" value="<%= lightBeacon.usedChain %>">
 				<label for="immersionDepth" class="form-label">ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</label>
 				<input type="number" class="form-control" name="immersionDepth" id="immersionDepth" value="<%= lightBeacon.immersionDepth %>">
+				<div class="col-md-4">
+					<label for="immersionDepthDate" class="form-label">ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</label>
+					<% if(lightBeacon.immersionDepthDate != undefined) { %>
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" value="<%= lightBeacon.immersionDepthDate.toISOString().split('T')[0] %>">
+					<% } else { %>
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate">
+					<% } %>
+				</div>
 				<br>
 				<div class="row">
 					<div class="col-8 col-sm-4">

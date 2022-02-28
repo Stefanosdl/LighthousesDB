@@ -5,11 +5,11 @@
 		<form action="/lightBeacons/registerLight" method="POST" class="row g-3">
 			<div class="col-md-6">
 				<label for="aef" class="form-label">ΑΕΦ</label>
-				<input type="text" class="form-control" name="aef" id="aef">
+				<input type="text" class="form-control" name="aef" id="aef" required>
 			</div>
 			<div class="col-md-6">
 				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
-				<input type="text" class="form-control" name="lighthouse" id="lighthouse">
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse" required>
 			</div>
 			<div class="col-md-6">
 				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
@@ -19,13 +19,17 @@
 				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
 				<input type="text" class="form-control" name="features" id="features">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
 				<input type="text" class="form-control" name="position" id="position">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
 				<input type="text" class="form-control" name="location" id="location">
+			</div>
+			<div class="col-md-4">
+				<label for="immersionDepthDate" class="form-label">ΗΜ/ΝΙΑ ΠΟΝΤΗΣΕΩΣ</label>
+				<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate">
 			</div>
             <br>
             <div class="input-group">
@@ -94,10 +98,10 @@
 			<div class="col-md-2">
 				<input type="date" class="form-control" name="signsDate" id="signsDate">
 			</div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="/foto_FR.jpg" class="rounded float-start">
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<label for="type" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
 				<input type="text" class="form-control" name="type" id="type">
 				<label for="usedChain" class="form-label">ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</label>

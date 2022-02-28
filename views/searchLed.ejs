@@ -3,230 +3,232 @@
 <% for (let led of searchedLed) { %>
 	
 	<div class="container">
-		<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= led.dateModified %></strong></p>
-		<h2 align="center">Στοιχεία Πυρσού LED</h2>
-		<div class="d-grid col-4 mx-auto">
-			<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
-		</div>
-	<br>
-		<% for (var i=0; i < led.technicians.length; i++) { %>
-			<% if (led.technicians[i].suggests !== undefined && led.technicians[i].suggests !== ""){%>
-				<div class="spinner-grow text-danger" role="status">
-					<span class="visually hidden"></span>
-				</div>
-			<% } %>
-		<% } %>
-		<table class="table">
-			<thead class="table-light">
-				<tr class="d-flex">
-				  <th scope="col"><%= led.aef %></th>
-				  <th scope="col"><%= led.lighthouse %></th>
-				  <th scope="col"><%= led.colour %></th>
-				  <th scope="col"><%= led.sections %></th>
-				  <th scope="col"><%= led.features %></th>
-				  <th scope="col"><%= led.location %></th>
-				</tr>
-			</thead>
-			<thead class="table-dark">
-			  <tr>
-				<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
-				<th scope="col">ΤΥΠΟΣ</th>
-				<% for (var i=0; i < 4; i++) {%>
-					<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= led.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Πυρσού LED</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+			<% for (var i=0; i < led.technicians.length; i++) { %>
+				<% if (led.technicians[i].suggests !== undefined && led.technicians[i].suggests !== ""){%>
+					<div class="spinner-grow text-danger" role="status">
+						<span class="visually hidden"></span>
+					</div>
 				<% } %>
-			  </tr>
-			</thead>
-			<tbody>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= led.aef %></th>
+					<th scope="col"><%= led.lighthouse %></th>
+					<th scope="col"><%= led.colour %></th>
+					<th scope="col"><%= led.sections %></th>
+					<th scope="col"><%= led.features %></th>
+					<th scope="col"><%= led.location %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
 				<tr>
-					<th scope="row">ΚΕΦΑΛΗ</th>
-					<td><%= led.head %></td>
-					<% if (led.headDate.length > 4) { %>
-						<% for (var i = led.headDate.length - 4; i < led.headDate.length; i++) { %>
-							<% if(led.headDate[i] != undefined) { %>
-								<td><%= led.headDate[i]%></td>
-							<% } else { %>
-								<td> </td>
-							<% } %>
-						<% } %>
-					<% } else { %>
-						<% for (var k = 0; k < led.headDate.length; k++) { %>
-							<% if(led.headDate[k] != undefined) { %>
-								<td><%= led.headDate[k]%></td>
-							<% } else { %>
-								<td> </td>
-							<% } %>
-						<% } %>
+					<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+					<th scope="col">ΤΥΠΟΣ</th>
+					<% for (var i=0; i < 4; i++) {%>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
 					<% } %>
 				</tr>
-				<tr>
-					<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
-					<% for (var k = 0; k < led.accumulator.length; k++) { %>
-						<% if(k == 0) { %>
-							<td>
-								<%= led.accumulator[k] %>
-							</td>
-							<% if(led.accumulatorDateGroups != undefined) { %>
-								<% if(led.accumulatorDateGroups.get(k.toString()) != undefined) { %>
-									<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
-										<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
-											<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
-												<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
-											<% } else { %>
-												<td> </td>
-											<% } %>
-										<% } %>
-									<% } else { %>
-										<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
-											<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
-												<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
-											<% } else { %>
-												<td> </td>
-											<% } %>
-										<% } %>
-									<% } %>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΚΕΦΑΛΗ</th>
+						<td><%= led.head %></td>
+						<% if (led.headDate.length > 4) { %>
+							<% for (var i = led.headDate.length - 4; i < led.headDate.length; i++) { %>
+								<% if(led.headDate[i] != undefined) { %>
+									<td><%= led.headDate[i]%></td>
+								<% } else { %>
+									<td> </td>
 								<% } %>
 							<% } %>
 						<% } else { %>
-							<tr>
-								<td>
-									
-								</td>
+							<% for (var k = 0; k < led.headDate.length; k++) { %>
+								<% if(led.headDate[k] != undefined) { %>
+									<td><%= led.headDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
+						<% for (var k = 0; k < led.accumulator.length; k++) { %>
+							<% if(k == 0) { %>
 								<td>
 									<%= led.accumulator[k] %>
 								</td>
 								<% if(led.accumulatorDateGroups != undefined) { %>
-									<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
-										<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
-											<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
-												<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
-											<% } else { %>
-												<td> </td>
+									<% if(led.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
-										<% } %>
-									<% } else { %>
-										<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
-											<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
-												<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
-											<% } else { %>
-												<td> </td>
+										<% } else { %>
+											<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
 										<% } %>
 									<% } %>
 								<% } %>
-							</tr>
-						<% } %>
-					<% } %>
-				</tr>
-				<tr>
-					<th scope="row">ΥΠΟΔΟΧΗ</th>
-					<td><%= led.socket %></td>
-					<% if (led.socketDate.length > 4) { %>
-						<% for (var i = led.socketDate.length - 4; i < led.socketDate.length; i++) { %>
-							<% if(led.socketDate[i] != undefined) { %>
-								<td><%= led.socketDate[i]%></td>
 							<% } else { %>
-								<td> </td>
-							<% } %>
-						<% } %>
-					<% } else { %>
-						<% for (var k = 0; k < led.socketDate.length; k++) { %>
-							<% if(led.socketDate[k] != undefined) { %>
-								<td><%= led.socketDate[k]%></td>
-							<% } else { %>
-								<td> </td>
-							<% } %>
-						<% } %>
-					<% } %>
-				</tr>
-				<tr>
-					<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
-					<% for (var k = 0; k < led.solarGenerator.length; k++) { %>
-						<% if(k == 0) { %>
-							<td>
-								<%= led.solarGenerator[k] %>
-							</td>
-							<% if(led.solarGeneratorDateGroups != undefined) { %>
-								<% if(led.solarGeneratorDateGroups.get(k.toString()) != undefined) { %>
-									<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
-										<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
-											<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
-												<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
-											<% } else { %>
-												<td> </td>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= led.accumulator[k] %>
+									</td>
+									<% if(led.accumulatorDateGroups != undefined) { %>
+										<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
-										<% } %>
-									<% } else { %>
-										<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
-											<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
-												<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
-											<% } else { %>
-												<td> </td>
+										<% } else { %>
+											<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
 										<% } %>
 									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΥΠΟΔΟΧΗ</th>
+						<td><%= led.socket %></td>
+						<% if (led.socketDate.length > 4) { %>
+							<% for (var i = led.socketDate.length - 4; i < led.socketDate.length; i++) { %>
+								<% if(led.socketDate[i] != undefined) { %>
+									<td><%= led.socketDate[i]%></td>
+								<% } else { %>
+									<td> </td>
 								<% } %>
 							<% } %>
 						<% } else { %>
-							<tr>
-								<td>
-									
-								</td>
+							<% for (var k = 0; k < led.socketDate.length; k++) { %>
+								<% if(led.socketDate[k] != undefined) { %>
+									<td><%= led.socketDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
+						<% for (var k = 0; k < led.solarGenerator.length; k++) { %>
+							<% if(k == 0) { %>
 								<td>
 									<%= led.solarGenerator[k] %>
 								</td>
 								<% if(led.solarGeneratorDateGroups != undefined) { %>
-									<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
-										<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
-											<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
-												<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
-											<% } else { %>
-												<td> </td>
+									<% if(led.solarGeneratorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
-										<% } %>
-									<% } else { %>
-										<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
-											<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
-												<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
-											<% } else { %>
-												<td> </td>
+										<% } else { %>
+											<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
 											<% } %>
 										<% } %>
 									<% } %>
 								<% } %>
-							</tr>
-						<% } %>
-					<% } %>
-				</tr>
-				<tr>
-					<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
-					<td><%= led.chargeRegulator %></td>
-					<% if (led.chargeRegulatorDate.length > 4) { %>
-						<% for (var i = led.chargeRegulatorDate.length - 4; i < led.chargeRegulatorDate.length; i++) { %>
-							<% if(led.chargeRegulatorDate[i] != undefined) { %>
-								<td><%= led.chargeRegulatorDate[i]%></td>
 							<% } else { %>
-								<td> </td>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= led.solarGenerator[k] %>
+									</td>
+									<% if(led.solarGeneratorDateGroups != undefined) { %>
+										<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
 							<% } %>
 						<% } %>
-					<% } else { %>
-						<% for (var k = 0; k < led.chargeRegulatorDate.length; k++) { %>
-							<% if(led.chargeRegulatorDate[k] != undefined) { %>
-								<td><%= led.chargeRegulatorDate[k]%></td>
-							<% } else { %>
-								<td> </td>
+					</tr>
+					<tr>
+						<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
+						<td><%= led.chargeRegulator %></td>
+						<% if (led.chargeRegulatorDate.length > 4) { %>
+							<% for (var i = led.chargeRegulatorDate.length - 4; i < led.chargeRegulatorDate.length; i++) { %>
+								<% if(led.chargeRegulatorDate[i] != undefined) { %>
+									<td><%= led.chargeRegulatorDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < led.chargeRegulatorDate.length; k++) { %>
+								<% if(led.chargeRegulatorDate[k] != undefined) { %>
+									<td><%= led.chargeRegulatorDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
 							<% } %>
 						<% } %>
-					<% } %>
-				</tr>
-			</tbody>
-		</table>
-		<div class="text-center">
-			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-				<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
-				<a href="/ledLighthouses/insertLed/<%= led._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
-				<a href="/ledLighthouses/technicians/<%= led._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
-			  </div>
+					</tr>
+				</tbody>
+			</table>
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/ledLighthouses/insertLed/<%= led._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/ledLighthouses/technicians/<%= led._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
 		</div>
 	</div>
 <br>

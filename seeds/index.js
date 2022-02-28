@@ -29,15 +29,16 @@ const seedDB = async () => {
 
     // array1.splice(0, array1.length, ...array2);
     // console.log(array1)
-    var myMap = new Map();
+    // var myMap = new Map();
 
-    // myMap.set("1",["A"]);
-    // myMap.set("1",["B", ...myMap.get('1')]);
+    // // myMap.set("1",["A"]);
+    // // myMap.set("1",["B", ...myMap.get('1')]);
 
-    myMap.set("1", 0);
-    myMap.set("1", myMap.get("1")+2)
-    myMap.set("1", myMap.get("1")*2)
-    console.log(myMap)
+    // myMap.set("1", 0);
+    // myMap.set("1", myMap.get("1")+2)
+    // myMap.set("1", myMap.get("1")*2)
+    // console.log(myMap)
+    
     // auto.groups.set("1", [])
     // auto.groups.get("1").push("2")
     // auto.groups.get("1").push("2")
