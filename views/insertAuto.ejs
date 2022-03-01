@@ -5,6 +5,34 @@
     <form action="/autoLighthouses/insertAuto/<%= autoLightHouse._id %>?_method=PUT" method="POST">
         <div class="row">
 			<div class="col-md-6">
+				<label for="aef" class="form-label">ΑΕΦ</label>
+				<input type="text" class="form-control" name="aef" id="aef" value="<%= autoLightHouse.aef %>">
+			</div>
+			<div class="col-md-6">
+				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= autoLightHouse.lighthouse %>">
+			</div>
+			<div class="col-md-4">
+				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
+				<input type="text" class="form-control" name="colour" id="colour" value="<%= autoLightHouse.colour %>">
+			</div>
+			<div class="col-md-4">
+				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
+				<input type="text" class="form-control" name="sections" id="sections" value="<%= autoLightHouse.sections %>">
+			</div>
+			<div class="col-md-4">
+				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
+				<input type="text" class="form-control" name="features" id="features" value="<%= autoLightHouse.features %>">
+			</div>
+			<div class="col-md-6">
+				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="text" class="form-control" name="position" id="position" value="<%= autoLightHouse.position %>">
+			</div>
+			<div class="col-md-6">
+				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
+				<input type="text" class="form-control" name="location" id="location" value="<%= autoLightHouse.location %>">
+			</div>
+			<div class="col-md-6">
 				<label for="lighter" class="form-label">ΕΚΛΑΜΠΤΗΡΑΣ</label>
 				<input type="text" class="form-control" name="lighter" id="lighter" value="<%= autoLightHouse.lighter %>">
 			</div>

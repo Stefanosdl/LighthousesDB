@@ -4,6 +4,30 @@
 	<div class="row">
 		<h2 align="center">Εισαγωγή Στοιχείων</h2>
 		<form action="/lightBeacons/insertLight/<%= lightBeacon._id %>?_method=PUT" method="POST" class="row g-3">
+			<div class="col-md-6">
+				<label for="aef" class="form-label">ΑΕΦ</label>
+				<input type="text" class="form-control" name="aef" id="aef" value="<%= lightBeacon.aef %>">
+			</div>
+			<div class="col-md-6">
+				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= lightBeacon.lighthouse %>">
+			</div>
+			<div class="col-md-6">
+				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
+				<input type="text" class="form-control" name="colour" id="colour" value="<%= lightBeacon.colour %>">
+			</div>
+			<div class="col-md-6">
+				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
+				<input type="text" class="form-control" name="features" id="features" value="<%= lightBeacon.features %>">
+			</div>
+			<div class="col-md-6">
+				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="text" class="form-control" name="position" id="position" value="<%= lightBeacon.position %>">
+			</div>
+			<div class="col-md-6">
+				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
+				<input type="text" class="form-control" name="location" id="location" value="<%= lightBeacon.location %>">
+			</div>
 			<div class="input-group">
 				<span class="input-group-text">ΣΤΙΓΜΑ</span>
 				<input type="text" class="form-control" name="stigmax" id="stigmax" value="<%= lightBeacon.stigma.x %>" placeholder="Χ:">
@@ -39,9 +63,9 @@
 			</div>
 			<div class="col-md-2">
 				<% if(lightBeacon.lightingMachineDate != undefined) { %>
-					<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate" value="<%= lightBeacon.lightingMachineDate.toISOString().split('T')[0] %>">
+					<input type="date" class="form-control" name="lightingMachineDat" id="lightingMachineDat" value="<%= lightBeacon.lightingMachineDate[lightBeacon.lightingMachineDate.length - 1].toISOString().split('T')[0] %>">
 				<% } else { %>
-					<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate">
+					<input type="date" class="form-control" name="lightingMachineDat" id="lightingMachineDat">
 				<% } %>	
 			</div>
 			<div class="col-md-3">
@@ -82,10 +106,10 @@
 					<input type="date" class="form-control" name="signsDate" id="signsDate">
 				<% } %>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<img src="/foto_FR.jpg" class="rounded float-start">
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<label for="type" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
 				<input type="text" class="form-control" name="type" id="type" value="<%= lightBeacon.type %>">
 				<label for="usedChain" class="form-label">ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</label>

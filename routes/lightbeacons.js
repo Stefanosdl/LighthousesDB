@@ -125,6 +125,8 @@ router.put("/insertLight/:id", catchAsync(async (req, res) => {
 		lightBeacon.navyKey.counter = req.body.navyKeyCounter;
 		lightBeacon.agkyrio.type = req.body.agkyrioType;
 		lightBeacon.agkyrio.counter = req.body.agkyrioCounter;
+		lightBeacon.lightingMachineDate.push(req.body.lightingMachineDat);
+		
 
 		moment.locale('el');
 		lightBeacon.dateModified = moment().format('LL');

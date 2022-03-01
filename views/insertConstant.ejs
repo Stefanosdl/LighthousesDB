@@ -5,6 +5,30 @@
     <form action="/constantLighthouses/insertConstant/<%= constantLightHouse._id %>?_method=PUT" method="POST">
         <div class="row">
 			<div class="col-md-6">
+				<label for="aef" class="form-label">ΑΕΦ</label>
+				<input type="text" class="form-control" name="aef" id="aef" value="<%= constantLightHouse.aef %>">
+			</div>
+			<div class="col-md-6">
+				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= constantLightHouse.lighthouse %>">
+			</div>
+			<div class="col-md-6">
+				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
+				<input type="text" class="form-control" name="colour" id="colour" value="<%= constantLightHouse.colour %>">
+			</div>
+			<div class="col-md-6">
+				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
+				<input type="text" class="form-control" name="sections" id="sections" value="<%= constantLightHouse.sections %>">
+			</div>
+			<div class="col-md-6">
+				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="text" class="form-control" name="position" id="position" value="<%= constantLightHouse.position %>">
+			</div>
+			<div class="col-md-6">
+				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
+				<input type="text" class="form-control" name="location" id="location" value="<%= constantLightHouse.location %>">
+			</div>
+			<div class="col-md-6">
 				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
 				<input type="text" class="form-control" name="lamp" id="lamp" value="<%= constantLightHouse.lamp %>">
 			</div>

@@ -21,7 +21,7 @@ const lightBeaconSchema = new Schema({
             type: { type: String },
             counter: { type: Number }
     },
-    lightingMachineDate: Date,
+    lightingMachineDate: [Date],
     reflector: {
             manufacturer: { type: String },
             type: { type: String },

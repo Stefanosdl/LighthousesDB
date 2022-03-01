@@ -5,6 +5,34 @@
     <form action="/ledLighthouses/insertLed/<%= ledLightHouse._id %>?_method=PUT" method="POST">
         <div class="row">
 			<div class="col-md-6">
+				<label for="aef" class="form-label">ΑΕΦ</label>
+				<input type="text" class="form-control" name="aef" id="aef" value="<%= ledLightHouse.aef %>">
+			</div>
+			<div class="col-md-6">
+				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
+				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= ledLightHouse.lighthouse %>">
+			</div>
+			<div class="col-md-4">
+				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
+				<input type="text" class="form-control" name="colour" id="colour" value="<%= ledLightHouse.colour %>">
+			</div>
+			<div class="col-md-4">
+				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
+				<input type="text" class="form-control" name="sections" id="sections" value="<%= ledLightHouse.sections %>">
+			</div>
+			<div class="col-md-4">
+				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
+				<input type="text" class="form-control" name="features" id="features" value="<%= ledLightHouse.features %>">
+			</div>
+			<div class="col-md-6">
+				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
+				<input type="text" class="form-control" name="position" id="position" value="<%= ledLightHouse.position %>">
+			</div>
+			<div class="col-md-6">
+				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
+				<input type="text" class="form-control" name="location" id="location" value="<%= ledLightHouse.location %>">
+			</div>
+			<div class="col-md-6">
 				<label for="solarGeneratorNew" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
 				<input type="text" class="form-control" name="solarGeneratorNew" id="solarGeneratorNew">
 			</div>

@@ -78,6 +78,24 @@ router.put("/insertConstant/:id", catchAsync(async (req, res) => {
 		}
 		const constantLightHouse = await ConstantLight.findById(id);
 
+		if(req.body.aef != undefined && req.body.aef != null && req.body.aef != ""){
+			constantLightHouse.aef = req.body.aef;
+		}
+		if(req.body.lighthouse != undefined && req.body.lighthouse != null && req.body.lighthouse != ""){
+			constantLightHouse.lighthouse = req.body.lighthouse;
+		}
+		if(req.body.colour != undefined && req.body.colour != null && req.body.colour != ""){
+			constantLightHouse.colour = req.body.colour;
+		}
+		if(req.body.sections != undefined && req.body.sections != null && req.body.sections != ""){
+			constantLightHouse.sections = req.body.sections;
+		}
+		if(req.body.position != undefined && req.body.position != null && req.body.position != ""){
+			constantLightHouse.position = req.body.position;
+		}
+		if(req.body.location != undefined && req.body.location != null && req.body.location != ""){
+			constantLightHouse.location = req.body.location;
+		}
 		if(req.body.torchSocketDate != undefined && req.body.torchSocketDate != null && req.body.torchSocketDate != "" && !constantLightHouse.torchSocketDate.includes(req.body.torchSocketDate)){
 			constantLightHouse.torchSocketDate.push(req.body.torchSocketDate);
 		}

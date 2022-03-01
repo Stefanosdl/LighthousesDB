@@ -10,7 +10,7 @@
 				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
 			</div>
 		<br>
-		<% if (days >= 365) { %>
+		<% if (days >= 365*5) { %>
 			<div class="spinner-grow text-primary float-end" role="status">
 				<span class="visually hidden" data-toggle="tooltip" data-placement="top" title="Προσοχή, 5 έτη από την ημέρα ποντίσεως. Προτείνεται ανασύνταξη.">a</span>
 			</div>
@@ -55,7 +55,7 @@
 						<td><%= light.lightingMachine.type %></td>
 						<td><%= light.lightingMachine.counter %></td>
 						<% if(light.lightingMachineDate != undefined) { %>
-							<td><%= light.lightingMachineDate.toISOString().split('T')[0] %></td>
+							<td><%= light.lightingMachineDate[light.lightingMachineDate.length - 1].toISOString().split('T')[0] %></td>
 						<% } %>
 					</tr>
 					<tr>
@@ -107,22 +107,22 @@
 			</table>
 
 			
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<img src="/foto_FR.jpg" class="rounded float-start">
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<label for="type" class="form-label"><strong>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</strong></label>
 				<input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.type %>" disabled>
 				<label for="usedChain" class="form-label"><strong>ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</strong></label>
 				<input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.usedChain %>" disabled>
 				<label for="immersionDepth" class="form-label"><strong>ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</strong></label>
 				<input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.immersionDepth %>" disabled>
-				<label for="immersionDepthDate" class="form-label">ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</label>
+				<label for="immersionDepthDate" class="form-label"><strong>ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</strong></label>
 				<div class="col-md-4">
 					<% if(light.immersionDepthDate != undefined) { %>
-						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" value="<%= light.immersionDepthDate.toISOString().split('T')[0] %>">
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" value="<%= light.immersionDepthDate.toISOString().split('T')[0] %>" disabled>
 					<% } else { %>
-						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate">
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" disabled>
 					<% } %>
 				</div>
 				
@@ -167,11 +167,5 @@
 	</div>
 <br>
 <% } %>
-
-<script>
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-	})
-</script>
 
 <% include ./partials/footer %>

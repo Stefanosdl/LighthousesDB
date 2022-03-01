@@ -167,6 +167,27 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 				}
 			}
 		}
+		if(req.body.aef != undefined && req.body.aef != null && req.body.aef != ""){
+			autoLightHouse.aef = req.body.aef;
+		}
+		if(req.body.lighthouse != undefined && req.body.lighthouse != null && req.body.lighthouse != ""){
+			autoLightHouse.lighthouse = req.body.lighthouse;
+		}
+		if(req.body.colour != undefined && req.body.colour != null && req.body.colour != ""){
+			autoLightHouse.colour = req.body.colour;
+		}
+		if(req.body.sections != undefined && req.body.sections != null && req.body.sections != ""){
+			autoLightHouse.sections = req.body.sections;
+		}
+		if(req.body.features != undefined && req.body.features != null && req.body.features != ""){
+			autoLightHouse.features = req.body.features;
+		}
+		if(req.body.position != undefined && req.body.position != null && req.body.position != ""){
+			autoLightHouse.position = req.body.position;
+		}
+		if(req.body.location != undefined && req.body.location != null && req.body.location != ""){
+			autoLightHouse.location = req.body.location;
+		}
 		if(req.body.lighterDate != undefined && req.body.lighterDate != null && req.body.lighterDate != "" && !autoLightHouse.lighterDate.includes(req.body.lighterDate)){
 			autoLightHouse.lighterDate.push(req.body.lighterDate);
 		}

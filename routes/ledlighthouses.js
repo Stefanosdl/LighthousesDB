@@ -134,6 +134,28 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 				}
 			}
 		}
+		
+		if(req.body.aef != undefined && req.body.aef != null && req.body.aef != ""){
+			ledLightHouse.aef = req.body.aef;
+		}
+		if(req.body.lighthouse != undefined && req.body.lighthouse != null && req.body.lighthouse != ""){
+			ledLightHouse.lighthouse = req.body.lighthouse;
+		}
+		if(req.body.colour != undefined && req.body.colour != null && req.body.colour != ""){
+			ledLightHouse.colour = req.body.colour;
+		}
+		if(req.body.sections != undefined && req.body.sections != null && req.body.sections != ""){
+			ledLightHouse.sections = req.body.sections;
+		}
+		if(req.body.features != undefined && req.body.features != null && req.body.features != ""){
+			ledLightHouse.features = req.body.features;
+		}
+		if(req.body.position != undefined && req.body.position != null && req.body.position != ""){
+			ledLightHouse.position = req.body.position;
+		}
+		if(req.body.location != undefined && req.body.location != null && req.body.location != ""){
+			ledLightHouse.location = req.body.location;
+		}
 		if(req.body.headDate != undefined && req.body.headDate != null && req.body.headDate != "" && !ledLightHouse.headDate.includes(req.body.headDate)){
 			ledLightHouse.headDate.push(req.body.headDate);
 		}
