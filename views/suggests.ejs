@@ -5,56 +5,92 @@
 		<% for (var i=0; i < autoSuggests.length; i++) { %>
 			<% for (var j=0; j < autoSuggests[i].technicians.length; j++) { %>
 				<% if (autoSuggests[i].technicians[j].suggests != undefined && autoSuggests[i].technicians[j].suggests != "" ) { %>
-					<div class="card mb-3 mx-auto" style="max-width: 540px;">
-						<div class="row g-0">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item"><strong>ΑΕΦ: <%= autoSuggests[i].aef %></strong></li>
-								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= autoSuggests[i].technicians[j].suggests %></strong></li>
-							</ul>
+					<form action="/autoLighthouses/deleteSuggest/<%=  autoSuggests[i]._id %>?_method=PUT" method="POST" class="row g-3">
+						<div class="card mb-3 mx-auto" style="max-width: 540px;">
+							<div class="row g-0">
+								<ul class="list-group list-group-flush">
+									<input type="hidden" name="technician" value="<%= autoSuggests[i].technicians[j].technician %>">
+									<input type="hidden" name="date" value="<%= autoSuggests[i].technicians[j].date.toISOString().split('T')[0] %>">
+									<input type="hidden" name="description" value="<%= autoSuggests[i].technicians[j].description %>">
+									<input type="hidden" name="suggests" value="<%= autoSuggests[i].technicians[j].suggests %>">
+									<li class="list-group-item"><strong>ΑΕΦ: <%= autoSuggests[i].aef %></strong></li>
+									<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= autoSuggests[i].technicians[j].suggests %></strong></li>
+									<% if(currentUser) { %>
+										<button class="btn btn-danger">Διαγραφή Προτεινόμενης Εργασίας</button>
+									<% } %>
+								</ul>
+							</div>
 						</div>
-					</div>
+						</form>
 				<% } %>
 			<% } %>
 		<% } %>
 		<% for (var i=0; i < ledSuggests.length; i++) { %>
 			<% for (var j=0; j < ledSuggests[i].technicians.length; j++) { %>
 				<% if (ledSuggests[i].technicians[j].suggests !== undefined && ledSuggests[i].technicians[j].suggests != "" ) { %>
-					<div class="card mb-3 mx-auto" style="max-width: 540px;">
-						<div class="row g-0">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item"><strong>ΑΕΦ: <%= ledSuggests[i].aef %></strong></li>
-								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= ledSuggests[i].technicians[j].suggests %></strong></li>
-							</ul>
+					<form action="/ledLighthouses/deleteSuggest/<%= ledSuggests[i]._id %>?_method=PUT" method="POST" class="row g-3">
+						<div class="card mb-3 mx-auto" style="max-width: 540px;">
+							<div class="row g-0">
+								<ul class="list-group list-group-flush">
+									<input type="hidden" name="technician" value="<%= ledSuggests[i].technicians[j].technician %>">
+									<input type="hidden" name="date" value="<%= ledSuggests[i].technicians[j].date.toISOString().split('T')[0] %>">
+									<input type="hidden" name="description" value="<%= ledSuggests[i].technicians[j].description %>">
+									<input type="hidden" name="suggests" value="<%= ledSuggests[i].technicians[j].suggests %>">
+									<li class="list-group-item"><strong>ΑΕΦ: <%= ledSuggests[i].aef %></strong></li>
+									<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= ledSuggests[i].technicians[j].suggests %></strong></li>
+									<% if(currentUser) { %>
+										<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
+									<% } %>
+								</ul>
+							</div>
 						</div>
-					</div>
+					</form>
 				<% } %>
 			<% } %>
 		<% } %>
 		<% for (var i=0; i < constantSuggests.length; i++) { %>
 			<% for (var j=0; j < constantSuggests[i].technicians.length; j++) { %>
 				<% if (constantSuggests[i].technicians[j].suggests !== undefined && constantSuggests[i].technicians[j].suggests != "" ) { %>
-					<div class="card mb-3 mx-auto" style="max-width: 540px;">
-						<div class="row g-0">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item"><strong>ΑΕΦ: <%= constantSuggests[i].aef %></strong></li>
-								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= constantSuggests[i].technicians[j].suggests %></strong></li>
-							</ul>
+					<form action="/constantLighthouses/deleteSuggest/<%= constantSuggests[i]._id %>?_method=PUT" method="POST" class="row g-3">
+						<div class="card mb-3 mx-auto" style="max-width: 540px;">
+							<div class="row g-0">
+								<ul class="list-group list-group-flush">
+									<input type="hidden" name="technician" value="<%= constantSuggests[i].technicians[j].technician %>">
+									<input type="hidden" name="date" value="<%= constantSuggests[i].technicians[j].date.toISOString().split('T')[0] %>">
+									<input type="hidden" name="description" value="<%= constantSuggests[i].technicians[j].description %>">
+									<input type="hidden" name="suggests" value="<%= constantSuggests[i].technicians[j].suggests %>">
+									<li class="list-group-item"><strong>ΑΕΦ: <%= constantSuggests[i].aef %></strong></li>
+									<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= constantSuggests[i].technicians[j].suggests %></strong></li>
+									<% if(currentUser) { %>
+										<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
+									<% } %>
+								</ul>
+							</div>
 						</div>
-					</div>
+					</form>
 				<% } %>
 			<% } %>
 		<% } %>
 		<% for (var i=0; i < lightSuggests.length; i++) { %>
 			<% for (var j=0; j < lightSuggests[i].technicians.length; j++) { %>
 				<% if (lightSuggests[i].technicians[j].suggests !== undefined && lightSuggests[i].technicians[j].suggests != "" ) { %>
-					<div class="card mb-3 mx-auto" style="max-width: 540px;">
-						<div class="row g-0">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item"><strong>ΑΕΦ: <%= lightSuggests[i].aef %></strong></li>
-								<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= lightSuggests[i].technicians[j].suggests %></strong></li>
-							</ul>
+					<form action="/lightBeacons/deleteSuggest/<%= lightSuggests[i]._id %>?_method=PUT" method="POST" class="row g-3">
+						<div class="card mb-3 mx-auto" style="max-width: 540px;">
+							<div class="row g-0">
+								<ul class="list-group list-group-flush">
+									<input type="hidden" name="technician" value="<%= lightSuggests[i].technicians[j].technician %>">
+									<input type="hidden" name="date" value="<%= lightSuggests[i].technicians[j].date.toISOString().split('T')[0] %>">
+									<input type="hidden" name="description" value="<%= lightSuggests[i].technicians[j].description %>">
+									<input type="hidden" name="suggests" value="<%= lightSuggests[i].technicians[j].suggests %>">
+									<li class="list-group-item"><strong>ΑΕΦ: <%= lightSuggests[i].aef %></strong></li>
+									<li class="list-group-item"><strong>ΠΡΟΤΕΙΝΟΜΕΝΕΣ ΕΡΓΑΣΙΕΣ: <%= lightSuggests[i].technicians[j].suggests %></strong></li>
+									<% if(currentUser) { %>
+										<button class="btn btn-danger" type="submit">Διαγραφή Προτεινόμενης Εργασίας</button>
+									<% } %>
+								</ul>
+							</div>
 						</div>
-					</div>
+					</form>
 				<% } %>
 			<% } %>
 		<% } %>

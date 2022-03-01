@@ -11,10 +11,11 @@
 			</div>
 		<br>
 			<% for (var i=0; i < auto.technicians.length; i++) { %>
-				<% if (auto.technicians[i].suggests !== undefined  && auto.technicians[i].suggests !== ""){%>
-					<div class="spinner-grow text-danger" role="status">
-						<span class="visually hidden" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">a</span>
+				<% if (auto.technicians[i].suggests !== undefined  && auto.technicians[i].suggests !== "") { %>
+					<div class="spinner-grow text-danger" role="status"  style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">
+						<span class="visually-hidden" data-toggle="tooltip" data-placement="top">Loading...</span>
 					</div>
+					<% break; %>
 				<% } %>
 			<% } %>
 			<table class="table">

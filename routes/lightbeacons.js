@@ -53,8 +53,10 @@ router.post("/registerLight", catchAsync(async (req, res, next) => {
 
 router.post("/search/:id", catchAsync(async (req, res) => {
 	const searchedLight = await LightBeacon.find({_id: req.params.id}).populate("technicians");
+	var today = new Date();
+	var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
 	
-	res.render("searchLight", { searchedLight});
+	res.render("searchLight", { searchedLight, days});
 }));
 
 router.get("/technicians/:id", catchAsync(async (req, res) => {
@@ -135,7 +137,7 @@ router.put("/insertLight/:id", catchAsync(async (req, res) => {
 	}
 	catch(e) {
 		req.flash("error", e.message);
-		res.redirect('/lightBeacons/insertConstant/:id');
+		res.redirect('/lightBeacons/insertLight/:id');
 	}
 	
     req.flash("success", "Επιτυχής ενημέρωση!");

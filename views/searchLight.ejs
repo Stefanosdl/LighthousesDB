@@ -11,14 +11,14 @@
 			</div>
 		<br>
 		<% if (days >= 365*5) { %>
-			<div class="spinner-grow text-primary float-end" role="status">
-				<span class="visually hidden" data-toggle="tooltip" data-placement="top" title="Προσοχή, 5 έτη από την ημέρα ποντίσεως. Προτείνεται ανασύνταξη.">a</span>
+			<div class="spinner-grow text-primary float-end redTip" style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="left" title="Προσοχή, ημέρα ποντίσεως του Φ/Ρ είναι πάνω από 5 έτη. Προτείνεται ανασύνταξη." role="status">
+				<span class="visually-hidden">Loading...</span>
 			</div>
 		<% } %>
 			<% for (var i=0; i < light.technicians.length; i++) { %>
-				<% if (light.technicians[i].suggests !== undefined  && light.technicians[i].suggests !== ""){%>
-					<div class="spinner-grow text-danger" role="status">
-						<span class="visually hidden" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">a</span>
+				<% if (light.technicians[i].suggests !== undefined  && light.technicians[i].suggests !== "") { %>
+					<div class="spinner-grow text-danger" role="status"  style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">
+						<span class="visually-hidden" data-toggle="tooltip" data-placement="top">Loading...</span>
 					</div>
 					<% break; %>
 				<% } %>
@@ -54,7 +54,7 @@
 						<td><%= light.lightingMachine.manufacturer %></td>
 						<td><%= light.lightingMachine.type %></td>
 						<td><%= light.lightingMachine.counter %></td>
-						<% if(light.lightingMachineDate != undefined) { %>
+						<% if(light.lightingMachineDate != undefined && light.lightingMachineDate[light.lightingMachineDate.length - 1] != null) { %>
 							<td><%= light.lightingMachineDate[light.lightingMachineDate.length - 1].toISOString().split('T')[0] %></td>
 						<% } %>
 					</tr>
@@ -72,7 +72,7 @@
 						<td><%= light.signs.manufacturer %></td>
 						<td><%= light.signs.type %></td>
 						<td><%= light.signs.counter %></td>
-						<% if(light.reflectorDate != undefined) { %>
+						<% if(light.signsDate != undefined) { %>
 							<td><%= light.signsDate.toISOString().split('T')[0] %></td>
 						<% } %>
 					</tr>
