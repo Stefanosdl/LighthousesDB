@@ -1,6 +1,10 @@
 <% include ./partials/header %>
 
 <h2 align="center">Φάροι και Πυρσοί</h2>
+<p align="center"><strong>Συνολικός αριθμός Αυτόματων Πυρσών: </strong><%= searchedAuto.length %></p>
+<p align="center"><strong>Συνολικός αριθμός Πυρσών LED: </strong><%= searchedLed.length %></p>
+<p align="center"><strong>Συνολικός αριθμός Σταθερών Πυρσών: </strong><%= searchedConstant.length %></p>
+<p align="center"><strong>Συνολικός αριθμός Φωτοσημαντήρων: </strong><%= searchedLight.length %></p>
 <% for (var i=0; i < searchedAuto.length; i++) { %>
     <div class="container">
         <div class="row">
@@ -41,6 +45,7 @@
 
 <br>
 
+
 <% for (var i=0; i < searchedConstant.length; i++) { %>
     <div class="container">
         <div class="row">
@@ -60,6 +65,7 @@
 <% } %>
 
 <br>
+
 
 <% for (var i=0; i < searchedLight.length; i++) { %>
     <div class="container">
