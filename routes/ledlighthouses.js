@@ -61,6 +61,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 		await ledLightHouse.technicians.push(newTechnician);
 		await ledLightHouse.save();
 		await newTechnician.save();
+		req.flash("success", "Επιτυχής εγγραφή");
 		res.redirect(`/ledLighthouses/insertLed/${req.params.id}`);
 	}
 	catch(e) {
@@ -196,6 +197,7 @@ router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, r
 	ledSuggests.technicians[0].suggests = "";
 	ledSuggests.technicians[0].save();
 	await ledSuggests.save();
+	req.flash("success", "Επιτυχής διαγραφή");
 	res.redirect('/');
 }));
 

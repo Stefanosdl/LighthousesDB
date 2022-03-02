@@ -78,6 +78,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 		await lightBeacon.technicians.push(newTechnician);
 		await lightBeacon.save();
 		await newTechnician.save();
+		req.flash("success", "Επιτυχής εγγραφή");
 		res.redirect(`/lightBeacons/insertLight/${req.params.id}`);
 	}
 	catch(e) {
@@ -154,6 +155,7 @@ router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, r
 	
 	await lightSuggests.save();
 
+	req.flash("success", "Επιτυχής διαγραφή");
 	res.redirect('/');
 }));
 

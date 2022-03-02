@@ -70,6 +70,8 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 		await autoLightHouse.technicians.push(newTechnician);
 		await autoLightHouse.save();
 		await newTechnician.save();
+
+		req.flash("success", "Επιτυχής εγγραφή");
 		res.redirect(`/autoLighthouses/insertAuto/${req.params.id}`);
 	}
 	catch(e) {
@@ -252,7 +254,8 @@ router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, r
 	}).exec();
 	autoSuggests.technicians[0].suggests = "";
 	autoSuggests.technicians[0].save();
-	
+
+    req.flash("success", "Επιτυχής διαγραφή!");
 	await autoSuggests.save();
 
 	res.redirect('/');

@@ -1,0 +1,913 @@
+<% include ./partials/header %>
+
+
+<% for (let auto of searchedAuto) { %>
+	<div class="container">
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= auto.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Αυτόματου Πυρσού</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+			<% for (var i=0; i < auto.technicians.length; i++) { %>
+				<% if (auto.technicians[i].suggests !== undefined  && auto.technicians[i].suggests !== "") { %>
+					<div class="spinner-grow text-danger" role="status"  style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">
+						<span class="visually-hidden" data-toggle="tooltip" data-placement="top">Loading...</span>
+					</div>
+					<% break; %>
+				<% } %>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= auto.aef %></th>
+					<th scope="col"><%= auto.lighthouse %></th>
+					<th scope="col"><%= auto.colour %></th>
+					<th scope="col"><%= auto.sections %></th>
+					<th scope="col"><%= auto.features %></th>
+					<th scope="col"><%= auto.position %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
+				<tr>
+					<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+					<th scope="col">ΤΥΠΟΣ</th>
+					<% for (var i=0; i < 4; i++) { %>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+					<% } %>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΕΚΛΑΜΠΤΗΡΑΣ</th>
+						<td><%= auto.lighter %></td>
+						<% if (auto.lighterDate.length > 4) { %>
+							<% for (var i = auto.lighterDate.length - 4; i < auto.lighterDate.length; i++) { %>
+								<% if(auto.lighterDate[i] != undefined) { %>
+									<td><%= auto.lighterDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < auto.lighterDate.length; k++) { %>
+								<% if(auto.lighterDate[k] != undefined) { %>
+									<td><%= auto.lighterDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
+						<% for (var k = 0; k < auto.solarGenerator.length; k++) { %>
+							<% if(k == 0) { %>
+								<td>
+									<%= auto.solarGenerator[k] %>
+								</td>
+								<% if(auto.solarGeneratorDateGroups != undefined) { %>
+									<% if(auto.solarGeneratorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(auto.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = auto.solarGeneratorDateGroups.get(k.toString()).length - 4; i < auto.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(auto.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= auto.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < auto.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(auto.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= auto.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= auto.solarGenerator[k] %>
+									</td>
+									<% if(auto.solarGeneratorDateGroups != undefined) { %>
+										<% if(auto.solarGeneratorDateGroups.get(k.toString()) != undefined) { %>
+											<% if(auto.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+												<% for (var i = auto.solarGeneratorDateGroups.get(k.toString()).length - 4; i < auto.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+													<% if(auto.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+														<td><%= auto.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } else { %>
+												<% for (var j = 0; j < auto.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+													<% if(auto.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+														<td><%= auto.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<tr>
+							<th scope="row">ΕΝΑΛΛΑΚΤΗΣ</th>
+							<td><%= auto.alternator %></td>
+							<% if (auto.alternatorDate.length > 4) { %>
+								<% for (var i = auto.alternatorDate.length - 4; i < auto.alternatorDate.length; i++) { %>
+									<% if(auto.alternatorDate[i] != undefined) { %>
+										<td><%= auto.alternatorDate[i]%></td>
+									<% } else { %>
+										<td> </td>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<% for (var k = 0; k < auto.alternatorDate.length; k++) { %>
+									<% if(auto.alternatorDate[k] != undefined) { %>
+										<td><%= auto.alternatorDate[k]%></td>
+									<% } else { %>
+										<td> </td>
+									<% } %>
+								<% } %>
+							<% } %>
+						</tr>
+						<tr>
+						<th scope="row">ΚΕΦΑΛΗ</th>
+						<td><%= auto.head %></td>
+						<% if (auto.headDate.length > 4) { %>
+							<% for (var i = auto.headDate.length - 4; i < auto.headDate.length; i++) { %>
+								<% if(auto.headDate[i] != undefined) { %>
+									<td><%= auto.headDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < auto.headDate.length; k++) { %>
+								<% if(auto.headDate[k] != undefined) { %>
+									<td><%= auto.headDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΛΥΧΝΙΑ</th>
+						<% for (var k = 0; k < auto.lamp.length; k++) { %>
+							<% if(k == 0) { %>
+								<td>
+									<%= auto.lamp[k] %>
+								</td>
+								<% if(auto.lampDateGroups != undefined) { %>
+									<% if(auto.lampDateGroups.get(k.toString()) != undefined) { %>
+										<% if(auto.lampDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = auto.lampDateGroups.get(k.toString()).length - 4; i < auto.lampDateGroups.get(k.toString()).length; i++) { %>
+												<% if(auto.lampDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= auto.lampDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < auto.lampDateGroups.get(k.toString()).length; j++) { %>
+												<% if(auto.lampDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= auto.lampDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= auto.lamp[k] %>
+									</td>
+									<% if(auto.lampDateGroups != undefined) { %>
+										<% if(auto.lampDateGroups.get(k.toString()) != undefined) { %>
+											<% if(auto.lampDateGroups.get(k.toString()).length > 4) { %>
+												<% for (var i = auto.lampDateGroups.get(k.toString()).length - 4; i < auto.lampDateGroups.get(k.toString()).length; i++) { %>
+													<% if(auto.lampDateGroups.get(k.toString())[i] != undefined) { %>
+														<td><%= auto.lampDateGroups.get(k.toString())[i]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } else { %>
+												<% for (var j = 0; j < auto.lampDateGroups.get(k.toString()).length; j++) { %>
+													<% if(auto.lampDateGroups.get(k.toString())[j] != undefined) { %>
+														<td><%= auto.lampDateGroups.get(k.toString())[j]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
+						<% for (var k = 0; k < auto.accumulator.length; k++) { %>
+							<% if(k == 0) { %>
+								<td>
+									<%= auto.accumulator[k] %>
+								</td>
+								<% if(auto.accumulatorDateGroups != undefined) { %>
+									<% if(auto.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= auto.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < auto.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(auto.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= auto.accumulator[k] %>
+									</td>
+									<% if(auto.accumulatorDateGroups != undefined) { %>
+										<% if(auto.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+											<% if(auto.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+												<% for (var i = auto.accumulatorDateGroups.get(k.toString()).length - 4; i < auto.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+													<% if(auto.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+														<td><%= auto.accumulatorDateGroups.get(k.toString())[i]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } else { %>
+												<% for (var j = 0; j < auto.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+													<% if(auto.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+														<td><%= auto.accumulatorDateGroups.get(k.toString())[j]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
+						<td><%= auto.generatorSocket %></td>
+						<% if (auto.generatorSocketDate.length > 4) { %>
+							<% for (var i = auto.generatorSocketDate.length - 4; i < auto.generatorSocketDate.length; i++) { %>
+								<% if(auto.generatorSocketDate[i] != undefined) { %>
+									<td><%= auto.generatorSocketDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < auto.generatorSocketDate.length; k++) { %>
+								<% if(auto.generatorSocketDate[k] != undefined) { %>
+									<td><%= auto.generatorSocketDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</th>
+						<td><%= auto.torchSocket %></td>
+						<% if (auto.torchSocketDate.length > 4) { %>
+							<% for (var i = auto.torchSocketDate.length - 4; i < auto.torchSocketDate.length; i++) { %>
+								<% if(auto.torchSocketDate[i] != undefined) { %>
+									<td><%= auto.torchSocketDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < auto.torchSocketDate.length; k++) { %>
+								<% if(auto.torchSocketDate[k] != undefined) { %>
+									<td><%= auto.torchSocketDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΦΩΤΟΚΥΤΤΑΡΟ</th>
+						<td><%= auto.photocell %></td>
+						<% if (auto.photocellDate.length > 4) { %>
+							<% for (var i = auto.photocellDate.length - 4; i < auto.photocellDate.length; i++) { %>
+								<% if(auto.photocellDate[i] != undefined) { %>
+									<td><%= auto.photocellDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < auto.photocellDate.length; k++) { %>
+								<% if(auto.photocellDate[k] != undefined) { %>
+									<td><%= auto.photocellDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
+					<% for (var k = 0; k < auto.accessory.length; k++) { %>
+						<% if(k == 0) { %>
+							<td>
+								<%= auto.accessory[k] %>
+							</td>
+							
+							<% if(auto.accessory[k] != undefined) { %>
+								<td><%= auto.accessory[k]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
+						<% } else { %>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= auto.accessory[k] %>
+								</td>
+								<% if(auto.accessory[k] != undefined) { %>
+									<td><%= auto.accessory[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							</tr>
+						<% } %>
+					<% } %>
+				</tr>
+				</tbody>
+			</table>
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/autoLighthouses/insertAuto/<%= auto._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/autoLighthouses/technicians/<%= auto._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+<% } %>
+
+<% for (let led of searchedLed) { %>
+	<div class="container">
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= led.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Πυρσού LED</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+			<% for (var i=0; i < led.technicians.length; i++) { %>
+				<% if (led.technicians[i].suggests !== undefined && led.technicians[i].suggests !== "") { %>
+					<div class="spinner-grow text-danger" role="status"  style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">
+						<span class="visually-hidden" data-toggle="tooltip" data-placement="top">Loading...</span>
+					</div>
+					<% break; %>
+				<% } %>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= led.aef %></th>
+					<th scope="col"><%= led.lighthouse %></th>
+					<th scope="col"><%= led.colour %></th>
+					<th scope="col"><%= led.sections %></th>
+					<th scope="col"><%= led.features %></th>
+					<th scope="col"><%= led.position %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
+				<tr>
+					<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+					<th scope="col">ΤΥΠΟΣ</th>
+					<% for (var i=0; i < 4; i++) {%>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+					<% } %>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΚΕΦΑΛΗ</th>
+						<td><%= led.head %></td>
+						<% if (led.headDate.length > 4) { %>
+							<% for (var i = led.headDate.length - 4; i < led.headDate.length; i++) { %>
+								<% if(led.headDate[i] != undefined) { %>
+									<td><%= led.headDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < led.headDate.length; k++) { %>
+								<% if(led.headDate[k] != undefined) { %>
+									<td><%= led.headDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
+						<% for (var k = 0; k < led.accumulator.length; k++) { %>
+							<% if(k == 0) { %>
+								<td>
+									<%= led.accumulator[k] %>
+								</td>
+								<% if(led.accumulatorDateGroups != undefined) { %>
+									<% if(led.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= led.accumulator[k] %>
+									</td>
+									<% if(led.accumulatorDateGroups != undefined) { %>
+										<% if(led.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.accumulatorDateGroups.get(k.toString()).length - 4; i < led.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < led.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΥΠΟΔΟΧΗ</th>
+						<td><%= led.socket %></td>
+						<% if (led.socketDate.length > 4) { %>
+							<% for (var i = led.socketDate.length - 4; i < led.socketDate.length; i++) { %>
+								<% if(led.socketDate[i] != undefined) { %>
+									<td><%= led.socketDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < led.socketDate.length; k++) { %>
+								<% if(led.socketDate[k] != undefined) { %>
+									<td><%= led.socketDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</th>
+						<% for (var k = 0; k < led.solarGenerator.length; k++) { %>
+							<% if(k == 0) { %>
+								<td>
+									<%= led.solarGenerator[k] %>
+								</td>
+								<% if(led.solarGeneratorDateGroups != undefined) { %>
+									<% if(led.solarGeneratorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= led.solarGenerator[k] %>
+									</td>
+									<% if(led.solarGeneratorDateGroups != undefined) { %>
+										<% if(led.solarGeneratorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = led.solarGeneratorDateGroups.get(k.toString()).length - 4; i < led.solarGeneratorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < led.solarGeneratorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(led.solarGeneratorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= led.solarGeneratorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</th>
+						<td><%= led.chargeRegulator %></td>
+						<% if (led.chargeRegulatorDate.length > 4) { %>
+							<% for (var i = led.chargeRegulatorDate.length - 4; i < led.chargeRegulatorDate.length; i++) { %>
+								<% if(led.chargeRegulatorDate[i] != undefined) { %>
+									<td><%= led.chargeRegulatorDate[i]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < led.chargeRegulatorDate.length; k++) { %>
+								<% if(led.chargeRegulatorDate[k] != undefined) { %>
+									<td><%= led.chargeRegulatorDate[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+				</tbody>
+			</table>
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/ledLighthouses/insertLed/<%= led._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/ledLighthouses/technicians/<%= led._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+<% } %>
+
+<% for (let constant of searchedConstant) { %>
+	<div class="container">
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= constant.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Σταθερού Πυρσού</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+			<% for (var i=0; i < constant.technicians.length; i++) { %>
+				<% if (constant.technicians[i].suggests !== undefined  && constant.technicians[i].suggests !== "") { %>
+					<div class="spinner-grow text-danger" role="status"  style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">
+						<span class="visually-hidden" data-toggle="tooltip" data-placement="top">Loading...</span>
+					</div>
+					<% break; %>
+				<% } %>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= constant.aef %></th>
+					<th scope="col"><%= constant.lighthouse %></th>
+					<th scope="col"><%= constant.colour %></th>
+					<th scope="col"><%= constant.sections %></th>
+					<th scope="col"><%= constant.position %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
+				<tr>
+					<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+					<th scope="col">ΤΥΠΟΣ</th>
+					<% for (var i=0; i < 4; i++) { %>
+						<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+					<% } %>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΛΥΧΝΙΑ</th>
+						<td><%= constant.lamp %></td>
+						<% if (constant.lampDate.length > 4) { %>
+							<% for (var i = constant.lampDate.length - 4; i < constant.lampDate.length; i++) { %>
+								<% if(constant.lampDate[i] != undefined && constant.lampDate[i] != "") { %>
+									<td><%= constant.lampDate[i]%></td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < constant.lampDate.length; k++) { %>
+								<% if(constant.lampDate[k] != undefined && constant.lampDate[k] != "") { %>
+									<td><%= constant.lampDate[k]%></td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</th>
+						<td><%= constant.torchSocket %></td>
+						<% if (constant.torchSocketDate.length > 4) { %>
+							<% for (var i = constant.torchSocketDate.length - 4; i < constant.torchSocketDate.length; i++) { %>
+								<% if(constant.torchSocketDate[i] != undefined && constant.torchSocketDate[k] != "") { %>
+									<td><%= constant.torchSocketDate[i]%></td>
+								<% } %>
+							<% } %>
+						<% } else { %>
+							<% for (var k = 0; k < constant.torchSocketDate.length; k++) { %>
+								<% if(constant.torchSocketDate[k] != undefined && constant.torchSocketDate[k] != "") { %>
+									<td><%= constant.torchSocketDate[k]%></td>
+								<% } %>
+							<% } %>
+						<% } %>
+					</tr>
+					<th scope="row">ΕΠΙΠΛΕΟΝ ΕΞΑΡΤΗΜΑ</th>
+					<% for (var k = 0; k < constant.accessory.length; k++) { %>
+						<% if(k == 0) { %>
+							<td>
+								<%= constant.accessory[k] %>
+							</td>
+							
+							<% if(constant.accessory[k] != undefined) { %>
+								<td><%= constant.accessory[k]%></td>
+							<% } else { %>
+								<td> </td>
+							<% } %>
+						<% } else { %>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<%= constant.accessory[k] %>
+								</td>
+								<% if(constant.accessory[k] != undefined) { %>
+									<td><%= constant.accessory[k]%></td>
+								<% } else { %>
+									<td> </td>
+								<% } %>
+							</tr>
+						<% } %>
+					<% } %>
+				</tr>
+				</tbody>
+			</table>
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/constantLighthouses/insertConstant/<%= constant._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/constantLighthouses/technicians/<%= constant._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+<% } %>
+
+<% for (let light of searchedLight) { %>
+	
+	<div class="container">
+		<div class="row">
+			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= light.dateModified %></strong></p>
+			<h2 align="center">Στοιχεία Φωτοσημαντήρα</h2>
+			<div class="d-grid col-4 mx-auto">
+				<button class="btn btn btn-outline-success" onclick="window.print()">Εκτύπωση</button>
+			</div>
+		<br>
+		<% if (days >= 365*5) { %>
+			<div class="spinner-grow text-primary float-end redTip" style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="left" title="Προσοχή, ημέρα ποντίσεως του Φ/Ρ είναι πάνω από 5 έτη. Προτείνεται ανασύνταξη." role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		<% } %>
+			<% for (var i=0; i < light.technicians.length; i++) { %>
+				<% if (light.technicians[i].suggests !== undefined  && light.technicians[i].suggests !== "") { %>
+					<div class="spinner-grow text-danger" role="status"  style="width: 3rem; height: 3rem;" data-toggle="tooltip" data-placement="top" title="Διαθέσιμες προτεινόμενες εργασίες">
+						<span class="visually-hidden" data-toggle="tooltip" data-placement="top">Loading...</span>
+					</div>
+					<% break; %>
+				<% } %>
+			<% } %>
+			<table class="table">
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col"><%= light.aef %></th>
+					<th scope="col"><%= light.lighthouse %></th>
+					<th scope="col"><%= light.colour %></th>
+					<th scope="col"><%= light.features %></th>
+					<th scope="col"><%= light.position %></th>
+					</tr>
+				</thead>
+				<thead class="table-light">
+					<tr class="d-flex">
+					<th scope="col">ΣΤΙΓΜΑ Χ: <%= light.stigma.x %></th>
+					<th scope="col">Ψ: <%= light.stigma.y %></th>
+					</tr>
+				</thead>
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+						<th scope="col">ΚΑΤΑΣΚΕΥΑΣΤΗΣ</th>
+						<th scope="col">ΤΥΠΟΣ</th>
+						<th scope="col">ΤΕΜ</th>
+						<th scope="col">ΗΜΕΡΟΜΗΝΙΑ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</th>
+						<td><%= light.lightingMachine.manufacturer %></td>
+						<td><%= light.lightingMachine.type %></td>
+						<td><%= light.lightingMachine.counter %></td>
+						<% if(light.lightingMachineDate != undefined && light.lightingMachineDate[light.lightingMachineDate.length - 1] != null) { %>
+							<td><%= light.lightingMachineDate[light.lightingMachineDate.length - 1].toISOString().split('T')[0] %></td>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΑΝΑΚΛΑΣΤΗΡΑΣ</th>
+						<td><%= light.reflector.manufacturer %></td>
+						<td><%= light.reflector.type %></td>
+						<td><%= light.reflector.counter %></td>
+						<% if(light.reflectorDate != undefined) { %>
+							<td><%= light.reflectorDate.toISOString().split('T')[0] %></td>
+						<% } %>
+					</tr>
+					<tr>
+						<th scope="row">ΕΠΙΣΗΜΑΤΑ</th>
+						<td><%= light.signs.manufacturer %></td>
+						<td><%= light.signs.type %></td>
+						<td><%= light.signs.counter %></td>
+						<% if(light.signsDate != undefined) { %>
+							<td><%= light.signsDate.toISOString().split('T')[0] %></td>
+						<% } %>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
+						<th scope="col">ΤΥΠΟΣ</th>
+						<th scope="col">ΜΕΤΡΑ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">ΣΤΑΤΕΡΙ (Άλυσος)</th>
+						<td><%= light.stateri.type %></td>
+						<td><%= light.stateri.counter %></td>
+					</tr>
+					<tr>
+						<th scope="row">ΑΛΥΣΟΣ</th>
+						<td><%= light.alysos.type %></td>
+						<td><%= light.alysos.counter %></td>
+					</tr>
+					<tr>
+						<th scope="row">ΑΓΚΥΡΙΟ (Άλυσος)</th>
+						<td><%= light.agkyrioChain.type %></td>
+						<td><%= light.agkyrioChain.counter %></td>
+					</tr>
+					<br>
+				</tbody>
+			</table>
+
+			
+			<div class="col-md-4">
+				<img src="/foto_FR.jpg" class="rounded float-start">
+			</div>
+			<div class="col-md-8">
+				<label for="type" class="form-label"><strong>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</strong></label>
+				<input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= light.type %>" disabled>
+				<label for="usedChain" class="form-label"><strong>ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</strong></label>
+				<input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.usedChain %>" disabled>
+				<label for="immersionDepth" class="form-label"><strong>ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</strong></label>
+				<input type="number" class="form-control" aria-describedby="basic-addon1" value="<%= light.immersionDepth %>" disabled>
+				<label for="immersionDepthDate" class="form-label"><strong>ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</strong></label>
+				<div class="col-md-4">
+					<% if(light.immersionDepthDate != undefined) { %>
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" value="<%= light.immersionDepthDate.toISOString().split('T')[0] %>" disabled>
+					<% } else { %>
+						<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate" disabled>
+					<% } %>
+				</div>
+				
+				<table class="table">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col">ΕΞΑΡΤΗΜΑΤΑ ΠΟΝΤΙΣΕΩΣ</th>
+							<th scope="col">ΤΥΠΟΣ</th>
+							<th scope="col">ΤΕΜ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">ΣΤΡΕΠΤΗΡΑΣ</th>
+							<td><%= light.streptyras.type %></td>
+							<td><%= light.streptyras.counter %></td>
+						</tr>
+						<tr>
+							<th scope="row">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</th>
+							<td><%= light.navyKey.type %></td>
+							<td><%= light.navyKey.counter %></td>
+						</tr>
+						<tr>
+							<th scope="row">ΑΓΚΥΡΙΟ</th>
+							<td><%= light.agkyrio.type %></td>
+							<td><%= light.agkyrio.counter %></td>
+						</tr>
+						<br>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="text-center">
+				<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+					<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+					<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+					<a href="/lightBeacons/insertLight/<%= light._id %>" class="btn btn-outline-primary">Επεξεργασία Στοιχείων</a>
+					<a href="/lightBeacons/technicians/<%= light._id %>" class="btn btn-outline-primary">Πληροφοριές Τεχνικού</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+<% } %>
+
+<% include ./partials/footer %>

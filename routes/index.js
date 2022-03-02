@@ -19,6 +19,7 @@ router.get("/login", (req, res) => {
 router.post("/login", passport.authenticate("local", { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     const redirectUrl = req.session.returnTo || '/';
     delete req.session.returnTo;
+    req.flash("success", "Επιτυχής σύνδεση");
     res.redirect(redirectUrl);
 });
 
@@ -48,34 +49,20 @@ router.get("/logout", (req,res) =>{
 router.get("/search", catchAsync(async (req, res, next) => {
 	try {
         const query = req.query.q;
-        if (query){
+        if (query) {
+            const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
-            if(searchedLed == undefined || searchedLed.length == 0) {
-                const searchedAuto = await AutoLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
-                if(searchedAuto == undefined || searchedAuto.length == 0) {
-                    const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
-                    if(searchedConstant == undefined || searchedConstant.length == 0) {
-                        const searchedLight = await LightBeacon.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
-                        var today = new Date();
-                        var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
-                        if(searchedLight == undefined || searchedLight.length == 0) {
-                            req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
-                            res.redirect('/');
-                        }
-                        else {
-                            res.render("searchLight", { searchedLight, days});
-                        }
-                    }
-                    else {
-                        res.render("searchConstant", { searchedConstant});
-                    }
-                }
-                else {
-                    res.render("searchAuto", { searchedAuto});
-                }
+            const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
+            const searchedLight = await LightBeacon.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
+            var today = new Date();
+            var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
+
+            if(searchedAuto == undefined || searchedAuto.length == 0 && searchedLed == undefined || searchedLed.length == 0 && searchedConstant == undefined || searchedConstant.length == 0 && searchedLight == undefined || searchedLight.length == 0) {
+                req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
+                res.redirect('/');
             }
             else {
-                res.render("searchLed", { searchedLed});
+                res.render("searchSpecific", { searchedAuto, searchedLed, searchedConstant, searchedLight, days});
             }
         }
         else {
