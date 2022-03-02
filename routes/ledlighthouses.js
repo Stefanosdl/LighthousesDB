@@ -7,7 +7,7 @@ const middleware = require("../utils/middleware");
 const moment = require("moment");
 
 router.get("/registerLed", (req, res) => {
-	res.render("registerLed");
+	res.render("ledlights/registerLed");
 });
 
 router.post("/registerLed", catchAsync(async (req, res, next) => {
@@ -39,19 +39,19 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
 router.get("/updateLed/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id);
 
-	res.render("updateLed", { ledLightHouse });
+	res.render("ledlights/updateLed", { ledLightHouse });
 }));
 
 router.get("/technicians/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
 	
-	res.render("ledTechnicians", { ledLightHouse });
+	res.render("ledlights/ledTechnicians", { ledLightHouse });
 }));
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
 
-	res.render("ledTechniciansNew", { ledLightHouse });
+	res.render("ledlights/ledTechniciansNew", { ledLightHouse });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
@@ -72,7 +72,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 router.get("/insertLed/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id);
 
-	res.render("insertLed", { ledLightHouse });
+	res.render("ledlights/insertLed", { ledLightHouse });
 }));
 
 router.put("/insertLed/:id", catchAsync(async (req, res) => {
@@ -229,7 +229,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	solarGenerators.forEach(function(i) { solarGeneratorsCount[i] = (solarGeneratorsCount[i]||0) + 1;});
 	var accumulatorsCount = {};
 	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
-    res.render("ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount, coloursCount});
+    res.render("ledlights/ledSum", {headsCount, solarGeneratorsCount, accumulatorsCount, coloursCount});
 }));
 
 module.exports = router;

@@ -7,7 +7,7 @@ const middleware = require("../utils/middleware");
 const moment = require("moment");
 
 router.get("/registerConstant", (req, res) => {
-	res.render("registerConstant");
+	res.render("constantlights/registerConstant");
 });
 
 router.post("/registerConstant", catchAsync(async (req, res, next) => {
@@ -30,19 +30,19 @@ router.post("/registerConstant", catchAsync(async (req, res, next) => {
 router.post("/search/:id", catchAsync(async (req, res) => {
 	const searchedConstant = await ConstantLight.find({_id: req.params.id}).populate("technicians");
 	
-	res.render("searchConstant", { searchedConstant});
+	res.render("constantlights/searchConstant", { searchedConstant});
 }));
 
 router.get("/technicians/:id", catchAsync(async (req, res) => {
     const constantLightHouse = await ConstantLight.findById(req.params.id).populate("technicians").exec();
 	
-	res.render("constantTechnicians", { constantLightHouse });
+	res.render("constantlights/constantTechnicians", { constantLightHouse });
 }));
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const constantLightHouse = await ConstantLight.findById(req.params.id).populate("technicians").exec();
 
-	res.render("constantTechniciansNew", { constantLightHouse });
+	res.render("constantlights/constantTechniciansNew", { constantLightHouse });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
@@ -63,7 +63,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 router.get("/insertConstant/:id", catchAsync(async (req, res) => {
     const constantLightHouse = await ConstantLight.findById(req.params.id);
 
-	res.render("insertConstant", { constantLightHouse });
+	res.render("constantlights/insertConstant", { constantLightHouse });
 }));
 
 router.put("/insertConstant/:id", catchAsync(async (req, res) => {
@@ -159,7 +159,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var lampsCount = {};
 	lamps.forEach(function(i) { lampsCount[i] = (lampsCount[i]||0) + 1;});
 
-    res.render("constantSum", {lampsCount, coloursCount});
+    res.render("constantlights/constantSum", {lampsCount, coloursCount});
 }));
 
 module.exports = router;

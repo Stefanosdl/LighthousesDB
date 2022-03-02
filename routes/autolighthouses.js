@@ -7,7 +7,7 @@ const middleware = require("../utils/middleware");
 const moment = require("moment");
 
 router.get("/registerAuto", (req, res) => {
-	res.render("registerAuto");
+	res.render("autolights/registerAuto");
 });
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
@@ -48,19 +48,19 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 router.post("/search/:id", catchAsync(async (req, res) => {
 	const searchedAuto = await AutoLight.find({_id: req.params.id}).populate("technicians");
 	
-	res.render("searchAuto", { searchedAuto});
+	res.render("autolights/searchAuto", { searchedAuto});
 }));
 
 router.get("/technicians/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
 	
-	res.render("autoTechnicians", { autoLightHouse });
+	res.render("autolights/autoTechnicians", { autoLightHouse });
 }));
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id).populate("technicians").exec();
 
-	res.render("autoTechniciansNew", { autoLightHouse });
+	res.render("autolights/autoTechniciansNew", { autoLightHouse });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
@@ -81,7 +81,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 router.get("/insertAuto/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id);
 
-	res.render("insertAuto", { autoLightHouse });
+	res.render("autolights/insertAuto", { autoLightHouse });
 }));
 
 router.put("/insertAuto/:id", catchAsync(async (req, res) => {
@@ -309,7 +309,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var socketsCount = {};
 	sockets.forEach(function(i) { socketsCount[i] = (socketsCount[i]||0) + 1;});
 
-    res.render("autoSum", {lampsCount, headsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount});
+    res.render("autolights/autoSum", {lampsCount, headsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount});
 }));
 
 module.exports = router;

@@ -7,7 +7,7 @@ const middleware = require("../utils/middleware");
 const moment = require("moment");
 
 router.get("/registerLight", (req, res) => {
-	res.render("registerLight");
+	res.render("lightbeacons/registerLight");
 });
 
 router.post("/registerLight", catchAsync(async (req, res, next) => {
@@ -56,19 +56,19 @@ router.post("/search/:id", catchAsync(async (req, res) => {
 	var today = new Date();
 	var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
 	
-	res.render("searchLight", { searchedLight, days});
+	res.render("lightbeacons/searchLight", { searchedLight, days});
 }));
 
 router.get("/technicians/:id", catchAsync(async (req, res) => {
     const lightBeacon = await LightBeacon.findById(req.params.id).populate("technicians").exec();
 	
-	res.render("lightTechnicians", { lightBeacon });
+	res.render("lightbeacons/lightTechnicians", { lightBeacon });
 }));
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const lightBeacon = await LightBeacon.findById(req.params.id).populate("technicians").exec();
 
-	res.render("lightTechniciansNew", { lightBeacon });
+	res.render("lightbeacons/lightTechniciansNew", { lightBeacon });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
@@ -89,7 +89,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 router.get("/insertLight/:id", catchAsync(async (req, res) => {
     const lightBeacon = await LightBeacon.findById(req.params.id);
 
-	res.render("insertLight", { lightBeacon });
+	res.render("lightbeacons/insertLight", { lightBeacon });
 }));
 
 router.put("/insertLight/:id", catchAsync(async (req, res) => {
@@ -230,7 +230,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var typesCount = {};
 	types.forEach(function(i) { typesCount[i] = (typesCount[i]||0) + 1;});
 
-    res.render("lightSum", {typesCount, coloursCount, lightingMachines, reflectors, signs, usedChain});
+    res.render("lightbeacons/lightSum", {typesCount, coloursCount, lightingMachines, reflectors, signs, usedChain});
 }));
 
 module.exports = router;
