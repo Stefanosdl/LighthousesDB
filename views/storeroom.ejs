@@ -1,0 +1,34 @@
+<% include ./partials/header %>
+
+<div class="container">
+	<div class="row">
+		<h2 align="center">Εισαγωγή Εξαρτημάτων</h2>
+		<form action="/storeRoom" method="POST" class="row g-3">
+			<div class="col-md-6" id="fieldListAcc">
+				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
+				<input type="text" class="form-control" name="accumulator[]" id="accumulator">
+				<button class="btn btn-primary" id="addMoreAcc">Προσθήκη Συσσωρευτή</button>
+			</div>
+			<div class="text-center">
+				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+				<button class="btn btn-outline-primary">Εισαγωγή</button>
+			</div>
+		</form>
+	</div>
+</div>
+<br>
+
+<script>
+	$(function() {
+		$("#addMoreAcc").click(function(e) {
+			e.preventDefault();
+			$("#fieldListAcc").append("<br>");
+			$("#fieldListAcc").append("<div class='col-md-6'");
+			$("#fieldListAcc").append("<label for='accumulator' class='form-label'>ΣΥΣΣΩΡΕΥΤΗΣ</label>");
+			$("#fieldListAcc").append("<input type='text' class='form-control' name='accumulator' id='accumulator'>");
+			$("#fieldListAcc").append("</div>");
+		});
+	});
+</script>
+
+<% include ./partials/footer %>

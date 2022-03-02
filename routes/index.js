@@ -7,6 +7,7 @@ const LedLight = require("../models/ledlighthouses");
 const AutoLight = require("../models/autolighthouses");
 const ConstantLight = require("../models/constantlighthouses");
 const LightBeacon = require("../models/lightbeacons");
+const StoreRoom = require("../models/storeroom");
 
 router.get("/", (req, res) => {
 	res.render("index");
@@ -85,7 +86,41 @@ router.get("/suggestedWorks", catchAsync(async (req, res, next) => {
     const ledSuggests = await LedLight.find({}).populate("technicians");
     const constantSuggests = await ConstantLight.find({}).populate("technicians");
     const lightSuggests = await LightBeacon.find({}).populate("technicians");
+
 	res.render("suggests", { autoSuggests, ledSuggests, constantSuggests, lightSuggests });
+}));
+
+router.get("/storeRoom", catchAsync(async (req, res, next) => {
+    const storeroom = await StoreRoom.findOne({});
+
+	res.render("storeroom", { storeroom });
+}));
+
+router.post("/storeRoom", catchAsync(async (req, res) => {
+	try {
+		const storeroom = await StoreRoom.findOne({});
+        
+        if (storeroom.length == 0) {
+            const newstoreroom = new StoreRoom({});
+            for (const item of req.body.accumulator) {
+                newstoreroom.accumulators.push(item);
+            }
+            await newstoreroom.save();
+        }
+        else {
+            for (const item of req.body.accumulator) {
+                storeroom.accumulators.push(item);
+            }
+            await storeroom.save();
+        }
+	}
+	catch(e) {
+		req.flash("error", e.message);
+		res.redirect('/storeroom');
+	}
+	
+    req.flash("success", "Επιτυχής εισαγωγή!");
+	res.redirect(`/`);		
 }));
 
 module.exports = router;
