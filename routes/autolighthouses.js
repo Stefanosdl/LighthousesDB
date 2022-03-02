@@ -3,12 +3,15 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const AutoLight = require("../models/autolighthouses");
 const Technician = require("../models/technician");
+const StoreRoom = require("../models/storeroom");
 const middleware = require("../utils/middleware");
 const moment = require("moment");
 
-router.get("/registerAuto", (req, res) => {
-	res.render("autolights/registerAuto");
-});
+router.get("/registerAuto", catchAsync(async (req, res, next) => {
+	const storeroom = await StoreRoom.findOne({});
+
+	res.render("autolights/registerAuto", { storeroom });
+}));
 
 router.post("/registerAuto", catchAsync(async (req, res, next) => {
     try {
@@ -48,7 +51,7 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 router.post("/search/:id", catchAsync(async (req, res) => {
 	const searchedAuto = await AutoLight.find({_id: req.params.id}).populate("technicians");
 	
-	res.render("autolights/searchAuto", { searchedAuto});
+	res.render("autolights/searchAuto", { searchedAuto });
 }));
 
 router.get("/technicians/:id", catchAsync(async (req, res) => {

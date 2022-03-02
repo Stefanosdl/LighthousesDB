@@ -55,6 +55,7 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             const searchedLight = await LightBeacon.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
+            const storeroom = await StoreRoom.findOne({});
             var today = new Date();
             var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
 
@@ -71,7 +72,7 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const searchedAuto = await AutoLight.find({}).populate("technicians");
             const searchedConstant = await ConstantLight.find({}).populate("technicians");
             const searchedLight = await LightBeacon.find({}).populate("technicians");
-            res.render("search", {searchedAuto, searchedLed, searchedConstant, searchedLight});
+            res.render("search", { searchedAuto, searchedLed, searchedConstant, searchedLight });
         }
 
     }
@@ -91,16 +92,14 @@ router.get("/suggestedWorks", catchAsync(async (req, res, next) => {
 }));
 
 router.get("/storeRoom", catchAsync(async (req, res, next) => {
-    const storeroom = await StoreRoom.findOne({});
-
-	res.render("storeroom", { storeroom });
+	res.render("storeroom");
 }));
 
 router.post("/storeRoom", catchAsync(async (req, res) => {
 	try {
 		const storeroom = await StoreRoom.findOne({});
         
-        if (storeroom.length == 0) {
+        if (storeroom == null) {
             const newstoreroom = new StoreRoom({});
             for (const item of req.body.accumulator) {
                 newstoreroom.accumulators.push(item);
