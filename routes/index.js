@@ -55,11 +55,13 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const searchedLed = await LedLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             const searchedConstant = await ConstantLight.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
             const searchedLight = await LightBeacon.find({ $or:[ {aef: query}, {lighthouse: query}, {location: query} ]}).populate("technicians");
-            const storeroom = await StoreRoom.findOne({});
-            var today = new Date();
-            var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
 
-            if(searchedAuto == undefined || searchedAuto.length == 0 && searchedLed == undefined || searchedLed.length == 0 && searchedConstant == undefined || searchedConstant.length == 0 && searchedLight == undefined || searchedLight.length == 0) {
+            if(searchedLight.length != 0) {
+                var today = new Date();
+                var days = Math.floor((Math.abs(searchedLight[0].immersionDepthDate-today))/(1000*60*60*24));
+            }
+
+            if((searchedAuto == undefined || searchedAuto.length == 0) && (searchedLed == undefined || searchedLed.length == 0) && (searchedConstant == undefined || searchedConstant.length == 0) && (searchedLight == undefined || searchedLight.length == 0)) {
                 req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
                 res.redirect('/');
             }

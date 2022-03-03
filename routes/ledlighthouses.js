@@ -39,6 +39,12 @@ router.post("/registerLed", catchAsync(async (req, res, next) => {
 	}
 }));
 
+router.post("/search/:id", catchAsync(async (req, res) => {
+	const searchedLed = await LedLight.find({_id: req.params.id}).populate("technicians");
+	
+	res.render("ledlights/searchLed", { searchedLed });
+}));
+
 router.get("/updateLed/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id);
 
