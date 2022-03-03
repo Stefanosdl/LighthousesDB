@@ -3,17 +3,6 @@
 	<div class="row">
 		<h2 align="center">Νέος Αυτόματος Πυρσός</h2>
 		<form action="/autoLighthouses/registerAuto" method="POST" class="row g-3">
-			
-			<div class="col-md-6">
-				<label for="exampleDataList" class="form-label">Datalist example</label>
-				<input class="form-control" list="datalistOptions" id="exampleDataList">
-				<datalist id="datalistOptions">
-					<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
-						<option value="<%= storeroom.accumulators[i] %>">
-					<% } %>
-				</datalist>
-			</div>
-
 			<div class="col-md-6">
 				<label for="aef" class="form-label">ΑΕΦ</label>
 				<input type="text" class="form-control" name="aef" id="aef" required>
@@ -50,9 +39,17 @@
 				<label for="lighterDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
 				<input type="date" class="form-control" name="lighterDate" id="lighterDate">
 			</div>
+
 			<div class="col-md-6" id="fieldListSolar">
 				<label for="solarGenerator[]" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-				<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator">
+				<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator">
+				<datalist id="datalistOptions1">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
+							<option value="<%= storeroom.solarGenerators[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreSolar">Προσθήκη Ηλιακής Γεννήτριας</button>
 			</div>
             <div class="col-md-6">
@@ -67,18 +64,34 @@
 				<label for="alternatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
 				<input type="date" class="form-control" name="alternatorDate" id="alternatorDate">
 			</div>
+
 			<div class="col-md-6" id="fieldListLamp">
 				<label for="lamp[]" class="form-label">ΛΥΧΝΙΑ</label>
-				<input type="text" class="form-control" name="lamp[]" id="lamp">
+				<input type="text" class="form-control" list="datalistOptions2" name="lamp[]" id="lamp">
+				<datalist id="datalistOptions2">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lamps.length; i++) { %>
+							<option value="<%= storeroom.lamps[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreLamp">Προσθήκη Λυχνίας</button>
 			</div>
+
             <div class="col-md-6">
 				<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
 				<input type="date" class="form-control" name="lampDate[]" id="lampDate">
 			</div>
 			<div class="col-md-6" id="fieldListAcc">
 				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-				<input type="text" class="form-control" name="accumulator[]" id="accumulator">
+				<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator">
+				<datalist id="datalistOptions">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
+							<option value="<%= storeroom.accumulators[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreAcc">Προσθήκη Συσσωρευτή</button>
 			</div>
 			<div class="col-md-6">
@@ -87,7 +100,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="head" class="form-label">ΚΕΦΑΛΗ</label>
-				<input type="text" class="form-control" name="head" id="head">
+				<input type="text" class="form-control" list="heads" name="head" id="head">
+				<datalist id="heads">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.heads.length; i++) { %>
+							<option value="<%= storeroom.heads[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
             <div class="col-md-6">
 				<label for="headDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
@@ -134,55 +154,5 @@
 </div>
 <br>
 
-<script>
-	$(function() {
-		$("#addMoreSolar").click(function(e) {
-			e.preventDefault();
-			$("#fieldListSolar").append("<br>");
-			$("#fieldListSolar").append("<div class='col-md-6'");
-			$("#fieldListSolar").append("<label for='solarGenerator' class='form-label'>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>");
-			$("#fieldListSolar").append("<input type='text' class='form-control' name='solarGenerator' id='solarGenerator'>");
-			$("#fieldListSolar").append("</div>");
-			$("#fieldListSolar").append("<div class='col-md-6'>");
-			$("#fieldListSolar").append("<label for='solarGeneratorDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
-			$("#fieldListSolar").append("<input type='date' class='form-control' name='solarGeneratorDate' id='solarGeneratorDate'>");
-			$("#fieldListSolar").append("</div>");
-		});
-	});
-</script>
-
-<script>
-	$(function() {
-		$("#addMoreAcc").click(function(e) {
-			e.preventDefault();
-			$("#fieldListAcc").append("<br>");
-			$("#fieldListAcc").append("<div class='col-md-6'");
-			$("#fieldListAcc").append("<label for='accumulator' class='form-label'>ΣΥΣΣΩΡΕΥΤΗΣ</label>");
-			$("#fieldListAcc").append("<input type='text' class='form-control' name='accumulator' id='accumulator'>");
-			$("#fieldListAcc").append("</div>");
-			$("#fieldListAcc").append("<div class='col-md-6'>");
-			$("#fieldListAcc").append("<label for='accumulatorDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
-			$("#fieldListAcc").append("<input type='date' class='form-control' name='accumulatorDate' id='accumulatorDate'>");
-			$("#fieldListAcc").append("</div>");
-		});
-	});
-</script>
-
-<script>
-	$(function() {
-		$("#addMoreLamp").click(function(e) {
-			e.preventDefault();
-			$("#fieldListLamp").append("<br>");
-			$("#fieldListLamp").append("<div class='col-md-6'");
-			$("#fieldListLamp").append("<label for='lamp' class='form-label'>ΛΥΧΝΙΑ</label>");
-			$("#fieldListLamp").append("<input type='text' class='form-control' name='lamp' id='lamp'>");
-			$("#fieldListLamp").append("</div>");
-			$("#fieldListLamp").append("<div class='col-md-6'>");
-			$("#fieldListLamp").append("<label for='lampDate' class='form-label'>ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>");
-			$("#fieldListLamp").append("<input type='date' class='form-control' name='lampDate' id='lampDate'>");
-			$("#fieldListLamp").append("</div>");
-		});
-	});
-</script>
-
+<script src="/js/registerLightHouses.js"></script>
 <% include ../partials/footer %>

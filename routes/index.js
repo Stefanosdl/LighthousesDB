@@ -102,13 +102,47 @@ router.post("/storeRoom", catchAsync(async (req, res) => {
         if (storeroom == null) {
             const newstoreroom = new StoreRoom({});
             for (const item of req.body.accumulator) {
-                newstoreroom.accumulators.push(item);
+                if (item != "") {
+                    newstoreroom.accumulators.push(item);
+                }
+            }
+            for (const item of req.body.solarGenerator) {
+                if (item != "") {
+                    newstoreroom.solarGenerators.push(item);
+                }
+            }
+            for (const item of req.body.head) {
+                if (item != "") {
+                    newstoreroom.heads.push(item);
+                }
+            }
+            for (const item of req.body.lamp) {
+                if (item != "") {
+                    newstoreroom.lamps.push(item);
+                }
             }
             await newstoreroom.save();
         }
         else {
             for (const item of req.body.accumulator) {
-                storeroom.accumulators.push(item);
+                if (item != "") {
+                    storeroom.accumulators.push(item);
+                }
+            }
+            for (const item of req.body.solarGenerator) {
+                if (item != "") {
+                    storeroom.solarGenerators.push(item);
+                }
+            }
+            for (const item of req.body.head) {
+                if (item != "") {
+                    storeroom.heads.push(item);
+                }
+            }
+            for (const item of req.body.lamp) {
+                if (item != "") {
+                    storeroom.lamps.push(item);
+                }
             }
             await storeroom.save();
         }

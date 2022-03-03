@@ -9,7 +9,25 @@
 				<input type="text" class="form-control" name="accumulator[]" id="accumulator">
 				<button class="btn btn-primary" id="addMoreAcc">Προσθήκη Συσσωρευτή</button>
 			</div>
-			
+
+			<div class="col-md-6" id="fieldListSolar">
+				<label for="solarGenerator[]" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
+				<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator">
+				<button class="btn btn-primary" id="addMoreSolar">Προσθήκη Ηλιακής Γεννήτριας</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListHead">
+				<label for="head[]" class="form-label">ΚΕΦΑΛΗ</label>
+				<input type="text" class="form-control" name="head[]" id="head">
+				<button class="btn btn-primary" id="addMoreHead">Προσθήκη Κεφαλής</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListLamp">
+				<label for="lamp[]" class="form-label">ΛΥΧΝΙΑ</label>
+				<input type="text" class="form-control" name="lamp[]" id="lamp">
+				<button class="btn btn-primary" id="addMoreLamp">Προσθήκη Λυχνίας</button>
+			</div>
+
 			<div class="text-center">
 				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
 				<button class="btn btn-outline-primary">Εισαγωγή</button>
@@ -19,17 +37,6 @@
 </div>
 <br>
 
-<script>
-	$(function() {
-		$("#addMoreAcc").click(function(e) {
-			e.preventDefault();
-			$("#fieldListAcc").append("<br>");
-			$("#fieldListAcc").append("<div class='col-md-6'");
-			$("#fieldListAcc").append("<label for='accumulator' class='form-label'>ΣΥΣΣΩΡΕΥΤΗΣ</label>");
-			$("#fieldListAcc").append("<input type='text' class='form-control' name='accumulator' id='accumulator'>");
-			$("#fieldListAcc").append("</div>");
-		});
-	});
-</script>
+<script src="js/storerooms.js"></script>
 
 <% include ./partials/footer %>

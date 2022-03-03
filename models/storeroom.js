@@ -5,6 +5,18 @@ const StoreRoomSchema = new Schema({
     accumulators: {
         type: Array,
         default: [String]
+    },
+    solarGenerators: {
+        type: Array,
+        default: [String]
+    },
+    heads: {
+        type: Array,
+        default: [String]
+    },
+    lamps: {
+        type: Array,
+        default: [String]
     }
 });
 
