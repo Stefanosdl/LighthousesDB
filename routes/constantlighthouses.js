@@ -44,8 +44,9 @@ router.get("/technicians/:id", catchAsync(async (req, res) => {
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const constantLightHouse = await ConstantLight.findById(req.params.id).populate("technicians").exec();
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("constantlights/constantTechniciansNew", { constantLightHouse });
+	res.render("constantlights/constantTechniciansNew", { constantLightHouse, storeroom });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {

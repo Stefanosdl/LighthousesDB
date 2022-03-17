@@ -6,7 +6,14 @@
 		<form action="/constantLighthouses/technicians/new/<%= constantLightHouse._id %>" method="POST" class="row g-3">
 			<div class="col-md-6">
 				<label for="technician" class="form-label">ΤΕΧΝΙΚΟΣ</label>
-				<input type="text" class="form-control" name="arr[technician]" id="technician" required>
+				<input type="text" class="form-control" list="technicians" name="arr[technician]" id="technician" required>
+				<datalist id="technicians">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.technicians.length; i++) { %>
+							<option value="<%= storeroom.technicians[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-6">
 				<label for="date" class="form-label">ΗΜΕΡΟΜΗΝΙΑ</label>

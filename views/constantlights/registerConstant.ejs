@@ -32,7 +32,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" name="location" id="location">
+				<input type="text" class="form-control" list="locations" name="location" id="location">
+				<datalist id="locations">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.locations.length; i++) { %>
+							<option value="<%= storeroom.locations[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-6">
 				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>

@@ -158,6 +158,16 @@ router.post("/storeRoom", catchAsync(async (req, res) => {
                     newstoreroom.alternators.push(item);
                 }
             }
+            for (const item of req.body.technician) {
+                if (item != "") {
+                    newstoreroom.technicians.push(item);
+                }
+            }
+            for (const item of req.body.location) {
+                if (item != "") {
+                    newstoreroom.locations.push(item);
+                }
+            }
             for (const item of req.body.lightingMachineMan) {
                 if (item != "") {
                     newstoreroom.lightingMachineMan.push(item);
@@ -279,6 +289,16 @@ router.post("/storeRoom", catchAsync(async (req, res) => {
             for (const item of req.body.alternator) {
                 if (item != "") {
                     storeroom.alternators.push(item);
+                }
+            }
+            for (const item of req.body.technician) {
+                if (item != "") {
+                    storeroom.technicians.push(item);
+                }
+            }
+            for (const item of req.body.location) {
+                if (item != "") {
+                    storeroom.locations.push(item);
                 }
             }
             for (const item of req.body.lightingMachineMan) {

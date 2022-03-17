@@ -70,8 +70,9 @@ router.get("/technicians/:id", catchAsync(async (req, res) => {
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const lightBeacon = await LightBeacon.findById(req.params.id).populate("technicians").exec();
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("lightbeacons/lightTechniciansNew", { lightBeacon });
+	res.render("lightbeacons/lightTechniciansNew", { lightBeacon, storeroom });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {

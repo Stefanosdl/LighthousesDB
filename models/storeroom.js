@@ -46,6 +46,14 @@ const StoreRoomSchema = new Schema({
         type: Array,
         default: [String]
     },
+    technicians: {
+        type: Array,
+        default: [String]
+    },
+    locations: {
+        type: Array,
+        default: [String]
+    },
     lightingMachineMan: {
         type: Array,
         default: [String]

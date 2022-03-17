@@ -261,3 +261,25 @@ $(function() {
         $("#fieldListAgkyrioType").append("</div>");
     });
 });
+
+$(function() {
+    $("#addMoreTechnician").click(function(e) {
+        e.preventDefault();
+        $("#fieldListTechnician").append("<br>");
+        $("#fieldListTechnician").append("<div class='col-md-6'>");
+        $("#fieldListTechnician").append("<label for='technician' class='form-label'>ΤΕΧΝΙΚΟΣ</label>");
+        $("#fieldListTechnician").append("<input type='text' class='form-control' name='technician' id='technician'>");
+        $("#fieldListTechnician").append("</div>");
+    });
+});
+
+$(function() {
+    $("#addMoreLocation").click(function(e) {
+        e.preventDefault();
+        $("#fieldListLocation").append("<br>");
+        $("#fieldListLocation").append("<div class='col-md-6'>");
+        $("#fieldListLocation").append("<label for='location' class='form-label'>ΠΕΡΙΟΧΗ</label>");
+        $("#fieldListLocation").append("<input type='text' class='form-control' name='location' id='location'>");
+        $("#fieldListLocation").append("</div>");
+    });
+});

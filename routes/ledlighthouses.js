@@ -59,8 +59,9 @@ router.get("/technicians/:id", catchAsync(async (req, res) => {
 
 router.get("/technicians/new/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id).populate("technicians").exec();
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("ledlights/ledTechniciansNew", { ledLightHouse });
+	res.render("ledlights/ledTechniciansNew", { ledLightHouse, storeroom });
 }));
 
 router.post("/technicians/new/:id", catchAsync(async (req, res) => {
