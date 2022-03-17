@@ -3,12 +3,15 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const ConstantLight = require("../models/constantlighthouses");
 const Technician = require("../models/technician");
+const StoreRoom = require("../models/storeroom");
 const middleware = require("../utils/middleware");
 const moment = require("moment");
 
-router.get("/registerConstant", (req, res) => {
-	res.render("constantlights/registerConstant");
-});
+router.get("/registerConstant", catchAsync(async (req, res, next) => {
+	const storeroom = await StoreRoom.findOne({});
+
+	res.render("constantlights/registerConstant", { storeroom });
+}));
 
 router.post("/registerConstant", catchAsync(async (req, res, next) => {
     try {

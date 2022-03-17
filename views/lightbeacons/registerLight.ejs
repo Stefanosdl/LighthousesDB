@@ -13,7 +13,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour" id="colour">
+				<input type="text" class="form-control" list="colours" name="colour" id="colour">
+				<datalist id="colours">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.colours.length; i++) { %>
+							<option value="<%= storeroom.colours[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-6">
 				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
@@ -57,10 +64,24 @@
                 <span class="input-group-text" id="basic-addon3">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</span>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control" name="lightingMachineMan" id="lightingMachineMan">
+				<input type="text" class="form-control" list="lightingMachineMans" name="lightingMachineMan" id="lightingMachineMan">
+				<datalist id="lightingMachineMans">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lightingMachineMan.length; i++) { %>
+							<option value="<%= storeroom.lightingMachineMan[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-2">
-				<input type="text" class="form-control" name="lightingMachineType" id="lightingMachineType">
+				<input type="text" class="form-control" list="lightingMachineTypes" name="lightingMachineType" id="lightingMachineType">
+				<datalist id="lightingMachineTypes">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lightingMachineType.length; i++) { %>
+							<option value="<%= storeroom.lightingMachineType[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-2">
 				<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" min="0">
@@ -72,10 +93,24 @@
                 <span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control" name="reflectorMan" id="reflectorMan">
+				<input type="text" class="form-control" list="reflectorMans" name="reflectorMan" id="reflectorMan">
+				<datalist id="reflectorMans">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.reflectorMan.length; i++) { %>
+							<option value="<%= storeroom.reflectorMan[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-2">
-				<input type="text" class="form-control" name="reflectorType" id="reflectorType">
+				<input type="text" class="form-control" list="reflectorTypes" name="reflectorType" id="reflectorType">
+				<datalist id="reflectorTypes">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.reflectorType.length; i++) { %>
+							<option value="<%= storeroom.reflectorType[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-2">
 				<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" min="0">
@@ -87,10 +122,24 @@
                 <span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control" name="signsMan" id="signsMan">
+				<input type="text" class="form-control" list="signsMans" name="signsMan" id="signsMan">
+				<datalist id="signsMans">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.signsMan.length; i++) { %>
+							<option value="<%= storeroom.signsMan[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-2">
-				<input type="text" class="form-control" name="signsType" id="signsType">
+				<input type="text" class="form-control" list="signsTypes" name="signsType" id="signsType">
+				<datalist id="signsTypes">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.signsType.length; i++) { %>
+							<option value="<%= storeroom.signsType[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-2">
 				<input type="number" class="form-control" name="signsCounter" id="signsCounter" min="0">
@@ -103,7 +152,14 @@
 			</div>
 			<div class="col-md-8">
 				<label for="type" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
-				<input type="text" class="form-control" name="type" id="type">
+				<input type="text" class="form-control" list="types" name="type" id="type">
+				<datalist id="types">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.type.length; i++) { %>
+							<option value="<%= storeroom.type[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<label for="usedChain" class="form-label">ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</label>
 				<input type="number" class="form-control" name="usedChain" id="usedChain" min="0">
 				<label for="immersionDepth" class="form-label">ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</label>
@@ -127,9 +183,30 @@
                         <span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ (Άλυσος)</span>
                     </div>
                     <div class="col-8 col-sm-4">
-                        <input type="text" class="form-control" name="stateriType" id="stateriType" placeholder="Ίντσες">
-                        <input type="text" class="form-control" name="alysosType" id="alysosType" placeholder="Ίντσες">
-                        <input type="text" class="form-control" name="agkyrioChainType" id="agkyrioChainType" placeholder="Ίντσες">
+						<input type="text" class="form-control" list="stateriTypes" name="stateriType" id="stateriType" placeholder="Ίντσες">
+						<datalist id="stateriTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.stateriType.length; i++) { %>
+									<option value="<%= storeroom.stateriType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
+						<input type="text" class="form-control" list="alysosTypes" name="alysosType" id="alysosType" placeholder="Ίντσες">
+						<datalist id="alysosTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.alysosType.length; i++) { %>
+									<option value="<%= storeroom.alysosType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
+						<input type="text" class="form-control" list="agkyrioChainTypes" name="agkyrioChainType" id="agkyrioChainType" placeholder="Ίντσες">
+						<datalist id="agkyrioChainTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.agkyrioChainType.length; i++) { %>
+									<option value="<%= storeroom.agkyrioChainType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
                     </div>
                     <div class="col-8 col-sm-4">
                         <input type="number" class="form-control" name="stateriCounter" id="stateriCounter" placeholder="x2" min="0">
@@ -156,9 +233,30 @@
                         <span class="input-group-text" id="basic-addon3">ΑΓΚΥΡΙΟ</span>
                     </div>
                     <div class="col-8 col-sm-4">
-                        <input type="text" class="form-control" name="streptyrasType" id="streptyrasType" placeholder="Ίντσες">
-                        <input type="text" class="form-control" name="navyKeyType" id="navyKeyType" placeholder="Ίντσες">
-                        <input type="text" class="form-control" name="agkyrioType" id="agkyrioType" placeholder="Κιλά">
+						<input type="text" class="form-control" list="streptyrasTypes" name="streptyrasType" id="streptyrasType" placeholder="Ίντσες">
+						<datalist id="streptyrasTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.streptyrasType.length; i++) { %>
+									<option value="<%= storeroom.streptyrasType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
+						<input type="text" class="form-control" list="navyKeyTypes" name="navyKeyType" id="navyKeyType" placeholder="Ίντσες">
+						<datalist id="navyKeyTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.navyKeyType.length; i++) { %>
+									<option value="<%= storeroom.navyKeyType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
+						<input type="text" class="form-control" list="agkyrioTypes" name="agkyrioType" id="agkyrioType" placeholder="Κιλά">
+						<datalist id="agkyrioTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.agkyrioType.length; i++) { %>
+									<option value="<%= storeroom.agkyrioType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
                     </div>
                     <div class="col-8 col-sm-4">
                         <input type="number" class="form-control" name="streptyrasCounter" id="streptyrasCounter" min="0">

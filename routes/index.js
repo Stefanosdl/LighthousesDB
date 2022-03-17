@@ -123,6 +123,106 @@ router.post("/storeRoom", catchAsync(async (req, res) => {
                     newstoreroom.lamps.push(item);
                 }
             }
+            for (const item of req.body.colour) {
+                if (item != "") {
+                    newstoreroom.colours.push(item);
+                }
+            }
+            for (const item of req.body.lighter) {
+                if (item != "") {
+                    newstoreroom.lighters.push(item);
+                }
+            }
+            for (const item of req.body.generatorSocket) {
+                if (item != "") {
+                    newstoreroom.generatorSockets.push(item);
+                }
+            }
+            for (const item of req.body.torchSocket) {
+                if (item != "") {
+                    newstoreroom.torchSockets.push(item);
+                }
+            }
+            for (const item of req.body.photocell) {
+                if (item != "") {
+                    newstoreroom.photocells.push(item);
+                }
+            }
+            for (const item of req.body.accessory) {
+                if (item != "") {
+                    newstoreroom.accessorys.push(item);
+                }
+            }
+            for (const item of req.body.alternator) {
+                if (item != "") {
+                    newstoreroom.alternators.push(item);
+                }
+            }
+            for (const item of req.body.lightingMachineMan) {
+                if (item != "") {
+                    newstoreroom.lightingMachineMan.push(item);
+                }
+            }
+            for (const item of req.body.lightingMachineType) {
+                if (item != "") {
+                    newstoreroom.lightingMachineType.push(item);
+                }
+            }
+            for (const item of req.body.reflectorMan) {
+                if (item != "") {
+                    newstoreroom.reflectorMan.push(item);
+                }
+            }
+            for (const item of req.body.reflectorType) {
+                if (item != "") {
+                    newstoreroom.reflectorType.push(item);
+                }
+            }
+            for (const item of req.body.signsMan) {
+                if (item != "") {
+                    newstoreroom.signsMan.push(item);
+                }
+            }
+            for (const item of req.body.signsType) {
+                if (item != "") {
+                    newstoreroom.signsType.push(item);
+                }
+            }
+            for (const item of req.body.type) {
+                if (item != "") {
+                    newstoreroom.type.push(item);
+                }
+            }
+            for (const item of req.body.stateriType) {
+                if (item != "") {
+                    newstoreroom.stateriType.push(item);
+                }
+            }
+            for (const item of req.body.alysosType) {
+                if (item != "") {
+                    newstoreroom.alysosType.push(item);
+                }
+            }
+            for (const item of req.body.agkyrioChainType) {
+                if (item != "") {
+                    newstoreroom.agkyrioChainType.push(item);
+                }
+            }
+            for (const item of req.body.streptyrasType) {
+                if (item != "") {
+                    newstoreroom.streptyrasType.push(item);
+                }
+            }
+            for (const item of req.body.navyKeyType) {
+                if (item != "") {
+                    newstoreroom.navyKeyType.push(item);
+                }
+            }
+            for (const item of req.body.agkyrioType) {
+                if (item != "") {
+                    newstoreroom.agkyrioType.push(item);
+                }
+            }
             await newstoreroom.save();
         }
         else {
@@ -144,6 +244,106 @@ router.post("/storeRoom", catchAsync(async (req, res) => {
             for (const item of req.body.lamp) {
                 if (item != "") {
                     storeroom.lamps.push(item);
+                }
+            }
+            for (const item of req.body.colour) {
+                if (item != "") {
+                    storeroom.colours.push(item);
+                }
+            }
+            for (const item of req.body.lighter) {
+                if (item != "") {
+                    storeroom.lighters.push(item);
+                }
+            }
+            for (const item of req.body.generatorSocket) {
+                if (item != "") {
+                    storeroom.generatorSockets.push(item);
+                }
+            }
+            for (const item of req.body.torchSocket) {
+                if (item != "") {
+                    storeroom.torchSockets.push(item);
+                }
+            }
+            for (const item of req.body.photocell) {
+                if (item != "") {
+                    storeroom.photocells.push(item);
+                }
+            }
+            for (const item of req.body.accessory) {
+                if (item != "") {
+                    storeroom.accessorys.push(item);
+                }
+            }
+            for (const item of req.body.alternator) {
+                if (item != "") {
+                    storeroom.alternators.push(item);
+                }
+            }
+            for (const item of req.body.lightingMachineMan) {
+                if (item != "") {
+                    storeroom.lightingMachineMan.push(item);
+                }
+            }
+            for (const item of req.body.lightingMachineType) {
+                if (item != "") {
+                    storeroom.lightingMachineType.push(item);
+                }
+            }
+            for (const item of req.body.reflectorMan) {
+                if (item != "") {
+                    storeroom.reflectorMan.push(item);
+                }
+            }
+            for (const item of req.body.reflectorType) {
+                if (item != "") {
+                    storeroom.reflectorType.push(item);
+                }
+            }
+            for (const item of req.body.signsMan) {
+                if (item != "") {
+                    storeroom.signsMan.push(item);
+                }
+            }
+            for (const item of req.body.signsType) {
+                if (item != "") {
+                    storeroom.signsType.push(item);
+                }
+            }
+            for (const item of req.body.type) {
+                if (item != "") {
+                    storeroom.type.push(item);
+                }
+            }
+            for (const item of req.body.stateriType) {
+                if (item != "") {
+                    storeroom.stateriType.push(item);
+                }
+            }
+            for (const item of req.body.alysosType) {
+                if (item != "") {
+                    storeroom.alysosType.push(item);
+                }
+            }
+            for (const item of req.body.agkyrioChainType) {
+                if (item != "") {
+                    storeroom.agkyrioChainType.push(item);
+                }
+            }
+            for (const item of req.body.streptyrasType) {
+                if (item != "") {
+                    storeroom.streptyrasType.push(item);
+                }
+            }
+            for (const item of req.body.navyKeyType) {
+                if (item != "") {
+                    storeroom.navyKeyType.push(item);
+                }
+            }
+            for (const item of req.body.agkyrioType) {
+                if (item != "") {
+                    storeroom.agkyrioType.push(item);
                 }
             }
             await storeroom.save();

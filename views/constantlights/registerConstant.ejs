@@ -13,7 +13,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour" id="colour">
+				<input type="text" class="form-control" list="colours" name="colour" id="colour">
+				<datalist id="colours">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.colours.length; i++) { %>
+							<option value="<%= storeroom.colours[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-6">
 				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
@@ -29,7 +36,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
-				<input type="text" class="form-control" name="lamp" id="lamp">
+				<input type="text" class="form-control" list="lamps" name="lamp" id="lamp">
+				<datalist id="lamps">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lamps.length; i++) { %>
+							<option value="<%= storeroom.lamps[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
             <div class="col-md-6">
 				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
@@ -37,7 +51,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
-				<input type="text" class="form-control" name="torchSocket" id="torchSocket">
+				<input type="text" class="form-control" list="torchSockets" name="torchSocket" id="torchSocket">
+				<datalist id="torchSockets">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
+							<option value="<%= storeroom.torchSockets[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
             <div class="col-md-6">
 				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
@@ -45,7 +66,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
-				<input type="text" class="form-control" name="accessory" id="accessory">
+				<input type="text" class="form-control" list="accessorys" name="accessory" id="accessory">
+				<datalist id="accessorys">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.accessorys.length; i++) { %>
+							<option value="<%= storeroom.accessorys[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
             <div class="col-md-6">
 				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>

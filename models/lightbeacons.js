@@ -17,21 +17,21 @@ const lightBeaconSchema = new Schema({
         y: { type: String }
     },
     lightingMachine: {
-            manufacturer: { type: String },
-            type: { type: String },
-            counter: { type: Number }
+        manufacturer: { type: String },
+        type: { type: String },
+        counter: { type: Number }
     },
     lightingMachineDate: [Date],
     reflector: {
-            manufacturer: { type: String },
-            type: { type: String },
-            counter: { type: Number }
+        manufacturer: { type: String },
+        type: { type: String },
+        counter: { type: Number }
     },
     reflectorDate: Date,
     signs: {
-            manufacturer: { type: String },
-            type: { type: String },
-            counter: { type: Number }
+        manufacturer: { type: String },
+        type: { type: String },
+        counter: { type: Number }
     },
     signsDate: Date,
     type: String,
@@ -39,32 +39,32 @@ const lightBeaconSchema = new Schema({
     immersionDepth: Number,
     immersionDepthDate: Date,
     stateri: {
-            type: { type: String },
-            counter: { type: Number }
+        type: { type: String },
+        counter: { type: Number }
     },
     alysos: {
-            type: { type: String },
-            counter: { type: Number }
+        type: { type: String },
+        counter: { type: Number }
     },
     agkyrioChain: {
-            type: { type: String },
-            counter: { type: Number }
+        type: { type: String },
+        counter: { type: Number }
     },
     streptyras: {
-            type: { type: String },
-            counter: { type: Number }
+        type: { type: String },
+        counter: { type: Number }
     },
     navyKey: {
-            type: { type: String },
-            counter: { type: Number }
+        type: { type: String },
+        counter: { type: Number }
     },
     agkyrio: {
-            type: { type: String },
-            counter: { type: Number }
+        type: { type: String },
+        counter: { type: Number }
     },
     technicians: [{
-	    	type: Schema.Types.ObjectId,
-	    	ref: "Technician"
+        type: Schema.Types.ObjectId,
+        ref: "Technician"
     }]
 });
 

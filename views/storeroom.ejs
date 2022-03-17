@@ -4,6 +4,13 @@
 	<div class="row">
 		<h2 align="center">Εισαγωγή Εξαρτημάτων</h2>
 		<form action="/storeRoom" method="POST" class="row g-3">
+
+			<div class="col-md-6" id="fieldListColour">
+				<label for="colour[]" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
+				<input type="text" class="form-control" name="colour[]" id="colour">
+				<button class="btn btn-primary" id="addMoreColour">Προσθήκη Χρωματισμού</button>
+			</div>
+
 			<div class="col-md-6" id="fieldListAcc">
 				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
 				<input type="text" class="form-control" name="accumulator[]" id="accumulator">
@@ -26,6 +33,120 @@
 				<label for="lamp[]" class="form-label">ΛΥΧΝΙΑ</label>
 				<input type="text" class="form-control" name="lamp[]" id="lamp">
 				<button class="btn btn-primary" id="addMoreLamp">Προσθήκη Λυχνίας</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListAlternator">
+				<label for="alternator[]" class="form-label">ΕΝΑΛΛΑΚΤΗΣ</label>
+				<input type="text" class="form-control" name="alternator[]" id="alternator">
+				<button class="btn btn-primary" id="addMoreAlternator">Προσθήκη Εναλλάκτη</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListLighter">
+				<label for="lighter[]" class="form-label">ΕΚΛΑΜΠΤΗΡΑΣ</label>
+				<input type="text" class="form-control" name="lighter[]" id="lighter">
+				<button class="btn btn-primary" id="addMoreLighter">Προσθήκη Εκλαμπτήρα</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListGeneratorSocket">
+				<label for="generatorSocket[]" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
+				<input type="text" class="form-control" name="generatorSocket[]" id="generatorSocket">
+				<button class="btn btn-primary" id="addMoreGeneratorSocket">Προσθήκη Ρυθμιστή Φορτίσεως/ Φορτιστή</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListΤorchSocket">
+				<label for="torchSocket[]" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
+				<input type="text" class="form-control" name="torchSocket[]" id="torchSocket">
+				<button class="btn btn-primary" id="addMoreΤorchSocket">Προσθήκη Υποδοχής Πυρσού</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListPhotocell">
+				<label for="photocell[]" class="form-label">ΦΩΤΟΚΥΤΤΑΡΟ</label>
+				<input type="text" class="form-control" name="photocell[]" id="photocell">
+				<button class="btn btn-primary" id="addMorePhotocell">Προσθήκη Φωτοκυττάρου</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListAccessory">
+				<label for="accessory[]" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
+				<input type="text" class="form-control" name="accessory[]" id="accessory">
+				<button class="btn btn-primary" id="addMoreAccessory">Προσθήκη Πρόσθετου Εξαρτήματος</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListLightingMachineMan">
+				<label for="lightingMachineMan[]" class="form-label">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>
+				<input type="text" class="form-control" name="lightingMachineMan[]" id="lightingMachineMan">
+				<button class="btn btn-primary" id="addMoreLightingMachineMan">Προσθήκη Φωτιστικού Μηχανήματος (Κατασκευαστής)</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListLightingMachineType">
+				<label for="lightingMachineType[]" class="form-label">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΤΥΠΟΣ)</label>
+				<input type="text" class="form-control" name="lightingMachineType[]" id="lightingMachineType">
+				<button class="btn btn-primary" id="addMoreLightingMachineType">Προσθήκη Φωτιστικού Μηχανήματος (Τύπος)</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListReflectorMan">
+				<label for="reflectorMan[]" class="form-label">ΑΝΑΚΛΑΣΤΗΡΑΣ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>
+				<input type="text" class="form-control" name="reflectorMan[]" id="reflectorMan">
+				<button class="btn btn-primary" id="addMoreReflectorMan">Προσθήκη Ανακλαστήρα (Κατασκευαστής)</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListReflectorType">
+				<label for="reflectorType[]" class="form-label">ΑΝΑΚΛΑΣΤΗΡΑΣ (ΤΥΠΟΣ)</label>
+				<input type="text" class="form-control" name="reflectorType[]" id="reflectorType">
+				<button class="btn btn-primary" id="addMoreReflectorType">Προσθήκη Ανακλαστήρα (Τύπος)</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListSignsMan">
+				<label for="signsMan[]" class="form-label">ΕΠΙΣΗΜΑΤΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>
+				<input type="text" class="form-control" name="signsMan[]" id="signsMan">
+				<button class="btn btn-primary" id="addMoreSignsMan">Προσθήκη Επισήματος (Κατασκευαστής)</button>
+			</div>
+
+			<div class="col-md-6" id="fieldListSignsType">
+				<label for="signsType[]" class="form-label">ΕΠΙΣΗΜΑΤΑ (ΤΥΠΟΣ)</label>
+				<input type="text" class="form-control" name="signsType[]" id="signsType">
+				<button class="btn btn-primary" id="addMoreSignsType">Προσθήκη Επισήματος (Τύπος)</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListType">
+				<label for="type[]" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
+				<input type="text" class="form-control" name="type[]" id="type">
+				<button class="btn btn-primary" id="addMoreType">Προσθήκη Τύπου Φωτοσημαντήρα</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListStateriType">
+				<label for="stateriType[]" class="form-label">ΣΤΑΤΕΡΙ (Άλυσος)</label>
+				<input type="text" class="form-control" name="stateriType[]" id="stateriType">
+				<button class="btn btn-primary" id="addMoreStateriType">Προσθήκη Στατέρι (Άλυσος)</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListAlysosType">
+				<label for="alysosType[]" class="form-label">ΑΛΥΣΟΣ</label>
+				<input type="text" class="form-control" name="alysosType[]" id="alysosType">
+				<button class="btn btn-primary" id="addMoreAlysosType">Προσθήκη Άλυσου</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListAgkyrioChainType">
+				<label for="agkyrioChainType[]" class="form-label">ΑΓΚΥΡΙΟ (Άλυσος)</label>
+				<input type="text" class="form-control" name="agkyrioChainType[]" id="agkyrioChainType">
+				<button class="btn btn-primary" id="addMoreAgkyrioChainType">Προσθήκη Αγκυρίου (Άλυσος)</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListStreptyrasType">
+				<label for="streptyrasType[]" class="form-label">ΣΤΡΕΠΤΗΡΑΣ</label>
+				<input type="text" class="form-control" name="streptyrasType[]" id="streptyrasType">
+				<button class="btn btn-primary" id="addMoreStreptyrasType">Προσθήκη Στρεπτήρα</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListNavyKeyType">
+				<label for="navyKeyType[]" class="form-label">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</label>
+				<input type="text" class="form-control" name="navyKeyType[]" id="navyKeyType">
+				<button class="btn btn-primary" id="addMoreNavyKeyType">Προσθήκη Ναυτικού Κλειδιού</button>
+			</div>
+			
+			<div class="col-md-6" id="fieldListAgkyrioType">
+				<label for="agkyrioType[]" class="form-label">ΑΓΚΥΡΙΟ</label>
+				<input type="text" class="form-control" name="agkyrioType[]" id="agkyrioType">
+				<button class="btn btn-primary" id="addMoreAgkyrioType">Προσθήκη Αγκυρίου</button>
 			</div>
 
 			<div class="text-center">

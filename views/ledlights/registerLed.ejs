@@ -13,7 +13,14 @@
 			</div>
 			<div class="col-md-4">
 				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour" id="colour">
+				<input type="text" class="form-control" list="colours" name="colour" id="colour">
+				<datalist id="colours">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.colours.length; i++) { %>
+							<option value="<%= storeroom.colours[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
 			<div class="col-md-4">
 				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
@@ -79,8 +86,15 @@
 				<input type="date" class="form-control" name="headDate" id="headDate">
 			</div>
 			<div class="col-md-6">
-				<label for="chargeRegulator" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
-				<input type="text" class="form-control" name="chargeRegulator" id="chargeRegulator">
+				<label for="generatorSocket" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
+				<input type="text" class="form-control" list="generatorSockets" name="generatorSocket" id="generatorSocket">
+				<datalist id="generatorSockets">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>
+							<option value="<%= storeroom.generatorSockets[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
             <div class="col-md-6">
 				<label for="chargeRegulatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
@@ -88,7 +102,14 @@
 			</div>
 			<div class="col-md-6">
 				<label for="socket" class="form-label">ΥΠΟΔΟΧΗ</label>
-				<input type="text" class="form-control" name="socket" id="socket">
+				<input type="text" class="form-control" list="torchSockets" name="socket" id="generatorSocket">
+				<datalist id="torchSockets">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
+							<option value="<%= storeroom.torchSockets[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 			</div>
             <div class="col-md-6">
 				<label for="socketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
