@@ -72,6 +72,7 @@ const AutoLightSchema = new Schema({
     solarGeneratorDateGroups: {
         type: Map
     },
+    file: String,
     technicians: [{
 	    	type: Schema.Types.ObjectId,
 	    	ref: "Technician"

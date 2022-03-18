@@ -10,7 +10,8 @@ function createWindow() {
 		height: 700,
 		webPreferences: {
 			nodeIntegration: true,
-		},
+			webSecurity: false
+		}
 	});
 
 	mainWindow.loadURL("http://localhost:3000");

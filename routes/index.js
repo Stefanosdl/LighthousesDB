@@ -99,6 +99,72 @@ router.get("/storeRoom", catchAsync(async (req, res, next) => {
 	res.render("storeroom", { storeroom });
 }));
 
+router.get("/print", catchAsync(async (req, res, next) => {
+    const searchedLed = await LedLight.find({}).populate("technicians");
+    const searchedAuto = await AutoLight.find({}).populate("technicians");
+    const searchedConstant = await ConstantLight.find({}).populate("technicians");
+    const searchedLight = await LightBeacon.find({}).populate("technicians");
+    
+    res.render("print", { searchedAuto, searchedLed, searchedConstant, searchedLight });
+}));
+
+router.post("/print", catchAsync(async (req, res, next) => {
+    const searchLed = await LedLight.find({}).populate("technicians");
+    const searchAuto = await AutoLight.find({}).populate("technicians");
+    const searchConstant = await ConstantLight.find({}).populate("technicians");
+    const searchLight = await LightBeacon.find({}).populate("technicians");
+
+    const auto = req.body.checkedAuto;
+    const led = req.body.checkedLed;
+    const constant = req.body.checkedConstant;
+    const light = req.body.checkedLight;
+    var searchedAuto = new Array();
+    var searchedLed = new Array();
+    var searchedConstant = new Array();
+    var searchedLight = new Array();
+
+    for (var item of searchAuto) {
+        if(constant != undefined) {
+            if (auto.includes(item.aef)) {
+                searchedAuto.push(item);
+            }
+        }
+    }
+    for (var item of searchLed) {
+        if(constant != undefined) {
+            if (led.includes(item.aef)) {
+                searchedLed.push(item);
+            }
+        }
+    }
+    for (var item of searchConstant) {
+        if(constant != undefined) {
+            if (constant.includes(item.aef)) {
+                searchedConstant.push(item);
+            }
+        }
+    }
+    for (var item of searchLight) {
+        if(constant != undefined) {
+            if (light.includes(item.aef)) {
+                searchedLight.push(item);
+            }
+        }
+    }
+    if(searchLight.length != 0) {
+        var today = new Date();
+        var days = Math.floor((Math.abs(searchLight[0].immersionDepthDate-today))/(1000*60*60*24));
+    }
+
+    if((searchAuto == undefined || searchAuto.length == 0) && (searchLed == undefined || searchLed.length == 0) && (searchConstant == undefined || searchConstant.length == 0) && (searchedLight == undefined || searchedLight.length == 0)) {
+        req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
+        res.redirect('/');
+    }
+    else {
+        res.render("searchSpecific", { searchedAuto, searchedLed, searchedConstant, searchedLight, days });
+    }
+}));
+
 router.post("/storeRoom", catchAsync(async (req, res) => {
 	try {
 		const storeroom = await StoreRoom.findOne({});

@@ -1,0 +1,60 @@
+<% include ./partials/header %>
+
+<h2 align="center">Επιλογή Φάρων/Πυρσών προς εκτύπωση</h2>
+
+<div class="container">
+    <div class="row">
+        
+		<form action="/print" method="POST" class="row g-3">
+            <div class="card mb-3 mx-auto" style="max-width: 540px;">
+                <div class="row g-0">
+                    <% for (var i=0; i < searchedAuto.length; i++) { %>
+                        <ul class="list-group list-group-flush">
+							<input type="hidden">
+                            <li class="list-group-item radio-inline"><strong>ΑΕΦ: <%= searchedAuto[i].aef %></strong><input type="checkbox" name="checkedAuto[]" value="<%= searchedAuto[i].aef %>[]"></li>
+                        </ul>
+                    <% } %>
+                    
+                    <br>
+                    
+                    <% for (var i=0; i < searchedLed.length; i++) { %>
+                        <ul class="list-group list-group-flush">
+							<input type="hidden">
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLed[i].aef %></strong><input type="checkbox" name="checkedLed[]" value="<%= searchedLed[i].aef %>[]"></li>
+                        </ul>
+                    <% } %>
+                    
+                    <br>
+                    
+                    <% for (var i=0; i < searchedConstant.length; i++) { %>
+                        <ul class="list-group list-group-flush">
+							<input type="hidden">
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedConstant[i].aef %></strong><input type="checkbox" name="checkedConstant[]" value="<%= searchedConstant[i].aef %>[]"></li>
+                        </ul>
+                    <% } %>
+                    
+                    <br>
+                    
+                    <% for (var i=0; i < searchedLight.length; i++) { %>
+                        <ul class="list-group list-group-flush">
+							<input type="hidden">
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLight[i].aef %></strong><input type="checkbox" name="checkedLight[]" value="<%= searchedLight[i].aef %>[]"></li>
+                        </ul>
+                    <% } %>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+                        <a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+                        <button class="btn btn-outline-primary">Αναζήτηση</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<% include ./partials/footer %>
