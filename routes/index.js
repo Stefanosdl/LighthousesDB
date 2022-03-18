@@ -94,7 +94,9 @@ router.get("/suggestedWorks", catchAsync(async (req, res, next) => {
 }));
 
 router.get("/storeRoom", catchAsync(async (req, res, next) => {
-	res.render("storeroom");
+	const storeroom = await StoreRoom.findOne({});
+
+	res.render("storeroom", { storeroom });
 }));
 
 router.post("/storeRoom", catchAsync(async (req, res) => {

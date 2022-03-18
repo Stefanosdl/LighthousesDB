@@ -7,157 +7,339 @@
 
 			<div class="col-md-6" id="fieldListColour">
 				<label for="colour[]" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour[]" id="colour">
+				<input type="text" class="form-control" list="colours" name="colour[]" id="colour">
+				<datalist id="colours">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.colours.length; i++) { %>
+							<option value="<%= storeroom.colours[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreColour">Προσθήκη Χρωματισμού</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListAcc">
 				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-				<input type="text" class="form-control" name="accumulator[]" id="accumulator">
+				<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator">
+				<datalist id="datalistOptions">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
+							<option value="<%= storeroom.accumulators[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreAcc">Προσθήκη Συσσωρευτή</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListSolar">
 				<label for="solarGenerator[]" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-				<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator">
+				<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator">
+				<datalist id="datalistOptions1">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
+							<option value="<%= storeroom.solarGenerators[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreSolar">Προσθήκη Ηλιακής Γεννήτριας</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListHead">
 				<label for="head[]" class="form-label">ΚΕΦΑΛΗ</label>
-				<input type="text" class="form-control" name="head[]" id="head">
+				<input type="text" class="form-control" list="heads" name="head[]" id="head">
+				<datalist id="heads">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.heads.length; i++) { %>
+							<option value="<%= storeroom.heads[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreHead">Προσθήκη Κεφαλής</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListLamp">
 				<label for="lamp[]" class="form-label">ΛΥΧΝΙΑ</label>
-				<input type="text" class="form-control" name="lamp[]" id="lamp">
+				<input type="text" class="form-control" list="datalistOptions2" name="lamp[]" id="lamp">
+				<datalist id="datalistOptions2">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lamps.length; i++) { %>
+							<option value="<%= storeroom.lamps[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreLamp">Προσθήκη Λυχνίας</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListAlternator">
 				<label for="alternator[]" class="form-label">ΕΝΑΛΛΑΚΤΗΣ</label>
-				<input type="text" class="form-control" name="alternator[]" id="alternator">
+				<input type="text" class="form-control" list="alternators" name="alternator[]" id="alternator">
+				<datalist id="alternators">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.alternators.length; i++) { %>
+							<option value="<%= storeroom.alternators[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreAlternator">Προσθήκη Εναλλάκτη</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListLighter">
 				<label for="lighter[]" class="form-label">ΕΚΛΑΜΠΤΗΡΑΣ</label>
-				<input type="text" class="form-control" name="lighter[]" id="lighter">
+				<input type="text" class="form-control" list="lighters" name="lighter[]" id="lighter">
+				<datalist id="lighters">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lighters.length; i++) { %>
+							<option value="<%= storeroom.lighters[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreLighter">Προσθήκη Εκλαμπτήρα</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListGeneratorSocket">
 				<label for="generatorSocket[]" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
-				<input type="text" class="form-control" name="generatorSocket[]" id="generatorSocket">
+				<input type="text" class="form-control" list="generatorSockets" name="generatorSocket[]" id="generatorSocket">
+				<datalist id="generatorSockets">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>
+							<option value="<%= storeroom.generatorSockets[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreGeneratorSocket">Προσθήκη Ρυθμιστή Φορτίσεως/ Φορτιστή</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListΤorchSocket">
 				<label for="torchSocket[]" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
-				<input type="text" class="form-control" name="torchSocket[]" id="torchSocket">
+				<input type="text" class="form-control" list="torchSockets" name="torchSocket[]" id="torchSocket">
+				<datalist id="torchSockets">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
+							<option value="<%= storeroom.torchSockets[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreΤorchSocket">Προσθήκη Υποδοχής Πυρσού</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListPhotocell">
 				<label for="photocell[]" class="form-label">ΦΩΤΟΚΥΤΤΑΡΟ</label>
-				<input type="text" class="form-control" name="photocell[]" id="photocell">
+				<input type="text" class="form-control" list="photocells" name="photocell[]" id="photocell">
+				<datalist id="photocells">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.photocells.length; i++) { %>
+							<option value="<%= storeroom.photocells[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMorePhotocell">Προσθήκη Φωτοκυττάρου</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListAccessory">
 				<label for="accessory[]" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
-				<input type="text" class="form-control" name="accessory[]" id="accessory">
+				<input type="text" class="form-control" list="accessorys" name="accessory[]" id="accessory">
+				<datalist id="accessorys">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.accessorys.length; i++) { %>
+							<option value="<%= storeroom.accessorys[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreAccessory">Προσθήκη Πρόσθετου Εξαρτήματος</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListLocation">
 				<label for="location[]" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" name="location[]" id="location">
+				<input type="text" class="form-control" list="locations" name="location[]" id="location">
+				<datalist id="locations">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.locations.length; i++) { %>
+							<option value="<%= storeroom.locations[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreLocation">Προσθήκη Περιοχής</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListTechnician">
 				<label for="technician[]" class="form-label">ΤΕΧΝΙΚΟΣ</label>
-				<input type="text" class="form-control" name="technician[]" id="technician">
+				<input type="text" class="form-control" list="technicians" name="technician[]" id="technician" required>
+				<datalist id="technicians">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.technicians.length; i++) { %>
+							<option value="<%= storeroom.technicians[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreTechnician">Προσθήκη Τεχνικού</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListLightingMachineMan">
 				<label for="lightingMachineMan[]" class="form-label">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>
-				<input type="text" class="form-control" name="lightingMachineMan[]" id="lightingMachineMan">
+				<input type="text" class="form-control" list="lightingMachineMans" name="lightingMachineMan[]" id="lightingMachineMan">
+				<datalist id="lightingMachineMans">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lightingMachineMan.length; i++) { %>
+							<option value="<%= storeroom.lightingMachineMan[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreLightingMachineMan">Προσθήκη Φωτιστικού Μηχανήματος (Κατασκευαστής)</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListReflectorMan">
 				<label for="reflectorMan[]" class="form-label">ΑΝΑΚΛΑΣΤΗΡΑΣ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>
-				<input type="text" class="form-control" name="reflectorMan[]" id="reflectorMan">
+				<input type="text" class="form-control" list="reflectorMans" name="reflectorMan[]" id="reflectorMan">
+				<datalist id="reflectorMans">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.reflectorMan.length; i++) { %>
+							<option value="<%= storeroom.reflectorMan[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreReflectorMan">Προσθήκη Ανακλαστήρα (Κατασκευαστής)</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListLightingMachineType">
 				<label for="lightingMachineType[]" class="form-label">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΤΥΠΟΣ)</label>
-				<input type="text" class="form-control" name="lightingMachineType[]" id="lightingMachineType">
+				<input type="text" class="form-control" list="lightingMachineTypes" name="lightingMachineType[]" id="lightingMachineType">
+				<datalist id="lightingMachineTypes">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.lightingMachineType.length; i++) { %>
+							<option value="<%= storeroom.lightingMachineType[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreLightingMachineType">Προσθήκη Φωτιστικού Μηχανήματος (Τύπος)</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListReflectorType">
 				<label for="reflectorType[]" class="form-label">ΑΝΑΚΛΑΣΤΗΡΑΣ (ΤΥΠΟΣ)</label>
-				<input type="text" class="form-control" name="reflectorType[]" id="reflectorType">
+				<input type="text" class="form-control" list="reflectorTypes" name="reflectorType[]" id="reflectorType">
+				<datalist id="reflectorTypes">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.reflectorType.length; i++) { %>
+							<option value="<%= storeroom.reflectorType[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreReflectorType">Προσθήκη Ανακλαστήρα (Τύπος)</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListSignsMan">
 				<label for="signsMan[]" class="form-label">ΕΠΙΣΗΜΑΤΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>
-				<input type="text" class="form-control" name="signsMan[]" id="signsMan">
+				<input type="text" class="form-control" list="signsMans" name="signsMan[]" id="signsMan">
+				<datalist id="signsMans">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.signsMan.length; i++) { %>
+							<option value="<%= storeroom.signsMan[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreSignsMan">Προσθήκη Επισήματος (Κατασκευαστής)</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListSignsType">
 				<label for="signsType[]" class="form-label">ΕΠΙΣΗΜΑΤΑ (ΤΥΠΟΣ)</label>
-				<input type="text" class="form-control" name="signsType[]" id="signsType">
+				<input type="text" class="form-control" list="signsTypes" name="signsType[]" id="signsType">
+				<datalist id="signsTypes">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.signsType.length; i++) { %>
+							<option value="<%= storeroom.signsType[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreSignsType">Προσθήκη Επισήματος (Τύπος)</button>
 			</div>
 			
 			<div class="col-md-6" id="fieldListStateriType">
 				<label for="stateriType[]" class="form-label">ΣΤΑΤΕΡΙ (Άλυσος)</label>
-				<input type="text" class="form-control" name="stateriType[]" id="stateriType">
+				<input type="text" class="form-control" list="stateriTypes" name="stateriType[]" id="stateriType" placeholder="Ίντσες">
+						<datalist id="stateriTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.stateriType.length; i++) { %>
+									<option value="<%= storeroom.stateriType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
 				<button class="btn btn-primary" id="addMoreStateriType">Προσθήκη Στατέρι (Άλυσος)</button>
 			</div>
 			
 			<div class="col-md-6" id="fieldListAlysosType">
 				<label for="alysosType[]" class="form-label">ΑΛΥΣΟΣ</label>
-				<input type="text" class="form-control" name="alysosType[]" id="alysosType">
+				<input type="text" class="form-control" list="alysosTypes" name="alysosType[]" id="alysosType" placeholder="Ίντσες">
+						<datalist id="alysosTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.alysosType.length; i++) { %>
+									<option value="<%= storeroom.alysosType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
 				<button class="btn btn-primary" id="addMoreAlysosType">Προσθήκη Άλυσου</button>
 			</div>
 			
 			<div class="col-md-6" id="fieldListAgkyrioChainType">
 				<label for="agkyrioChainType[]" class="form-label">ΑΓΚΥΡΙΟ (Άλυσος)</label>
-				<input type="text" class="form-control" name="agkyrioChainType[]" id="agkyrioChainType">
+				<input type="text" class="form-control" list="agkyrioChainTypes" name="agkyrioChainType[]" id="agkyrioChainType" placeholder="Ίντσες">
+						<datalist id="agkyrioChainTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.agkyrioChainType.length; i++) { %>
+									<option value="<%= storeroom.agkyrioChainType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
 				<button class="btn btn-primary" id="addMoreAgkyrioChainType">Προσθήκη Αγκυρίου (Άλυσος)</button>
 			</div>
 			
 			<div class="col-md-6" id="fieldListStreptyrasType">
 				<label for="streptyrasType[]" class="form-label">ΣΤΡΕΠΤΗΡΑΣ</label>
-				<input type="text" class="form-control" name="streptyrasType[]" id="streptyrasType">
+				<input type="text" class="form-control" list="streptyrasTypes" name="streptyrasType[]" id="streptyrasType" placeholder="Ίντσες">
+						<datalist id="streptyrasTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.streptyrasType.length; i++) { %>
+									<option value="<%= storeroom.streptyrasType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
 				<button class="btn btn-primary" id="addMoreStreptyrasType">Προσθήκη Στρεπτήρα</button>
 			</div>
 			
 			<div class="col-md-6" id="fieldListNavyKeyType">
 				<label for="navyKeyType[]" class="form-label">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</label>
-				<input type="text" class="form-control" name="navyKeyType[]" id="navyKeyType">
+				<input type="text" class="form-control" list="navyKeyTypes" name="navyKeyType[]" id="navyKeyType" placeholder="Ίντσες">
+						<datalist id="navyKeyTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.navyKeyType.length; i++) { %>
+									<option value="<%= storeroom.navyKeyType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
 				<button class="btn btn-primary" id="addMoreNavyKeyType">Προσθήκη Ναυτικού Κλειδιού</button>
 			</div>
 			
 			<div class="col-md-6" id="fieldListAgkyrioType">
 				<label for="agkyrioType[]" class="form-label">ΑΓΚΥΡΙΟ</label>
-				<input type="text" class="form-control" name="agkyrioType[]" id="agkyrioType">
+				<input type="text" class="form-control" list="agkyrioTypes" name="agkyrioType[]" id="agkyrioType" placeholder="Κιλά">
+						<datalist id="agkyrioTypes">
+							<% if(storeroom != undefined) { %>
+								<% for (var i=0; i < storeroom.agkyrioType.length; i++) { %>
+									<option value="<%= storeroom.agkyrioType[i] %>">
+								<% } %>
+							<% } %>
+						</datalist>
 				<button class="btn btn-primary" id="addMoreAgkyrioType">Προσθήκη Αγκυρίου</button>
 			</div>
 
 			<div class="col-md-6" id="fieldListType">
 				<label for="type[]" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
-				<input type="text" class="form-control" name="type[]" id="type">
+				<input type="text" class="form-control" list="types" name="type[]" id="type">
+				<datalist id="types">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.type.length; i++) { %>
+							<option value="<%= storeroom.type[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<button class="btn btn-primary" id="addMoreType">Προσθήκη Τύπου Φωτοσημαντήρα</button>
 			</div>
 
