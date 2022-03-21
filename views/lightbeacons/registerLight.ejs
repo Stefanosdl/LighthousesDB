@@ -3,156 +3,200 @@
 	<div class="row">
 		<h2 align="center">Νέος Φωτοσημαντήρας</h2>
 		<form action="/lightBeacons/registerLight" method="POST" class="row g-3">
-			<div class="col-md-6">
-				<label for="aef" class="form-label">ΑΕΦ</label>
-				<input type="text" class="form-control" name="aef" id="aef" required>
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΕΦ</span>
+					<input type="text" class="form-control" name="aef" id="aef" required>
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
-				<input type="text" class="form-control" name="lighthouse" id="lighthouse" required>
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΟΝΟΜΑΣΙΑ</span>
+					<input type="text" class="form-control" name="lighthouse" id="lighthouse" required>
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" list="colours" name="colour" id="colour">
-				<datalist id="colours">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.colours.length; i++) { %>
-							<option value="<%= storeroom.colours[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΡΩΜΑΤΙΣΜΟΣ</span>
+					<input type="text" class="form-control" list="colours" name="colour" id="colour">
+					<datalist id="colours">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.colours.length; i++) { %>
+								<option value="<%= storeroom.colours[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
-				<input type="text" class="form-control" name="features" id="features">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</span>
+					<input type="text" class="form-control" name="features" id="features">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="text" class="form-control" name="position" id="position">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="text" class="form-control" name="position" id="position">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" list="locations" name="location" id="location">
-				<datalist id="locations">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.locations.length; i++) { %>
-							<option value="<%= storeroom.locations[i] %>">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΟΧΗ</span>
+					<input type="text" class="form-control" list="locations" name="location" id="location">
+					<datalist id="locations">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.locations.length; i++) { %>
+								<option value="<%= storeroom.locations[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="immersionDepthDate" class="form-label">ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</label>
-				<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΠΟΝΤΙΣΕΩΣ</span>
+					<input type="date" class="form-control" name="immersionDepthDate" id="immersionDepthDate">
+				</div>
 			</div>
             <br>
-            <div class="input-group">
-                <span class="input-group-text">ΣΤΙΓΜΑ</span>
+            <div class="input-group input-group-sm mb-3 mt-0">
+                <span class="input-group-text" id="inputGroup-sizing-sm">ΣΤΙΓΜΑ</span>
                 <input type="text" class="form-control" name="stigmax" id="stigmax" placeholder="Χ:">
                 <input type="text" class="form-control" name="stigmay" id="stigmay" placeholder="Ψ:">
             </div>
-			<div class="col-md-3">
+			<div class="col-md-3 mt-0">
 				<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΥΡΓΟΥ</strong></label>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 mt-0">
 				<label class="form-label"><strong>ΚΑΤΑΣΚΕΥΑΣΤΗΣ</strong></label>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 mt-0">
 				<label class="form-label"><strong>ΤΥΠΟΣ</strong></label>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 mt-0">
 				<label class="form-label"><strong>ΤΕΜ</strong></label>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 mt-0">
 				<label class="form-label"><strong>ΗΜΕΡΟΜΗΝΙΑ</strong></label>
 			</div>
 
-			<div class="col-md-3">
-                <span class="input-group-text" id="basic-addon3">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</span>
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+                	<span class="input-group-text" id="basic-addon3">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</span>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<input type="text" class="form-control" list="lightingMachineMans" name="lightingMachineMan" id="lightingMachineMan">
-				<datalist id="lightingMachineMans">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.lightingMachineMan.length; i++) { %>
-							<option value="<%= storeroom.lightingMachineMan[i] %>">
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" list="lightingMachineMans" name="lightingMachineMan" id="lightingMachineMan">
+					<datalist id="lightingMachineMans">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.lightingMachineMan.length; i++) { %>
+								<option value="<%= storeroom.lightingMachineMan[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="text" class="form-control" list="lightingMachineTypes" name="lightingMachineType" id="lightingMachineType">
-				<datalist id="lightingMachineTypes">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.lightingMachineType.length; i++) { %>
-							<option value="<%= storeroom.lightingMachineType[i] %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" list="lightingMachineTypes" name="lightingMachineType" id="lightingMachineType">
+					<datalist id="lightingMachineTypes">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.lightingMachineType.length; i++) { %>
+								<option value="<%= storeroom.lightingMachineType[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" min="0">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" min="0">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="date" class="form-control" name="lightingMachineDate" id="lightingMachineDate">
+				</div>
 			</div>
-			<div class="col-md-3">
-                <span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+                	<span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<input type="text" class="form-control" list="reflectorMans" name="reflectorMan" id="reflectorMan">
-				<datalist id="reflectorMans">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.reflectorMan.length; i++) { %>
-							<option value="<%= storeroom.reflectorMan[i] %>">
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" list="reflectorMans" name="reflectorMan" id="reflectorMan">
+					<datalist id="reflectorMans">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.reflectorMan.length; i++) { %>
+								<option value="<%= storeroom.reflectorMan[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="text" class="form-control" list="reflectorTypes" name="reflectorType" id="reflectorType">
-				<datalist id="reflectorTypes">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.reflectorType.length; i++) { %>
-							<option value="<%= storeroom.reflectorType[i] %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" list="reflectorTypes" name="reflectorType" id="reflectorType">
+					<datalist id="reflectorTypes">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.reflectorType.length; i++) { %>
+								<option value="<%= storeroom.reflectorType[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" min="0">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" min="0">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="date" class="form-control" name="reflectorDate" id="reflectorDate">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate">
+				</div>
 			</div>
-			<div class="col-md-3">
-                <span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+                	<span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<input type="text" class="form-control" list="signsMans" name="signsMan" id="signsMan">
-				<datalist id="signsMans">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.signsMan.length; i++) { %>
-							<option value="<%= storeroom.signsMan[i] %>">
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" list="signsMans" name="signsMan" id="signsMan">
+					<datalist id="signsMans">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.signsMan.length; i++) { %>
+								<option value="<%= storeroom.signsMan[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="text" class="form-control" list="signsTypes" name="signsType" id="signsType">
-				<datalist id="signsTypes">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.signsType.length; i++) { %>
-							<option value="<%= storeroom.signsType[i] %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" list="signsTypes" name="signsType" id="signsType">
+					<datalist id="signsTypes">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.signsType.length; i++) { %>
+								<option value="<%= storeroom.signsType[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="number" class="form-control" name="signsCounter" id="signsCounter" min="0">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="number" class="form-control" name="signsCounter" id="signsCounter" min="0">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="date" class="form-control" name="signsDate" id="signsDate">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="date" class="form-control" name="signsDate" id="signsDate">
+				</div>
 			</div>
             <div class="col-md-4">
                 <img src="/foto_FR.jpg" class="rounded float-start">

@@ -2,204 +2,258 @@
 <div class="container">
 	<div class="row">
 		<h2 align="center">Νέος Αυτόματος Πυρσός</h2>
-		<form action="/autoLighthouses/registerAuto" method="POST" class="row g-3">
-			<div class="col-md-6">
-				<label for="aef" class="form-label">ΑΕΦ</label>
-				<input type="text" class="form-control" name="aef" id="aef" required>
+		<form action="/autoLighthouses/registerAuto" method="POST" class="row g-3" enctype="multipart/form-data">
+			<div class="input-group input-group-sm mb-3">
+				<input class="form-control" type="file" name="file" class="userAvatar" value="1" placeholder="">
 			</div>
-			<div class="col-md-6">
-				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
-				<input type="text" class="form-control" name="lighthouse" id="lighthouse" required>
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΕΦ</span>
+					<input type="text" class="form-control" name="aef" id="aef" required>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" list="colours" name="colour" id="colour">
-				<datalist id="colours">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.colours.length; i++) { %>
-							<option value="<%= storeroom.colours[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΟΝΟΜΑΣΙΑ</span>
+					<input type="text" class="form-control" name="lighthouse" id="lighthouse" required>
+				</div>
+			</div>
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΡΩΜΑΤΙΣΜΟΣ</span>
+					<input type="text" class="form-control" list="colours" name="colour" id="colour">
+					<datalist id="colours">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.colours.length; i++) { %>
+								<option value="<%= storeroom.colours[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
-				<input type="text" class="form-control" name="sections" id="sections">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΤΟΜΕΙΣ</span>
+					<input type="text" class="form-control" name="sections" id="sections">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
-				<input type="text" class="form-control" name="features" id="features">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</span>
+					<input type="text" class="form-control" name="features" id="features">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="text" class="form-control" name="position" id="position">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="text" class="form-control" name="position" id="position">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" list="locations" name="location" id="location">
-				<datalist id="locations">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.locations.length; i++) { %>
-							<option value="<%= storeroom.locations[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΟΧΗ</span>
+					<input type="text" class="form-control" list="locations" name="location" id="location">
+					<datalist id="locations">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.locations.length; i++) { %>
+								<option value="<%= storeroom.locations[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lighter" class="form-label">ΕΚΛΑΜΠΤΗΡΑΣ</label>
-				<input type="text" class="form-control" list="lighters" name="lighter" id="lighter">
-				<datalist id="lighters">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.lighters.length; i++) { %>
-							<option value="<%= storeroom.lighters[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΕΚΛΑΜΠΤΗΡΑΣ</span>
+					<input type="text" class="form-control" list="lighters" name="lighter" id="lighter">
+					<datalist id="lighters">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.lighters.length; i++) { %>
+								<option value="<%= storeroom.lighters[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="lighterDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="lighterDate" id="lighterDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="lighterDate" id="lighterDate">
+				</div>
 			</div>
-
-			<div class="col-md-6" id="fieldListSolar">
-				<label for="solarGenerator[]" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-				<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator">
-				<datalist id="datalistOptions1">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
-							<option value="<%= storeroom.solarGenerators[i] %>">
+			<div class="col-md-6 mt-0" id="fieldListSolar">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</span>
+					<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator">
+					<datalist id="datalistOptions1">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
+								<option value="<%= storeroom.solarGenerators[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
-				<button class="btn btn-primary" id="addMoreSolar">Προσθήκη Ηλιακής Γεννήτριας</button>
+					</datalist>
+					<button class="btn btn-primary" id="addMoreSolar">Προσθήκη Ηλιακής Γεννήτριας</button>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="solarGeneratorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="alternator" class="form-label">ΕΝΑΛΛΑΚΤΗΣ</label>
-				<input type="text" class="form-control" list="alternators" name="alternator" id="alternator">
-				<datalist id="alternators">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.alternators.length; i++) { %>
-							<option value="<%= storeroom.alternators[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΕΝΑΛΛΑΚΤΗΣ</span>
+					<input type="text" class="form-control" list="alternators" name="alternator" id="alternator">
+					<datalist id="alternators">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.alternators.length; i++) { %>
+								<option value="<%= storeroom.alternators[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="alternatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="alternatorDate" id="alternatorDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="alternatorDate" id="alternatorDate">
+				</div>
 			</div>
-
-			<div class="col-md-6" id="fieldListLamp">
-				<label for="lamp[]" class="form-label">ΛΥΧΝΙΑ</label>
-				<input type="text" class="form-control" list="datalistOptions2" name="lamp[]" id="lamp">
-				<datalist id="datalistOptions2">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.lamps.length; i++) { %>
-							<option value="<%= storeroom.lamps[i] %>">
+			<div class="col-md-6 mt-0" id="fieldListLamp">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΛΥΧΝΙΑ</span>
+					<input type="text" class="form-control" list="datalistOptions2" name="lamp[]" id="lamp">
+					<datalist id="datalistOptions2">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.lamps.length; i++) { %>
+								<option value="<%= storeroom.lamps[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
-				<button class="btn btn-primary" id="addMoreLamp">Προσθήκη Λυχνίας</button>
+					</datalist>
+					<button class="btn btn-primary" id="addMoreLamp">Προσθήκη Λυχνίας</button>
+				</div>
 			</div>
-
-            <div class="col-md-6">
-				<label for="lampDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="lampDate[]" id="lampDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="lampDate[]" id="lampDate">
+				</div>
 			</div>
-			<div class="col-md-6" id="fieldListAcc">
-				<label for="accumulator[]" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-				<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator">
-				<datalist id="datalistOptions">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
-							<option value="<%= storeroom.accumulators[i] %>">
+			<div class="col-md-6 mt-0" id="fieldListAcc">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
+					<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator">
+					<datalist id="datalistOptions">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
+								<option value="<%= storeroom.accumulators[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
 				<button class="btn btn-primary" id="addMoreAcc">Προσθήκη Συσσωρευτή</button>
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="head" class="form-label">ΚΕΦΑΛΗ</label>
-				<input type="text" class="form-control" list="heads" name="head" id="head">
-				<datalist id="heads">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.heads.length; i++) { %>
-							<option value="<%= storeroom.heads[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΚΕΦΑΛΗ</span>
+					<input type="text" class="form-control" list="heads" name="head" id="head">
+					<datalist id="heads">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.heads.length; i++) { %>
+								<option value="<%= storeroom.heads[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="headDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="headDate" id="headDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="headDate" id="headDate">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="generatorSocket" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
-				<input type="text" class="form-control" list="generatorSockets" name="generatorSocket" id="generatorSocket">
-				<datalist id="generatorSockets">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>
-							<option value="<%= storeroom.generatorSockets[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</span>
+					<input type="text" class="form-control" list="generatorSockets" name="generatorSocket" id="generatorSocket">
+					<datalist id="generatorSockets">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>
+								<option value="<%= storeroom.generatorSockets[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="generatorSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="generatorSocketDate" id="generatorSocketDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="generatorSocketDate" id="generatorSocketDate">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
-				<input type="text" class="form-control" list="torchSockets" name="torchSocket" id="torchSocket">
-				<datalist id="torchSockets">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
-							<option value="<%= storeroom.torchSockets[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</span>
+					<input type="text" class="form-control" list="torchSockets" name="torchSocket" id="torchSocket">
+					<datalist id="torchSockets">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
+								<option value="<%= storeroom.torchSockets[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="photocell" class="form-label">ΦΩΤΟΚΥΤΤΑΡΟ</label>
-				<input type="text" class="form-control" list="photocells" name="photocell" id="photocell">
-				<datalist id="photocells">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.photocells.length; i++) { %>
-							<option value="<%= storeroom.photocells[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΦΩΤΟΚΥΤΤΑΡΟ</span>
+					<input type="text" class="form-control" list="photocells" name="photocell" id="photocell">
+					<datalist id="photocells">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.photocells.length; i++) { %>
+								<option value="<%= storeroom.photocells[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="photocellDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="photocellDate" id="photocellDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="photocellDate" id="photocellDate">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
-				<input type="text" class="form-control" list="accessorys" name="accessory" id="accessory">
-				<datalist id="accessorys">
-					<% if(storeroom != undefined) { %>
-						<% for (var i=0; i < storeroom.accessorys.length; i++) { %>
-							<option value="<%= storeroom.accessorys[i] %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</span>
+					<input type="text" class="form-control" list="accessorys" name="accessory" id="accessory">
+					<datalist id="accessorys">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.accessorys.length; i++) { %>
+								<option value="<%= storeroom.accessorys[i] %>">
+							<% } %>
 						<% } %>
-					<% } %>
-				</datalist>
+					</datalist>
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="accessoryDate" id="accessoryDate">
+				</div>
 			</div>
 			<div class="text-center">
 				<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>

@@ -1,285 +1,495 @@
 $(function() {
     $("#addMoreSolar").click(function(e) {
         e.preventDefault();
-        $("#fieldListSolar").append("<br>");
-        $("#fieldListSolar").append("<div class='col-md-6'");
-        $("#fieldListSolar").append("<label for='solarGenerator' class='form-label'>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>");
-        $("#fieldListSolar").append("<input type='text' class='form-control' name='solarGenerator' id='solarGenerator'>");
-        $("#fieldListSolar").append("</div>");
+        $("#fieldListSolar").append("<div class='col-md-12 mt-0'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</span>\
+                                            <input type='text' class='form-control' list='datalistOptions1' name='solarGenerator' id='solarGenerator'>\
+                                            <datalist id='datalistOptions1'>\
+                                            <% if(storeroom != undefined) { %>\
+                                                <% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>\
+                                                    <option value='<%= storeroom.solarGenerators[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div>");
     });
 });
 
 $(function() {
     $("#addMoreAcc").click(function(e) {
         e.preventDefault();
-        $("#fieldListAcc").append("<br>");
-        $("#fieldListAcc").append("<div class='col-md-6'");
-        $("#fieldListAcc").append("<label for='accumulator' class='form-label'>ΣΥΣΣΩΡΕΥΤΗΣ</label>");
-        $("#fieldListAcc").append("<input type='text' class='form-control' name='accumulator' id='accumulator'>");
-        $("#fieldListAcc").append("</div>");
+        $("#fieldListAcc").append("<div class='col-md-12'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΣΥΣΣΩΡΕΥΤΗΣ</span>\
+                                            <input type='text' class='form-control' list='datalistOptions' name='accumulator' id='accumulator'></input>\
+                                            <datalist id='datalistOptions'>\
+                                            <% if(storeroom != undefined) { %> \
+                                                <% for (var i=0; i < storeroom.accumulators.length; i++) { %>\
+                                                    <option value='<%= storeroom.accumulators[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div>");
     });
 });
 
 $(function() {
     $("#addMoreLamp").click(function(e) {
         e.preventDefault();
-        $("#fieldListLamp").append("<br>");
-        $("#fieldListLamp").append("<div class='col-md-6'>");
-        $("#fieldListLamp").append("<label for='lamp' class='form-label'>ΛΥΧΝΙΑ</label>");
-        $("#fieldListLamp").append("<input type='text' class='form-control' name='lamp' id='lamp'>");
-        $("#fieldListLamp").append("</div>");
+        $("#fieldListLamp").append("<div class='col-md-12'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΛΥΧΝΙΑ</span>\
+                                            <input type='text' class='form-control' list='datalistOptions2' name='lamp' id='lamp'></input>\
+                                            <datalist id='datalistOptions2'>\
+                                            <% if(storeroom != undefined) { %> \
+                                                <% for (var i=0; i < storeroom.lamps.length; i++) { %>\
+                                                    <option value='<%= storeroom.lamps[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div>");
     });
 });
 
 $(function() {
     $("#addMoreHead").click(function(e) {
         e.preventDefault();
-        $("#fieldListHead").append("<br>");
-        $("#fieldListHead").append("<div class='col-md-6'>");
-        $("#fieldListHead").append("<label for='head' class='form-label'>ΚΕΦΑΛΗ</label>");
-        $("#fieldListHead").append("<input type='text' class='form-control' name='head' id='head'>");
-        $("#fieldListHead").append("</div>");
+        $("#fieldListHead").append("<div class='col-md-12'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΚΕΦΑΛΗ</span>\
+                                            <input type='text' class='form-control' list='heads' name='head' id='head'></input>\
+                                            <datalist id='heads'>\
+                                            <% if(storeroom != undefined) { %> \
+                                                <% for (var i=0; i < storeroom.heads.length; i++) { %>\
+                                                    <option value='<%= storeroom.heads[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div> ");
     });
 });
 
 $(function() {
     $("#addMoreColour").click(function(e) {
         e.preventDefault();
-        $("#fieldListColour").append("<br>");
-        $("#fieldListColour").append("<div class='col-md-6'>");
-        $("#fieldListColour").append("<label for='colour' class='form-label'>ΧΡΩΜΑΤΙΣΜΟΣ</label>");
-        $("#fieldListColour").append("<input type='text' class='form-control' name='colour' id='colour'>");
-        $("#fieldListColour").append("</div>");
+        $("#fieldListColour").append("<div class='col-md-12'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΧΡΩΜΑΤΙΣΜΟΣ</span>\
+                                            <input type='text' class='form-control' list='colours' name='colour' id='colour'></input>\
+                                            <datalist id='colours'>\
+                                            <% if(storeroom != undefined) { %> \
+                                                <% for (var i=0; i < storeroom.colours.length; i++) { %>\
+                                                    <option value='<%= storeroom.colours[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div> ");
     });
 });
 
 $(function() {
     $("#addMoreLighter").click(function(e) {
         e.preventDefault();
-        $("#fieldListLighter").append("<br>");
-        $("#fieldListLighter").append("<div class='col-md-6'>");
-        $("#fieldListLighter").append("<label for='lighter' class='form-label'>ΕΚΛΑΜΠΤΗΡΑΣ</label>");
-        $("#fieldListLighter").append("<input type='text' class='form-control' name='lighter' id='lighter'>");
-        $("#fieldListLighter").append("</div>");
+        $("#fieldListLighter").append("<div class='col-md-12'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΕΚΛΑΜΠΤΗΡΑΣ</span>\
+                                            <input type='text' class='form-control' list='lighters' name='lighter' id='lighter'></input>\
+                                            <datalist id='lighters'>\
+                                            <% if(storeroom != undefined) { %> \
+                                                <% for (var i=0; i < storeroom.lighters.length; i++) { %>\
+                                                    <option value='<%= storeroom.lighters[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div> ");
     });
 });
 
 $(function() {
     $("#addMoreGeneratorSocket").click(function(e) {
         e.preventDefault();
-        $("#fieldListGeneratorSocket").append("<br>");
-        $("#fieldListGeneratorSocket").append("<div class='col-md-6'>");
-        $("#fieldListGeneratorSocket").append("<label for='generatorSocket' class='form-label'>ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>");
-        $("#fieldListGeneratorSocket").append("<input type='text' class='form-control' name='generatorSocket' id='generatorSocket'>");
-        $("#fieldListGeneratorSocket").append("</div>");
+        $("#fieldListGeneratorSocket").append("<div class='col-md-12'>\
+                                                <div class='input-group input-group-sm mb-3'>\
+                                                    <span class='input-group-text' id='inputGroup-sizing-sm'>ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</span>\
+                                                    <input type='text' class='form-control' list='generatorSockets' name='generatorSocket' id='generatorSocket'></input>\
+                                                    <datalist id='generatorSockets'>\
+                                                    <% if(storeroom != undefined) { %> \
+                                                        <% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>\
+                                                            <option value='<%= storeroom.generatorSockets[i] %>'>\
+                                                        <% } %>\
+                                                    <% } %>\
+                                                    </datalist>\
+                                                </div>\
+                                            </div> ");
     });
 });
 
 $(function() {
     $("#addMoreΤorchSocket").click(function(e) {
         e.preventDefault();
-        $("#fieldListΤorchSocket").append("<br>");
-        $("#fieldListΤorchSocket").append("<div class='col-md-6'>");
-        $("#fieldListΤorchSocket").append("<label for='torchSocket' class='form-label'>ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>");
-        $("#fieldListΤorchSocket").append("<input type='text' class='form-control' name='torchSocket' id='torchSocket'>");
-        $("#fieldListΤorchSocket").append("</div>");
+        $("#fieldListΤorchSocket").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</span>\
+                                                <input type='text' class='form-control' list='torchSockets' name='torchSocket' id='torchSocket'></input>\
+                                                <datalist id='torchSockets'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.torchSockets.length; i++) { %>\
+                                                        <option value='<%= storeroom.torchSockets[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMorePhotocell").click(function(e) {
         e.preventDefault();
-        $("#fieldListPhotocell").append("<br>");
-        $("#fieldListPhotocell").append("<div class='col-md-6'>");
-        $("#fieldListPhotocell").append("<label for='photocell' class='form-label'>ΦΩΤΟΚΥΤΤΑΡΟ</label>");
-        $("#fieldListPhotocell").append("<input type='text' class='form-control' name='photocell' id='photocell'>");
-        $("#fieldListPhotocell").append("</div>");
+        $("#fieldListPhotocell").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΦΩΤΟΚΥΤΤΑΡΟ</span>\
+                                                <input type='text' class='form-control' list='photocells' name='photocell' id='photocell'></input>\
+                                                <datalist id='photocells'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.photocells.length; i++) { %>\
+                                                        <option value='<%= storeroom.photocells[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreAccessory").click(function(e) {
         e.preventDefault();
-        $("#fieldListAccessory").append("<br>");
-        $("#fieldListAccessory").append("<div class='col-md-6'>");
-        $("#fieldListAccessory").append("<label for='accessory' class='form-label'>ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>");
-        $("#fieldListAccessory").append("<input type='text' class='form-control' name='accessory' id='accessory'>");
-        $("#fieldListAccessory").append("</div>");
+        $("#fieldListAccessory").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</span>\
+                                                <input type='text' class='form-control' list='accessorys' name='accessory' id='accessory'></input>\
+                                                <datalist id='accessorys'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.accessorys.length; i++) { %>\
+                                                        <option value='<%= storeroom.accessorys[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreAlternator").click(function(e) {
         e.preventDefault();
-        $("#fieldListAlternator").append("<br>");
-        $("#fieldListAlternator").append("<div class='col-md-6'>");
-        $("#fieldListAlternator").append("<label for='alternator' class='form-label'>ΕΝΑΛΛΑΚΤΗΣ</label>");
-        $("#fieldListAlternator").append("<input type='text' class='form-control' name='alternator' id='alternator'>");
-        $("#fieldListAlternator").append("</div>");
+        $("#fieldListAlternator").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΕΝΑΛΛΑΚΤΗΣ</span>\
+                                                <input type='text' class='form-control' list='alternators' name='alternator' id='alternator'></input>\
+                                                <datalist id='alternators'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.alternators.length; i++) { %>\
+                                                        <option value='<%= storeroom.alternators[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreLightingMachineMan").click(function(e) {
         e.preventDefault();
-        $("#fieldListLightingMachineMan").append("<br>");
-        $("#fieldListLightingMachineMan").append("<div class='col-md-6'>");
-        $("#fieldListLightingMachineMan").append("<label for='lightingMachineMan' class='form-label'>ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>");
-        $("#fieldListLightingMachineMan").append("<input type='text' class='form-control' name='lightingMachineMan' id='lightingMachineMan'>");
-        $("#fieldListLightingMachineMan").append("</div>");
+        $("#fieldListLightingMachineMan").append("<div class='col-md-12'>\
+                                                    <div class='input-group input-group-sm mb-3'>\
+                                                        <span class='input-group-text' id='inputGroup-sizing-sm'>ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</span>\
+                                                        <input type='text' class='form-control' list='lightingMachineMans' name='lightingMachineMan' id='lightingMachineMan'></input>\
+                                                        <datalist id='lightingMachineMans'>\
+                                                        <% if(storeroom != undefined) { %> \
+                                                            <% for (var i=0; i < storeroom.lightingMachineMan.length; i++) { %>\
+                                                                <option value='<%= storeroom.lightingMachineMan[i] %>'>\
+                                                            <% } %>\
+                                                        <% } %>\
+                                                        </datalist>\
+                                                    </div>\
+                                                </div> ");
     });
 });
 
 $(function() {
     $("#addMoreLightingMachineType").click(function(e) {
         e.preventDefault();
-        $("#fieldListLightingMachineType").append("<br>");
-        $("#fieldListLightingMachineType").append("<div class='col-md-6'>");
-        $("#fieldListLightingMachineType").append("<label for='lightingMachineType' class='form-label'>ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΤΥΠΟΣ)</label>");
-        $("#fieldListLightingMachineType").append("<input type='text' class='form-control' name='lightingMachineType' id='lightingMachineType'>");
-        $("#fieldListLightingMachineType").append("</div>");
+        $("#fieldListLightingMachineType").append("<div class='col-md-12'>\
+                                                    <div class='input-group input-group-sm mb-3'>\
+                                                        <span class='input-group-text' id='inputGroup-sizing-sm'>ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΤΥΠΟΣ)</span>\
+                                                        <input type='text' class='form-control' list='lightingMachineTypes' name='lightingMachineType' id='lightingMachineType'></input>\
+                                                        <datalist id='lightingMachineTypes'>\
+                                                        <% if(storeroom != undefined) { %> \
+                                                            <% for (var i=0; i < storeroom.lightingMachineType.length; i++) { %>\
+                                                                <option value='<%= storeroom.lightingMachineType[i] %>'>\
+                                                            <% } %>\
+                                                        <% } %>\
+                                                        </datalist>\
+                                                    </div>\
+                                                </div> ");
     });
 });
 
 $(function() {
     $("#addMoreReflectorMan").click(function(e) {
         e.preventDefault();
-        $("#fieldListReflectorMan").append("<br>");
-        $("#fieldListReflectorMan").append("<div class='col-md-6'>");
-        $("#fieldListReflectorMan").append("<label for='reflectorMan' class='form-label'>ΑΝΑΚΛΑΣΤΗΡΑΣ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>");
-        $("#fieldListReflectorMan").append("<input type='text' class='form-control' name='reflectorMan' id='reflectorMan'>");
-        $("#fieldListReflectorMan").append("</div>");
+        $("#fieldListReflectorMan").append("<div class='col-md-12'>\
+                                                <div class='input-group input-group-sm mb-3'>\
+                                                    <span class='input-group-text' id='inputGroup-sizing-sm'>ΑΝΑΚΛΑΣΤΗΡΑΣ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</span>\
+                                                    <input type='text' class='form-control' list='reflectorMans' name='reflectorMan' id='reflectorMan'></input>\
+                                                    <datalist id='reflectorMans'>\
+                                                    <% if(storeroom != undefined) { %> \
+                                                        <% for (var i=0; i < storeroom.reflectorMan.length; i++) { %>\
+                                                            <option value='<%= storeroom.reflectorMan[i] %>'>\
+                                                        <% } %>\
+                                                    <% } %>\
+                                                    </datalist>\
+                                                </div>\
+                                            </div> ");
     });
 });
 
 $(function() {
     $("#addMoreReflectorType").click(function(e) {
         e.preventDefault();
-        $("#fieldListReflectorType").append("<br>");
-        $("#fieldListReflectorType").append("<div class='col-md-6'>");
-        $("#fieldListReflectorType").append("<label for='reflectorType' class='form-label'>ΑΝΑΚΛΑΣΤΗΡΑΣ (ΤΥΠΟΣ)</label>");
-        $("#fieldListReflectorType").append("<input type='text' class='form-control' name='reflectorType' id='reflectorType'>");
-        $("#fieldListReflectorType").append("</div>");
+        $("#fieldListReflectorType").append("<div class='col-md-12'>\
+                                                <div class='input-group input-group-sm mb-3'>\
+                                                    <span class='input-group-text' id='inputGroup-sizing-sm'>ΑΝΑΚΛΑΣΤΗΡΑΣ (ΤΥΠΟΣ)</span>\
+                                                    <input type='text' class='form-control' list='reflectorTypes' name='reflectorType' id='reflectorType'></input>\
+                                                    <datalist id='reflectorTypes'>\
+                                                    <% if(storeroom != undefined) { %> \
+                                                        <% for (var i=0; i < storeroom.reflectorType.length; i++) { %>\
+                                                            <option value='<%= storeroom.reflectorType[i] %>'>\
+                                                        <% } %>\
+                                                    <% } %>\
+                                                    </datalist>\
+                                                </div>\
+                                            </div> ");
     });
 });
 
 $(function() {
     $("#addMoreSignsMan").click(function(e) {
         e.preventDefault();
-        $("#fieldListSignsMan").append("<br>");
-        $("#fieldListSignsMan").append("<div class='col-md-6'>");
-        $("#fieldListSignsMan").append("<label for='signsMan' class='form-label'>ΕΠΙΣΗΜΑΤΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</label>");
-        $("#fieldListSignsMan").append("<input type='text' class='form-control' name='signsMan' id='signsMan'>");
-        $("#fieldListSignsMan").append("</div>");
+        $("#fieldListSignsMan").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΕΠΙΣΗΜΑΤΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</span>\
+                                                <input type='text' class='form-control' list='signsMans' name='signsMan' id='signsMan'></input>\
+                                                <datalist id='signsMans'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.signsMan.length; i++) { %>\
+                                                        <option value='<%= storeroom.signsMan[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreSignsType").click(function(e) {
         e.preventDefault();
-        $("#fieldListSignsType").append("<br>");
-        $("#fieldListSignsType").append("<div class='col-md-6'>");
-        $("#fieldListSignsType").append("<label for='signsType' class='form-label'>ΕΠΙΣΗΜΑΤΑ (ΤΥΠΟΣ)</label>");
-        $("#fieldListSignsType").append("<input type='text' class='form-control' name='signsType' id='signsType'>");
-        $("#fieldListSignsType").append("</div>");
+        $("#fieldListSignsType").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΕΠΙΣΗΜΑΤΑ (ΤΥΠΟΣ)</span>\
+                                                <input type='text' class='form-control' list='signsTypes' name='signsType' id='signsType'></input>\
+                                                <datalist id='signsTypes'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.signsType.length; i++) { %>\
+                                                        <option value='<%= storeroom.signsType[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
+
 
 $(function() {
     $("#addMoreType").click(function(e) {
         e.preventDefault();
-        $("#fieldListType").append("<br>");
-        $("#fieldListType").append("<div class='col-md-6'>");
-        $("#fieldListType").append("<label for='type' class='form-label'>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>");
-        $("#fieldListType").append("<input type='text' class='form-control' name='type' id='type'>");
-        $("#fieldListType").append("</div>");
+        $("#fieldListType").append("<div class='col-md-12'>\
+                                        <div class='input-group input-group-sm mb-3'>\
+                                            <span class='input-group-text' id='inputGroup-sizing-sm'>ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</span>\
+                                            <input type='text' class='form-control' list='types' name='type' id='type'></input>\
+                                            <datalist id='types'>\
+                                            <% if(storeroom != undefined) { %> \
+                                                <% for (var i=0; i < storeroom.type.length; i++) { %>\
+                                                    <option value='<%= storeroom.type[i] %>'>\
+                                                <% } %>\
+                                            <% } %>\
+                                            </datalist>\
+                                        </div>\
+                                    </div> ");
     });
 });
 
 $(function() {
     $("#addMoreStateriType").click(function(e) {
         e.preventDefault();
-        $("#fieldListStateriType").append("<br>");
-        $("#fieldListStateriType").append("<div class='col-md-6'>");
-        $("#fieldListStateriType").append("<label for='stateriType' class='form-label'>ΣΤΑΤΕΡΙ (Άλυσος)</label>");
-        $("#fieldListStateriType").append("<input type='text' class='form-control' name='stateriType' id='stateriType'>");
-        $("#fieldListStateriType").append("</div>");
+        $("#fieldListStateriType").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΣΤΑΤΕΡΙ (Άλυσος)</span>\
+                                                <input type='text' class='form-control' list='stateriTypes' name='stateriType' id='stateriType'></input>\
+                                                <datalist id='stateriTypes'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.stateriType.length; i++) { %>\
+                                                        <option value='<%= storeroom.stateriType[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreAlysosType").click(function(e) {
         e.preventDefault();
-        $("#fieldListAlysosType").append("<br>");
-        $("#fieldListAlysosType").append("<div class='col-md-6'>");
-        $("#fieldListAlysosType").append("<label for='alysosType' class='form-label'>ΑΛΥΣΟΣ</label>");
-        $("#fieldListAlysosType").append("<input type='text' class='form-control' name='alysosType' id='alysosType'>");
-        $("#fieldListAlysosType").append("</div>");
+        $("#fieldListAlysosType").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΑΛΥΣΟΣ</span>\
+                                                <input type='text' class='form-control' list='alysosTypes' name='alysosType' id='alysosType'></input>\
+                                                <datalist id='alysosTypes'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.alysosType.length; i++) { %>\
+                                                        <option value='<%= storeroom.alysosType[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreAgkyrioChainType").click(function(e) {
         e.preventDefault();
-        $("#fieldListAgkyrioChainType").append("<br>");
-        $("#fieldListAgkyrioChainType").append("<div class='col-md-6'>");
-        $("#fieldListAgkyrioChainType").append("<label for='agkyrioChainType' class='form-label'>ΑΓΚΥΡΙΟ (Άλυσος)</label>");
-        $("#fieldListAgkyrioChainType").append("<input type='text' class='form-control' name='agkyrioChainType' id='agkyrioChainType'>");
-        $("#fieldListAgkyrioChainType").append("</div>");
+        $("#fieldListAgkyrioChainType").append("<div class='col-md-12'>\
+                                                    <div class='input-group input-group-sm mb-3'>\
+                                                        <span class='input-group-text' id='inputGroup-sizing-sm'>ΑΓΚΥΡΙΟ (Άλυσος)</span>\
+                                                        <input type='text' class='form-control' list='agkyrioChainTypes' name='agkyrioChainType' id='agkyrioChainType'></input>\
+                                                        <datalist id='agkyrioChainTypes'>\
+                                                        <% if(storeroom != undefined) { %> \
+                                                            <% for (var i=0; i < storeroom.agkyrioChainType.length; i++) { %>\
+                                                                <option value='<%= storeroom.agkyrioChainType[i] %>'>\
+                                                            <% } %>\
+                                                        <% } %>\
+                                                        </datalist>\
+                                                    </div>\
+                                                </div> ");
     });
 });
+
 
 $(function() {
     $("#addMoreStreptyrasType").click(function(e) {
         e.preventDefault();
-        $("#fieldListStreptyrasType").append("<br>");
-        $("#fieldListStreptyrasType").append("<div class='col-md-6'>");
-        $("#fieldListStreptyrasType").append("<label for='streptyrasType' class='form-label'>ΣΤΡΕΠΤΗΡΑΣ</label>");
-        $("#fieldListStreptyrasType").append("<input type='text' class='form-control' name='streptyrasType' id='streptyrasType'>");
-        $("#fieldListStreptyrasType").append("</div>");
+        $("#fieldListStreptyrasType").append("<div class='col-md-12'>\
+                                                <div class='input-group input-group-sm mb-3'>\
+                                                    <span class='input-group-text' id='inputGroup-sizing-sm'>ΑΓΚΥΡΙΟ (Άλυσος)</span>\
+                                                    <input type='text' class='form-control' list='streptyrasTypes' name='streptyrasType' id='streptyrasType'></input>\
+                                                    <datalist id='streptyrasTypes'>\
+                                                    <% if(storeroom != undefined) { %> \
+                                                        <% for (var i=0; i < storeroom.streptyrasType.length; i++) { %>\
+                                                            <option value='<%= storeroom.streptyrasType[i] %>'>\
+                                                        <% } %>\
+                                                    <% } %>\
+                                                    </datalist>\
+                                                </div>\
+                                            </div> ");
     });
 });
 
 $(function() {
     $("#addMoreNavyKeyType").click(function(e) {
         e.preventDefault();
-        $("#fieldListNavyKeyType").append("<br>");
-        $("#fieldListNavyKeyType").append("<div class='col-md-6'>");
-        $("#fieldListNavyKeyType").append("<label for='navyKeyType' class='form-label'>ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</label>");
-        $("#fieldListNavyKeyType").append("<input type='text' class='form-control' name='navyKeyType' id='navyKeyType'>");
-        $("#fieldListNavyKeyType").append("</div>");
+        $("#fieldListNavyKeyType").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</span>\
+                                                <input type='text' class='form-control' list='navyKeyTypes' name='navyKeyType' id='navyKeyType'></input>\
+                                                <datalist id='navyKeyTypes'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.navyKeyType.length; i++) { %>\
+                                                        <option value='<%= storeroom.navyKeyType[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreAgkyrioType").click(function(e) {
         e.preventDefault();
-        $("#fieldListAgkyrioType").append("<br>");
-        $("#fieldListAgkyrioType").append("<div class='col-md-6'>");
-        $("#fieldListAgkyrioType").append("<label for='agkyrioType' class='form-label'>ΑΓΚΥΡΙΟ</label>");
-        $("#fieldListAgkyrioType").append("<input type='text' class='form-control' name='agkyrioType' id='agkyrioType'>");
-        $("#fieldListAgkyrioType").append("</div>");
+        $("#fieldListAgkyrioType").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΑΓΚΥΡΙΟ</span>\
+                                                <input type='text' class='form-control' list='agkyrioTypes' name='agkyrioType' id='agkyrioType'></input>\
+                                                <datalist id='agkyrioTypes'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.agkyrioType.length; i++) { %>\
+                                                        <option value='<%= storeroom.agkyrioType[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreTechnician").click(function(e) {
         e.preventDefault();
-        $("#fieldListTechnician").append("<br>");
-        $("#fieldListTechnician").append("<div class='col-md-6'>");
-        $("#fieldListTechnician").append("<label for='technician' class='form-label'>ΤΕΧΝΙΚΟΣ</label>");
-        $("#fieldListTechnician").append("<input type='text' class='form-control' name='technician' id='technician'>");
-        $("#fieldListTechnician").append("</div>");
+        $("#fieldListTechnician").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΤΕΧΝΙΚΟΣ</span>\
+                                                <input type='text' class='form-control' list='technicians' name='technician' id='technician'></input>\
+                                                <datalist id='technicians'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.technicians.length; i++) { %>\
+                                                        <option value='<%= storeroom.technicians[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });
 
 $(function() {
     $("#addMoreLocation").click(function(e) {
         e.preventDefault();
-        $("#fieldListLocation").append("<br>");
-        $("#fieldListLocation").append("<div class='col-md-6'>");
-        $("#fieldListLocation").append("<label for='location' class='form-label'>ΠΕΡΙΟΧΗ</label>");
-        $("#fieldListLocation").append("<input type='text' class='form-control' name='location' id='location'>");
-        $("#fieldListLocation").append("</div>");
+        $("#fieldListLocation").append("<div class='col-md-12'>\
+                                            <div class='input-group input-group-sm mb-3'>\
+                                                <span class='input-group-text' id='inputGroup-sizing-sm'>ΠΕΡΙΟΧΗ</span>\
+                                                <input type='text' class='form-control' list='locations' name='location' id='location'></input>\
+                                                <datalist id='locations'>\
+                                                <% if(storeroom != undefined) { %> \
+                                                    <% for (var i=0; i < storeroom.locations.length; i++) { %>\
+                                                        <option value='<%= storeroom.locations[i] %>'>\
+                                                    <% } %>\
+                                                <% } %>\
+                                                </datalist>\
+                                            </div>\
+                                        </div> ");
     });
 });

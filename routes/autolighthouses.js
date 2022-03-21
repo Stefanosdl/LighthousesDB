@@ -6,6 +6,31 @@ const Technician = require("../models/technician");
 const StoreRoom = require("../models/storeroom");
 const middleware = require("../utils/middleware");
 const moment = require("moment");
+const multer = require("multer");
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './release-builds/LighthousesDB-win32-ia32/photos/');
+    },
+    filename: function(req, file, cb){
+        cb(null, file.originalname);
+    }
+});
+
+var fileFilter = (req, file, cb) => {
+    if(file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.mimetype === "image/jpg"){
+        cb(null, true);
+    }
+    else{
+        cb(null, false);
+    }
+    
+};
+
+var upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
 
 router.get("/registerAuto", catchAsync(async (req, res, next) => {
 	const storeroom = await StoreRoom.findOne({});
@@ -13,7 +38,7 @@ router.get("/registerAuto", catchAsync(async (req, res, next) => {
 	res.render("autolights/registerAuto", { storeroom });
 }));
 
-router.post("/registerAuto", catchAsync(async (req, res, next) => {
+router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, next) => {
     try {
 		const autoLighthouse = new AutoLight({ ...req.body , accumulatorDateGroups : {}, lampDateGroups : {}, solarGeneratorDateGroups : {}});
 		for(var i = 0; i < req.body.accumulator.length; i++) {
@@ -35,6 +60,7 @@ router.post("/registerAuto", catchAsync(async (req, res, next) => {
 			}
 		}
 
+		autoLighthouse.file = req.body.file;
 		moment.locale('el');
 		autoLighthouse.dateModified = moment().format('LL');
 

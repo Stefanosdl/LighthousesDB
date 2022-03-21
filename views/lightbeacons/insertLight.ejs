@@ -4,107 +4,150 @@
 	<div class="row">
 		<h2 align="center">Εισαγωγή Στοιχείων</h2>
 		<form action="/lightBeacons/insertLight/<%= lightBeacon._id %>?_method=PUT" method="POST" class="row g-3">
-			<div class="col-md-6">
-				<label for="aef" class="form-label">ΑΕΦ</label>
-				<input type="text" class="form-control" name="aef" id="aef" value="<%= lightBeacon.aef %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΕΦ</span>
+					<input type="text" class="form-control" name="aef" id="aef" value="<%= lightBeacon.aef %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
-				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= lightBeacon.lighthouse %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΟΝΟΜΑΣΙΑ</span>
+					<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= lightBeacon.lighthouse %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour" id="colour" value="<%= lightBeacon.colour %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΡΩΜΑΤΙΣΜΟΣ</span>
+					<input type="text" class="form-control" name="colour" id="colour" value="<%= lightBeacon.colour %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
-				<input type="text" class="form-control" name="features" id="features" value="<%= lightBeacon.features %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</span>
+					<input type="text" class="form-control" name="features" id="features" value="<%= lightBeacon.features %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="text" class="form-control" name="position" id="position" value="<%= lightBeacon.position %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="text" class="form-control" name="position" id="position" value="<%= lightBeacon.position %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" name="location" id="location" value="<%= lightBeacon.location %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΟΧΗ</span>
+					<input type="text" class="form-control" name="location" id="location" value="<%= lightBeacon.location %>">
+				</div>
 			</div>
-			<div class="input-group">
-				<span class="input-group-text">ΣΤΙΓΜΑ</span>
+			</br>
+            <div class="input-group input-group-sm mb-3 mt-0">
+                <span class="input-group-text" id="inputGroup-sizing-sm">ΣΤΙΓΜΑ</span>
 				<input type="text" class="form-control" name="stigmax" id="stigmax" value="<%= lightBeacon.stigma.x %>" placeholder="Χ:">
 				<input type="text" class="form-control" name="stigmay" id="stigmay" value="<%= lightBeacon.stigma.y %>" placeholder="Ψ:">
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 mt-0">
 				<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΥΡΓΟΥ</strong></label>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 mt-0">
 				<label class="form-label"><strong>ΚΑΤΑΣΚΕΥΑΣΤΗΣ</strong></label>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 mt-0">
 				<label class="form-label"><strong>ΤΥΠΟΣ</strong></label>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 mt-0">
 				<label class="form-label"><strong>ΤΕΜ</strong></label>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 mt-0">
 				<label class="form-label"><strong>ΗΜΕΡΟΜΗΝΙΑ</strong></label>
 			</div>
 
-			<div class="col-md-3">
-				<span class="input-group-text" id="basic-addon3">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</span>
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<span class="input-group-text" id="basic-addon3">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ</span>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<input type="text" class="form-control" name="lightingMachineMan" id="lightingMachineMan" value="<%= lightBeacon.lightingMachine.manufacturer %>">
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" name="lightingMachineMan" id="lightingMachineMan" value="<%= lightBeacon.lightingMachine.manufacturer %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="text" class="form-control" name="lightingMachineType" id="lightingMachineType" value="<%= lightBeacon.lightingMachine.type %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" name="lightingMachineType" id="lightingMachineType" value="<%= lightBeacon.lightingMachine.type %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" value="<%= lightBeacon.lightingMachine.counter %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="number" class="form-control" name="lightingMachineCounter" id="lightingMachineCounter" value="<%= lightBeacon.lightingMachine.counter %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<% if(lightBeacon.lightingMachineDate != undefined && lightBeacon.lightingMachineDate[lightBeacon.lightingMachineDate.length - 1] != null) { %>
-					<input type="date" class="form-control" name="lightingMachineDat" id="lightingMachineDat" value="<%= lightBeacon.lightingMachineDate[lightBeacon.lightingMachineDate.length - 1].toISOString().split('T')[0] %>">
-				<% } else { %>
-					<input type="date" class="form-control" name="lightingMachineDat" id="lightingMachineDat">
-				<% } %>	
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<% if(lightBeacon.lightingMachineDate != undefined && lightBeacon.lightingMachineDate[lightBeacon.lightingMachineDate.length - 1] != null) { %>
+						<input type="date" class="form-control" name="lightingMachineDat" id="lightingMachineDat" value="<%= lightBeacon.lightingMachineDate[lightBeacon.lightingMachineDate.length - 1].toISOString().split('T')[0] %>">
+					<% } else { %>
+						<input type="date" class="form-control" name="lightingMachineDat" id="lightingMachineDat">
+					<% } %>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<span class="input-group-text" id="basic-addon3">ΑΝΑΚΛΑΣΤΗΡΑΣ</span>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<input type="text" class="form-control" name="reflectorMan" id="reflectorMan" value="<%= lightBeacon.reflector.manufacturer %>">
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" name="reflectorMan" id="reflectorMan" value="<%= lightBeacon.reflector.manufacturer %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="text" class="form-control" name="reflectorType" id="reflectorType" value="<%= lightBeacon.reflector.type %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" name="reflectorType" id="reflectorType" value="<%= lightBeacon.reflector.type %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" value="<%= lightBeacon.reflector.counter %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="number" class="form-control" name="reflectorCounter" id="reflectorCounter" value="<%= lightBeacon.reflector.counter %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<% if(lightBeacon.reflectorDate != undefined) { %>
-					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate" value="<%= lightBeacon.reflectorDate.toISOString().split('T')[0] %>">
-				<% } else { %>
-					<input type="date" class="form-control" name="reflectorDate" id="reflectorDate">
-				<% } %>
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<% if(lightBeacon.reflectorDate != undefined) { %>
+						<input type="date" class="form-control" name="reflectorDate" id="reflectorDate" value="<%= lightBeacon.reflectorDate.toISOString().split('T')[0] %>">
+					<% } else { %>
+						<input type="date" class="form-control" name="reflectorDate" id="reflectorDate">
+					<% } %>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<span class="input-group-text" id="basic-addon3">ΕΠΙΣΗΜΑΤΑ</span>
+				</div>
 			</div>
-			<div class="col-md-3">
-				<input type="text" class="form-control" name="signsMan" id="signsMan" value="<%= lightBeacon.signs.manufacturer %>">
+			<div class="col-md-3 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" name="signsMan" id="signsMan" value="<%= lightBeacon.signs.manufacturer %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="text" class="form-control" name="signsType" id="signsType" value="<%= lightBeacon.signs.type %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" name="signsType" id="signsType" value="<%= lightBeacon.signs.type %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<input type="number" class="form-control" name="signsCounter" id="signsCounter" value="<%= lightBeacon.signs.counter %>">
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<input type="number" class="form-control" name="signsCounter" id="signsCounter" value="<%= lightBeacon.signs.counter %>">
+				</div>
 			</div>
-			<div class="col-md-2">
-				<% if(lightBeacon.signsDate != undefined) { %>
-					<input type="date" class="form-control" name="signsDate" id="signsDate" value="<%= lightBeacon.signsDate.toISOString().split('T')[0] %>">
-				<% } else { %>
-					<input type="date" class="form-control" name="signsDate" id="signsDate">
-				<% } %>
+			<div class="col-md-2 mt-0">
+				<div class="input-group input-group-sm">
+					<% if(lightBeacon.signsDate != undefined) { %>
+						<input type="date" class="form-control" name="signsDate" id="signsDate" value="<%= lightBeacon.signsDate.toISOString().split('T')[0] %>">
+					<% } else { %>
+						<input type="date" class="form-control" name="signsDate" id="signsDate">
+					<% } %>
+				</div>
 			</div>
 			<div class="col-md-4">
 				<img src="/foto_FR.jpg" class="rounded float-start">

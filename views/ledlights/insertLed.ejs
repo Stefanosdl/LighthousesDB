@@ -4,107 +4,153 @@
     <h2 align="center">Εισαγωγή Στοιχείων</h2>
     <form action="/ledLighthouses/insertLed/<%= ledLightHouse._id %>?_method=PUT" method="POST">
         <div class="row">
-			<div class="col-md-6">
-				<label for="aef" class="form-label">ΑΕΦ</label>
-				<input type="text" class="form-control" name="aef" id="aef" value="<%= ledLightHouse.aef %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΕΦ</span>
+					<input type="text" class="form-control" name="aef" id="aef" value="<%= ledLightHouse.aef %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
-				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= ledLightHouse.lighthouse %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΟΝΟΜΑΣΙΑ</span>
+					<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= ledLightHouse.lighthouse %>">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour" id="colour" value="<%= ledLightHouse.colour %>">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΡΩΜΑΤΙΣΜΟΣ</span>
+					<input type="text" class="form-control" name="colour" id="colour" value="<%= ledLightHouse.colour %>">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
-				<input type="text" class="form-control" name="sections" id="sections" value="<%= ledLightHouse.sections %>">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΤΟΜΕΙΣ</span>
+					<input type="text" class="form-control" name="sections" id="sections" value="<%= ledLightHouse.sections %>">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<label for="features" class="form-label">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</label>
-				<input type="text" class="form-control" name="features" id="features" value="<%= ledLightHouse.features %>">
+			<div class="col-md-4 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΑΡΑΚΤΗΡΙΣΤΙΚΟ</span>
+					<input type="text" class="form-control" name="features" id="features" value="<%= ledLightHouse.features %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="text" class="form-control" name="position" id="position" value="<%= ledLightHouse.position %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="text" class="form-control" name="position" id="position" value="<%= ledLightHouse.position %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" name="location" id="location" value="<%= ledLightHouse.location %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΟΧΗ</span>
+					<input type="text" class="form-control" name="location" id="location" value="<%= ledLightHouse.location %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="solarGeneratorNew" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-				<input type="text" class="form-control" name="solarGeneratorNew" id="solarGeneratorNew">
+			<div class="col-md-6 mt-0" id="fieldListSolar">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</span>
+					<input type="text" class="form-control" name="solarGeneratorNew" id="solarGeneratorNew">
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="solarGeneratorDateNew" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="solarGeneratorDateNew" id="solarGeneratorDateNew">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="solarGeneratorDateNew" id="solarGeneratorDateNew">
+				</div>
 			</div>
 			<% for (var i=0; i < ledLightHouse.solarGenerator.length; i++) { %>
-				<div class="col-md-6">
-					<label for="solarGenerator" class="form-label">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</label>
-					<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator" value="<%= ledLightHouse.solarGenerator[i] %>">
+				<div class="col-md-6 mt-0" id="fieldListSolar">
+					<div class="input-group input-group-sm mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-sm">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</span>
+						<input type="text" class="form-control" name="solarGenerator[]" id="solarGenerator" value="<%= ledLightHouse.solarGenerator[i] %>">
+					</div>
 				</div>
 				<% if(ledLightHouse.solarGeneratorDateGroups.get(i.toString()) != undefined) { %>
-					<div class="col-md-6">
-						<label for="solarGeneratorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
+					<div class="col-md-6 mt-0">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
 						<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate" value="<%= ledLightHouse.solarGeneratorDateGroups.get(i.toString())[ledLightHouse.solarGeneratorDateGroups.get(i.toString()).length-1] %>">
 					</div>
+					</div>
 				<% } else { %>
-					<div class="col-md-6">
-						<label for="solarGeneratorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-						<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate">
+					<div class="col-md-6 mt-0">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+							<input type="date" class="form-control" name="solarGeneratorDate[]" id="solarGeneratorDate">
+						</div>
 					</div>
 				<% } %>
 			<% } %>
-			<div class="col-md-6">
-				<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-				<input type="text" class="form-control" name="accumulatorNew" id="accumulatorNew">
+			<div class="col-md-6 mt-0" id="fieldListAcc">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
+					<input type="text" class="form-control" name="accumulatorNew" id="accumulatorNew">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="accumulatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="accumulatorDateNew" id="accumulatorDateNew">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="accumulatorDateNew" id="accumulatorDateNew">
+				</div>
 			</div>
 			<% for (var i=0; i < ledLightHouse.accumulator.length; i++) { %>
-				<div class="col-md-6">
-					<label for="accumulator" class="form-label">ΣΥΣΣΩΡΕΥΤΗΣ</label>
-					<input type="text" class="form-control" name="accumulator[]" id="accumulator" value="<%= ledLightHouse.accumulator[i] %>">
+				<div class="col-md-6 mt-0" id="fieldListAcc">
+					<div class="input-group input-group-sm mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
+						<input type="text" class="form-control" name="accumulator[]" id="accumulator" value="<%= ledLightHouse.accumulator[i] %>">
+					</div>
 				</div>
 				<% if(ledLightHouse.accumulatorDateGroups.get(i.toString()) != undefined) { %>
-					<div class="col-md-6">
-						<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-						<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= ledLightHouse.accumulatorDateGroups.get(i.toString())[ledLightHouse.accumulatorDateGroups.get(i.toString()).length-1] %>">
+					<div class="col-md-6 mt-0">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+							<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= ledLightHouse.accumulatorDateGroups.get(i.toString())[ledLightHouse.accumulatorDateGroups.get(i.toString()).length-1] %>">
+						</div>
 					</div>
 				<% } else { %>
-					<div class="col-md-6">
-						<label for="accumulatorDate[]" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-						<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+					<div class="col-md-6 mt-0">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+							<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+						</div>
 					</div>
 				<% } %>
 			<% } %>
-			<div class="col-md-6">
-				<label for="head" class="form-label">ΚΕΦΑΛΗ</label>
-				<input type="text" class="form-control" name="head" id="head" value="<%= ledLightHouse.head %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΚΕΦΑΛΗ</span>
+					<input type="text" class="form-control" name="head" id="head" value="<%= ledLightHouse.head %>">
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="headDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="headDate" id="headDate" value="<%= ledLightHouse.headDate.pop() %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="headDate" id="headDate" value="<%= ledLightHouse.headDate.pop() %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="chargeRegulator" class="form-label">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</label>
-				<input type="text" class="form-control" name="chargeRegulator" id="chargeRegulator" value="<%= ledLightHouse.chargeRegulator %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</span>
+					<input type="text" class="form-control" name="chargeRegulator" id="chargeRegulator" value="<%= ledLightHouse.chargeRegulator %>">
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="chargeRegulatorDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="chargeRegulatorDate" id="chargeRegulatorDate" value="<%= ledLightHouse.chargeRegulatorDate.pop() %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="chargeRegulatorDate" id="chargeRegulatorDate" value="<%= ledLightHouse.chargeRegulatorDate.pop() %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="socket" class="form-label">ΥΠΟΔΟΧΗ</label>
-				<input type="text" class="form-control" name="socket" id="socket" value="<%= ledLightHouse.socket %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΥΠΟΔΟΧΗ</span>
+					<input type="text" class="form-control" name="socket" id="socket" value="<%= ledLightHouse.socket %>">
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="socketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="socketDate" id="socketDate" value="<%= ledLightHouse.socketDate.pop() %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="socketDate" id="socketDate" value="<%= ledLightHouse.socketDate.pop() %>">
+				</div>
 			</div>
         </div>
         

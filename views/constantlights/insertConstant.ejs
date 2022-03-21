@@ -4,53 +4,77 @@
     <h2 align="center">Εισαγωγή Στοιχείων</h2>
     <form action="/constantLighthouses/insertConstant/<%= constantLightHouse._id %>?_method=PUT" method="POST">
         <div class="row">
-			<div class="col-md-6">
-				<label for="aef" class="form-label">ΑΕΦ</label>
-				<input type="text" class="form-control" name="aef" id="aef" value="<%= constantLightHouse.aef %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΕΦ</span>
+					<input type="text" class="form-control" name="aef" id="aef" value="<%= constantLightHouse.aef %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lighthouse" class="form-label">ΟΝΟΜΑΣΙΑ</label>
-				<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= constantLightHouse.lighthouse %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΟΝΟΜΑΣΙΑ</span>
+					<input type="text" class="form-control" name="lighthouse" id="lighthouse" value="<%= constantLightHouse.lighthouse %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="colour" class="form-label">ΧΡΩΜΑΤΙΣΜΟΣ</label>
-				<input type="text" class="form-control" name="colour" id="colour" value="<%= constantLightHouse.colour %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΡΩΜΑΤΙΣΜΟΣ</span>
+					<input type="text" class="form-control" name="colour" id="colour" value="<%= constantLightHouse.colour %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="sections" class="form-label">ΤΟΜΕΙΣ</label>
-				<input type="text" class="form-control" name="sections" id="sections" value="<%= constantLightHouse.sections %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΤΟΜΕΙΣ</span>
+					<input type="text" class="form-control" name="sections" id="sections" value="<%= constantLightHouse.sections %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="position" class="form-label">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="text" class="form-control" name="position" id="position" value="<%= constantLightHouse.position %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΓΡΑΦΗ ΘΕΣΕΩΣ/ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="text" class="form-control" name="position" id="position" value="<%= constantLightHouse.position %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="location" class="form-label">ΠΕΡΙΟΧΗ</label>
-				<input type="text" class="form-control" name="location" id="location" value="<%= constantLightHouse.location %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΟΧΗ</span>
+					<input type="text" class="form-control" name="location" id="location" value="<%= constantLightHouse.location %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lamp" class="form-label">ΛΥΧΝΙΑ</label>
-				<input type="text" class="form-control" name="lamp" id="lamp" value="<%= constantLightHouse.lamp %>">
+			<div class="col-md-6 mt-0" id="fieldListLamp">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΛΥΧΝΙΑ</span>
+					<input type="text" class="form-control" name="lamp" id="lamp" value="<%= constantLightHouse.lamp %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="lampDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="lampDate" id="lampDate" value="<%= constantLightHouse.lampDate %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="lampDate" id="lampDate" value="<%= constantLightHouse.lampDate %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="torchSocket" class="form-label">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</label>
-				<input type="text" class="form-control" name="torchSocket" id="torchSocket" value="<%= constantLightHouse.torchSocket %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</span>
+					<input type="text" class="form-control" name="torchSocket" id="torchSocket" value="<%= constantLightHouse.torchSocket %>">
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="torchSocketDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate" value="<%= constantLightHouse.torchSocketDate.pop() %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="torchSocketDate" id="torchSocketDate" value="<%= constantLightHouse.torchSocketDate.pop() %>">
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label for="accessory" class="form-label">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</label>
-				<input type="text" class="form-control" name="accessory" id="accessory">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</span>
+					<input type="text" class="form-control" name="accessory" id="accessory">
+				</div>
 			</div>
-            <div class="col-md-6">
-				<label for="accessoryDate" class="form-label">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</label>
-				<input type="date" class="form-control" name="accessoryDate" id="accessoryDate" value="<%= constantLightHouse.accessoryDate.pop() %>">
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="accessoryDate" id="accessoryDate" value="<%= constantLightHouse.accessoryDate.pop() %>">
+				</div>
 			</div>
         </div>
         
