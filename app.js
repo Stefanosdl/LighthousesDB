@@ -16,6 +16,7 @@ const autoLighthouseRoutes = require("./routes/autolighthouses");
 const ledLighthouseRoutes = require("./routes/ledlighthouses");
 const constantLighthouseRoutes = require("./routes/constantlighthouses");
 const lightBeaconsRoutes = require("./routes/lightbeacons");
+const imagesRoutes = require("./routes/images");
 
 const MongoDBStore = require("connect-mongo")(session);
 
@@ -93,6 +94,7 @@ app.use("/autoLighthouses", autoLighthouseRoutes);
 app.use("/ledLighthouses", ledLighthouseRoutes);
 app.use("/constantLighthouses", constantLighthouseRoutes);
 app.use("/lightBeacons", lightBeaconsRoutes);
+app.use("/images", imagesRoutes);
 
 app.listen(3000, () => {
     console.log("Listening in port 3000");

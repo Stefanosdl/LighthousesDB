@@ -27,6 +27,7 @@ const constantLightSchema = new Schema({
         type: Array,
         default: [Date]
     },
+    file: String,
     technicians: [{
 	    	type: Schema.Types.ObjectId,
 	    	ref: "Technician"

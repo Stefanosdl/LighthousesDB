@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+
+<% for (var i=0; i < searchedAuto.length; i++) { %>
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedAuto[i].aef %>/<%= searchedAuto[i].aef %>.jpg" class="card-img-top">
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<br>
+
+<% for (var i=0; i < searchedLed.length; i++) { %>
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLed[i].aef %>/<%= searchedLed[i].aef %>.jpg" class="card-img-top">
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<br>
+
+<% for (var i=0; i < searchedConstant.length; i++) { %>
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedConstant[i].aef %>/<%= searchedConstant[i].aef %>.jpg" class="card-img-top">
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<br>
+
+<% for (var i=0; i < searchedLight.length; i++) { %>
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLight[i].aef %>/<%= searchedLight[i].aef %>.jpg" class="card-img-top">
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<div class="text-center">
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+        <a href="/" class="btn btn-outline-primary float-left">Αρχική Σελίδα</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>

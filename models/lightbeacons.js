@@ -62,6 +62,7 @@ const lightBeaconSchema = new Schema({
         type: { type: String },
         counter: { type: Number }
     },
+    file: String,
     technicians: [{
         type: Schema.Types.ObjectId,
         ref: "Technician"

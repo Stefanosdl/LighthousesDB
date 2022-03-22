@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="container">
+	<div class="row">
+        <h2 align="center">Φωτογραφίες Φάρων/Πυρσών</h2>
+		<div class="col-12">
+			<nav class="navbar navbar-light">
+				<div class="container-fluid">
+					<form action="/images/search" method="GET" class="d-flex my-2 mx-auto">
+						<input class="form-control me-2" type="search" name="q" id="search" aria-label="Search">
+						<button class="btn btn-outline-primary" type="submit">Αναζήτηση</button>
+					</form>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="text-center">
+    <a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+</div>
+
+<% include ../partials/footer %>

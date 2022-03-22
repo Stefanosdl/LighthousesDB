@@ -6,6 +6,31 @@ const Technician = require("../models/technician");
 const StoreRoom = require("../models/storeroom");
 const middleware = require("../utils/middleware");
 const moment = require("moment");
+const multer = require("multer");
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './photos/');
+    },
+    filename: function(req, file, cb){
+        cb(null, file.originalname);
+    }
+});
+
+var fileFilter = (req, file, cb) => {
+    if(file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.mimetype === "image/jpg"){
+        cb(null, true);
+    }
+    else{
+        cb(null, false);
+    }
+    
+};
+
+var upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
 
 router.get("/registerLight", catchAsync(async (req, res, next) => {
 	const storeroom = await StoreRoom.findOne({});
@@ -13,7 +38,7 @@ router.get("/registerLight", catchAsync(async (req, res, next) => {
 	res.render("lightbeacons/registerLight", { storeroom });
 }));
 
-router.post("/registerLight", catchAsync(async (req, res, next) => {
+router.post("/registerLight", upload.single("file"), catchAsync(async (req, res, next) => {
     try {
 		const lightBeacon = new LightBeacon({ ...req.body });
 		
@@ -41,6 +66,7 @@ router.post("/registerLight", catchAsync(async (req, res, next) => {
 		lightBeacon.agkyrio.type = req.body.agkyrioType;
 		lightBeacon.agkyrio.counter = req.body.agkyrioCounter;
 
+		lightBeacon.file = req.file.filename;
 		moment.locale('el');
 		lightBeacon.dateModified = moment().format('LL');
 

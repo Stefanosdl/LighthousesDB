@@ -10,7 +10,7 @@ const multer = require("multer");
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, './release-builds/LighthousesDB-win32-ia32/photos/');
+        cb(null, './photos/');
     },
     filename: function(req, file, cb){
         cb(null, file.originalname);
@@ -60,7 +60,7 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 			}
 		}
 
-		autoLighthouse.file = req.body.file;
+		autoLighthouse.file = req.file.filename;
 		moment.locale('el');
 		autoLighthouse.dateModified = moment().format('LL');
 
