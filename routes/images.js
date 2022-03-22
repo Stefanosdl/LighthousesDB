@@ -57,22 +57,30 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const lightIm = new Array();
             var tmp = "";
 
-            fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedAuto.aef %>").forEach((file) => {
-                tmp = "C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedAuto.aef %>/".concat(file);
-                autoIm.push(tmp)
-            });
-            fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLed.aef %>").forEach((file) => {
-                tmp = "C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLed.aef %>/".concat(file);
-                ledIm.push(tmp)
-            });
-            fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedConstant.aef %>").forEach((file) => {
-                tmp = "C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedConstant.aef %>/".concat(file);
-                constantIm.push(tmp)
-            });
-            fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLight.aef %>").forEach((file) => {
-                tmp = "C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLight.aef %>/".concat(file);
-                lightIm.push(tmp)
-            });
+            if(searchedAuto != undefined) {
+                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedAuto.aef).forEach((file) => {
+                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedAuto.aef + "/").concat(file);
+                    autoIm.push(tmp)
+                });
+            }
+            if(searchedLed != undefined) {
+                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLed.aef).forEach((file) => {
+                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLed.aef + "/").concat(file);
+                    ledIm.push(tmp)
+                });
+            }
+            if(searchedConstant != undefined) {
+                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedConstant.aef).forEach((file) => {
+                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedConstant.aef + "/").concat(file);
+                    constantIm.push(tmp)
+                });
+            }
+            if(searchedLight != undefined) {
+                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLight.aef).forEach((file) => {
+                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLight.aef + "/").concat(file);
+                    lightIm.push(tmp)
+                });
+            }
 
             if((searchedAuto == undefined || searchedAuto.length == 0) && (searchedLed == undefined || searchedLed.length == 0) && (searchedConstant == undefined || searchedConstant.length == 0) && (searchedLight == undefined || searchedLight.length == 0)) {
                 req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
