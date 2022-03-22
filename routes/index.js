@@ -124,14 +124,14 @@ router.post("/print", catchAsync(async (req, res, next) => {
     var searchedLight = new Array();
 
     for (var item of searchAuto) {
-        if(constant != undefined) {
+        if(auto != undefined) {
             if (auto.includes(item.aef)) {
                 searchedAuto.push(item);
             }
         }
     }
     for (var item of searchLed) {
-        if(constant != undefined) {
+        if(led != undefined) {
             if (led.includes(item.aef)) {
                 searchedLed.push(item);
             }
@@ -145,7 +145,7 @@ router.post("/print", catchAsync(async (req, res, next) => {
         }
     }
     for (var item of searchLight) {
-        if(constant != undefined) {
+        if(light != undefined) {
             if (light.includes(item.aef)) {
                 searchedLight.push(item);
             }

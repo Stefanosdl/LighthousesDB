@@ -11,7 +11,7 @@
                     <% for (var i=0; i < searchedAuto.length; i++) { %>
                         <ul class="list-group list-group-flush">
 							<input type="hidden">
-                            <li class="list-group-item radio-inline"><strong>ΑΕΦ: <%= searchedAuto[i].aef %></strong><input type="checkbox" name="checkedAuto[]" value="<%= searchedAuto[i].aef %>[]"></li>
+                            <li class="list-group-item radio-inline"><strong>ΑΕΦ: <%= searchedAuto[i].aef %></strong><input type="checkbox" name="checkedAuto" value="<%= searchedAuto[i].aef %>"></li>
                         </ul>
                     <% } %>
                     
@@ -20,7 +20,7 @@
                     <% for (var i=0; i < searchedLed.length; i++) { %>
                         <ul class="list-group list-group-flush">
 							<input type="hidden">
-                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLed[i].aef %></strong><input type="checkbox" name="checkedLed[]" value="<%= searchedLed[i].aef %>[]"></li>
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLed[i].aef %></strong><input type="checkbox" name="checkedLed" value="<%= searchedLed[i].aef %>"></li>
                         </ul>
                     <% } %>
                     
@@ -29,7 +29,7 @@
                     <% for (var i=0; i < searchedConstant.length; i++) { %>
                         <ul class="list-group list-group-flush">
 							<input type="hidden">
-                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedConstant[i].aef %></strong><input type="checkbox" name="checkedConstant[]" value="<%= searchedConstant[i].aef %>[]"></li>
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedConstant[i].aef %></strong><input type="checkbox" name="checkedConstant" value="<%= searchedConstant[i].aef %>"></li>
                         </ul>
                     <% } %>
                     
@@ -38,7 +38,7 @@
                     <% for (var i=0; i < searchedLight.length; i++) { %>
                         <ul class="list-group list-group-flush">
 							<input type="hidden">
-                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLight[i].aef %></strong><input type="checkbox" name="checkedLight[]" value="<%= searchedLight[i].aef %>[]"></li>
+                            <li class="list-group-item"><strong>ΑΕΦ: <%= searchedLight[i].aef %></strong><input type="checkbox" name="checkedLight" value="<%= searchedLight[i].aef %>"></li>
                         </ul>
                     <% } %>
                 </div>

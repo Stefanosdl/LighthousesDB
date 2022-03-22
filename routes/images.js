@@ -84,11 +84,15 @@ router.get("/search", catchAsync(async (req, res, next) => {
 
             if((searchedAuto == undefined || searchedAuto.length == 0) && (searchedLed == undefined || searchedLed.length == 0) && (searchedConstant == undefined || searchedConstant.length == 0) && (searchedLight == undefined || searchedLight.length == 0)) {
                 req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
-                res.redirect('/');
+                res.redirect('/images/index');
             }
             else {
                 res.render("images/search", { autoIm, ledIm, constantIm, lightIm});
             }
+        }
+        else {
+            req.flash("error", "Εισάγετε κάποιο ΑΕΦ προς αναζήτηση!");
+            res.redirect('/images/index');
         }
     }
     catch (e) {
