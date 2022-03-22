@@ -1,10 +1,10 @@
 <% include ../partials/header %>
 
-<% for (var i=0; i < searchedAuto.length; i++) { %>
+<% for (var i=0; i < autoIm.length; i++) { %>
     <div class="container">
         <div class="row">
             <div class="card" style="width: 18rem;">
-                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedAuto[i].aef %>/<%= searchedAuto[i].aef %>.jpg" class="card-img-top">
+                <img src="<%= autoIm[i] %>" class="card-img-top">
             </div>
         </div>
     </div>
@@ -12,11 +12,11 @@
 
 <br>
 
-<% for (var i=0; i < searchedLed.length; i++) { %>
+<% for (var i=0; i < ledIm.length; i++) { %>
     <div class="container">
         <div class="row">
             <div class="card" style="width: 18rem;">
-                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLed[i].aef %>/<%= searchedLed[i].aef %>.jpg" class="card-img-top">
+                <img src="<%= ledIm[i] %>" class="card-img-top">
             </div>
         </div>
     </div>
@@ -24,11 +24,11 @@
 
 <br>
 
-<% for (var i=0; i < searchedConstant.length; i++) { %>
+<% for (var i=0; i < constantIm.length; i++) { %>
     <div class="container">
         <div class="row">
             <div class="card" style="width: 18rem;">
-                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedConstant[i].aef %>/<%= searchedConstant[i].aef %>.jpg" class="card-img-top">
+                <img src="<%= constantIm[i] %>" class="card-img-top">
             </div>
         </div>
     </div>
@@ -36,11 +36,11 @@
 
 <br>
 
-<% for (var i=0; i < searchedLight.length; i++) { %>
+<% for (var i=0; i < lightIm.length; i++) { %>
     <div class="container">
         <div class="row">
             <div class="card" style="width: 18rem;">
-                <img src="C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= searchedLight[i].aef %>/<%= searchedLight[i].aef %>.jpg" class="card-img-top">
+                <img src="<%= lightIm[i] %>" class="card-img-top">
             </div>
         </div>
     </div>
