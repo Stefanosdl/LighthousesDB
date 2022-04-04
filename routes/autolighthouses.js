@@ -76,7 +76,6 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 
 router.post("/search/:id", catchAsync(async (req, res) => {
 	const searchedAuto = await AutoLight.find({_id: req.params.id}).populate("technicians");
-	
 	res.render("autolights/searchAuto", { searchedAuto });
 }));
 

@@ -1,7 +1,6 @@
 <% include ../partials/header %>
 
 <% for (let auto of searchedAuto) { %>
-	
 	<div class="container">
 		<div class="row">
 			<p class="text-end">Τελευταία ημέρα τροποποίησης: <strong><%= auto.dateModified %></strong></p>
@@ -20,7 +19,7 @@
 			<% } %>
 			<table class="table">
 				<thead class="table-light">
-					<tr class="d-flex" data-toggle="tooltip" data-placement="top" title="<img src='C:/Users/release-builds/LighthousesDB-win32-ia32/photos/<%= auto.file %>' />">
+					<tr class="d-flex" data-toggle="tooltip" data-placement="top" title="<img src='/photos/<%= auto.file %>' />">
 					<th scope="col"><%= auto.aef %></th>
 					<th scope="col"><%= auto.lighthouse %></th>
 					<th scope="col"><%= auto.colour %></th>

@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const fs = require("fs");
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
@@ -56,28 +57,29 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const constantIm = new Array();
             const lightIm = new Array();
             var tmp = "";
+            var p = path.join(__dirname, '../../../photos/');
 
             if(searchedAuto != undefined) {
-                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedAuto.aef).forEach((file) => {
-                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedAuto.aef + "/").concat(file);
+                fs.readdirSync(p + searchedAuto.aef).forEach((file) => {
+                    tmp = (p + searchedAuto.aef + "/").concat(file);
                     autoIm.push(tmp)
                 });
             }
             if(searchedLed != undefined) {
-                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLed.aef).forEach((file) => {
-                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLed.aef + "/").concat(file);
+                fs.readdirSync(p + searchedLed.aef).forEach((file) => {
+                    tmp = (p + searchedLed.aef + "/").concat(file);
                     ledIm.push(tmp)
                 });
             }
             if(searchedConstant != undefined) {
-                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedConstant.aef).forEach((file) => {
-                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedConstant.aef + "/").concat(file);
+                fs.readdirSync(p + searchedConstant.aef).forEach((file) => {
+                    tmp = (p + searchedConstant.aef + "/").concat(file);
                     constantIm.push(tmp)
                 });
             }
             if(searchedLight != undefined) {
-                fs.readdirSync("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLight.aef).forEach((file) => {
-                    tmp = ("C:/Users/release-builds/LighthousesDB-win32-ia32/photos/" + searchedLight.aef + "/").concat(file);
+                fs.readdirSync(p + searchedLight.aef).forEach((file) => {
+                    tmp = (p + searchedLight.aef + "/").concat(file);
                     lightIm.push(tmp)
                 });
             }
