@@ -114,8 +114,9 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 
 router.get("/insertAuto/:id", catchAsync(async (req, res) => {
     const autoLightHouse = await AutoLight.findById(req.params.id);
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("autolights/insertAuto", { autoLightHouse });
+	res.render("autolights/insertAuto", { autoLightHouse , storeroom });
 }));
 
 router.put("/insertAuto/:id", catchAsync(async (req, res) => {

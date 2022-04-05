@@ -95,8 +95,9 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 
 router.get("/insertConstant/:id", catchAsync(async (req, res) => {
     const constantLightHouse = await ConstantLight.findById(req.params.id);
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("constantlights/insertConstant", { constantLightHouse });
+	res.render("constantlights/insertConstant", { constantLightHouse , storeroom });
 }));
 
 router.put("/insertConstant/:id", catchAsync(async (req, res) => {

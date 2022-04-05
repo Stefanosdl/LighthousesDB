@@ -111,8 +111,9 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 
 router.get("/insertLed/:id", catchAsync(async (req, res) => {
     const ledLightHouse = await LedLight.findById(req.params.id);
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("ledlights/insertLed", { ledLightHouse });
+	res.render("ledlights/insertLed", { ledLightHouse , storeroom });
 }));
 
 router.put("/insertLed/:id", catchAsync(async (req, res) => {
