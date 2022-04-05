@@ -8,7 +8,7 @@
 			<div class="col-md-6 mt-0" id="fieldListColour">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΧΡΩΜΑΤΙΣΜΟΣ</span>
-					<input type="text" class="form-control" list="colours" name="colour" id="colour">
+					<input type="text" class="form-control" list="colours" name="colour[]" id="colour">
 					<datalist id="colours">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.colours.length; i++) { %>
@@ -23,7 +23,7 @@
 			<div class="col-md-6 mt-0" id="fieldListAcc">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
-					<input type="text" class="form-control" list="datalistOptions" name="accumulator" id="accumulator">
+					<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator">
 					<datalist id="datalistOptions">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
@@ -38,7 +38,7 @@
 			<div class="col-md-6 mt-0" id="fieldListSolar">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΛΙΑΚΗ ΓΕΝΝΗΤΡΙΑ</span>
-					<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator" id="solarGenerator">
+					<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator">
 					<datalist id="datalistOptions1">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
@@ -54,7 +54,7 @@
 			<div class="col-md-6 mt-0" id="fieldListHead">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΚΕΦΑΛΗ</span>
-					<input type="text" class="form-control" list="heads" name="head" id="head">
+					<input type="text" class="form-control" list="heads" name="head[]" id="head">
 					<datalist id="heads">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.heads.length; i++) { %>
@@ -69,7 +69,7 @@
 			<div class="col-md-6 mt-0" id="fieldListLamp">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΛΥΧΝΙΑ</span>
-					<input type="text" class="form-control" list="datalistOptions2" name="lamp" id="lamp">
+					<input type="text" class="form-control" list="datalistOptions2" name="lamp[]" id="lamp">
 					<datalist id="datalistOptions2">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.lamps.length; i++) { %>
@@ -84,7 +84,7 @@
 			<div class="col-md-6 mt-0" id="fieldListAlternator">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΕΝΑΛΛΑΚΤΗΣ</span>
-					<input type="text" class="form-control" list="alternators" name="alternator" id="alternator">
+					<input type="text" class="form-control" list="alternators" name="alternator[]" id="alternator">
 					<datalist id="alternators">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.alternators.length; i++) { %>
@@ -99,7 +99,7 @@
 			<div class="col-md-6 mt-0" id="fieldListLighter">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΕΚΛΑΜΠΤΗΡΑΣ</span>
-					<input type="text" class="form-control" list="lighters" name="lighter" id="lighter">
+					<input type="text" class="form-control" list="lighters" name="lighter[]" id="lighter">
 					<datalist id="lighters">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.lighters.length; i++) { %>
@@ -114,7 +114,7 @@
 			<div class="col-md-6 mt-0" id="fieldListGeneratorSocket">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΡΥΘΜΙΣΤΗΣ ΦΟΡΤΙΣΕΩΣ/ ΦΟΡΤΙΣΤΗΣ</span>
-					<input type="text" class="form-control" list="generatorSockets" name="generatorSocket" id="generatorSocket">
+					<input type="text" class="form-control" list="generatorSockets" name="generatorSocket[]" id="generatorSocket">
 					<datalist id="generatorSockets">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>
@@ -129,7 +129,7 @@
 			<div class="col-md-6 mt-0" id="fieldListΤorchSocket">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΥΠΟΔΟΧΗ ΠΥΡΣΟΥ</span>
-					<input type="text" class="form-control" list="torchSockets" name="torchSocket" id="torchSocket">
+					<input type="text" class="form-control" list="torchSockets" name="torchSocket[]" id="torchSocket">
 					<datalist id="torchSockets">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
@@ -144,7 +144,7 @@
 			<div class="col-md-6 mt-0" id="fieldListPhotocell">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΦΩΤΟΚΥΤΤΑΡΟ</span>
-					<input type="text" class="form-control" list="photocells" name="photocell" id="photocell">
+					<input type="text" class="form-control" list="photocells" name="photocell[]" id="photocell">
 					<datalist id="photocells">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.photocells.length; i++) { %>
@@ -159,7 +159,7 @@
 			<div class="col-md-6 mt-0" id="fieldListAccessory">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΡΟΣΘΕΤΟ ΕΞΑΡΤΗΜΑ</span>
-					<input type="text" class="form-control" list="accessorys" name="accessory" id="accessory">
+					<input type="text" class="form-control" list="accessorys" name="accessory[]" id="accessory">
 					<datalist id="accessorys">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.accessorys.length; i++) { %>
@@ -174,7 +174,7 @@
 			<div class="col-md-6 mt-0" id="fieldListLocation">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΠΕΡΙΟΧΗ</span>
-					<input type="text" class="form-control" list="locations" name="location" id="location">
+					<input type="text" class="form-control" list="locations" name="location[]" id="location">
 					<datalist id="locations">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.locations.length; i++) { %>
@@ -189,7 +189,7 @@
 			<div class="col-md-6 mt-0" id="fieldListTechnician">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΤΕΧΝΙΚΟΣ</span>
-					<input type="text" class="form-control" list="technicians" name="technician" id="technician">
+					<input type="text" class="form-control" list="technicians" name="technician[]" id="technician">
 					<datalist id="technicians">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.technicians.length; i++) { %>
@@ -204,7 +204,7 @@
 			<div class="col-md-6 mt-0" id="fieldListLightingMachineMan">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</span>
-					<input type="text" class="form-control" list="lightingMachineMans" name="lightingMachineMan" id="lightingMachineMan">
+					<input type="text" class="form-control" list="lightingMachineMans" name="lightingMachineMan[]" id="lightingMachineMan">
 					<datalist id="lightingMachineMans">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.lightingMachineMan.length; i++) { %>
@@ -219,7 +219,7 @@
 			<div class="col-md-6 mt-0" id="fieldListReflectorMan">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΝΑΚΛΑΣΤΗΡΑΣ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</span>
-					<input type="text" class="form-control" list="reflectorMans" name="reflectorMan" id="reflectorMan">
+					<input type="text" class="form-control" list="reflectorMans" name="reflectorMan[]" id="reflectorMan">
 					<datalist id="reflectorMans">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.reflectorMan.length; i++) { %>
@@ -234,7 +234,7 @@
 			<div class="col-md-6 mt-0" id="fieldListLightingMachineType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΦΩΤΙΣΤΙΚΟ ΜΗΧΑΝΗΜΑ (ΤΥΠΟΣ)</span>
-					<input type="text" class="form-control" list="lightingMachineTypes" name="lightingMachineType" id="lightingMachineType">
+					<input type="text" class="form-control" list="lightingMachineTypes" name="lightingMachineType[]" id="lightingMachineType">
 					<datalist id="lightingMachineTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.lightingMachineType.length; i++) { %>
@@ -249,7 +249,7 @@
 			<div class="col-md-6 mt-0" id="fieldListReflectorType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΝΑΚΛΑΣΤΗΡΑΣ (ΤΥΠΟΣ)</span>
-					<input type="text" class="form-control" list="reflectorTypes" name="reflectorType" id="reflectorType">
+					<input type="text" class="form-control" list="reflectorTypes" name="reflectorType[]" id="reflectorType">
 					<datalist id="reflectorTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.reflectorType.length; i++) { %>
@@ -264,7 +264,7 @@
 			<div class="col-md-6 mt-0" id="fieldListType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</span>
-					<input type="text" class="form-control" list="types" name="type" id="type">
+					<input type="text" class="form-control" list="types" name="type[]" id="type">
 					<datalist id="types">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.type.length; i++) { %>
@@ -279,7 +279,7 @@
 			<div class="col-md-6 mt-0" id="fieldListSignsMan">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΕΠΙΣΗΜΑΤΑ (ΚΑΤΑΣΚΕΥΑΣΤΗΣ)</span>
-					<input type="text" class="form-control" list="signsMans" name="signsMan" id="signsMan">
+					<input type="text" class="form-control" list="signsMans" name="signsMan[]" id="signsMan">
 					<datalist id="signsMans">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.signsMan.length; i++) { %>
@@ -294,7 +294,7 @@
 			<div class="col-md-6 mt-0" id="fieldListSignsType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΕΠΙΣΗΜΑΤΑ (ΤΥΠΟΣ)</span>
-					<input type="text" class="form-control" list="signsTypes" name="signsType" id="signsType">
+					<input type="text" class="form-control" list="signsTypes" name="signsType[]" id="signsType">
 					<datalist id="signsTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.signsType.length; i++) { %>
@@ -309,7 +309,7 @@
 			<div class="col-md-6 mt-0" id="fieldListStateriType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΤΑΤΕΡΙ (Άλυσος)</span>
-					<input type="text" class="form-control" list="stateriTypes" name="stateriType" id="stateriType" placeholder="Ίντσες">
+					<input type="text" class="form-control" list="stateriTypes" name="stateriType[]" id="stateriType" placeholder="Ίντσες">
 					<datalist id="stateriTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.stateriType.length; i++) { %>
@@ -324,7 +324,7 @@
 			<div class="col-md-6 mt-0" id="fieldListAlysosType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΛΥΣΟΣ</span>
-					<input type="text" class="form-control" list="alysosTypes" name="alysosType" id="alysosType" placeholder="Ίντσες">
+					<input type="text" class="form-control" list="alysosTypes" name="alysosType[]" id="alysosType" placeholder="Ίντσες">
 					<datalist id="alysosTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.alysosType.length; i++) { %>
@@ -339,7 +339,7 @@
 			<div class="col-md-6 mt-0" id="fieldListAgkyrioChainType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΓΚΥΡΙΟ (Άλυσος)</span>
-					<input type="text" class="form-control" list="agkyrioChainTypes" name="agkyrioChainType" id="agkyrioChainType" placeholder="Ίντσες">
+					<input type="text" class="form-control" list="agkyrioChainTypes" name="agkyrioChainType[]" id="agkyrioChainType" placeholder="Ίντσες">
 					<datalist id="agkyrioChainTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.agkyrioChainType.length; i++) { %>
@@ -354,7 +354,7 @@
 			<div class="col-md-6 mt-0" id="fieldListStreptyrasType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΤΡΕΠΤΗΡΑΣ</span>
-					<input type="text" class="form-control" list="streptyrasTypes" name="streptyrasType" id="streptyrasType" placeholder="Ίντσες">
+					<input type="text" class="form-control" list="streptyrasTypes" name="streptyrasType[]" id="streptyrasType" placeholder="Ίντσες">
 					<datalist id="streptyrasTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.streptyrasType.length; i++) { %>
@@ -369,7 +369,7 @@
 			<div class="col-md-6 mt-0" id="fieldListNavyKeyType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΝΑΥΤΙΚΟ ΚΛΕΙΔΙ</span>
-					<input type="text" class="form-control" list="navyKeyTypes" name="navyKeyType" id="navyKeyType" placeholder="Ίντσες">
+					<input type="text" class="form-control" list="navyKeyTypes" name="navyKeyType[]" id="navyKeyType" placeholder="Ίντσες">
 					<datalist id="navyKeyTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.navyKeyType.length; i++) { %>
@@ -384,7 +384,7 @@
 			<div class="col-md-6 mt-0" id="fieldListAgkyrioType">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΓΚΥΡΙΟ</span>
-					<input type="text" class="form-control" list="agkyrioTypes" name="agkyrioType" id="agkyrioType" placeholder="Κιλά">
+					<input type="text" class="form-control" list="agkyrioTypes" name="agkyrioType[]" id="agkyrioType" placeholder="Κιλά">
 					<datalist id="agkyrioTypes">
 						<% if(storeroom != undefined) { %>
 							<% for (var i=0; i < storeroom.agkyrioType.length; i++) { %>

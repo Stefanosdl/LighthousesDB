@@ -68,6 +68,26 @@
                 <input type="text" class="form-control" name="stigmax" id="stigmax" placeholder="Χ:">
                 <input type="text" class="form-control" name="stigmay" id="stigmay" placeholder="Ψ:">
             </div>
+			<div class="col-md-6 mt-0" id="fieldListAcc">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
+					<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator">
+					<datalist id="datalistOptions">
+						<% if(storeroom != undefined) { %>
+							<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
+								<option value="<%= storeroom.accumulators[i] %>">
+							<% } %>
+						<% } %>
+					</datalist>
+				<button class="btn btn-primary" id="addMoreAcc">Προσθήκη Συσσωρευτή</button>
+				</div>
+			</div>
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+				</div>
+			</div>
 			<div class="col-md-3 mt-0">
 				<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΥΡΓΟΥ</strong></label>
 			</div>
@@ -331,4 +351,5 @@
 </div>
 <br>
 
+<script src="/js/registerLightHouses.js"></script>
 <% include ../partials/footer %>

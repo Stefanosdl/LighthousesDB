@@ -60,7 +60,9 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 			}
 		}
 
-		autoLighthouse.file = req.file.filename;
+		if (req.file != undefined) {
+			autoLighthouse.file = req.file.filename;
+		}
 		moment.locale('el');
 		autoLighthouse.dateModified = moment().format('LL');
 
@@ -76,6 +78,7 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 
 router.post("/search/:id", catchAsync(async (req, res) => {
 	const searchedAuto = await AutoLight.find({_id: req.params.id}).populate("technicians");
+
 	res.render("autolights/searchAuto", { searchedAuto });
 }));
 
@@ -131,22 +134,19 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
 			autoLightHouse.accumulator.push(req.body.accumulatorNew);
 		}
+		var length = autoLightHouse.accumulatorDateGroups.size;
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
+			autoLightHouse.accumulatorDateGroups.set(length.toString(), []);
+			autoLightHouse.accumulatorDateGroups.get(length.toString()).push(req.body.accumulatorDateNew);
 			autoLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
 		}
 		for (var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
-				var flag = true;
-				for(var temp = 0; temp < req.body.accumulatorDate.length; temp++) {
-					if(!autoLightHouse.accumulatorDate.includes(req.body.accumulatorDate[temp])) {
-						flag = false;
-					}
-				}
-				if(!flag) {
+				if(!autoLightHouse.accumulatorDateGroups.get(i.toString()).includes(req.body.accumulatorDate[i])) {
 					if(autoLightHouse.accumulatorDateGroups.get(i.toString()) === undefined) {
 						autoLightHouse.accumulatorDateGroups.set(i.toString(), []);
 					}
-					autoLightHouse.accumulatorDateGroups.set(i.toString(), [req.body.accumulatorDate[i].toString(), ...autoLightHouse.accumulatorDateGroups.get(i.toString())]);
+					autoLightHouse.accumulatorDateGroups.set(i.toString(), [...autoLightHouse.accumulatorDateGroups.get(i.toString()), req.body.accumulatorDate[i].toString()]);
 				}
 			}
 		}
@@ -155,49 +155,44 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		if(req.body.lampNew != undefined && req.body.lampNew != null && req.body.lampNew != ""){
 			autoLightHouse.lamp.push(req.body.lampNew);
 		}
+		length = autoLightHouse.lampDateGroups.size;
 		if(req.body.lampDateNew != undefined && req.body.lampDateNew != null && req.body.lampDateNew != ""){
+			autoLightHouse.lampDate.set(length.toString(), []);
+			autoLightHouse.lampDate.get(length.toString()).push(req.body.lampDateNew);
 			autoLightHouse.lampDate.push(req.body.lampDateNew);
 		}
 		for (var i = 0; i < req.body.lamp.length; i++) {
-			if(req.body.lampDate[i] != undefined && req.body.lampDate[i] != null && req.body.lampDate[i] != "" && !autoLightHouse.lampDate.includes(req.body.lampDate)){
-				var flag = true;
-				for(var temp = 0; temp < req.body.lampDate.length; temp++) {
-					if(!autoLightHouse.lampDate.includes(req.body.lampDate[temp])) {
-						flag = false;
-					}
-				}
-				if(!flag) {
+			if(req.body.lampDate[i] != undefined && req.body.lampDate[i] != null && req.body.lampDate[i] != ""){
+				if(!autoLightHouse.lampDateGroups.get(i.toString()).includes(req.body.lampDate[i])) {
 					if(autoLightHouse.lampDateGroups.get(i.toString()) === undefined) {
 						autoLightHouse.lampDateGroups.set(i.toString(), []);
 					}
-					autoLightHouse.lampDateGroups.set(i.toString(), [req.body.lampDate[i].toString(), ...autoLightHouse.lampDateGroups.get(i.toString())]);
+					autoLightHouse.lampDateGroups.set(i.toString(), [...autoLightHouse.lampDateGroups.get(i.toString()), req.body.lampDate[i].toString()]);
 				}
 			}
 		}
 
 		autoLightHouse.solarGenerator.splice(0, autoLightHouse.solarGenerator.length, ...req.body.solarGenerator);
 		if(req.body.solarGeneratorNew != undefined && req.body.solarGeneratorNew != null && req.body.solarGeneratorNew != ""){
+			autoLightHouse.solarGeneratorDate.set(length.toString(), []);
+			autoLightHouse.solarGeneratorDate.get(length.toString()).push(req.body.solarGeneratorDateNew);
 			autoLightHouse.solarGenerator.push(req.body.solarGeneratorNew);
 		}
+		length = autoLightHouse.solarGeneratorDateGroups.size;
 		if(req.body.solarGeneratorDateNew != undefined && req.body.solarGeneratorDateNew != null && req.body.solarGeneratorDateNew != ""){
 			autoLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDateNew);
 		}
 		for (var i = 0; i < req.body.solarGenerator.length; i++) {
-			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != null && req.body.solarGeneratorDate[i] != "" && !autoLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate)){
-				var flag = true;
-				for(var temp = 0; temp < req.body.solarGeneratorDate.length; temp++) {
-					if(!autoLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate[temp])) {
-						flag = false;
-					}
-				}
-				if(!flag) {
+			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != null && req.body.solarGeneratorDate[i] != ""){
+				if(!autoLightHouse.solarGeneratorDateGroups.get(i.toString()).includes(req.body.solarGeneratorDate[i])) {
 					if(autoLightHouse.solarGeneratorDateGroups.get(i.toString()) === undefined) {
 						autoLightHouse.solarGeneratorDateGroups.set(i.toString(), []);
 					}
-					autoLightHouse.solarGeneratorDateGroups.set(i.toString(), [req.body.solarGeneratorDate[i].toString(), ...autoLightHouse.solarGeneratorDateGroups.get(i.toString())]);
+					autoLightHouse.solarGeneratorDateGroups.set(i.toString(), [...autoLightHouse.solarGeneratorDateGroups.get(i.toString()), req.body.solarGeneratorDate[i].toString()]);
 				}
 			}
 		}
+
 		if(req.body.aef != undefined && req.body.aef != null && req.body.aef != ""){
 			autoLightHouse.aef = req.body.aef;
 		}

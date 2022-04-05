@@ -40,8 +40,14 @@ router.get("/registerLight", catchAsync(async (req, res, next) => {
 
 router.post("/registerLight", upload.single("file"), catchAsync(async (req, res, next) => {
     try {
-		const lightBeacon = new LightBeacon({ ...req.body });
-		
+		const lightBeacon = new LightBeacon({ ...req.body , accumulatorDateGroups : {} });
+
+		for(var i = 0; i < req.body.accumulator.length; i++) {
+			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != ""){
+				lightBeacon.accumulatorDateGroups.set(i.toString(), []);
+				lightBeacon.accumulatorDateGroups.get(i.toString()).push(req.body.accumulatorDate[i]);
+			}
+		}
 		lightBeacon.stigma.x = req.body.stigmax;
 		lightBeacon.stigma.y = req.body.stigmax;
 		lightBeacon.lightingMachine.manufacturer = req.body.lightingMachineMan;
@@ -66,7 +72,9 @@ router.post("/registerLight", upload.single("file"), catchAsync(async (req, res,
 		lightBeacon.agkyrio.type = req.body.agkyrioType;
 		lightBeacon.agkyrio.counter = req.body.agkyrioCounter;
 
-		lightBeacon.file = req.file.filename;
+		if (req.file != undefined) {
+			lightBeacon.file = req.file.filename;
+		}
 		moment.locale('el');
 		lightBeacon.dateModified = moment().format('LL');
 
@@ -119,8 +127,9 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 
 router.get("/insertLight/:id", catchAsync(async (req, res) => {
     const lightBeacon = await LightBeacon.findById(req.params.id);
+	const storeroom = await StoreRoom.findOne({});
 
-	res.render("lightbeacons/insertLight", { lightBeacon });
+	res.render("lightbeacons/insertLight", { lightBeacon , storeroom});
 }));
 
 router.put("/insertLight/:id", catchAsync(async (req, res) => {
@@ -134,7 +143,28 @@ router.put("/insertLight/:id", catchAsync(async (req, res) => {
 			id = req.params.id;
 		}
 		const lightBeacon = await LightBeacon.findByIdAndUpdate(id, { ...req.body});
-				
+		
+		lightBeacon.accumulator.splice(0, lightBeacon.accumulator.length, ...req.body.accumulator);
+		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
+			lightBeacon.accumulator.push(req.body.accumulatorNew);
+		}
+		var length = lightBeacon.accumulatorDateGroups.size;
+		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
+			lightBeacon.accumulatorDateGroups.set(length.toString(), []);
+			lightBeacon.accumulatorDateGroups.get((length).toString()).push(req.body.accumulatorDateNew);
+			lightBeacon.accumulatorDate.push(req.body.accumulatorDateNew);
+		}
+		for (var i = 0; i < req.body.accumulator.length; i++) {
+			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
+				if(!lightBeacon.accumulatorDateGroups.get(i.toString()).includes(req.body.accumulatorDate[i])) {
+					if(lightBeacon.accumulatorDateGroups.get(i.toString()) === undefined) {
+						lightBeacon.accumulatorDateGroups.set(i.toString(), []);
+					}
+					lightBeacon.accumulatorDateGroups.set(i.toString(), [...lightBeacon.accumulatorDateGroups.get(i.toString()), req.body.accumulatorDate[i].toString()]);
+				}
+			}
+		}
+
 		lightBeacon.stigma.x = req.body.stigmax;
 		lightBeacon.stigma.y = req.body.stigmax;
 		lightBeacon.lightingMachine.manufacturer = req.body.lightingMachineMan;
@@ -195,6 +225,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var colours = new Array();
 	var lightingMachines = new Map();
 	var reflectors = new Map();
+	var accumulators = new Array();
 	var signs = new Map();
 	var usedChain = new Map();
 	var tmp = "";
@@ -205,6 +236,9 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 		}
 		if(item.colour != "" && item.colour != undefined) {
 			colours = colours.concat(item.colour.toUpperCase());
+		}
+		if(item.accumulator != "" && item.accumulator != undefined) {
+			accumulators = accumulators.concat(item.accumulator);
 		}
 		for (const [key, value] of Object.entries(item.lightingMachine)) {
 			if (value != "" && value != undefined && value !== null) {
@@ -261,8 +295,10 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	colours.forEach(function(i) { coloursCount[i] = (coloursCount[i]||0) + 1;});
 	var typesCount = {};
 	types.forEach(function(i) { typesCount[i] = (typesCount[i]||0) + 1;});
+	var accumulatorsCount = {};
+	accumulators.forEach(function(i) { accumulatorsCount[i] = (accumulatorsCount[i]||0) + 1;});
 
-    res.render("lightbeacons/lightSum", {typesCount, coloursCount, lightingMachines, reflectors, signs, usedChain});
+    res.render("lightbeacons/lightSum", {typesCount, coloursCount, accumulatorsCount, lightingMachines, reflectors, signs, usedChain});
 }));
 
 module.exports = router;

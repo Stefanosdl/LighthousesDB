@@ -47,6 +47,35 @@
                 <% } %>
             </tr>
             <tr>
+                <th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
+                <% var first_iteration = true; %>
+                <% for (const [key, value] of Object.entries(accumulatorsCount)) { %>
+                    <% if(key != "") { %>
+                        <% if(first_iteration == true) { %>
+                            <td>
+                                <%= key %>
+                            </td>
+                            <td>
+                                <%= value %>
+                            </td>
+                            <% first_iteration = false; %>
+                        <% } else if (key != "") { %>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <%= key %>
+                                </td>
+                                <td>
+                                    <%= value %>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            </tr>
+            <tr>
                 <th scope="row">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</th>
                 <% var first_iteration = true; %>
                 <% for (const [key, value] of Object.entries(typesCount)) { %>

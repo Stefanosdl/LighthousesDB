@@ -52,7 +52,9 @@ router.post("/registerLed", upload.single("file"), catchAsync(async (req, res, n
 			}
 		}
 
-		ledLighthouse.file = req.file.filename;
+		if (req.file != undefined) {
+			ledLighthouse.file = req.file.filename;
+		}
 		moment.locale('el');
 		ledLighthouse.dateModified = moment().format('LL');
 
@@ -128,51 +130,45 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		ledLightHouse.accumulator.splice(0, ledLightHouse.accumulator.length, ...req.body.accumulator);
 		if(req.body.accumulatorNew != undefined && req.body.accumulatorNew != null && req.body.accumulatorNew != ""){
 			ledLightHouse.accumulator.push(req.body.accumulatorNew);
-		}	
+		}
+		var length = ledLightHouse.accumulatorDateGroups.size;
 		if(req.body.accumulatorDateNew != undefined && req.body.accumulatorDateNew != null && req.body.accumulatorDateNew != ""){
+			ledLightHouse.accumulatorDateGroups.set(length.toString(), []);
+			ledLightHouse.accumulatorDateGroups.get(length.toString()).push(req.body.accumulatorDateNew);
 			ledLightHouse.accumulatorDate.push(req.body.accumulatorDateNew);
 		}
 		for (var i = 0; i < req.body.accumulator.length; i++) {
 			if(req.body.accumulatorDate[i] != undefined && req.body.accumulatorDate[i] != null && req.body.accumulatorDate[i] != ""){
-				var flag = true;
-				for(var temp = 0; temp < req.body.accumulatorDate.length; temp++) {
-					if(!ledLightHouse.accumulatorDate.includes(req.body.accumulatorDate[temp])) {
-						flag = false;
-					}
-				}
-				if(!flag) {
+				if(!ledLightHouse.accumulatorDateGroups.get(i.toString()).includes(req.body.accumulatorDate[i])) {
 					if(ledLightHouse.accumulatorDateGroups.get(i.toString()) === undefined) {
 						ledLightHouse.accumulatorDateGroups.set(i.toString(), []);
 					}
-					ledLightHouse.accumulatorDateGroups.set(i.toString(), [req.body.accumulatorDate[i].toString(), ...ledLightHouse.accumulatorDateGroups.get(i.toString())]);
+					ledLightHouse.accumulatorDateGroups.set(i.toString(), [...ledLightHouse.accumulatorDateGroups.get(i.toString()), req.body.accumulatorDate[i].toString()]);
 				}
 			}
 		}
 
 		ledLightHouse.solarGenerator.splice(0, ledLightHouse.solarGenerator.length, ...req.body.solarGenerator);
 		if(req.body.solarGeneratorNew != undefined && req.body.solarGeneratorNew != null && req.body.solarGeneratorNew != ""){
+			ledLightHouse.solarGeneratorDate.set(length.toString(), []);
+			ledLightHouse.solarGeneratorDate.get(length.toString()).push(req.body.solarGeneratorDateNew);
 			ledLightHouse.solarGenerator.push(req.body.solarGeneratorNew);
-		}	
+		}
+		length = ledLightHouse.solarGeneratorDateGroups.size;
 		if(req.body.solarGeneratorDateNew != undefined && req.body.solarGeneratorDateNew != null && req.body.solarGeneratorDateNew != ""){
 			ledLightHouse.solarGeneratorDate.push(req.body.solarGeneratorDateNew);
 		}
 		for (var i = 0; i < req.body.solarGenerator.length; i++) {
 			if(req.body.solarGeneratorDate[i] != undefined && req.body.solarGeneratorDate[i] != null && req.body.solarGeneratorDate[i] != ""){
-				var flag = true;
-				for(var temp = 0; temp < req.body.solarGeneratorDate.length; temp++) {
-					if(!ledLightHouse.solarGeneratorDate.includes(req.body.solarGeneratorDate[temp])) {
-						flag = false;
-					}
-				}
-				if(!flag) {
+				if(!ledLightHouse.solarGeneratorDateGroups.get(i.toString()).includes(req.body.solarGeneratorDate[i])) {
 					if(ledLightHouse.solarGeneratorDateGroups.get(i.toString()) === undefined) {
 						ledLightHouse.solarGeneratorDateGroups.set(i.toString(), []);
 					}
-					ledLightHouse.solarGeneratorDateGroups.set(i.toString(), [req.body.solarGeneratorDate[i].toString(), ...ledLightHouse.accumulatorDateGroups.get(i.toString())]);
+					ledLightHouse.solarGeneratorDateGroups.set(i.toString(), [...ledLightHouse.solarGeneratorDateGroups.get(i.toString()), req.body.solarGeneratorDate[i].toString()]);
 				}
 			}
 		}
-		
+
 		if(req.body.aef != undefined && req.body.aef != null && req.body.aef != ""){
 			ledLightHouse.aef = req.body.aef;
 		}

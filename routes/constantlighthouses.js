@@ -42,7 +42,9 @@ router.post("/registerConstant", upload.single("file"), catchAsync(async (req, r
     try {
 		const constantLighthouse = new ConstantLight({ ...req.body });
 
-		constantLighthouse.file = req.file.filename;
+		if (req.file != undefined) {
+			constantLighthouse.file = req.file.filename;
+		}
 		moment.locale('el');
 		constantLighthouse.dateModified = moment().format('LL');
 

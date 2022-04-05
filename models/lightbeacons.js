@@ -16,6 +16,14 @@ const lightBeaconSchema = new Schema({
         x: { type: String },
         y: { type: String }
     },
+    accumulator: [String],
+    accumulatorDate: {
+        type: Array,
+        default: [Date]
+    },
+    accumulatorDateGroups: {
+        type: Map
+    },
     lightingMachine: {
         manufacturer: { type: String },
         type: { type: String },

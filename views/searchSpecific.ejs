@@ -849,6 +849,79 @@
 					</tr>
 					<br>
 				</tbody>
+				
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">ΚΑΤΗΓΟΡΙΑ</th>
+						<th scope="col">ΤΥΠΟΣ</th>
+						<% for (var i=0; i < 4; i++) { %>
+							<th scope="col">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</th>
+						<% } %>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th scope="row">ΣΥΣΣΩΡΕΥΤΗΣ</th>
+						<% for (var k = 0; k < light.accumulator.length; k++) { %>
+							<% if(k == 0) { %>
+								<td>
+									<%= light.accumulator[k] %>
+								</td>
+								<% if(light.accumulatorDateGroups != undefined) { %>
+									<% if(light.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+										<% if(light.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+											<% for (var i = light.accumulatorDateGroups.get(k.toString()).length - 4; i < light.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+												<% if(light.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+													<td><%= light.accumulatorDateGroups.get(k.toString())[i]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } else { %>
+											<% for (var j = 0; j < light.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+												<% if(light.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+													<td><%= light.accumulatorDateGroups.get(k.toString())[j]%></td>
+												<% } else { %>
+													<td> </td>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								<% } %>
+							<% } else { %>
+								<tr>
+									<td>
+										
+									</td>
+									<td>
+										<%= light.accumulator[k] %>
+									</td>
+									<% if(light.accumulatorDateGroups != undefined) { %>
+										<% if(light.accumulatorDateGroups.get(k.toString()) != undefined) { %>
+											<% if(light.accumulatorDateGroups.get(k.toString()).length > 4) { %>
+												<% for (var i = light.accumulatorDateGroups.get(k.toString()).length - 4; i < light.accumulatorDateGroups.get(k.toString()).length; i++) { %>
+													<% if(light.accumulatorDateGroups.get(k.toString())[i] != undefined) { %>
+														<td><%= light.accumulatorDateGroups.get(k.toString())[i]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } else { %>
+												<% for (var j = 0; j < light.accumulatorDateGroups.get(k.toString()).length; j++) { %>
+													<% if(light.accumulatorDateGroups.get(k.toString())[j] != undefined) { %>
+														<td><%= light.accumulatorDateGroups.get(k.toString())[j]%></td>
+													<% } else { %>
+														<td> </td>
+													<% } %>
+												<% } %>
+											<% } %>
+										<% } %>
+									<% } %>
+								</tr>
+							<% } %>
+						<% } %>
+					</tr>
+					</tbody>
 			</table>
 
 			

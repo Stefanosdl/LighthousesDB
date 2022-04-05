@@ -46,6 +46,42 @@
 				<input type="text" class="form-control" name="stigmax" id="stigmax" value="<%= lightBeacon.stigma.x %>" placeholder="Χ:">
 				<input type="text" class="form-control" name="stigmay" id="stigmay" value="<%= lightBeacon.stigma.y %>" placeholder="Ψ:">
 			</div>
+			
+			<div class="col-md-6 mt-0" id="fieldListAcc">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
+					<input type="text" class="form-control" name="accumulatorNew" id="accumulatorNew">
+				</div>
+			</div>
+			<div class="col-md-6 mt-0">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+					<input type="date" class="form-control" name="accumulatorDateNew" id="accumulatorDateNew">
+				</div>
+			</div>
+			<% for (var i=0; i < lightBeacon.accumulator.length; i++) { %>
+				<div class="col-md-6 mt-0" id="fieldListAcc">
+					<div class="input-group input-group-sm mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-sm">ΣΥΣΣΩΡΕΥΤΗΣ</span>
+						<input type="text" class="form-control" name="accumulator[]" id="accumulator" value="<%= lightBeacon.accumulator[i] %>">
+					</div>
+				</div>
+				<% if(lightBeacon.accumulatorDateGroups.get(i.toString()) != undefined) { %>
+					<div class="col-md-6 mt-0">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+							<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate" value="<%= lightBeacon.accumulatorDateGroups.get(i.toString())[lightBeacon.accumulatorDateGroups.get(i.toString()).length-1] %>">
+						</div>
+					</div>
+				<% } else { %>
+					<div class="col-md-6 mt-0">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text" id="inputGroup-sizing-sm">ΗΜ/ΝΙΑ ΤΟΠΟΘΕΤΗΣΗΣ</span>
+							<input type="date" class="form-control" name="accumulatorDate[]" id="accumulatorDate">
+						</div>
+					</div>
+				<% } %>
+			<% } %>
 			<div class="col-md-3 mt-0">
 				<label class="form-label"><strong>ΕΞΑΡΤΗΜΑΤΑ ΠΥΡΓΟΥ</strong></label>
 			</div>
@@ -154,7 +190,14 @@
 			</div>
 			<div class="col-md-8">
 				<label for="type" class="form-label">ΤΥΠΟΣ ΦΩΤΟΣΗΜΑΝΤΗΡΑ</label>
-				<input type="text" class="form-control" name="type" id="type" value="<%= lightBeacon.type %>">
+				<input type="text" class="form-control" list="types" name="type" id="type"  value="<%= lightBeacon.type %>">
+				<datalist id="types">
+					<% if(storeroom != undefined) { %>
+						<% for (var i=0; i < storeroom.type.length; i++) { %>
+							<option value="<%= storeroom.type[i] %>">
+						<% } %>
+					<% } %>
+				</datalist>
 				<label for="usedChain" class="form-label">ΣΥΝΟΛΟ ΧΡΗΣΙΜΟΠΟΙΗΘΕΝΤΟΣ ΑΛΥΣΟΥ</label>
 				<input type="number" class="form-control" name="usedChain" id="usedChain" value="<%= lightBeacon.usedChain %>">
 				<label for="immersionDepth" class="form-label">ΒΑΘΟΣ ΠΟΝΤΙΣΕΩΣ</label>
