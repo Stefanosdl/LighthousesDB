@@ -108,8 +108,8 @@
 						<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator" value="<%= autoLightHouse.solarGenerator[i] %>">
 						<datalist id="datalistOptions1">
 							<% if(storeroom != undefined) { %>
-								<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
-									<option value="<%= storeroom.solarGenerators[i] %>">
+								<% for (var k=0; k < storeroom.solarGenerators.length; k++) { %>
+									<option value="<%= storeroom.solarGenerators[k] %>">
 								<% } %>
 							<% } %>
 						</datalist>
@@ -137,8 +137,8 @@
 					<input type="text" class="form-control" list="alternators" name="alternator" id="alternator" value="<%= autoLightHouse.alternator %>">
 					<datalist id="alternators">
 						<% if(storeroom != undefined) { %>
-							<% for (var i=0; i < storeroom.alternators.length; i++) { %>
-								<option value="<%= storeroom.alternators[i] %>">
+							<% for (var k=0; k < storeroom.alternators.length; k++) { %>
+								<option value="<%= storeroom.alternators[k] %>">
 							<% } %>
 						<% } %>
 					</datalist>
@@ -156,8 +156,8 @@
 					<input type="text" class="form-control" list="datalistOptions2" name="lampNew" id="lamp">
 					<datalist id="datalistOptions2">
 						<% if(storeroom != undefined) { %>
-							<% for (var i=0; i < storeroom.lamps.length; i++) { %>
-								<option value="<%= storeroom.lamps[i] %>">
+							<% for (var k=0; k < storeroom.lamps.length; k++) { %>
+								<option value="<%= storeroom.lamps[k] %>">
 							<% } %>
 						<% } %>
 					</datalist>
@@ -176,8 +176,8 @@
 						<input type="text" class="form-control" list="datalistOptions2" name="lamp[]" id="lamp" value="<%= autoLightHouse.lamp[i] %>">
 						<datalist id="datalistOptions2">
 							<% if(storeroom != undefined) { %>
-								<% for (var i=0; i < storeroom.lamps.length; i++) { %>
-									<option value="<%= storeroom.lamps[i] %>">
+								<% for (var k=0; k < storeroom.lamps.length; k++) { %>
+									<option value="<%= storeroom.lamps[k] %>">
 								<% } %>
 							<% } %>
 						</datalist>
@@ -205,8 +205,8 @@
 					<input type="text" class="form-control" list="datalistOptions" name="accumulatorNew" id="accumulator">
 					<datalist id="datalistOptions">
 						<% if(storeroom != undefined) { %>
-							<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
-								<option value="<%= storeroom.accumulators[i] %>">
+							<% for (var k=0; k < storeroom.accumulators.length; k++) { %>
+								<option value="<%= storeroom.accumulators[k] %>">
 							<% } %>
 						<% } %>
 					</datalist>
@@ -225,8 +225,8 @@
 						<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator" value="<%= autoLightHouse.accumulator[i] %>">
 						<datalist id="datalistOptions">
 							<% if(storeroom != undefined) { %>
-								<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
-									<option value="<%= storeroom.accumulators[i] %>">
+								<% for (var k=0; k < storeroom.accumulators.length; k++) { %>
+									<option value="<%= storeroom.accumulators[k] %>">
 								<% } %>
 							<% } %>
 						</datalist>
@@ -254,8 +254,8 @@
 					<input type="text" class="form-control" list="heads" name="head" id="head" value="<%= autoLightHouse.head %>">
 					<datalist id="heads">
 						<% if(storeroom != undefined) { %>
-							<% for (var i=0; i < storeroom.heads.length; i++) { %>
-								<option value="<%= storeroom.heads[i] %>">
+							<% for (var k=0; k < storeroom.heads.length; k++) { %>
+								<option value="<%= storeroom.heads[k] %>">
 							<% } %>
 						<% } %>
 					</datalist>
@@ -273,8 +273,8 @@
 					<input type="text" class="form-control" list="generatorSockets" name="generatorSocket" id="generatorSocket" value="<%= autoLightHouse.generatorSocket %>">
 					<datalist id="generatorSockets">
 						<% if(storeroom != undefined) { %>
-							<% for (var i=0; i < storeroom.generatorSockets.length; i++) { %>
-								<option value="<%= storeroom.generatorSockets[i] %>">
+							<% for (var k=0; k < storeroom.generatorSockets.length; k++) { %>
+								<option value="<%= storeroom.generatorSockets[k] %>">
 							<% } %>
 						<% } %>
 					</datalist>
@@ -292,8 +292,8 @@
 					<input type="text" class="form-control" list="torchSockets" name="torchSocket" id="torchSocket" value="<%= autoLightHouse.torchSocket %>">
 					<datalist id="torchSockets">
 						<% if(storeroom != undefined) { %>
-							<% for (var i=0; i < storeroom.torchSockets.length; i++) { %>
-								<option value="<%= storeroom.torchSockets[i] %>">
+							<% for (var k=0; k < storeroom.torchSockets.length; k++) { %>
+								<option value="<%= storeroom.torchSockets[k] %>">
 							<% } %>
 						<% } %>
 					</datalist>

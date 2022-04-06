@@ -4,6 +4,9 @@
 	<div class="row">
 		<h2 align="center">Εισαγωγή Στοιχείων</h2>
 		<form action="/lightBeacons/insertLight/<%= lightBeacon._id %>?_method=PUT" method="POST" class="row g-3" enctype="multipart/form-data">
+			<div class="input-group input-group-sm mb-3">
+				<input class="form-control" type="file" name="file" class="userAvatar" value="1" placeholder="">
+			</div>
 			<div class="col-md-6 mt-0">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ΑΕΦ</span>
@@ -87,8 +90,8 @@
 						<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator" value="<%= lightBeacon.accumulator[i] %>">
 						<datalist id="datalistOptions">
 							<% if(storeroom != undefined) { %>
-								<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
-									<option value="<%= storeroom.accumulators[i] %>">
+								<% for (var k=0; k < storeroom.accumulators.length; k++) { %>
+									<option value="<%= storeroom.accumulators[k] %>">
 								<% } %>
 							<% } %>
 						</datalist>

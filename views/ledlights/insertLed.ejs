@@ -89,8 +89,8 @@
 						<input type="text" class="form-control" list="datalistOptions1" name="solarGenerator[]" id="solarGenerator" value="<%= ledLightHouse.solarGenerator[i] %>">
 						<datalist id="datalistOptions1">
 							<% if(storeroom != undefined) { %>
-								<% for (var i=0; i < storeroom.solarGenerators.length; i++) { %>
-									<option value="<%= storeroom.solarGenerators[i] %>">
+								<% for (var k=0; k < storeroom.solarGenerators.length; k++) { %>
+									<option value="<%= storeroom.solarGenerators[k] %>">
 								<% } %>
 							<% } %>
 						</datalist>
@@ -138,8 +138,8 @@
 						<input type="text" class="form-control" list="datalistOptions" name="accumulator[]" id="accumulator" value="<%= ledLightHouse.accumulator[i] %>">
 						<datalist id="datalistOptions">
 							<% if(storeroom != undefined) { %>
-								<% for (var i=0; i < storeroom.accumulators.length; i++) { %>
-									<option value="<%= storeroom.accumulators[i] %>">
+								<% for (var k=0; k < storeroom.accumulators.length; k++) { %>
+									<option value="<%= storeroom.accumulators[k] %>">
 								<% } %>
 							<% } %>
 						</datalist>

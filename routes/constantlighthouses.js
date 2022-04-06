@@ -84,6 +84,7 @@ router.post("/technicians/new/:id", catchAsync(async (req, res) => {
 		await constantLightHouse.technicians.push(newTechnician);
 		await constantLightHouse.save();
 		await newTechnician.save();
+
 		req.flash("success", "Επιτυχής εγγραφή");
 		res.redirect(`/constantLightHouses/insertConstant/${req.params.id}`);
 	}
@@ -171,6 +172,7 @@ router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, r
 		path: "technicians",
 		match: { technician: { $eq: req.body.technician }, date: {$eq: req.body.date}, description: {$eq: req.body.description}, suggests: {$eq: req.body.suggests}},
 	}).exec();
+	
 	constantSuggests.technicians[0].suggests = "";
 	constantSuggests.technicians[0].save();
 	await constantSuggests.save();

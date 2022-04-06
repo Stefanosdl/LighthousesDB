@@ -63,6 +63,7 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 		if (req.file != undefined) {
 			autoLighthouse.file = req.file.filename;
 		}
+		
 		moment.locale('el');
 		autoLighthouse.dateModified = moment().format('LL');
 
