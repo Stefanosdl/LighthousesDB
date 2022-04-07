@@ -119,7 +119,7 @@ router.get("/insertAuto/:id", catchAsync(async (req, res) => {
 	res.render("autolights/insertAuto", { autoLightHouse , storeroom });
 }));
 
-router.put("/insertAuto/:id", catchAsync(async (req, res) => {
+router.put("/insertAuto/:id", upload.single("file"), catchAsync(async (req, res) => {
 	try {
 		var id;
 		const tmp = req.params.id.charAt(0);
@@ -256,6 +256,9 @@ router.put("/insertAuto/:id", catchAsync(async (req, res) => {
 		}
 		if(req.body.photocell != undefined && req.body.photocell != null && req.body.photocell != ""){
 			autoLightHouse.photocell = req.body.photocell;
+		}
+		if (req.body.file != undefined && req.body.file != null && req.body.file != "") {
+			autoLightHouse.file = req.body.file;
 		}
 		
 		moment.locale('el');

@@ -1,14 +1,29 @@
 <% include ./partials/header %>
+<style>
+	body {
+		/* background-image: url('/photos/fs.mp4'); */
+		background-image: url('/b.webp');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+</style>
 <div class="container">
 	<div class="row">
         <h2 align="center">Ηλεκτρονικός Φαροδείκτης</h2>
-		<img src='/yf.jpg' class="img-fluid mx-auto d-block" style="width: 10rem;" />
+		<!-- <img src='/photos/yf.png' class="img-fluid mx-auto d-block" style="width: 10rem;" /> -->
+		<!-- <img src='/photos/pn.png' class="img-fluid mx-auto d-block" style="width: 10rem;" /> -->
+		<img src='/yf.png' class="img-fluid mx-auto d-block" style="width: 10rem;" />
+		<img src='/pn.png' class="img-fluid mx-auto d-block" style="width: 10rem;" />
 		<div class="col-12">
 			<nav class="navbar navbar-light">
 				<div class="container-fluid">
 					<form action="/search" method="GET" class="d-flex my-2 mx-auto">
-						<input class="form-control me-2" type="search" name="q" id="search" aria-label="Search">
-						<button class="btn btn-outline-primary" type="submit">Αναζήτηση</button>
+						
+						<input type="search" class="form-control rounded" type="search" name="q" id="search" placeholder="Αναζήτηση" aria-label="Search" />
+						<button class="btn btn-primary" type="submit">Αναζήτηση</button>
+						<!-- <input class="form-control me-2" type="search" name="q" id="search" aria-label="Search">
+						<button class="btn btn-outline-primary" type="submit">Αναζήτηση</button> -->
 					</form>
 				</div>
 			</nav>

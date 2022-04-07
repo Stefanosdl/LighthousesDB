@@ -132,7 +132,7 @@ router.get("/insertLight/:id", catchAsync(async (req, res) => {
 	res.render("lightbeacons/insertLight", { lightBeacon , storeroom});
 }));
 
-router.put("/insertLight/:id", catchAsync(async (req, res) => {
+router.put("/insertLight/:id", upload.single("file"), catchAsync(async (req, res) => {
 	try {
 		var id;
 		const tmp = req.params.id.charAt(0);
@@ -190,6 +190,9 @@ router.put("/insertLight/:id", catchAsync(async (req, res) => {
 		lightBeacon.agkyrio.counter = req.body.agkyrioCounter;
 		lightBeacon.lightingMachineDate.push(req.body.lightingMachineDat);
 		
+		if (req.body.file != undefined && req.body.file != null && req.body.file != "") {
+			lightBeacon.file = req.body.file;
+		}
 
 		moment.locale('el');
 		lightBeacon.dateModified = moment().format('LL');

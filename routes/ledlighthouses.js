@@ -116,7 +116,7 @@ router.get("/insertLed/:id", catchAsync(async (req, res) => {
 	res.render("ledlights/insertLed", { ledLightHouse , storeroom });
 }));
 
-router.put("/insertLed/:id", catchAsync(async (req, res) => {
+router.put("/insertLed/:id", upload.single("file"), catchAsync(async (req, res) => {
 	try {
 		var id;
 		const tmp = req.params.id.charAt(0);
@@ -209,6 +209,10 @@ router.put("/insertLed/:id", catchAsync(async (req, res) => {
 		if(req.body.socket != undefined && req.body.socket != null && req.body.socket != ""){
 			ledLightHouse.socket = req.body.socket;
 		}
+		if (req.body.file != undefined && req.body.file != null && req.body.file != "") {
+			ledLightHouse.file = req.body.file;
+		}
+
 		moment.locale('el');
 		ledLightHouse.dateModified = moment().format('LL');
 

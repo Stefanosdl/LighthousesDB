@@ -100,7 +100,7 @@ router.get("/insertConstant/:id", catchAsync(async (req, res) => {
 	res.render("constantlights/insertConstant", { constantLightHouse , storeroom });
 }));
 
-router.put("/insertConstant/:id", catchAsync(async (req, res) => {
+router.put("/insertConstant/:id", upload.single("file"), catchAsync(async (req, res) => {
 	try {
 		var id;
 		const tmp = req.params.id.charAt(0);
@@ -147,6 +147,9 @@ router.put("/insertConstant/:id", catchAsync(async (req, res) => {
 		}
 		if(req.body.lamp != undefined && req.body.lamp != null && req.body.lamp != ""){
 			constantLightHouse.lamp = req.body.lamp;
+		}
+		if (req.body.file != undefined && req.body.file != null && req.body.file != "") {
+			constantLightHouse.file = req.body.file;
 		}
 		
 		moment.locale('el');
