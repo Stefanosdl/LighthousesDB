@@ -49,7 +49,7 @@ router.post("/registerLight", upload.single("file"), catchAsync(async (req, res,
 			}
 		}
 		lightBeacon.stigma.x = req.body.stigmax;
-		lightBeacon.stigma.y = req.body.stigmax;
+		lightBeacon.stigma.y = req.body.stigmay;
 		lightBeacon.lightingMachine.manufacturer = req.body.lightingMachineMan;
 		lightBeacon.lightingMachine.type = req.body.lightingMachineType;
 		lightBeacon.lightingMachine.counter = req.body.lightingMachineCounter;
@@ -166,7 +166,7 @@ router.put("/insertLight/:id", upload.single("file"), catchAsync(async (req, res
 		}
 
 		lightBeacon.stigma.x = req.body.stigmax;
-		lightBeacon.stigma.y = req.body.stigmax;
+		lightBeacon.stigma.y = req.body.stigmay;
 		lightBeacon.lightingMachine.manufacturer = req.body.lightingMachineMan;
 		lightBeacon.lightingMachine.type = req.body.lightingMachineType;
 		lightBeacon.lightingMachine.counter = req.body.lightingMachineCounter;

@@ -63,7 +63,10 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 		if (req.file != undefined) {
 			autoLighthouse.file = req.file.filename;
 		}
-		
+
+		autoLighthouse.stigma.x = req.body.stigmax;
+		autoLighthouse.stigma.y = req.body.stigmay;
+
 		moment.locale('el');
 		autoLighthouse.dateModified = moment().format('LL');
 
@@ -262,6 +265,9 @@ router.put("/insertAuto/:id", upload.single("file"), catchAsync(async (req, res)
 			autoLightHouse.file = req.body.file;
 		}
 		
+		autoLightHouse.stigma.x = req.body.stigmax;
+		autoLightHouse.stigma.y = req.body.stigmay;
+
 		moment.locale('el');
 		autoLightHouse.dateModified = moment().format('LL');
 		

@@ -74,6 +74,7 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const searchedAuto = await AutoLight.find({}).populate("technicians");
             const searchedConstant = await ConstantLight.find({}).populate("technicians");
             const searchedLight = await LightBeacon.find({}).populate("technicians");
+            
             res.render("search", { searchedAuto, searchedLed, searchedConstant, searchedLight });
         }
 

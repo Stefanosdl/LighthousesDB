@@ -14,6 +14,10 @@ const AutoLightSchema = new Schema({
     sections: String,
     lighter: String,
     alternator: String,
+    stigma: {
+        x: { type: String },
+        y: { type: String }
+    },
     dateModified: String,
     alternatorDate: {
         type: Array,
