@@ -6,6 +6,7 @@ const AutoLightSchema = new Schema({
         type: String,
         unique: true
     },
+    isLed: String,
     lighthouse: String,
     features: String,
     location: String,

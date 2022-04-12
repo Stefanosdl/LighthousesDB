@@ -75,7 +75,26 @@ router.get("/search", catchAsync(async (req, res, next) => {
             const searchedConstant = await ConstantLight.find({}).populate("technicians");
             const searchedLight = await LightBeacon.find({}).populate("technicians");
             
-            res.render("search", { searchedAuto, searchedLed, searchedConstant, searchedLight });
+            
+            const autoString = "auto";
+            const ledString = "led";
+            var autos = new Array();
+            var leds = new Array();
+            
+	        for (const item of searchedAuto) {
+                if(item.isLed != "" && item.isLed != undefined) {
+                    if (item.isLed.includes(autoString)) {
+                        autos = autos.concat(item.isLed.toUpperCase());
+                    }
+                    else if (item.isLed.includes(ledString)) {
+                        leds = leds.concat(item.isLed.toUpperCase());
+                    }
+                }
+            }
+            var autosCount = autos.length;
+            var ledsCount = leds.length;
+
+            res.render("search", { searchedAuto, searchedLed, searchedConstant, searchedLight, autosCount, ledsCount });
         }
 
     }

@@ -63,7 +63,6 @@ router.post("/registerAuto", upload.single("file"), catchAsync(async (req, res, 
 		if (req.file != undefined) {
 			autoLighthouse.file = req.file.filename;
 		}
-
 		autoLighthouse.stigma.x = req.body.stigmax;
 		autoLighthouse.stigma.y = req.body.stigmay;
 
@@ -265,6 +264,7 @@ router.put("/insertAuto/:id", upload.single("file"), catchAsync(async (req, res)
 			autoLightHouse.file = req.body.file;
 		}
 		
+		autoLightHouse.isLed = req.body.isLed;
 		autoLightHouse.stigma.x = req.body.stigmax;
 		autoLightHouse.stigma.y = req.body.stigmay;
 
@@ -299,6 +299,8 @@ router.put("/deleteSuggest/:id", middleware.isLoggedIn, catchAsync(async (req, r
 router.get("/sum", catchAsync(async (req, res, next) => {
 	const solarString = "12V";
 	const socketString = "220V";
+	const autoString = "auto";
+	const ledString = "led";
 	const autoLightHouses = await AutoLight.find({});
 	var heads = new Array();
 	var lamps = new Array();
@@ -307,8 +309,11 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var generatorSockets = new Array();
 	var sockets = new Array();
 	var colours = new Array();
+	var autos = new Array();
+	var leds = new Array();
 
 	for (const item of autoLightHouses) {
+		console.log(item)
 		if(item.head != "" && item.head != undefined) {
 			heads = heads.concat(item.head.toUpperCase());
 		}
@@ -324,14 +329,28 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 		if(item.solarGenerator != "" && item.solarGenerator != undefined) {
 			solarGenerators = solarGenerators.concat(item.solarGenerator);
 		}
-		if (item.generatorSocket.includes(solarString)) {
-			generatorSockets = generatorSockets.concat(item.generatorSocket.toUpperCase());
+		if(item.generatorSocket != "" && item.generatorSocket != undefined) {
+			if (item.generatorSocket.includes(solarString)) {
+				generatorSockets = generatorSockets.concat(item.generatorSocket.toUpperCase());
+			}
+			else if (item.generatorSocket.includes(socketString)) {
+				sockets = sockets.concat(item.generatorSocket.toUpperCase());
+			}
 		}
-		else if (item.generatorSocket.includes(socketString)) {
-			sockets = sockets.concat(item.generatorSocket.toUpperCase());
+		if(item.isLed != "" && item.isLed != undefined) {
+			if (item.isLed.includes(autoString)) {
+				autos = autos.concat(item.isLed.toUpperCase());
+			}
+			else if (item.isLed.includes(ledString)) {
+				leds = leds.concat(item.isLed.toUpperCase());
+			}
 		}
 	}
 	
+	var autosCount = {};
+	autos.forEach(function(i) { autosCount[i] = (autosCount[i]||0) + 1;});
+	var ledsCount = {};
+	leds.forEach(function(i) { ledsCount[i] = (ledsCount[i]||0) + 1;});
 	var coloursCount = {};
 	colours.forEach(function(i) { coloursCount[i] = (coloursCount[i]||0) + 1;});
 	var lampsCount = {};
@@ -347,7 +366,7 @@ router.get("/sum", catchAsync(async (req, res, next) => {
 	var socketsCount = {};
 	sockets.forEach(function(i) { socketsCount[i] = (socketsCount[i]||0) + 1;});
 
-    res.render("autolights/autoSum", {lampsCount, headsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount});
+    res.render("autolights/autoSum", {lampsCount, headsCount, solarGeneratorsCount, accumulatorsCount, generatorSocketsCount, socketsCount, coloursCount, autosCount, ledsCount});
 }));
 
 module.exports = router;

@@ -75,6 +75,7 @@ router.post("/registerLight", upload.single("file"), catchAsync(async (req, res,
 		if (req.file != undefined) {
 			lightBeacon.file = req.file.filename;
 		}
+
 		moment.locale('el');
 		lightBeacon.dateModified = moment().format('LL');
 
@@ -192,6 +193,9 @@ router.put("/insertLight/:id", upload.single("file"), catchAsync(async (req, res
 		
 		if (req.body.file != undefined && req.body.file != null && req.body.file != "") {
 			lightBeacon.file = req.body.file;
+		}
+		if (req.file != undefined && req.file != null && req.file != "") {
+			lightBeacon.file = req.file.filename;
 		}
 
 		moment.locale('el');
