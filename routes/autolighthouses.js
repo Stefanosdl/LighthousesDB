@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
 const catchAsync = require('../utils/catchAsync');
 const AutoLight = require("../models/autolighthouses");
 const Technician = require("../models/technician");
