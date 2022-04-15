@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+<div class="container">
+	<div class="row justify-content-center mt-5">
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<div class="card shadow">
+				<div class="card-title text-center border-bottom">
+					<h2 class="p-3">Εισαγωγή φωτογραφιών</h2>
+				</div>
+				<div class="card-body">
+					<form action="/images/insert" method="POST" enctype="multipart/form-data">
+                        <div class="mb-4">
+							<label for="aef" class="form-label">ΑΕΦ</label>
+							<input type="text" class="form-control" name="aef" id="aef" required/>
+						</div>
+
+                        <div class="mb-4">
+                            <label class="form-check-label" for="files">Επιλέξτε φωτογραφίες:</label>
+                            <input class="form-control" type="file" id="files" name="photos" multiple="multiple" required><br><br>
+						</div>
+                        
+						<div class="text-center">
+							<button class="btn btn-outline-primary">Εισαγωγή</button>
+							<a onclick="window.history.back()" class="btn btn-outline-primary float-left">Πίσω</a>
+                            <a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+						</div>
+                      </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>

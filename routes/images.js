@@ -7,14 +7,17 @@ const LedLight = require("../models/ledlighthouses");
 const AutoLight = require("../models/autolighthouses");
 const ConstantLight = require("../models/constantlighthouses");
 const LightBeacon = require("../models/lightbeacons");
-
 const multer = require("multer");
 
 var storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, './release-builds/LighthousesDB-win32-ia32/photos/');
+    destination: function(req, file, cb) {
+        var folder = './release-builds/LighthousesDB-win32-ia32/photos/' + req.body.aef;
+        if (!fs.existsSync(folder)) {
+            fs.mkdirSync(folder);
+        }
+        cb(null, folder);
     },
-    filename: function(req, file, cb){
+    filename: function(req, file, cb) {
         cb(null, file.originalname);
     }
 });
@@ -41,6 +44,21 @@ router.get("/index", catchAsync(async (req, res, next) => {
     const searchedLight = await LightBeacon.find({}).populate("technicians");
     
     res.render("images/index", { searchedAuto, searchedLed, searchedConstant, searchedLight });
+}));
+
+router.get("/insert", catchAsync(async (req, res, next) => {    
+    res.render("images/insert");
+}));
+
+router.post("/insert", upload.array('photos', 12), catchAsync(async (req, res, next) => {
+    try {
+        req.flash("success", "Επιτυχής αποθήκευση");
+        res.redirect('/images/insert');
+    }
+    catch (e) {
+        req.flash("error", e.message);
+        res.redirect('/');
+    }
 }));
 
 router.get("/search", catchAsync(async (req, res, next) => {

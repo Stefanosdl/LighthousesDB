@@ -9,10 +9,14 @@ const moment = require("moment");
 const multer = require("multer");
 
 var storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, './photos/');
+    destination: function(req, file, cb) {
+        var folder = './photos/';
+        if (!fs.existsSync(folder)) {
+            fs.mkdirSync(folder);
+        }
+        cb(null, folder);
     },
-    filename: function(req, file, cb){
+    filename: function(req, file, cb) {
         cb(null, file.originalname);
     }
 });
